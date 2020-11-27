@@ -1,0 +1,9 @@
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\bin\Release\netstandard2.1\MHFoodBank.Common.deps.json
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\bin\Release\netstandard2.1\MHFoodBank.Common.dll
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\bin\Release\netstandard2.1\MHFoodBank.Common.pdb
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\obj\Release\netstandard2.1\MHFoodBank.Common.csprojAssemblyReference.cache
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\obj\Release\netstandard2.1\MHFoodBank.Common.AssemblyInfoInputs.cache
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\obj\Release\netstandard2.1\MHFoodBank.Common.AssemblyInfo.cs
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\obj\Release\netstandard2.1\MHFoodBank.Common.csproj.CoreCompileInputs.cache
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\obj\Release\netstandard2.1\MHFoodBank.Common.dll
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\obj\Release\netstandard2.1\MHFoodBank.Common.pdb

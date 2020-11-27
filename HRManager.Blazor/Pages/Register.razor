@@ -1,0 +1,74 @@
+﻿@layout AuthLayout
+@page "/register"
+@using HRManager.Common.Dtos
+@using HRManager.Blazor.Services
+@inject IAuthService _authService
+@inject NavigationManager _nav
+
+@code {
+    // TODO: Add redirect URI
+
+    // must create instance of model to be bound*******
+    private TestRegisterDto registerDto = new TestRegisterDto();
+    public bool ShowErrors { get; set; }
+    public IEnumerable<string> Errors { get; set; }
+
+
+    public async Task RegisterUser()
+    {
+        var registerResult = await _authService.Register(registerDto);
+        if (registerResult.Successful)
+        {
+            _nav.NavigateTo("/");
+        }
+        else
+        {
+            Errors = registerResult.Errors;
+            ShowErrors = true;
+        }
+    }
+}
+
+@if (ShowErrors)
+{
+    <div class="alert alert-danger" role="alert">
+        @foreach (var error in Errors)
+        {
+            <p>@error</p>
+        }
+    </div>
+}
+
+<h2>Register</h2>
+
+<EditForm Model="registerDto" OnSubmit="@RegisterUser" class="card card-body bg-light mt-5">
+    <DataAnnotationsValidator />
+    <div class="form-group row">
+        <label for="email" class="col-md-2 col-form-label">Email:</label>
+        <div class="col-md-10">
+            <InputText id="email" class="form-control" @bind-Value="registerDto.Email" />
+            <ValidationMessage For="@(() => registerDto.Email)" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="password" class="col-md-2 col-form-label">Password:</label>
+        <div class="col-md-10">
+            <InputText type="password" id="password" class="form-control" @bind-Value="registerDto.Password" />
+            <ValidationMessage For="@(() => registerDto.Password)" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="confirm" class="col-md-2 col-form-label">Confirm Password:</label>
+        <div class="col-md-10">
+            <InputText type="password" id="confirm" class="form-control" @bind-Value="registerDto.ConfirmPassword" />
+            <ValidationMessage For="@(() => registerDto.ConfirmPassword)" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-success">Register</button>
+        </div>
+    </div>
+</EditForm>
+
+

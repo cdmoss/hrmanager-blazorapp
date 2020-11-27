@@ -1,0 +1,45 @@
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\FBWebsite-V3\MHFoodBank.Common\bin\Debug\netstandard2.1\MHFoodBank.Common.deps.json
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\FBWebsite-V3\MHFoodBank.Common\bin\Debug\netstandard2.1\MHFoodBank.Common.dll
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\FBWebsite-V3\MHFoodBank.Common\bin\Debug\netstandard2.1\MHFoodBank.Common.pdb
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.AssemblyInfoInputs.cache
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.AssemblyInfo.cs
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.csproj.CoreCompileInputs.cache
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.dll
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.pdb
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.csprojAssemblyReference.cache
+C:\Users\dofus\Downloads\VS Proj\FBWebsite-V3\MHFoodBank.Common\bin\Debug\netstandard2.1\MHFoodBank.Common.deps.json
+C:\Users\dofus\Downloads\VS Proj\FBWebsite-V3\MHFoodBank.Common\bin\Debug\netstandard2.1\MHFoodBank.Common.dll
+C:\Users\dofus\Downloads\VS Proj\FBWebsite-V3\MHFoodBank.Common\bin\Debug\netstandard2.1\MHFoodBank.Common.pdb
+C:\Users\dofus\Downloads\VS Proj\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.csprojAssemblyReference.cache
+C:\Users\dofus\Downloads\VS Proj\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.AssemblyInfoInputs.cache
+C:\Users\dofus\Downloads\VS Proj\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.AssemblyInfo.cs
+C:\Users\dofus\Downloads\VS Proj\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.csproj.CoreCompileInputs.cache
+C:\Users\dofus\Downloads\VS Proj\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.dll
+C:\Users\dofus\Downloads\VS Proj\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.pdb
+C:\Users\dofus\Downloads\FBWebsite-V3\MHFoodBank.Common\bin\Debug\netstandard2.1\MHFoodBank.Common.deps.json
+C:\Users\dofus\Downloads\FBWebsite-V3\MHFoodBank.Common\bin\Debug\netstandard2.1\MHFoodBank.Common.dll
+C:\Users\dofus\Downloads\FBWebsite-V3\MHFoodBank.Common\bin\Debug\netstandard2.1\MHFoodBank.Common.pdb
+C:\Users\dofus\Downloads\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.csprojAssemblyReference.cache
+C:\Users\dofus\Downloads\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.AssemblyInfoInputs.cache
+C:\Users\dofus\Downloads\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.AssemblyInfo.cs
+C:\Users\dofus\Downloads\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.csproj.CoreCompileInputs.cache
+C:\Users\dofus\Downloads\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.dll
+C:\Users\dofus\Downloads\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.pdb
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\bin\Debug\netstandard2.1\MHFoodBank.Common.deps.json
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\bin\Debug\netstandard2.1\MHFoodBank.Common.dll
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\bin\Debug\netstandard2.1\MHFoodBank.Common.pdb
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.csprojAssemblyReference.cache
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.AssemblyInfoInputs.cache
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.AssemblyInfo.cs
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.dll
+C:\Users\Chase\Desktop\Programming\FBWebsite-V3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.pdb
+C:\Users\dofus\Downloads\VS Proj\FB-HR-Manager\MHFoodBank.Common\bin\Debug\netstandard2.1\MHFoodBank.Common.deps.json
+C:\Users\dofus\Downloads\VS Proj\FB-HR-Manager\MHFoodBank.Common\bin\Debug\netstandard2.1\MHFoodBank.Common.dll
+C:\Users\dofus\Downloads\VS Proj\FB-HR-Manager\MHFoodBank.Common\bin\Debug\netstandard2.1\MHFoodBank.Common.pdb
+C:\Users\dofus\Downloads\VS Proj\FB-HR-Manager\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.csprojAssemblyReference.cache
+C:\Users\dofus\Downloads\VS Proj\FB-HR-Manager\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.AssemblyInfoInputs.cache
+C:\Users\dofus\Downloads\VS Proj\FB-HR-Manager\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.AssemblyInfo.cs
+C:\Users\dofus\Downloads\VS Proj\FB-HR-Manager\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.csproj.CoreCompileInputs.cache
+C:\Users\dofus\Downloads\VS Proj\FB-HR-Manager\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.dll
+C:\Users\dofus\Downloads\VS Proj\FB-HR-Manager\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.pdb
+C:\Users\Chase\Desktop\Programming\fbwebsite-v3\MHFoodBank.Common\obj\Debug\netstandard2.1\MHFoodBank.Common.csproj.CoreCompileInputs.cache

@@ -1,0 +1,48 @@
+﻿@layout AuthLayout
+@page "/"
+@page "/login"
+@using HRManager.Common.Dtos
+@using HRManager.Blazor.Services
+@inject IAuthService _authService
+@inject NavigationManager _nav
+
+@code {
+    // TODO: Add redirect URI
+
+    // must create instance of model to be bound*******
+    private LoginDto loginDto = new LoginDto();
+
+    private async Task LoginUser()
+    {
+        var loginResult = await _authService.Login(loginDto);
+        if (loginResult.Successful)
+        {
+            _nav.NavigateTo("/team");
+        }
+    }
+}
+
+<h2>Login</h2>
+
+<EditForm Model="loginDto" OnValidSubmit="@LoginUser" class="card card-body bg-light mt-5">
+    <DataAnnotationsValidator />
+    <div class="form-group row">
+        <label for="email" class="col-md-2 col-form-label">Email:</label>
+        <div class="col-md-10">
+            <InputText id="email" class="form-control" @bind-Value="loginDto.Email" />
+            <ValidationMessage For="@(() => loginDto.Email)" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="password" class="col-md-2 col-form-label">Password:</label>
+        <div class="col-md-10">
+            <InputText type="password" id="password" class="form-control" @bind-Value="loginDto.Password" />
+            <ValidationMessage For="@(() => loginDto.Password)" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-success">Login</button>
+        </div>
+    </div>
+</EditForm>
