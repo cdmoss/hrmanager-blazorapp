@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace HRManager.Common
 {
-    [Serializable]
     public class ShiftRequestAlert : Alert
     {
         public enum RequestStatus
@@ -22,7 +21,7 @@ namespace HRManager.Common
         public RequestStatus Status { get; set; }
         // the alert will persist in the database until both of the below properties == true
         public bool DismissedByAdmin { get; set; }
-        public bool DismissedByVolunteer { get; set; }
+        public bool DismissedByMember { get; set; }
         public string AddressedBy { get; set; }
 
         public ShiftRequestAlert()
@@ -33,7 +32,7 @@ namespace HRManager.Common
         protected override string GetDescription()
         {
             // include information about the change they want to make?
-            return $"{Volunteer.FirstName} {Volunteer.LastName} requested a shift change.";
+            return $"{Member.FirstName} {Member.LastName} requested a shift change.";
         }
     }
 }

@@ -11,6 +11,7 @@
 
     // must create instance of model to be bound*******
     private LoginDto loginDto = new LoginDto();
+    private bool invalidCreds = false;
 
     private async Task LoginUser()
     {
@@ -19,6 +20,10 @@
         {
             _nav.NavigateTo("/team");
         }
+        else
+        {
+            invalidCreds = true;
+        }
     }
 }
 
@@ -26,6 +31,16 @@
 
 <EditForm Model="loginDto" OnValidSubmit="@LoginUser" class="card card-body bg-light mt-5">
     <DataAnnotationsValidator />
+
+    @{
+        if (invalidCreds)
+        {
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                Invalid username or password. Please try again.
+            </div>
+        }
+    }
     <div class="form-group row">
         <label for="email" class="col-md-2 col-form-label">Email:</label>
         <div class="col-md-10">

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace HRManager.Common
 {
     [Serializable]
-    public class PositionVolunteer
+    public class PositionMember
     {
         public enum AssociationType
         {
@@ -16,7 +16,7 @@ namespace HRManager.Common
         }
 
         public int Id { get; set; }
-        public VolunteerProfile Volunteer { get; set; }
+        public MemberProfile Member { get; set; }
         public Position Position { get; set; }
         public AssociationType Association { get; set; }
     }

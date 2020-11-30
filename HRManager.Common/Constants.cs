@@ -14,15 +14,15 @@ namespace HRManager.Common
         }
         public class RoleNames
         {
+            public const string SuperAdmin = "SuperAdmin";
             public const string Admin = "Admin";
-            public const string Staff = "Staff";
-            public const string Volunteer = "Volunteer";
+            public const string Member = "Member";
         }
         public class UserNames
         {
-            public const string Admin = "fbadmin";
-            public const string Staff = "staff";
-            public const string Volunteer = "testvol";
+            public const string SuperAdmin = "super";
+            public const string Admin = "admin";
+            public const string Member = "test@gmail.com";
         }
     }
 }

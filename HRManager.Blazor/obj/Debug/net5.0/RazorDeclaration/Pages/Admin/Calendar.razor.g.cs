@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace HRManager.Blazor.Pages
+namespace HRManager.Blazor.Pages.Admin
 {
     #line hidden
     using System;

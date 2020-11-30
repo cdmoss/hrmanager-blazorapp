@@ -56,11 +56,13 @@ namespace HRManager.Api
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     ValidateLifetime = true,
-                    ClockSkew = TimeSpan.FromMinutes(5)
+                    ClockSkew = TimeSpan.FromMinutes(5),
+                    RequireExpirationTime = false
                 };
             });
 
             services.AddScoped<IDbSeeder, DbSeeder>();
+            services.AddScoped<IAuthService, AuthService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

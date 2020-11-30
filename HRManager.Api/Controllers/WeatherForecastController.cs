@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HRManager.Api.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "SuperAdmin, Admin")]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase

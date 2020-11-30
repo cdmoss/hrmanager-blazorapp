@@ -6,7 +6,7 @@ namespace HRManager.Common.Dtos
     public class AdminAlertListDto
     {
         public int Id { get; set; }
-        public VolunteerMinimalDto Volunteer { get; set; }
+        public MemberMinimalDto Member { get; set; }
         public string UserFullName { get; set; }
         public DateTime Date { get; set; }
         public bool Read { get; set; }
@@ -14,7 +14,7 @@ namespace HRManager.Common.Dtos
         public string AddressedBy { get; set; }
     }
 
-    public class VolunteerShiftRequestListDto
+    public class MemberShiftRequestListDto
     {
         public int Id { get; set; }
         public DateTime DateRequested { get; set; }
@@ -26,7 +26,7 @@ namespace HRManager.Common.Dtos
     public class ShiftRequestReadDto
     {
         public int Id { get; set; }
-        public VolunteerMinimalDto Volunteer { get; set; }
+        public MemberMinimalDto Member { get; set; }
         public ShiftReadEditDto OriginalShift { get; set; }
         public ShiftReadEditDto RequestedShift { get; set; }
         public RequestStatus Status { get; set; }

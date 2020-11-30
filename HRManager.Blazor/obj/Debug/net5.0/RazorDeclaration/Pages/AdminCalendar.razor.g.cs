@@ -82,36 +82,14 @@ using HRManager.Blazor.Shared;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 2 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\TimeSheet.razor"
-using HRManager.Common;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\TimeSheet.razor"
-using Microsoft.AspNetCore.Authorization;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 4 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\TimeSheet.razor"
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/timesheet")]
-    public partial class TimeSheet : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/calendar")]
+    public partial class AdminCalendar : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }
 #pragma warning restore 1591

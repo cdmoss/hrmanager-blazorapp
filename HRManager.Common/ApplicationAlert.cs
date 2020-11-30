@@ -15,7 +15,7 @@ namespace HRManager.Common
 
         protected override string GetDescription()
         {
-            return $"Recieved a new application from {Volunteer.FirstName} {Volunteer.LastName}";
+            return $"Recieved a new application from {Member.FirstName} {Member.LastName}";
         }
     }
 }

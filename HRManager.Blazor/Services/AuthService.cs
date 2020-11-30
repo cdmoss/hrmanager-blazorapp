@@ -45,7 +45,7 @@ namespace HRManager.Blazor.Services
             }
 
             await _localStorage.SetItemAsync("authToken", result.Token);
-            ((TokenAuthenticationStateProvider)_authStateProvider).NotifyUserAuthentication(dto.Email);
+            ((TokenAuthenticationStateProvider)_authStateProvider).NotifyUserAuthentication(result.Token);
             _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", result.Token);
 
             return result;

@@ -8,7 +8,7 @@ namespace HRManager.Common.Dtos
         public DateTime StartTime { get; set; }
         public DateTime? EndTime { get; set; }
         public Position Position { get; set; }
-        public VolunteerMinimalDto Volunteer { get; set; }
+        public MemberMinimalDto Member { get; set; }
     }
 
     public class ClockedTimeCreateDto

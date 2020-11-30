@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace HRManager.Common
 {
     [Serializable]
-    public class VolunteerProfile
+    public class MemberProfile
     {
         public int Id { get; set; }
         [Required]
@@ -72,7 +72,7 @@ namespace HRManager.Common
         [Display(Name = "Skills, interests and hobbies")]
         public string SkillsInterestsHobbies { get; set; }
         [Display(Name = "Previous volunteer experience")]
-        public string VolunteerExperience { get; set; }
+        public string Experience { get; set; }
         [Display(Name = "Other boards you've appeared on")]
         public string OtherBoards { get; set; }
         public bool VolunteerConfidentiality { get; set; }
@@ -97,7 +97,7 @@ namespace HRManager.Common
         public IList<WorkExperience> WorkExperiences { get; set; }
         public IList<Shift> Shifts { get; set; }
         public IList<Availability> Availabilities { get; set; }
-        public IList<PositionVolunteer> Positions { get; set; }
+        public IList<PositionMember> Positions { get; set; }
         public IList<Alert> Alerts { get; set; }
         public bool IsStaff { get; set; }
         public int UserID { get; set; }

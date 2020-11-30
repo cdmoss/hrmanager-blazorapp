@@ -14,8 +14,8 @@ namespace HRManager.Common
 
     public enum UserRole
     {
+        SuperAdmin,
         Admin,
-        Staff,
-        Volunteer
+        Member
     }
 }

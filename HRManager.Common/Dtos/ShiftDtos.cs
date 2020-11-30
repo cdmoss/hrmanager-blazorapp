@@ -11,9 +11,9 @@ namespace HRManager.Common.Dtos
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public int? PositionId { get; set; }
-        public int? VolunteerProfileId { get; set; }
+        public int? MemberProfileId { get; set; }
         public Position PositionWorked { get; set; }
-        public VolunteerMinimalDto Volunteer { get; set; }
+        public MemberMinimalDto Member { get; set; }
         public string Description { get; set; }
         public bool IsRecurrence { get; set; }
         public bool IsAllDay { get; set; }

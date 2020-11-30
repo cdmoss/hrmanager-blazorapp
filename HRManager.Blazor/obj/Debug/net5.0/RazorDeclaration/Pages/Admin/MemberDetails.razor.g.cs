@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace HRManager.Blazor.Pages
+namespace HRManager.Blazor.Pages.Admin
 {
     #line hidden
     using System;
@@ -82,50 +82,13 @@ using HRManager.Blazor.Shared;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 2 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Team.razor"
-using HRManager.Common;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Team.razor"
-using Microsoft.AspNetCore.Components.Authorization;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/team")]
-    public partial class Team : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class MemberDetails : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 40 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Team.razor"
-       
-    private UserProfile[] users;
-    [CascadingParameter]
-    private Task<AuthenticationState> authenticationStateTask { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        var authState = await authenticationStateTask;
-        var user = authState.User;
-
-        if (user.Identity.IsAuthenticated)
-        {
-            users = await _http.GetFromJsonAsync<UserProfile[]>("test/users");
-        }
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient _http { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -15,6 +15,6 @@ namespace HRManager.Common
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override int Id { get; set; }
-        public VolunteerProfile Volunteer { get; set; }
+        public MemberProfile Member { get; set; }
     }
 }

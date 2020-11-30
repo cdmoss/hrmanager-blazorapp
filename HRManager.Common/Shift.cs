@@ -18,8 +18,8 @@ namespace HRManager.Common
         public DateTime EndTime { get; set; }
         public int? PositionId { get; set; }
         public Position Position { get; set; }
-        public int? VolunteerProfileId { get; set; }
-        public VolunteerProfile Volunteer { get; set; }
+        public int? MemberProfileId { get; set; }
+        public MemberProfile Member { get; set; }
         public string Description { get; set; }
         public bool IsRecurrence { get; set; }
         public bool IsAllDay { get; set; }
@@ -31,9 +31,9 @@ namespace HRManager.Common
 
         public void CreateTitle()
         {
-            if (Volunteer != null)
+            if (Member != null)
             {
-                Subject = Volunteer.FirstName + " " + Volunteer.LastName + " - " + Position.Name;
+                Subject = Member.FirstName + " " + Member.LastName + " - " + Position.Name;
             }
             else
             {

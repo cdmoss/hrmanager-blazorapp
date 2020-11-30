@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace HRManager.Blazor.Pages
+namespace HRManager.Blazor.Pages.Member
 {
     #line hidden
     using System;
@@ -82,52 +82,13 @@ using HRManager.Blazor.Shared;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 4 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Login.razor"
-using HRManager.Common.Dtos;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 5 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Login.razor"
-using HRManager.Blazor.Services;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.LayoutAttribute(typeof(AuthLayout))]
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    [Microsoft.AspNetCore.Components.RouteAttribute("/login")]
-    public partial class Login : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class Information : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 9 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Login.razor"
-       
-    // TODO: Add redirect URI
-
-    // must create instance of model to be bound*******
-    private LoginDto loginDto = new LoginDto();
-
-    private async Task LoginUser()
-    {
-        var loginResult = await _authService.Login(loginDto);
-        if (loginResult.Successful)
-        {
-            _nav.NavigateTo("/team");
-        }
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager _nav { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAuthService _authService { get; set; }
     }
 }
 #pragma warning restore 1591

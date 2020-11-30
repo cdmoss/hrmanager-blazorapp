@@ -9,7 +9,7 @@ namespace HRManager.Common
     public class Availability
     {
         public int Id { get; set; }
-        public VolunteerProfile Volunteer { get; set; }
+        public MemberProfile Member { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
         public string AvailableDay { get; set; }

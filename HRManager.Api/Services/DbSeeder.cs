@@ -29,10 +29,10 @@ namespace HRManager.Api.Services
 
             result &= SeedRoles();
 
-            result &= SeedTestVolunteer();
-            result &= SeedStaff();
-
+            result &= SeedTestMember();
             result &= SeedAdmin();
+
+            result &= SeedSuperAdmin();
             result &= SeedPositions();
 
             return result;
@@ -46,11 +46,11 @@ namespace HRManager.Api.Services
 
             if (isDev)
             {
-                result &= SeedTestVolunteer();
-                result &= SeedStaff();
+                result &= SeedTestMember();
+                result &= SeedAdmin();
             }
 
-            result &= SeedAdmin();
+            result &= SeedSuperAdmin();
             result &= SeedPositions();
 
             return result;
@@ -95,9 +95,9 @@ namespace HRManager.Api.Services
             return true;
         }
 
-        private bool CreateVolunteer(string userName, string userRole)
+        private bool CreateMember(string userName, string userRole)
         {
-            var volunteer = new UserProfile()
+            var user = new UserProfile()
             {
                 UserName = userName,
                 NormalizedUserName = userName.ToUpper(),
@@ -105,7 +105,7 @@ namespace HRManager.Api.Services
                 Email = "cdmossing@gmail.com"
             };
 
-            VolunteerProfile vi = new VolunteerProfile()
+            MemberProfile mem = new MemberProfile()
             {
                 FirstName = "testfirst",
                 LastName = "testlast",
@@ -126,14 +126,14 @@ namespace HRManager.Api.Services
                 OtherCertificates = "TestOther",
                 EducationTraining = "testeducation",
                 SkillsInterestsHobbies = "testskills",
-                VolunteerExperience = "testexperience",
+                Experience = "testexperience",
                 OtherBoards = "otherboards",
             };
 
             Reference reference = new Reference()
             {
                 Name = "Steve",
-                Volunteer = vi,
+                Member = mem,
                 Phone = "4034056785",
                 Relationship = "Instructor",
                 Occupation = "Professor"
@@ -155,14 +155,14 @@ namespace HRManager.Api.Services
             List<WorkExperience> workExperiences = new List<WorkExperience>();
             workExperiences.Add(workExp);
 
-            vi.References = references;
-            vi.WorkExperiences = workExperiences;
-            volunteer.Volunteer = vi;
+            mem.References = references;
+            mem.WorkExperiences = workExperiences;
+            user.Member = mem;
 
-            IdentityResult result = _userManager.CreateAsync(volunteer, "P@$$W0rd").Result;
+            IdentityResult result = _userManager.CreateAsync(user, "P@$$W0rd").Result;
 
             if (result.Succeeded)
-                SetUserToRole(volunteer, userRole);
+                SetUserToRole(user, userRole);
             else
                 return false;
 
@@ -172,6 +172,18 @@ namespace HRManager.Api.Services
         private void SetUserToRole(UserProfile user, string userRole)
         {
             _userManager.AddToRoleAsync(user, userRole).Wait();
+        }
+
+        private bool SeedSuperAdmin()
+        {
+            if (!UserExists(Constants.UserNames.SuperAdmin))
+            {
+                bool userCreatedAndRoleWasSet = CreateUser(Constants.UserNames.SuperAdmin, Constants.RoleNames.SuperAdmin);
+
+                if (!userCreatedAndRoleWasSet)
+                    return false;
+            }
+            return true;
         }
 
         private bool SeedAdmin()
@@ -186,25 +198,13 @@ namespace HRManager.Api.Services
             return true;
         }
 
-        private bool SeedStaff()
+        private bool SeedTestMember()
         {
-            if (!UserExists(Constants.UserNames.Staff))
+            if (!UserExists(Constants.UserNames.Member))
             {
-                bool userCreatedAndRoleWasSet = CreateUser(Constants.UserNames.Staff, Constants.RoleNames.Staff);
+                bool memberCreated = CreateMember(Constants.UserNames.Member, Constants.RoleNames.Member);
 
-                if (!userCreatedAndRoleWasSet)
-                    return false;
-            }
-            return true;
-        }
-
-        private bool SeedTestVolunteer()
-        {
-            if (!UserExists(Constants.UserNames.Volunteer))
-            {
-                bool volunteerCreated = CreateVolunteer(Constants.UserNames.Volunteer, Constants.RoleNames.Volunteer);
-
-                if (!volunteerCreated)
+                if (!memberCreated)
                     return false;
             }
             return true;
@@ -212,6 +212,15 @@ namespace HRManager.Api.Services
 
         private bool SeedRoles()
         {
+            if (!RoleExists(Constants.RoleNames.SuperAdmin))
+            {
+                IdentityResult superAdminResult = CreateRole(Constants.RoleNames.SuperAdmin);
+
+                if (!superAdminResult.Succeeded)
+                {
+                    return false;
+                }
+            }
             if (!RoleExists(Constants.RoleNames.Admin))
             {
                 IdentityResult adminResult = CreateRole(Constants.RoleNames.Admin);
@@ -221,20 +230,11 @@ namespace HRManager.Api.Services
                     return false;
                 }
             }
-            if (!RoleExists(Constants.RoleNames.Staff))
+            if (!RoleExists(Constants.RoleNames.Member))
             {
-                IdentityResult staffResult = CreateRole(Constants.RoleNames.Staff);
+                IdentityResult memberResult = CreateRole(Constants.RoleNames.Member);
 
-                if (!staffResult.Succeeded)
-                {
-                    return false;
-                }
-            }
-            if (!RoleExists(Constants.RoleNames.Volunteer))
-            {
-                IdentityResult volunteerResult = CreateRole(Constants.RoleNames.Volunteer);
-
-                if (!volunteerResult.Succeeded)
+                if (!memberResult.Succeeded)
                 {
                     return false;
                 }

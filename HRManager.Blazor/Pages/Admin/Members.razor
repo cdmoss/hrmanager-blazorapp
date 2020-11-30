@@ -1,6 +1,8 @@
 ﻿@page "/team"
 @using HRManager.Common
 @using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "SuperAdmin")]
 @inject HttpClient _http
 <h3>Team</h3>
 
@@ -35,7 +37,7 @@
     <NotAuthorized>
         Sorry, you are not authorized to see this content... scrub.
     </NotAuthorized>
-</AuthorizeView> 
+</AuthorizeView>
 
 @code {
     private UserProfile[] users;

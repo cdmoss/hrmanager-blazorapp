@@ -10,7 +10,7 @@ namespace HRManager.Common
     public class Reference
     {
         public int Id { get; set; }
-        public VolunteerProfile Volunteer { get; set; }
+        public MemberProfile Member { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Relationship { get; set; }

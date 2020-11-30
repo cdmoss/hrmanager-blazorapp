@@ -10,7 +10,7 @@ namespace HRManager.Common
     public class WorkExperience
     {
         public int Id { get; set; }
-        public VolunteerProfile Volunteer { get; set; }
+        public MemberProfile Member { get; set; }
         [Display(Name = "Employer Name")]
         public string EmployerName { get; set; }
         [Display(Name = "Employer Address")]
