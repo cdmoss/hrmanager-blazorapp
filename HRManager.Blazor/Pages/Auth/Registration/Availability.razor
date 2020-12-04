@@ -1,0 +1,51 @@
+﻿@using Syncfusion.Blazor.Navigations
+@inherits RegisterSectionBase
+
+@code {
+    private AvailabilitiesData availData = new AvailabilitiesData();
+
+    protected override async Task GoToNextSection()
+    {
+        data = availData;
+        await base.GoToNextSection();
+    }
+}
+
+<h5>When are you able to volunteer with us?</h5>
+<br />
+<EditForm Model="availData" OnValidSubmit="GoToNextSection">
+    <DataAnnotationsValidator />
+    <SfTab>
+        <TabItems>
+            <TabItem>
+                <HeaderTemplate>Monday</HeaderTemplate>
+                <ContentTemplate><AvailabilityDay Day="Monday" /></ContentTemplate>
+            </TabItem>
+            <TabItem>
+                <HeaderTemplate>Tuesday</HeaderTemplate>
+                <ContentTemplate><AvailabilityDay Day="Tuesday" /></ContentTemplate>
+            </TabItem>
+            <TabItem>
+                <HeaderTemplate>Wednesday</HeaderTemplate>
+                <ContentTemplate><AvailabilityDay Day="Wednesday" /></ContentTemplate>
+            </TabItem>
+            <TabItem>
+                <HeaderTemplate>Thursday</HeaderTemplate>
+                <ContentTemplate><AvailabilityDay Day="Thursday" /></ContentTemplate>
+            </TabItem>
+            <TabItem>
+                <HeaderTemplate>Friday</HeaderTemplate>
+                <ContentTemplate><AvailabilityDay Day="Friday" /></ContentTemplate>
+            </TabItem>
+            <TabItem>
+                <HeaderTemplate>Saturday</HeaderTemplate>
+                <ContentTemplate><AvailabilityDay Day="Saturday" /></ContentTemplate>
+            </TabItem>
+            <TabItem>
+                <HeaderTemplate>Sunday</HeaderTemplate>
+                <ContentTemplate><AvailabilityDay Day="Sunday" /></ContentTemplate>
+            </TabItem>
+        </TabItems>
+    </SfTab>
+    <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested" />
+</EditForm>

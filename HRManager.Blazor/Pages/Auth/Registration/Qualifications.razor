@@ -1,0 +1,85 @@
+﻿@using Syncfusion.Blazor.Calendars
+@using Syncfusion.Blazor.Buttons
+@inherits RegisterSectionBase
+
+@code {
+    private QualificationsData qualData { get; set; } = new QualificationsData();
+
+    protected override void OnInitialized()
+    {
+        qualData.WorkExperiences.Add(new WorkExperienceDto());
+    }
+
+    protected override async Task GoToNextSection()
+    {
+        data = qualData;
+        await base.GoToNextSection();
+    }
+
+    private void HandleCurrentJobCheckChanged()
+    {
+        StateHasChanged();
+    }
+}
+
+
+<h5>What kind of similar things have you done before? (Optional)</h5>
+<br />
+<EditForm Model="qualData" OnValidSubmit="GoToNextSection">
+    <DataAnnotationsValidator />
+    <div id="general-experience">
+        <div id="education" class="form-group">
+            <label>Education and Training</label>
+            <SfTextBox Multiline="true" @bind-Value="qualData.EducationTraining" />
+            <ValidationMessage For="@(() => qualData.EducationTraining)" />
+        </div>
+        <div id="skills" class="form-group">
+            <label>Skills, Interests and Hobbies</label>
+            <SfTextBox Multiline="true" @bind-Value="qualData.SkillsInterestsHobbies" />
+            <ValidationMessage For="@(() => qualData.SkillsInterestsHobbies)" />
+        </div>
+        <div id="experience" class="form-group">
+            <label>Volunteer Experience</label>
+            <SfTextBox Multiline="true" @bind-Value="qualData.Experience" />
+            <ValidationMessage For="@(() => qualData.Experience)" />
+        </div>
+        <div id="boards" class="form-group">
+            <label>Volunteer Boards</label>
+            <SfTextBox Multiline="true" @bind-Value="qualData.OtherBoards" />
+            <ValidationMessage For="@(() => qualData.OtherBoards)" />
+        </div>
+    </div>
+    <h5>Last or Current Job (If none then leave blank)</h5>
+    <br />
+    <div id="work-experience">
+        <div id="employer-name" class="form-group">
+            <label>Place of Work</label>
+            <SfTextBox @bind-Value="qualData.WorkExperiences.FirstOrDefault().EmployerName" />
+            <ValidationMessage For="@(() => qualData.WorkExperiences.FirstOrDefault().EmployerName)" />
+        </div>
+        <div id="employer-address" class="form-group">
+            <label>Address</label>
+            <SfTextBox @bind-Value="qualData.WorkExperiences.FirstOrDefault().EmployerAddress" />
+            <ValidationMessage For="@(() => qualData.WorkExperiences.FirstOrDefault().EmployerAddress)" />
+        </div>
+        <div id="start" class="form-group">
+            <label>Start Date</label>
+            <SfDatePicker @bind-Value="qualData.WorkExperiences.FirstOrDefault().StartDate" />
+            <ValidationMessage For="@(() => qualData.WorkExperiences.FirstOrDefault().StartDate)" />
+        </div>
+        @if (!qualData.WorkExperiences.FirstOrDefault().CurrentJob)
+        {
+            <div id="end" class="form-group">
+                <label>End Date</label>
+                <SfDatePicker @bind-Value="qualData.WorkExperiences.FirstOrDefault().EndDate" />
+                <ValidationMessage For="@(() => qualData.WorkExperiences.FirstOrDefault().EndDate)" />
+            </div>
+        }
+        <div id="current" class="form-group">
+            <SfCheckBox @bind-Checked="qualData.WorkExperiences.FirstOrDefault().CurrentJob" @onchange="HandleCurrentJobCheckChanged" />
+            <ValidationMessage For="@(() => qualData.WorkExperiences.FirstOrDefault().CurrentJob)" />
+            <label>Current Job?</label>
+        </div>
+    </div>
+    <RegisterSectionButtonContainer  />
+</EditForm>

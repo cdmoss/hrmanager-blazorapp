@@ -1,0 +1,46 @@
+﻿@inherits RegisterSectionBase 
+
+@code {      
+    private AccountData accountData = new AccountData();
+
+    protected override void OnInitialized()
+    {
+        accountData = new AccountData();
+    }
+
+    protected override async Task GoToNextSection()
+    {
+        data = accountData;
+        await base.GoToNextSection();
+    }
+}
+
+
+<h5>What email and password would you like to use?</h5>
+<br/>
+<EditForm Model="accountData" OnValidSubmit="@GoToNextSection">
+    <DataAnnotationsValidator />
+    <div class="form-group">
+        <label for="email" class="form-label">Email:</label>
+        <div>
+            <SfTextBox ID="email" c @bind-Value="accountData.Email" />
+            <ValidationMessage For="@(() =>accountData.Email)" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="form-label">Password:</label>
+        <div>
+            <SfTextBox ID="password" Type="InputType.Password" @bind-Value="accountData.Password" />
+            <ValidationMessage For="@(() => accountData.Password)" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="confirm-password" class="form-label">Confirm Password:</label>
+        <div>
+            <SfTextBox ID="confirm-password" Type="InputType.Password" @bind-Value="accountData.ConfirmPassword" />
+            <ValidationMessage For="@(() => accountData.ConfirmPassword)" />
+        </div>
+    </div>
+    <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested"/>
+</EditForm>
+

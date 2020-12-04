@@ -1,9 +1,27 @@
-﻿@page "/team"
+﻿@page "/admin/members"
 @using HRManager.Common
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Authorization
-@attribute [Authorize(Roles = "SuperAdmin")]
+@attribute [Authorize(Roles = "SuperAdmin, Admin")]
 @inject HttpClient _http
+
+@code {
+    private UserProfile[] users;
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await authenticationStateTask;
+        var user = authState.User;
+
+        if (user.Identity.IsAuthenticated)
+        {
+            users = await _http.GetFromJsonAsync<UserProfile[]>("test/users");
+        }
+    }
+}
+
 <h3>Team</h3>
 
 <AuthorizeView>
@@ -38,21 +56,4 @@
         Sorry, you are not authorized to see this content... scrub.
     </NotAuthorized>
 </AuthorizeView>
-
-@code {
-    private UserProfile[] users;
-    [CascadingParameter]
-    private Task<AuthenticationState> authenticationStateTask { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        var authState = await authenticationStateTask;
-        var user = authState.User;
-
-        if (user.Identity.IsAuthenticated)
-        {
-            users = await _http.GetFromJsonAsync<UserProfile[]>("test/users");
-        }
-    }
-}
 

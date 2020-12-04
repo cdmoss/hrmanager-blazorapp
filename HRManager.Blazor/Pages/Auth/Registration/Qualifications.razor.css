@@ -1,0 +1,55 @@
+﻿#work-experience {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-column-gap: 1rem;
+    grid-template-areas: "employer-name employer-address" "start end" "current current";
+}
+
+#employer-name {
+    grid-area: employer-name;
+}
+
+#employer-address {
+    grid-area: employer-address;
+}
+
+#start {
+    grid-area: start;
+}
+
+#end {
+    grid-area: end;
+}
+
+#general-experience {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 1rem;
+    grid-template-areas: "education skills" "experience boards";
+}
+
+#education {
+    grid-area: education;
+}
+
+#skills {
+    grid-area: skills;
+}
+
+#experience {
+    grid-area: experience;
+}
+
+#boards {
+    grid-area: boards;
+}
+
+#current {
+    height: auto;
+    text-align: right;
+    grid-area: current;
+}
+
+

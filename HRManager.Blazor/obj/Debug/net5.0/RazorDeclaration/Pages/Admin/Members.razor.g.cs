@@ -70,14 +70,35 @@ using Microsoft.JSInterop;
 #nullable disable
 #nullable restore
 #line 9 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using HRManager.Common.Dtos;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
 using HRManager.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+#line 12 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
 using HRManager.Blazor.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using Syncfusion.Blazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using Syncfusion.Blazor.Inputs;
 
 #line default
 #line hidden
@@ -105,12 +126,12 @@ using Microsoft.AspNetCore.Authorization;
 #nullable disable
 #nullable restore
 #line 5 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Admin\Members.razor"
-           [Authorize(Roles = "SuperAdmin")]
+           [Authorize(Roles = "SuperAdmin, Admin")]
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/team")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/admin/members")]
     public partial class Members : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -119,7 +140,7 @@ using Microsoft.AspNetCore.Authorization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 42 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Admin\Members.razor"
+#line 8 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Admin\Members.razor"
        
     private UserProfile[] users;
     [CascadingParameter]

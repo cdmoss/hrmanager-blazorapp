@@ -1,0 +1,15 @@
+﻿@code {
+    [Parameter]
+    public EventCallback<string> PreviousSectionRequested { get; set; }
+
+    private async Task GoToPreviousSection()
+    {
+        await PreviousSectionRequested.InvokeAsync();
+    }
+}
+
+<br />
+<div class="btn-container">
+    <button id="back-btn" type="button" @onclick="GoToPreviousSection" class="btn btn-dark">Previous Section</button>
+    <button id="next-btn" type="submit" class="btn btn-primary">Next Section</button>
+</div>

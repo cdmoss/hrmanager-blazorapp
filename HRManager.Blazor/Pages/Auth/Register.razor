@@ -1,31 +1,37 @@
 ﻿@layout AuthLayout
-@page "/register"
+@page "/auth/register"
 @using HRManager.Common.Dtos
+@using HRManager.Common.Auth
 @using HRManager.Blazor.Services
-@inject IAuthService _authService
+@using HRManager.Blazor.Pages.Auth.Registration
 @inject NavigationManager _nav
 
 @code {
     // TODO: Add redirect URI
 
     // must create instance of model to be bound*******
-    private TestRegisterDto registerDto = new TestRegisterDto();
-    public bool ShowErrors { get; set; }
-    public IEnumerable<string> Errors { get; set; }
+    private MemberRegisterDto mainDto = new MemberRegisterDto();
+    private int currentSection = 1;
 
+    private bool ShowErrors;
+    private IEnumerable<string> Errors;
 
-    public async Task RegisterUser()
+    private void HandleSectionCompleted<TSection>(RegisterSectionData sectionData) where TSection : RegisterSectionData
     {
-        var registerResult = await _authService.Register(registerDto);
-        if (registerResult.Successful)
-        {
-            _nav.NavigateTo("/");
-        }
-        else
-        {
-            Errors = registerResult.Errors;
-            ShowErrors = true;
-        }
+        currentSection++;
+        ((TSection)sectionData).AddSectionToMainDto(mainDto);
+        StateHasChanged();
+    }
+
+    private void HandlePreviousSectionRequested()
+    {
+        currentSection--;
+        StateHasChanged();
+    }
+
+    private void HandleRegistrationSubmitted(RegisterResult result)
+    {
+
     }
 }
 
@@ -39,36 +45,39 @@
     </div>
 }
 
-<h2>Register</h2>
-
-<EditForm Model="registerDto" OnSubmit="@RegisterUser" class="card card-body bg-light mt-5">
-    <DataAnnotationsValidator />
-    <div class="form-group row">
-        <label for="email" class="col-md-2 col-form-label">Email:</label>
-        <div class="col-md-10">
-            <InputText id="email" class="form-control" @bind-Value="registerDto.Email" />
-            <ValidationMessage For="@(() => registerDto.Email)" />
-        </div>
+<div id="register-form" class="card bg-light p-5">
+    <div id="img-container">
+        <img src="/MHFB.png" alt="MHFB Logo" />
     </div>
-    <div class="form-group row">
-        <label for="password" class="col-md-2 col-form-label">Password:</label>
-        <div class="col-md-10">
-            <InputText type="password" id="password" class="form-control" @bind-Value="registerDto.Password" />
-            <ValidationMessage For="@(() => registerDto.Password)" />
-        </div>
+    <div id="form-container">
+        @switch (currentSection)
+        {
+            case 0:
+                _nav.NavigateTo("/auth/login");
+                break;
+            case 1:
+        <Qualifications SectionCompleted="HandleSectionCompleted<QualificationsData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                @*<AccountCreds SectionCompleted="HandleSectionCompleted<AccountData>" PreviousSectionRequested="HandlePreviousSectionRequested"/>*@
+                break;
+            case 2:
+                <PersonalAndContact SectionCompleted="HandleSectionCompleted<PersonalAndContactData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                break;
+            case 3:
+                <PreferredPositions SectionCompleted="HandleSectionCompleted<PreferredPositionsData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                break;
+            case 4:
+                <Availability SectionCompleted="HandleSectionCompleted<AvailabilitiesData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                break;
+            case 5:
+                @*<Qualifications SectionCompleted="HandleSectionCompleted<QualificationsData>" PreviousSectionRequested="HandlePreviousSectionRequested" />*@
+                break;
+            case 6:
+                <Certificates SectionCompleted="HandleSectionCompleted<CertificatesData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                break;
+            case 7:
+                <Review />
+                break;
+        }
     </div>
-    <div class="form-group row">
-        <label for="confirm" class="col-md-2 col-form-label">Confirm Password:</label>
-        <div class="col-md-10">
-            <InputText type="password" id="confirm" class="form-control" @bind-Value="registerDto.ConfirmPassword" />
-            <ValidationMessage For="@(() => registerDto.ConfirmPassword)" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 text-right">
-            <button type="submit" class="btn btn-success">Register</button>
-        </div>
-    </div>
-</EditForm>
-
+</div>
 

@@ -69,15 +69,36 @@ using Microsoft.JSInterop;
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+#line 10 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using HRManager.Common;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
 using HRManager.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+#line 12 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
 using HRManager.Blazor.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using Syncfusion.Blazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using Syncfusion.Blazor.Inputs;
 
 #line default
 #line hidden
@@ -96,9 +117,16 @@ using HRManager.Blazor.Services;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Login.razor"
+using Microsoft.AspNetCore.Components.Authorization;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.LayoutAttribute(typeof(AuthLayout))]
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    [Microsoft.AspNetCore.Components.RouteAttribute("/login")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/auth/login")]
     public partial class Login : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -107,25 +135,47 @@ using HRManager.Blazor.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Login.razor"
+#line 10 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Login.razor"
        
     // TODO: Add redirect URI
 
     // must create instance of model to be bound*******
     private LoginDto loginDto = new LoginDto();
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authState { get; set; }
     private bool invalidCreds = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await _authService.Logout();
+    }
 
     private async Task LoginUser()
     {
         var loginResult = await _authService.Login(loginDto);
         if (loginResult.Successful)
         {
-            _nav.NavigateTo("/team");
+            var user = (await authState).User;
+
+            if (user.IsInRole("Admin") || user.IsInRole("SuperAdmin"))
+            {
+                _nav.NavigateTo("/admin/members");
+            }
+            else
+            {
+                _nav.NavigateTo("/member/calendar");
+            }
         }
         else
         {
             invalidCreds = true;
         }
+    }
+
+    private void GoToRegistration()
+    {
+        _nav.NavigateTo("/auth/register");
     }
 
 #line default

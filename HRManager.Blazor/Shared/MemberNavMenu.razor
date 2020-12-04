@@ -1,0 +1,34 @@
+﻿@namespace HRManager.Blazor.Shared
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
+
+<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">HRManager.Blazor</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="member/information">
+                <i class="fas fa-info" aria-hidden="true"></i> My Information
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="member/calendar">
+                <i class="fas fa-calendar" aria-hidden="true"></i> Calendar
+            </NavLink>
+        </li>
+    </ul>
+</div>

@@ -1,13 +1,42 @@
 ﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Authorization
+
+@code {
+    [CascadingParameter]
+    private Task<AuthenticationState> authState { get; set; }
+    private string navMenuType;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var user = (await authState).User;
+
+        if (user.IsInRole("Admin") || user.IsInRole("SuperAdmin"))
+        {
+            navMenuType = "admin";
+        }
+        else if (user.IsInRole("Member"))
+        {
+            navMenuType = "member";
+        }
+    }
+}
+
+<AuthChecker/>
 
 <div class="page">
     <div class="sidebar">
-        <NavMenu />
+        @if (navMenuType == "admin")
+        {
+            <AdminNavMenu />
+        }
+        else if (navMenuType == "member")
+        {
+            <MemberNavMenu />
+        }
     </div>
-
     <div class="main">
         <div class="top-row px-4">
-            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
+            <a href="/auth/login"  class="ml-md-auto">Logout</a>
         </div>
 
         <div class="content px-4">

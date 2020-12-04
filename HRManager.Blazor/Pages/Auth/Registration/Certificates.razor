@@ -1,0 +1,13 @@
+﻿@inherits RegisterSectionBase
+
+<h3>Certificates</h3>
+
+@code {
+    private CertificatesData certData = new CertificatesData();
+
+    protected override async Task GoToNextSection()
+    {
+        data = certData;
+        await base.GoToNextSection();
+    }
+}

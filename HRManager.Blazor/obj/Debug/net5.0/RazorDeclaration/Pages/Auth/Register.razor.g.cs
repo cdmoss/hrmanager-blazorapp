@@ -69,15 +69,36 @@ using Microsoft.JSInterop;
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+#line 10 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using HRManager.Common;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
 using HRManager.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+#line 12 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
 using HRManager.Blazor.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using Syncfusion.Blazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using Syncfusion.Blazor.Inputs;
 
 #line default
 #line hidden
@@ -91,13 +112,27 @@ using HRManager.Common.Dtos;
 #nullable disable
 #nullable restore
 #line 4 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Register.razor"
+using HRManager.Common.Auth;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Register.razor"
 using HRManager.Blazor.Services;
 
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Register.razor"
+using HRManager.Blazor.Pages.Auth.Registration;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.LayoutAttribute(typeof(AuthLayout))]
-    [Microsoft.AspNetCore.Components.RouteAttribute("/register")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/auth/register")]
     public partial class Register : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -106,35 +141,39 @@ using HRManager.Blazor.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 8 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Register.razor"
+#line 9 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Register.razor"
        
     // TODO: Add redirect URI
 
     // must create instance of model to be bound*******
-    private TestRegisterDto registerDto = new TestRegisterDto();
-    public bool ShowErrors { get; set; }
-    public IEnumerable<string> Errors { get; set; }
+    private MemberRegisterDto mainDto = new MemberRegisterDto();
+    private int currentSection = 1;
 
+    private bool ShowErrors;
+    private IEnumerable<string> Errors;
 
-    public async Task RegisterUser()
+    private void HandleSectionCompleted<TSection>(RegisterSectionData sectionData) where TSection : RegisterSectionData
     {
-        var registerResult = await _authService.Register(registerDto);
-        if (registerResult.Successful)
-        {
-            _nav.NavigateTo("/");
-        }
-        else
-        {
-            Errors = registerResult.Errors;
-            ShowErrors = true;
-        }
+        currentSection++;
+        ((TSection)sectionData).AddSectionToMainDto(mainDto);
+        StateHasChanged();
+    }
+
+    private void HandlePreviousSectionRequested()
+    {
+        currentSection--;
+        StateHasChanged();
+    }
+
+    private void HandleRegistrationSubmitted(RegisterResult result)
+    {
+
     }
 
 #line default
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager _nav { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAuthService _authService { get; set; }
     }
 }
 #pragma warning restore 1591

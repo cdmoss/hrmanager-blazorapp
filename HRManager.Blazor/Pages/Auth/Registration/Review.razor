@@ -1,0 +1,21 @@
+﻿@using HRManager.Common.Dtos
+@using HRManager.Common.Auth
+@using HRManager.Blazor.Services
+@inject IAuthService _authService
+@inject NavigationManager _nav
+
+<h3>Review</h3>
+
+@code {
+    [Parameter]
+    public MemberRegisterDto Dto { get; set; }
+
+    public EventCallback<RegisterResult> OnSubmit { get; set; }
+
+    public async Task RegisterUser()
+    {
+        var registerResult = await _authService.Register(Dto);
+
+        await OnSubmit.InvokeAsync();
+    }
+}

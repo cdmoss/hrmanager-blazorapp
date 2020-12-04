@@ -1,0 +1,17 @@
+﻿@code{
+    private bool ShowErrors;
+    private IEnumerable<string> Errors;
+}
+
+@if (ShowErrors)
+{
+    <div class="alert alert-danger" role="alert">
+        @foreach (var error in Errors)
+        {
+            <p>@error</p>
+        }
+    </div>
+}
+
+<h3>Result</h3>
+

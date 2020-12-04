@@ -15,7 +15,7 @@ namespace HRManager.Blazor.Services
 
     public interface IAuthService
     {
-        Task<RegisterResult> Register(TestRegisterDto dto);
+        Task<RegisterResult> Register(MemberRegisterDto dto);
         Task<LoginResult> Login(LoginDto dto);
         Task Logout();
     }
@@ -58,7 +58,7 @@ namespace HRManager.Blazor.Services
             _http.DefaultRequestHeaders.Authorization = null;
         }
 
-        public async Task<RegisterResult> Register(TestRegisterDto dto)
+        public async Task<RegisterResult> Register(MemberRegisterDto dto)
         {
             var response = await _http.PostAsJsonAsync("auth/register", dto);
 

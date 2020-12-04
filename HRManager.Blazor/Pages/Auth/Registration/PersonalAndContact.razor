@@ -1,0 +1,112 @@
+﻿@using Syncfusion.Blazor.Calendars
+@inherits RegisterSectionBase
+
+@code {
+    private PersonalAndContactData personalData = new PersonalAndContactData();
+
+    protected override async Task GoToNextSection()
+    {
+        data = personalData;
+        await base.GoToNextSection();
+    }
+}
+
+<h5>Tell us a bit about yourself and how to contact you</h5>
+<br/>
+<EditForm Model="personalData" OnValidSubmit="@GoToNextSection">
+    <DataAnnotationsValidator />
+    <div id="form-container">
+        <div id="first-name" class="form-group">
+            <label class="form-label">First Name:</label>
+            <div>
+                <SfTextBox Type="InputType.Text" @bind-Value="personalData.FirstName" />
+                <ValidationMessage For="@(() => personalData.FirstName)" />
+            </div>
+        </div>
+        <div id="last-name" class="form-group">
+            <label class="form-label">Last Name:</label>
+            <div>
+                <SfTextBox Type="InputType.Text" @bind-Value="personalData.LastName" />
+                <ValidationMessage For="@(() => personalData.LastName)" />
+            </div>
+        </div>
+        <div id="birthdate" class="form-group">
+            <label class="form-label">Date of Birth:</label>
+            <div>
+                <SfDatePicker @bind-Value="personalData.Birthdate" />
+                <ValidationMessage For="@(() => personalData.Birthdate)" />
+            </div>
+        </div>
+        <div id="address" class="form-group">
+            <label class="form-label">Address:</label>
+            <div>
+                <SfTextBox Type="InputType.Text" @bind-Value="personalData.Address" />
+                <ValidationMessage For="@(() => personalData.Address)" />
+            </div>
+        </div>
+        <div id="city" class="form-group">
+            <label class="form-label">City:</label>
+            <div>
+                <SfTextBox Type="InputType.Text" @bind-Value="personalData.City" />
+                <ValidationMessage For="@(() => personalData.City)" />
+            </div>
+        </div>
+        <div id="postal-code" class="form-group">
+            <label class="form-label">Postal Code:</label>
+            <div>
+                <SfTextBox Type="InputType.Text" @bind-Value="personalData.PostalCode" />
+                <ValidationMessage For="@(() => personalData.PostalCode)" />
+            </div>
+        </div>
+        <div id="main-phone" class="form-group">
+            <label class="form-label">Main Phone:</label>
+            <div>
+                <SfTextBox Type="InputType.Tel" @bind-Value="personalData.MainPhone" />
+                <ValidationMessage For="@(() => personalData.FirstName)" />
+            </div>
+        </div>
+        <div id="alt-phone-1" class="form-group">
+            <label class="form-label">Alternate Phone 1:</label>
+            <div>
+                <SfTextBox Type="InputType.Tel" @bind-Value="personalData.AlternatePhone1" />
+                <ValidationMessage For="@(() => personalData.AlternatePhone1)" />
+            </div>
+        </div>
+        <div id="alt-phone-2" class="form-group">
+            <label class="form-label">Alternate Phone 2 (Optional):</label>
+            <div>
+                <SfTextBox Type="InputType.Tel" @bind-Value="personalData.AlternatePhone2" />
+            </div>
+        </div>
+        <div id="emergency-contact" class="form-group">
+            <label class="form-label">Full Name of Emergency Contact:</label>
+            <div>
+                <SfTextBox Type="InputType.Text" @bind-Value="personalData.EmergencyFullName" />
+                <ValidationMessage For="@(() => personalData.EmergencyFullName)" />
+            </div>
+        </div>
+        <div id="emergency-relationship" class="form-group">
+            <label class="form-label">Relationship to Emergency Contact:</label>
+            <div>
+                <SfTextBox Type="InputType.Text" @bind-Value="personalData.EmergencyRelationship" />
+                <ValidationMessage For="@(() => personalData.EmergencyRelationship)" />
+            </div>
+        </div>
+        <div id="emergency-phone-1" class="form-group">
+            <label class="form-label">Emergency Phone 1:</label>
+            <div>
+                <SfTextBox Type="InputType.Tel" @bind-Value="personalData.EmergencyPhone1" />
+                <ValidationMessage For="@(() => personalData.EmergencyPhone1)" />
+            </div>
+        </div>
+        <div id="emergency-phone-2" class="form-group">
+            <label class="form-label">Emergency Phone 2 (Optional):</label>
+            <div>
+                <SfTextBox Type="InputType.Tel" @bind-Value="personalData.EmergencyPhone2" />
+                <ValidationMessage For="@(() => personalData.EmergencyPhone2)" />
+            </div>
+        </div>
+    </div>
+    <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested" />
+</EditForm>
+
