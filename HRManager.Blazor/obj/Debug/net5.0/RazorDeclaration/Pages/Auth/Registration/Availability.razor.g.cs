@@ -111,6 +111,13 @@ using Syncfusion.Blazor.Inputs;
 #line hidden
 #nullable disable
 #nullable restore
+#line 15 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using Syncfusion.Blazor.Buttons;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\Availability.razor"
 using Syncfusion.Blazor.Navigations;
 
@@ -127,7 +134,16 @@ using Syncfusion.Blazor.Navigations;
 #nullable restore
 #line 4 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\Availability.razor"
        
-    private AvailabilitiesData availData = new AvailabilitiesData();
+    private AvailabilitiesData availData = new AvailabilitiesData() { Availabilities = new List<AvailabilityDto>() };
+    private Dictionary<DayOfWeek, List<AvailabilityDto>> AllAvailabilities = new Dictionary<DayOfWeek, List<AvailabilityDto>>();
+
+    protected override void OnInitialized()
+    {
+        foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+        {
+            AllAvailabilities.Add((DayOfWeek)day, new List<AvailabilityDto>());
+        }
+    }
 
     protected override async Task GoToNextSection()
     {

@@ -20,7 +20,8 @@ namespace HRManager.Common.Dtos
         [Required(ErrorMessage = "A valid password is required")]
         public string Password { get; set; }
         [Required]
-        [Compare(nameof(Password), ErrorMessage = "Passwords don't match")]
+        [RegularExpression(Constants.Regex.Password, ErrorMessage = "Your password must be at least 8 characters and contain one uppercase letter, one lowercase letter, one number and one special character")]
+        [Compare(nameof(Password), ErrorMessage = "The entered passwords don't match")]
         public string ConfirmPassword { get; set; }
 
         public override void AddSectionToMainDto(MemberRegisterDto mainDto)
@@ -47,7 +48,7 @@ namespace HRManager.Common.Dtos
         public string City { get; set; }
         [Required]
         [Display(Name = "Postal Code (Required)")]
-        [RegularExpression(Constants.Regex.postalCode, ErrorMessage = "Postal code must match one of the following expressions: LNLNLN, LNL-NLN, LNL NLN.")]
+        [RegularExpression(Constants.Regex.PostalCode, ErrorMessage = "Postal code must match one of the following expressions: LNLNLN, LNL-NLN, LNL NLN.")]
         public string PostalCode { get; set; }
         [Required]
         [Display(Name = "Main Phone (Required)")]
@@ -62,7 +63,7 @@ namespace HRManager.Common.Dtos
         [Required]
         [Display(Name = "Birth Date (Required)")]
         [DataType(DataType.Date)]
-        public DateTime Birthdate { get; set; }
+        public DateTime? Birthdate { get; set; }
         [Required]
         [Display(Name = "Full Name of Emergency Contact (Required)")]
         public string EmergencyFullName { get; set; }

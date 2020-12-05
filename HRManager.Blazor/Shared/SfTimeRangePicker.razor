@@ -1,0 +1,63 @@
+﻿@using Syncfusion.Blazor.Calendars
+
+<div id="range-container">
+    <SfTimePicker TValue="TimeSpan"  ID="start" Min="StartMin" Max="StartMax" Value="Start" >
+        <TimePickerEvents TValue="TimeSpan" ValueChange="StartWasChanged"/>
+    </SfTimePicker>
+    <span id="divider">to</span>
+    <SfTimePicker TValue="TimeSpan" ID="end" Min="EndMin" Max="EndMax" Value="End">
+        <TimePickerEvents TValue="TimeSpan" ValueChange="EndWasChanged" />
+    </SfTimePicker>
+</div>
+
+@code {
+    [Parameter]
+    public TimeSpan InitialStart { get; set; }
+    [Parameter]
+    public TimeSpan InitialEnd { get; set; }
+    [Parameter]
+    public TimeSpan Start { get; set; }
+    [Parameter]
+    public TimeSpan End { get; set; }
+    [Parameter]
+    public EventCallback<TimeSpan> StartChanged { get; set; }
+    [Parameter]
+    public EventCallback<TimeSpan> EndChanged { get; set; }
+
+    private DateTime StartMin { get; set; } = DateTime.Now.Date;
+    private DateTime StartMax { get; set; } = DateTime.Now.Date.AddHours(23);
+    private DateTime EndMin { get; set; } = DateTime.Now.Date;
+    private DateTime EndMax { get; set; } = DateTime.Now.Date.AddHours(23);
+
+    //protected override void OnAfterRender(bool firstRender)
+    //{
+    //    if (firstRender)
+    //    {
+    //        Start = InitialStart;
+    //        End = InitialEnd;
+    //        StateHasChanged();
+    //    }
+    //}
+
+    private void StartWasChanged(Syncfusion.Blazor.Calendars.ChangeEventArgs<TimeSpan> args)
+    {
+        Start = args.Value;
+        EndMin = DateTime.Now.Date + Start;
+        if (End < Start)
+        {
+            End = Start;
+        }
+        StartChanged.InvokeAsync(Start);
+    }
+
+    private void EndWasChanged(Syncfusion.Blazor.Calendars.ChangeEventArgs<TimeSpan> args)
+    {
+        End = args.Value;
+        StartMax = DateTime.Now.Date + End;
+        if (Start > End)
+        {
+            Start = End;
+        }
+        StartChanged.InvokeAsync(End);
+    }
+}

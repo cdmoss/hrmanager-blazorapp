@@ -104,6 +104,13 @@ using Syncfusion.Blazor.Inputs;
 #line hidden
 #nullable disable
 #nullable restore
+#line 15 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using Syncfusion.Blazor.Buttons;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 3 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Register.razor"
 using HRManager.Common.Dtos;
 
@@ -143,10 +150,10 @@ using HRManager.Blazor.Pages.Auth.Registration;
 #nullable restore
 #line 9 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Register.razor"
        
-    // TODO: Add redirect URI
+        // TODO: Add redirect URI
 
-    // must create instance of model to be bound*******
-    private MemberRegisterDto mainDto = new MemberRegisterDto();
+        // must create instance of model to be bound*******
+    private MemberRegisterDto mainDto = new MemberRegisterDto() { };
     private int currentSection = 1;
 
     private bool ShowErrors;

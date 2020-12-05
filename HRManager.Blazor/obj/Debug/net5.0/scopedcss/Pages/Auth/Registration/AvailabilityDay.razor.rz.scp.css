@@ -5,44 +5,20 @@
 }
 
 #btn-container[b-rtkfl0rgxc] {
-    display: grid;
-    grid-template-areas: "add-btn spacer remove-btn";
-    grid-template-columns: 3fr 1fr 3fr;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    gap: 1rem;
 }
 
-#add-btn[b-rtkfl0rgxc] {
-    grid-area: add-btn;
+#btn-add[b-rtkfl0rgxc] {
+    width: 100%;
 }
 
-#spacer[b-rtkfl0rgxc] {
-    grid-area: spacer;
-}
-
-#remove-btn[b-rtkfl0rgxc] {
-    grid-area: remove-btn;
-}
-
-.range-container[b-rtkfl0rgxc] {
-    display: grid;
-    grid-template-areas: "start divider end";
-    grid-template-columns: 3fr 1fr 3fr;
-}
-
-#start[b-rtkfl0rgxc] {
-    grid-area: start;
-}
-
-#end[b-rtkfl0rgxc] {
-    grid-area: end;
-}
-
-#divider[b-rtkfl0rgxc] {
-    grid-area: divider;
+#remove[b-rtkfl0rgxc] {
+    cursor: pointer;
+    grid-area: remove;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#add-btn[b-rtkfl0rgxc] {
-    width: 100%;
 }

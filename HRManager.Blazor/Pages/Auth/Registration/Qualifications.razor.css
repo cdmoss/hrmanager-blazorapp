@@ -1,9 +1,8 @@
 ﻿#work-experience {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 1rem;
-    grid-template-areas: "employer-name employer-address" "start end" "current current";
+    grid-template-areas: "employer-name employer-address date" "current current current";
 }
 
 #employer-name {
@@ -14,12 +13,8 @@
     grid-area: employer-address;
 }
 
-#start {
-    grid-area: start;
-}
-
-#end {
-    grid-area: end;
+#date {
+    grid-area: date;
 }
 
 #general-experience {
@@ -47,9 +42,10 @@
 }
 
 #current {
-    height: auto;
-    text-align: right;
     grid-area: current;
+    height: auto;
+    width: 100%;
+    text-align: right;
 }
 
 

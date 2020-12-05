@@ -108,6 +108,13 @@ using Syncfusion.Blazor.Inputs;
 #line hidden
 #nullable disable
 #nullable restore
+#line 15 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using Syncfusion.Blazor.Buttons;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Shared\AuthChecker.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 

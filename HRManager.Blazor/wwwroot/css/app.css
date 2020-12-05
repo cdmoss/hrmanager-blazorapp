@@ -7,11 +7,11 @@
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    height: auto;
+    height: 100%;
 }
 
 #app {
-    height: auto;
+    height: 100%;
 }
 
 a, .btn-link {

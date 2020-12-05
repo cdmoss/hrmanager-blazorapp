@@ -17,7 +17,7 @@ namespace HRManager.Common.Dtos
         [DataType(DataType.Date)]
         public DateTime? EndDate { get; set; }
         [Display(Name = "Employer Phone")]
-        [RegularExpression(Constants.Regex.phone, ErrorMessage = "Please enter a valid phone number for this employer.")]
+        [RegularExpression(Constants.Regex.Phone, ErrorMessage = "Please enter a valid phone number for this employer.")]
         public string EmployerPhone { get; set; }
         [Display(Name = "Contact Name")]
         public string ContactPerson { get; set; }

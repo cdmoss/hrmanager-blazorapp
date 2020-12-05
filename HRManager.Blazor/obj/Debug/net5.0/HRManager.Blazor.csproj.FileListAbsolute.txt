@@ -819,3 +819,9 @@ C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\H
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\serviceworkers\wwwroot\service-worker.js
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\service-worker-assets.js
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Pages\Auth\Registration\Qualifications.razor.rz.scp.css
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Shared\Tooltip.razor.g.cs
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Shared\Tooltip.razor.g.cs
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Shared\Tooltip.razor.rz.scp.css
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Shared\SfTimeRangePicker.razor.g.cs
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Shared\SfTimeRangePicker.razor.g.cs
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Shared\SfTimeRangePicker.razor.rz.scp.css

@@ -3,39 +3,33 @@
 
 @code {
     [Parameter]
-    public string Day { get; set; }
-    private TimeSpan test;
-    private List<AvailabilityDto> availabilities { get; set; } = new List<AvailabilityDto>() { new AvailabilityDto() };
+    public EventCallback<List<AvailabilityDto>> AvailbilitiesChanged { get; set; }
+    [Parameter]
+    public List<AvailabilityDto> Availabilities { get; set; }
 
-    public void AddTime()
+    private void AddTime()
     {
-        availabilities.Add(new AvailabilityDto());
+        Availabilities.Add(new AvailabilityDto());
         StateHasChanged();
     }
 
-    public void RemoveTime()
+    private void RemoveTime(AvailabilityDto availability)
     {
-        if (availabilities.Any())
-        {
-            availabilities.Remove(availabilities.Last());
-            StateHasChanged();
-        }
+        Availabilities.Remove(availability);
+        StateHasChanged();
     }
 }
 
 <div id="day-container" class="mt-3">
-    @foreach (var availability in availabilities)
+    @foreach (var availability in Availabilities)
     {
-        <div class="range-container">
-            <SfTimePicker TValue="TimeSpan" ID="start" @bind-Value="availability.StartTime" />
-            <span id="divider">to</span>
-            <SfTimePicker TValue="TimeSpan" ID="end" @bind-Value="availability.EndTime" />
-        </div>
+    <div class="d-flex">
+        <SfTimeRangePicker InitialStart="new TimeSpan(8,0,0)" InitialEnd="new TimeSpan(16,0,0)" @bind-Start="availability.StartTime" @bind-End="availability.EndTime" />
+        <div id="remove" @onclick="@(rt => RemoveTime(availability))"><i class="fas fa-times"></i></div>
+    </div>
     }
-<div id="btn-container" class="mt-3">
-    <button type="button" @onclick="RemoveTime" id="add-btn" class="btn btn-dark"><i class="fas fa-minus"></i> &nbsp; Remove Time</button>
-    <div id="spacer;"></div>
-    <button type="button" @onclick="AddTime" id="remvove-btn" class="btn btn-light"><i class="fas fa-plus"></i> &nbsp; Add Time</button>
-</div>
+    <div id="btn-container" class="mt-3">
+        <button type="button" id="btn-add" @onclick="AddTime" class="btn btn-sm btn-light"><i class="fas fa-plus"></i> &nbsp; Add Time</button>
+    </div>
 </div>
 

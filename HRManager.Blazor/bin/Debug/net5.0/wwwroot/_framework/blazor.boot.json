@@ -238,13 +238,13 @@
       "mscorlib.dll": "sha256-i0zXLOX1XZekwNvRdQK9WDvRWKFggLp7KDCnvMrn+HQ=",
       "netstandard.dll": "sha256-4QNBIB4DMwj82CYd96oFrTh3fcrmyaDjtQ2dBTyWz7Q=",
       "System.Private.CoreLib.dll": "sha256-5Zk+rN+j5FbFEQJdT8YR2O0i6KWpvrERsaPZCv69DmI=",
-      "HRManager.Common.dll": "sha256-RnNyPumJ0A6AEw1ipSb44P0Gt\/TOkLCdvLIlX6dMcx0=",
-      "HRManager.Blazor.dll": "sha256-M2qEMAU1gEi+KTlk0w4vl8EOm5exSbmCfByGxibZKyk="
+      "HRManager.Common.dll": "sha256-lRScOltl2kOJv1lQbOhVSpJ0De9Y1cjj6MVZdwwz+M8=",
+      "HRManager.Blazor.dll": "sha256-LdO+vw2uacKTRUHqj4gau4EaBYX1K7HdaYSMz3Zwax4="
     },
     "lazyAssembly": null,
     "pdb": {
-      "HRManager.Common.pdb": "sha256-k+I8vKZcVE6FNfagLkN2aVcmgut4ehY1V9lPzfYlRWA=",
-      "HRManager.Blazor.pdb": "sha256-jxD2J6n7gmDHYbEQ7+XFaANOIdlk9EI07tYjHAD+6ww="
+      "HRManager.Common.pdb": "sha256-5rwZq9Nfb4U52CVllnQf6cP9egF\/5ETvHASc2nerLc4=",
+      "HRManager.Blazor.pdb": "sha256-0k6voQmeadS35KETwQvbMSrb+A+W2\/8VNPhRtcFQOek="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-2ldEe2K8ARFKSIBsv+Hr3iNQzq9qh1H\/dwdu2r+AIyY=",

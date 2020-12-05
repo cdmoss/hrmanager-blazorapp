@@ -2,7 +2,7 @@
 @inherits RegisterSectionBase
 
 @code {
-    private PersonalAndContactData personalData = new PersonalAndContactData();
+    private PersonalAndContactData personalData = new PersonalAndContactData() { Birthdate = DateTime.Now };
 
     protected override async Task GoToNextSection()
     {
@@ -12,7 +12,7 @@
 }
 
 <h5>Tell us a bit about yourself and how to contact you</h5>
-<br/>
+<br />
 <EditForm Model="personalData" OnValidSubmit="@GoToNextSection">
     <DataAnnotationsValidator />
     <div id="form-container">
@@ -31,9 +31,9 @@
             </div>
         </div>
         <div id="birthdate" class="form-group">
-            <label class="form-label">Date of Birth:</label>
+            <label class="form-label">Date of Birth: <Tooltip Text="You can quickly navigate to a different month by clicking on the name of the month at the top, or to a different year by clicking on the name of the month then on the year.">(Trouble using date selector?)</Tooltip></label>
             <div>
-                <SfDatePicker @bind-Value="personalData.Birthdate" />
+                <SfDatePicker StrictMode="true" @bind-Value="personalData.Birthdate" />
                 <ValidationMessage For="@(() => personalData.Birthdate)" />
             </div>
         </div>
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div id="alt-phone-1" class="form-group">
-            <label class="form-label">Alternate Phone 1:</label>
+            <label class="form-label">Alternate Phone 1 (Optional):</label>
             <div>
                 <SfTextBox Type="InputType.Tel" @bind-Value="personalData.AlternatePhone1" />
                 <ValidationMessage For="@(() => personalData.AlternatePhone1)" />

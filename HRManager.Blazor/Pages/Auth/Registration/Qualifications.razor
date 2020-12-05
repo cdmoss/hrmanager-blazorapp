@@ -49,6 +49,7 @@
             <ValidationMessage For="@(() => qualData.OtherBoards)" />
         </div>
     </div>
+    <hr/>
     <h5>Last or Current Job (If none then leave blank)</h5>
     <br />
     <div id="work-experience">
@@ -62,20 +63,22 @@
             <SfTextBox @bind-Value="qualData.WorkExperiences.FirstOrDefault().EmployerAddress" />
             <ValidationMessage For="@(() => qualData.WorkExperiences.FirstOrDefault().EmployerAddress)" />
         </div>
-        <div id="start" class="form-group">
-            <label>Start Date</label>
-            <SfDatePicker @bind-Value="qualData.WorkExperiences.FirstOrDefault().StartDate" />
-            <ValidationMessage For="@(() => qualData.WorkExperiences.FirstOrDefault().StartDate)" />
-        </div>
-        @if (!qualData.WorkExperiences.FirstOrDefault().CurrentJob)
+        @if (qualData.WorkExperiences.FirstOrDefault().CurrentJob)
         {
-            <div id="end" class="form-group">
-                <label>End Date</label>
-                <SfDatePicker @bind-Value="qualData.WorkExperiences.FirstOrDefault().EndDate" />
-                <ValidationMessage For="@(() => qualData.WorkExperiences.FirstOrDefault().EndDate)" />
+            <div id="date" class="form-group">
+                <label>Start Date</label>
+                <SfDatePicker @bind-Value="qualData.WorkExperiences.FirstOrDefault().StartDate" />
+                <ValidationMessage For="@(() => qualData.WorkExperiences.FirstOrDefault().StartDate)" />
             </div>
         }
-        <div id="current" class="form-group">
+        else
+        {
+            <div id="date" class="form-group">
+                <label>Period Worked</label>
+                <SfDateRangePicker @bind-StartDate="qualData.WorkExperiences.FirstOrDefault().StartDate" @bind-EndDate="qualData.WorkExperiences.FirstOrDefault().EndDate" />
+            </div>
+        }
+        <div id="current" class="form-group" >
             <SfCheckBox @bind-Checked="qualData.WorkExperiences.FirstOrDefault().CurrentJob" @onchange="HandleCurrentJobCheckChanged" />
             <ValidationMessage For="@(() => qualData.WorkExperiences.FirstOrDefault().CurrentJob)" />
             <label>Current Job?</label>

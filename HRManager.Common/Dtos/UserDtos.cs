@@ -36,16 +36,16 @@ namespace HRManager.Common.Dtos
         [Display(Name = "city")]
         public string City { get; set; }
         [Required]
-        [RegularExpression(Constants.Regex.postalCode, ErrorMessage = "Postal code must match one of the following expressions: LNLNLN, LNL-NLN, LNL NLN.")]
+        [RegularExpression(Constants.Regex.PostalCode, ErrorMessage = "Postal code must match one of the following expressions: LNLNLN, LNL-NLN, LNL NLN.")]
         [Display(Name = "postal code")]
         public string PostalCode { get; set; }
         [Required]
-        [RegularExpression(Constants.Regex.phone, ErrorMessage = "Please enter a valid phone number Main.")]
+        [RegularExpression(Constants.Regex.Phone, ErrorMessage = "Please enter a valid phone number Main.")]
         [Display(Name = "phone number")]
         public string MainPhone { get; set; }
-        [RegularExpression(Constants.Regex.phone, ErrorMessage = "Please enter a valid phone number for Alternate Phone 1.")]
+        [RegularExpression(Constants.Regex.Phone, ErrorMessage = "Please enter a valid phone number for Alternate Phone 1.")]
         public string AlternatePhone1 { get; set; }
-        [RegularExpression(Constants.Regex.phone, ErrorMessage = "Please enter a valid phone number for Alternate Phone 2.")]
+        [RegularExpression(Constants.Regex.Phone, ErrorMessage = "Please enter a valid phone number for Alternate Phone 2.")]
         public string AlternatePhone2 { get; set; }
         [Required]
         [Display(Name = "birth date")]
@@ -54,10 +54,10 @@ namespace HRManager.Common.Dtos
         [Display(Name = "emergency full name")]
         public string EmergencyFullName { get; set; }
         [Required]
-        [RegularExpression(Constants.Regex.phone, ErrorMessage = "Please enter a valid phone number for Emergency Phone 1.")]
+        [RegularExpression(Constants.Regex.Phone, ErrorMessage = "Please enter a valid phone number for Emergency Phone 1.")]
         [Display(Name = "emergency phone number")]
         public string EmergencyPhone1 { get; set; }
-        [RegularExpression(Constants.Regex.phone, ErrorMessage = "Please enter a valid phone number Emergency Phone 2.")]
+        [RegularExpression(Constants.Regex.Phone, ErrorMessage = "Please enter a valid phone number Emergency Phone 2.")]
         public string EmergencyPhone2 { get; set; }
         [Required]
         [Display(Name = "relationship with this emergency contact")]
@@ -120,27 +120,27 @@ namespace HRManager.Common.Dtos
         [Required]
         public string City { get; set; }
         [Required]
-        [RegularExpression(Constants.Regex.postalCode, ErrorMessage = "Postal code must match one of the following expressions: LNLNLN, LNL-NLN, LNL NLN.")]
+        [RegularExpression(Constants.Regex.PostalCode, ErrorMessage = "Postal code must match one of the following expressions: LNLNLN, LNL-NLN, LNL NLN.")]
         [Display(Name = "Postal Code")]
         public string PostalCode { get; set; }
         [Required]
-        [RegularExpression(Constants.Regex.phone, ErrorMessage = "Please enter a valid phone number.")]
+        [RegularExpression(Constants.Regex.Phone, ErrorMessage = "Please enter a valid phone number.")]
         [Display(Name = "Main Phone Number")]
         public string MainPhone { get; set; }
-        [RegularExpression(Constants.Regex.phone, ErrorMessage = "Please enter a valid phone number.")]
+        [RegularExpression(Constants.Regex.Phone, ErrorMessage = "Please enter a valid phone number.")]
         [Display(Name = "Alternate Phone Number")]
         public string AlternatePhone1 { get; set; }
-        [RegularExpression(Constants.Regex.phone, ErrorMessage = "Please enter a valid phone number.")]
+        [RegularExpression(Constants.Regex.Phone, ErrorMessage = "Please enter a valid phone number.")]
         [Display(Name = "Alternate Phone Number")]
         public string AlternatePhone2 { get; set; }
         [Required]
         [Display(Name = "Emergency Contact Full Name")]
         public string EmergencyFullName { get; set; }
         [Required]
-        [RegularExpression(Constants.Regex.phone, ErrorMessage = "Please enter a valid phone number.")]
+        [RegularExpression(Constants.Regex.Phone, ErrorMessage = "Please enter a valid phone number.")]
         [Display(Name = "Emergency Contact Phone Number")]
         public string EmergencyPhone1 { get; set; }
-        [RegularExpression(Constants.Regex.phone, ErrorMessage = "Please enter a valid phone number.")]
+        [RegularExpression(Constants.Regex.Phone, ErrorMessage = "Please enter a valid phone number.")]
         [Display(Name = "Emergency Contact Phone Number")]
         public string EmergencyPhone2 { get; set; }
         [Required]

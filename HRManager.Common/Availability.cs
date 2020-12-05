@@ -12,7 +12,7 @@ namespace HRManager.Common
         public MemberProfile Member { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
-        public string AvailableDay { get; set; }
+        public DayOfWeek AvailableDay { get; set; }
 
         public override string ToString()
         {

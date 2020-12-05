@@ -7,10 +7,10 @@
 @inject NavigationManager _nav
 
 @code {
-    // TODO: Add redirect URI
+        // TODO: Add redirect URI
 
-    // must create instance of model to be bound*******
-    private MemberRegisterDto mainDto = new MemberRegisterDto();
+        // must create instance of model to be bound*******
+    private MemberRegisterDto mainDto = new MemberRegisterDto() { };
     private int currentSection = 1;
 
     private bool ShowErrors;
@@ -56,8 +56,8 @@
                 _nav.NavigateTo("/auth/login");
                 break;
             case 1:
-        <Qualifications SectionCompleted="HandleSectionCompleted<QualificationsData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
-                @*<AccountCreds SectionCompleted="HandleSectionCompleted<AccountData>" PreviousSectionRequested="HandlePreviousSectionRequested"/>*@
+                <Availability SectionCompleted="HandleSectionCompleted<AvailabilitiesData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                @*<AccountCreds SectionCompleted="HandleSectionCompleted<AccountData>" PreviousSectionRequested="HandlePreviousSectionRequested" />*@
                 break;
             case 2:
                 <PersonalAndContact SectionCompleted="HandleSectionCompleted<PersonalAndContactData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
@@ -66,10 +66,10 @@
                 <PreferredPositions SectionCompleted="HandleSectionCompleted<PreferredPositionsData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
                 break;
             case 4:
-                <Availability SectionCompleted="HandleSectionCompleted<AvailabilitiesData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                @*<Availability SectionCompleted="HandleSectionCompleted<AvailabilitiesData>" PreviousSectionRequested="HandlePreviousSectionRequested" />*@
                 break;
             case 5:
-                @*<Qualifications SectionCompleted="HandleSectionCompleted<QualificationsData>" PreviousSectionRequested="HandlePreviousSectionRequested" />*@
+                <Qualifications SectionCompleted="HandleSectionCompleted<QualificationsData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
                 break;
             case 6:
                 <Certificates SectionCompleted="HandleSectionCompleted<CertificatesData>" PreviousSectionRequested="HandlePreviousSectionRequested" />

@@ -104,6 +104,13 @@ using Syncfusion.Blazor.Inputs;
 #line hidden
 #nullable disable
 #nullable restore
+#line 15 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using Syncfusion.Blazor.Buttons;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Admin\Members.razor"
 using HRManager.Common;
 

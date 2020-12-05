@@ -2,7 +2,16 @@
 @inherits RegisterSectionBase
 
 @code {
-    private AvailabilitiesData availData = new AvailabilitiesData();
+    private AvailabilitiesData availData = new AvailabilitiesData() { Availabilities = new List<AvailabilityDto>() };
+    private Dictionary<DayOfWeek, List<AvailabilityDto>> AllAvailabilities = new Dictionary<DayOfWeek, List<AvailabilityDto>>();
+
+    protected override void OnInitialized()
+    {
+        foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+        {
+            AllAvailabilities.Add((DayOfWeek)day, new List<AvailabilityDto>());
+        }
+    }
 
     protected override async Task GoToNextSection()
     {
@@ -19,31 +28,31 @@
         <TabItems>
             <TabItem>
                 <HeaderTemplate>Monday</HeaderTemplate>
-                <ContentTemplate><AvailabilityDay Day="Monday" /></ContentTemplate>
+                <ContentTemplate><AvailabilityDay Availabilities="AllAvailabilities[DayOfWeek.Monday]" /></ContentTemplate>
             </TabItem>
             <TabItem>
                 <HeaderTemplate>Tuesday</HeaderTemplate>
-                <ContentTemplate><AvailabilityDay Day="Tuesday" /></ContentTemplate>
+                <ContentTemplate><AvailabilityDay Availabilities="AllAvailabilities[DayOfWeek.Tuesday]" /></ContentTemplate>
             </TabItem>
             <TabItem>
                 <HeaderTemplate>Wednesday</HeaderTemplate>
-                <ContentTemplate><AvailabilityDay Day="Wednesday" /></ContentTemplate>
+                <ContentTemplate><AvailabilityDay Availabilities="AllAvailabilities[DayOfWeek.Wednesday]" /></ContentTemplate>
             </TabItem>
             <TabItem>
                 <HeaderTemplate>Thursday</HeaderTemplate>
-                <ContentTemplate><AvailabilityDay Day="Thursday" /></ContentTemplate>
+                <ContentTemplate><AvailabilityDay Availabilities="AllAvailabilities[DayOfWeek.Thursday]" /></ContentTemplate>
             </TabItem>
             <TabItem>
                 <HeaderTemplate>Friday</HeaderTemplate>
-                <ContentTemplate><AvailabilityDay Day="Friday" /></ContentTemplate>
+                <ContentTemplate><AvailabilityDay Availabilities="AllAvailabilities[DayOfWeek.Friday]" /></ContentTemplate>
             </TabItem>
             <TabItem>
                 <HeaderTemplate>Saturday</HeaderTemplate>
-                <ContentTemplate><AvailabilityDay Day="Saturday" /></ContentTemplate>
+                <ContentTemplate><AvailabilityDay Availabilities="AllAvailabilities[DayOfWeek.Saturday]" /></ContentTemplate>
             </TabItem>
             <TabItem>
                 <HeaderTemplate>Sunday</HeaderTemplate>
-                <ContentTemplate><AvailabilityDay Day="Sunday" /></ContentTemplate>
+                <ContentTemplate><AvailabilityDay Availabilities="AllAvailabilities[DayOfWeek.Sunday]" /></ContentTemplate>
             </TabItem>
         </TabItems>
     </SfTab>

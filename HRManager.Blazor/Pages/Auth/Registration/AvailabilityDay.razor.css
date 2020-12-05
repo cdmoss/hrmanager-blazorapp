@@ -5,44 +5,20 @@
 }
 
 #btn-container {
-    display: grid;
-    grid-template-areas: "add-btn spacer remove-btn";
-    grid-template-columns: 3fr 1fr 3fr;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    gap: 1rem;
 }
 
-#add-btn {
-    grid-area: add-btn;
+#btn-add {
+    width: 100%;
 }
 
-#spacer {
-    grid-area: spacer;
-}
-
-#remove-btn {
-    grid-area: remove-btn;
-}
-
-.range-container {
-    display: grid;
-    grid-template-areas: "start divider end";
-    grid-template-columns: 3fr 1fr 3fr;
-}
-
-#start {
-    grid-area: start;
-}
-
-#end {
-    grid-area: end;
-}
-
-#divider {
-    grid-area: divider;
+#remove {
+    cursor: pointer;
+    grid-area: remove;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#add-btn {
-    width: 100%;
 }

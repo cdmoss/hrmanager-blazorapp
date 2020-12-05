@@ -7,6 +7,6 @@ namespace HRManager.Common.Dtos
         public int Id { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
-        public string AvailableDay { get; set; }
+        public DayOfWeek AvailableDay { get; set; }
     }
 }

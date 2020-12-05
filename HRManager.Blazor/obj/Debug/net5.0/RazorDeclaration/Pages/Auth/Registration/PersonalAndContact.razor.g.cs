@@ -111,6 +111,13 @@ using Syncfusion.Blazor.Inputs;
 #line hidden
 #nullable disable
 #nullable restore
+#line 15 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using Syncfusion.Blazor.Buttons;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\PersonalAndContact.razor"
 using Syncfusion.Blazor.Calendars;
 
@@ -127,7 +134,7 @@ using Syncfusion.Blazor.Calendars;
 #nullable restore
 #line 4 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\PersonalAndContact.razor"
        
-    private PersonalAndContactData personalData = new PersonalAndContactData();
+    private PersonalAndContactData personalData = new PersonalAndContactData() { Birthdate = DateTime.Now };
 
     protected override async Task GoToNextSection()
     {

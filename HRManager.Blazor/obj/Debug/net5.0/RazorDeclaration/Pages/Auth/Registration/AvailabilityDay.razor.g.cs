@@ -104,6 +104,13 @@ using Syncfusion.Blazor;
 #line hidden
 #nullable disable
 #nullable restore
+#line 15 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using Syncfusion.Blazor.Buttons;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\AvailabilityDay.razor"
 using Syncfusion.Blazor.Calendars;
 
@@ -128,23 +135,20 @@ using Syncfusion.Blazor.Inputs;
 #line 4 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\AvailabilityDay.razor"
        
     [Parameter]
-    public string Day { get; set; }
-    private TimeSpan test;
-    private List<AvailabilityDto> availabilities { get; set; } = new List<AvailabilityDto>() { new AvailabilityDto() };
+    public EventCallback<List<AvailabilityDto>> AvailbilitiesChanged { get; set; }
+    [Parameter]
+    public List<AvailabilityDto> Availabilities { get; set; }
 
-    public void AddTime()
+    private void AddTime()
     {
-        availabilities.Add(new AvailabilityDto());
+        Availabilities.Add(new AvailabilityDto());
         StateHasChanged();
     }
 
-    public void RemoveTime()
+    private void RemoveTime(AvailabilityDto availability)
     {
-        if (availabilities.Any())
-        {
-            availabilities.Remove(availabilities.Last());
-            StateHasChanged();
-        }
+        Availabilities.Remove(availability);
+        StateHasChanged();
     }
 
 #line default

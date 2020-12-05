@@ -25,16 +25,16 @@ namespace HRManager.Common
         [Display(Name = "Postal code (Required)")]
         public string PostalCode { get; set; }
         [Required]
-        [RegularExpression(Constants.Regex.phone, ErrorMessage = "Please enter a valid phone number.")]
+        [RegularExpression(Constants.Regex.Phone, ErrorMessage = "Please enter a valid phone number.")]
         [Display(Name = "Main phone (Required)")]
         [Phone]
         public string MainPhone { get; set; }
         [Display(Name = "Alternate phone 1 (Optional)")]
-        [RegularExpression(Constants.Regex.phone, ErrorMessage = "Please enter a valid phone number.")]
+        [RegularExpression(Constants.Regex.Phone, ErrorMessage = "Please enter a valid phone number.")]
         [Phone]
         public string AlternatePhone1 { get; set; }
         [Display(Name = "Alternate phone 2 (Optional)")]
-        [RegularExpression(Constants.Regex.phone, ErrorMessage = "Please enter a valid phone number.")]
+        [RegularExpression(Constants.Regex.Phone, ErrorMessage = "Please enter a valid phone number.")]
         [Phone]
         public string AlternatePhone2 { get; set; }
         [Required]
@@ -45,7 +45,7 @@ namespace HRManager.Common
         [Display(Name = "Full name of emergency contact (Required)")]
         public string EmergencyFullName { get; set; }
         [Required]
-        [RegularExpression(Constants.Regex.phone, ErrorMessage = "Please enter a valid phone number.")]
+        [RegularExpression(Constants.Regex.Phone, ErrorMessage = "Please enter a valid phone number.")]
         [Display(Name = "Emergency contact phone 1 (Required)")]
         [Phone]
         public string EmergencyPhone1 { get; set; }

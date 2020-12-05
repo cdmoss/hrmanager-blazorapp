@@ -1,9 +1,8 @@
 #work-experience[b-lin6usk1ol] {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 1rem;
-    grid-template-areas: "employer-name employer-address" "start end" "current current";
+    grid-template-areas: "employer-name employer-address date" "current current current";
 }
 
 #employer-name[b-lin6usk1ol] {
@@ -14,12 +13,8 @@
     grid-area: employer-address;
 }
 
-#start[b-lin6usk1ol] {
-    grid-area: start;
-}
-
-#end[b-lin6usk1ol] {
-    grid-area: end;
+#date[b-lin6usk1ol] {
+    grid-area: date;
 }
 
 #general-experience[b-lin6usk1ol] {
@@ -47,9 +42,10 @@
 }
 
 #current[b-lin6usk1ol] {
-    height: auto;
-    text-align: right;
     grid-area: current;
+    height: auto;
+    width: 100%;
+    text-align: right;
 }
 
 

@@ -107,6 +107,13 @@ using Syncfusion.Blazor.Inputs;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 15 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using Syncfusion.Blazor.Buttons;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/member/calendar")]
     public partial class Calendar : Microsoft.AspNetCore.Components.ComponentBase
     {

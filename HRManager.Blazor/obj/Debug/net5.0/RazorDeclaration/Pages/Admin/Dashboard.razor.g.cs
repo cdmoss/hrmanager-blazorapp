@@ -110,6 +110,13 @@ using Syncfusion.Blazor.Inputs;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 15 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using Syncfusion.Blazor.Buttons;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/admin/dashboard")]
     public partial class Dashboard : Microsoft.AspNetCore.Components.ComponentBase
     {
