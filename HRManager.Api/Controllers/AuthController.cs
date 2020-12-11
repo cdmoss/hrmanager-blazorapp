@@ -5,6 +5,7 @@ using HRManager.Common.Auth;
 using HRManager.Common.Dtos;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -21,36 +22,36 @@ namespace HRManager.Api.Controllers
     public class AuthController : ControllerBase
     {
         private readonly MainContext _context;
-        private readonly UserManager<UserProfile> _userManager;
         private readonly IAuthService _authService;
+        private readonly ILogger<AuthController> _logger;
 
-        public AuthController(MainContext context, UserManager<UserProfile> userManager, IAuthService authService)
+        public AuthController(MainContext context, IAuthService authService, ILogger<AuthController> logger)
         {
             _context = context;
-            _userManager = userManager;
             _authService = authService;
+            _logger = logger;
         }
 
         // TODO: Implement real registration
         [HttpPost("register")]
-        public async Task<IActionResult> Register(TestRegisterDto dto)
+        public async Task<IActionResult> Register(MemberRegisterDto dto)
         {
             if (dto == null || !ModelState.IsValid)
             {
+                _logger.LogWarning("User attemped register with null data.");
                 return BadRequest();
             }
 
-            var user = new UserProfile { UserName = dto.Email, Email = dto.Email };
-            var creationResult = await _userManager.CreateAsync(user, dto.Password);
-            if (!creationResult.Succeeded)
+            var result = await _authService.RegisterUser(dto);
+
+            if (result.Successful)
             {
-                var errors = creationResult.Errors.Select(e => e.Description);
-                return BadRequest(new RegisterResult { Errors = errors, Successful = false });
+                _logger.LogWarning("User successfully registered.");
+                return new ObjectResult(result);
             }
 
-            var roleResult = _userManager.AddToRoleAsync(user, Enum.GetName(typeof(UserRole), dto.Role));
-
-            return new ObjectResult(new RegisterResult { Successful = true });
+            _logger.LogWarning($"An unsuccessful registration attempt was made:\n {result.Errors}.");
+            return BadRequest(result);
         }
 
         [HttpPost("login")]
@@ -62,8 +63,15 @@ namespace HRManager.Api.Controllers
             }
             else
             {
+                _logger.LogWarning("An unsuccessful login attempt was made.");
                 return Unauthorized(new LoginResult { Successful = false, Error = "Incorrect email or password."});
             }
+        }
+
+        [HttpGet("validate-username")]
+        public async Task<IActionResult> ValidateUsername(string username)
+        {
+            return Ok(await _authService.ValidateUsername(username));
         }
     }
 }

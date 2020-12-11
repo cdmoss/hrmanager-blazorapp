@@ -1,8 +1,10 @@
-﻿using HRManager.Api.Data;
+﻿using AutoMapper;
+using HRManager.Api.Data;
 using HRManager.Common;
 using HRManager.Common.Auth;
 using HRManager.Common.Dtos;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -17,18 +19,106 @@ namespace HRManager.Api.Services
     public interface IAuthService
     {
         Task<LoginResult> LoginUser(LoginDto dto);
+        Task<RegisterResult> RegisterUser(MemberRegisterDto dto);
         Task<bool> IsValidLoginCredentials(LoginDto dto);
+        Task<string> ValidateUsername(string username);
     }
 
     public class AuthService : IAuthService
     {
         private readonly UserManager<UserProfile> _userManager;
         private readonly MainContext _context;
+        private readonly IMapper _mapper;
+        private readonly ILogger<AuthService> _logger;
 
-        public AuthService(UserManager<UserProfile> userManager, MainContext context)
+        public AuthService(UserManager<UserProfile> userManager, MainContext context, IMapper mapper, ILogger<AuthService> logger)
         {
             _userManager = userManager;
             _context = context;
+            _mapper = mapper;
+            _logger = logger;
+        }
+
+        public async Task<RegisterResult> RegisterUser(MemberRegisterDto dto)
+        {
+            var user = new UserProfile { UserName = dto.Account.Email, Email = dto.Account.Email };
+            var creationResult = await _userManager.CreateAsync(user, dto.Account.Password);
+            if (!creationResult.Succeeded)
+            {
+                string errorString = "";
+                foreach (var error in creationResult.Errors)
+                {
+                    errorString = $"{error.Code}: {error.Description}\n";
+                }
+                _logger.LogWarning($"An error occured when trying to create a new member:\n{errorString}");
+                var errors = creationResult.Errors.Select(e => e.Description);
+                return new RegisterResult { Errors = errors, Successful = false };
+            }
+
+            var memberProfile = CreateMemberProfile(dto);
+            user.Member = memberProfile;
+            await _context.SaveChangesAsync();
+
+            await _userManager.AddToRoleAsync(user, Constants.RoleNames.Member);
+
+            return new RegisterResult { Successful = true };
+        }
+
+        private MemberProfile CreateMemberProfile(MemberRegisterDto dto)
+        {
+            var availabilityDtos = new List<AvailabilityDto>();
+            foreach (var availabilityList in dto.Availabilities.Availabilities)
+            {
+                availabilityDtos.AddRange(availabilityList.Value);
+            }
+
+            var availabilities = _mapper.Map<List<Availability>>(availabilityDtos);
+            var workExperiences = _mapper.Map<List<WorkExperience>>(dto.Qualifications.WorkExperiences);
+
+            var member = new MemberProfile
+            {
+                FirstName = dto.Personal.FirstName,
+                LastName = dto.Personal.LastName,
+                Address = dto.Personal.Address,
+                City = dto.Personal.City,
+                MainPhone = dto.Personal.MainPhone,
+                Birthdate = dto.Personal.Birthdate,
+                AlternatePhone1 = dto.Personal.AlternatePhone1,
+                AlternatePhone2 = dto.Personal.AlternatePhone2,
+                EmergencyPhone1 = dto.Personal.EmergencyPhone1,
+                EmergencyPhone2 = dto.Personal.EmergencyPhone2,
+                EmergencyFullName = dto.Personal.EmergencyFullName,
+                EmergencyRelationship = dto.Personal.EmergencyRelationship,
+                Availabilities = availabilities,
+                EducationTraining = dto.Qualifications.EducationTraining,
+                Experience = dto.Qualifications.Experience,
+                OtherBoards = dto.Qualifications.OtherBoards,
+                FirstAidCpr = dto.Certificates.FirstAidCpr,
+                FirstAidCprExpiry = dto.Certificates.FirstAidCprExpiry,
+                FirstAidCprLevel = dto.Certificates.FirstAidCprLevel,
+                FoodSafe = dto.Certificates.FoodSafe,
+                FoodSafeExpiry = dto.Certificates.FoodSafeExpiry,
+                OtherCertificates = dto.Certificates.OtherCertificates,
+                PostalCode = dto.Personal.PostalCode,
+                SkillsInterestsHobbies = dto.Qualifications.SkillsInterestsHobbies,
+                WorkExperiences = workExperiences,
+            };
+
+            // TODO: Clean this up
+            var positions = new List<PositionMember>();
+
+            foreach (var position in dto.Positions.SelectedPositions)
+            {
+                if (position.Value.PositionWasSelected)
+                {
+                    var p = _context.Positions.FirstOrDefault(p => p.Id == position.Key);
+                    positions.Add(new PositionMember() { Position = p, Member = member });
+                }
+            }
+
+            member.Positions = positions;
+
+            return member;
         }
 
         public async Task<LoginResult> LoginUser(LoginDto dto)
@@ -101,6 +191,23 @@ namespace HRManager.Api.Services
             }
 
             return await _userManager.CheckPasswordAsync(user, dto.Password);
+        }
+
+        public async Task<string> ValidateUsername(string username)
+        {
+            if (string.IsNullOrEmpty(username))
+            {
+                return "null";
+            }
+
+            var user = await _userManager.FindByNameAsync(username);
+
+            if (user != null)
+            {
+                return "duplicate";
+            }
+
+            return "valid";
         }
     }
 }

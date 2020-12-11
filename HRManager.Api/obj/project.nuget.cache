@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wRmKPf2qFJhpNTxLcnmInIfpPjxvNLsZ/PxkXy2XdsiSyw39SX8p6diQ062po3KMxDolA+W9Iezv2e21mUbNwg==",
+  "dgSpecHash": "uTF5T7Schs0HgKPs5JmM/IaOBvLI+HZ55l2EUepTTYef2/ksS9ILRRU3G2x2lY4eV2QeUpgTFfn9Lr3mX0JGWw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Api\\HRManager.Api.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,8 @@
     "C:\\Users\\Chase\\.nuget\\packages\\aspnet.security.openidconnect.extensions\\2.0.0\\aspnet.security.openidconnect.extensions.2.0.0.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\aspnet.security.openidconnect.primitives\\2.0.0\\aspnet.security.openidconnect.primitives.2.0.0.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\aspnet.security.openidconnect.server\\2.0.0\\aspnet.security.openidconnect.server.2.0.0.nupkg.sha512",
+    "C:\\Users\\Chase\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
+    "C:\\Users\\Chase\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\cryptohelper\\3.0.2\\cryptohelper.3.0.2.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
@@ -154,7 +156,7 @@
     "C:\\Users\\Chase\\.nuget\\packages\\system.net.sockets\\4.3.0\\system.net.sockets.4.3.0.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\system.objectmodel\\4.3.0\\system.objectmodel.4.3.0.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\Chase\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\Chase\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",

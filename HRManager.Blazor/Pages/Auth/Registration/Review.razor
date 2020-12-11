@@ -4,8 +4,6 @@
 @inject IAuthService _authService
 @inject NavigationManager _nav
 
-<h3>Review</h3>
-
 @code {
     [Parameter]
     public MemberRegisterDto Dto { get; set; }
@@ -19,3 +17,5 @@
         await OnSubmit.InvokeAsync();
     }
 }
+
+

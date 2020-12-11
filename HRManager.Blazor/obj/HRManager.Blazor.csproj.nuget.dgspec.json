@@ -56,6 +56,10 @@
               "target": "Package",
               "version": "[1.0.12, )"
             },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[9.3.0, )"
+            },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",
               "version": "[5.0.0, )"
@@ -76,6 +80,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
+            },
+            "Radzen.Blazor": {
+              "target": "Package",
+              "version": "[2.18.3, )"
             },
             "Syncfusion.Blazor": {
               "target": "Package",

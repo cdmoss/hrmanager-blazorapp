@@ -139,7 +139,7 @@ using HRManager.Blazor.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\Review.razor"
+#line 7 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\Review.razor"
        
     [Parameter]
     public MemberRegisterDto Dto { get; set; }

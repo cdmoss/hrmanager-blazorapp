@@ -1,17 +1,34 @@
-﻿@code{
-    private bool ShowErrors;
-    private IEnumerable<string> Errors;
+﻿@using Common.Auth
+@inject NavigationManager _nav 
+
+@code{
+    [Parameter]
+    public RegisterResult RegisterResult { get; set; }
+
+    private void GoToLogin()
+    {
+        _nav.NavigateTo("auth/login");
+    }
 }
 
-@if (ShowErrors)
+@if (RegisterResult.Successful)
 {
-    <div class="alert alert-danger" role="alert">
-        @foreach (var error in Errors)
-        {
-            <p>@error</p>
-        }
-    </div>
+    <p>You have successfully applied for a volunteering position at the Medicine Hat Food Bank!</p>
+    <p>You can now log in with the email and password you entered. Once we've accepted your application, you will be able sign up for shifts with the calendar. We will email you once we've evaluated your application.</p>
+    <p>Thanks for applying and have a wonderful day!</p>
+}
+else
+{
+    <p>Oops... Something went wrong with your application.</p>
+    <p>Try again, or contact us directly:</p>
+    <ul>
+        <li>Email: email here</li>
+        <li>Phone: phone here</li>
+    </ul>
+    
 }
 
-<h3>Result</h3>
+<div id="btn-container">
+    <SfButton Content="Back To Login" OnClick="GoToLogin"/>
+</div>
 

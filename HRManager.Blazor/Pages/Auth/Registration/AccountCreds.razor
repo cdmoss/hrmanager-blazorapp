@@ -1,46 +1,94 @@
-﻿@inherits RegisterSectionBase 
+﻿@using Blazor.Services
+@inherits RegisterSectionBase 
+@inject IAuthService _authService
 
-@code {      
-    private AccountData accountData = new AccountData();
+@code {
+    private UsernameValidator usernameValidator;
 
-    protected override void OnInitialized()
-    {
-        accountData = new AccountData();
-    }
+    [Parameter]
+    public EventCallback<AccountRegisterData> AccountDataChanged { get; set; }
+    [Parameter]
+    public AccountRegisterData AccountData { get; set; }
+
+    //private async Task HandleValidSubmit(EditContext editContext)
+    //{
+    //    usernameValidator.ClearErrors();
+
+    //    var errors = new Dictionary<string, List<string>>();
+    //    errors.Add("UsernameValidation", new List<string>());
+
+    //    try
+    //    {
+    //        var validationResult = await _authService.ValidateUsername(AccountData.Email);
+    //        if (validationResult == "duplicate")
+    //        {
+    //            errors["UsernameValidation"].Add("That email is already in use.");
+    //            usernameValidator.DisplayErrors(errors);
+    //        }
+    //        else if (validationResult == "null")
+    //        {
+    //            errors["UsernameValidation"].Add("There was an error in validating the entered email.");
+    //            usernameValidator.DisplayErrors(errors);
+    //        }
+    //        else
+    //        {
+    //            await GoToNextSection();
+    //        }
+    //    }
+    //    catch (Exception)
+    //    {
+    //        errors["UsernameValidation"].Add("There was an error in validating the entered email.");
+    //        usernameValidator.DisplayErrors(errors);
+    //        throw;
+    //    }
+    //}
 
     protected override async Task GoToNextSection()
     {
-        data = accountData;
+        await AccountDataChanged.InvokeAsync(AccountData);
         await base.GoToNextSection();
+    }
+
+    protected override async Task HandlePreviousSectionRequested()
+    {
+        await AccountDataChanged.InvokeAsync(AccountData);
+        await base.HandlePreviousSectionRequested();
+    }
+
+    protected override async Task HandleDifferentSectionRequested()
+    {
+        await AccountDataChanged.InvokeAsync(AccountData);
+        await base.HandlePreviousSectionRequested();
     }
 }
 
 
 <h5>What email and password would you like to use?</h5>
 <br/>
-<EditForm Model="accountData" OnValidSubmit="@GoToNextSection">
+<EditForm Model="AccountData" OnValidSubmit="@GoToNextSection">
     <DataAnnotationsValidator />
+    <UsernameValidator @ref="usernameValidator"/>
     <div class="form-group">
         <label for="email" class="form-label">Email:</label>
         <div>
-            <SfTextBox ID="email" c @bind-Value="accountData.Email" />
-            <ValidationMessage For="@(() =>accountData.Email)" />
+            <SfTextBox ID="email" @bind-Value="AccountData.Email" />
+            <ValidationMessage For="@(() =>AccountData.Email)" />
         </div>
     </div>
     <div class="form-group">
         <label for="password" class="form-label">Password:</label>
         <div>
-            <SfTextBox ID="password" Type="InputType.Password" @bind-Value="accountData.Password" />
-            <ValidationMessage For="@(() => accountData.Password)" />
+            <SfTextBox ID="password" Type="InputType.Password" @bind-Value="AccountData.Password" />
+            <ValidationMessage For="@(() => AccountData.Password)" />
         </div>
     </div>
     <div class="form-group">
         <label for="confirm-password" class="form-label">Confirm Password:</label>
         <div>
-            <SfTextBox ID="confirm-password" Type="InputType.Password" @bind-Value="accountData.ConfirmPassword" />
-            <ValidationMessage For="@(() => accountData.ConfirmPassword)" />
+            <SfTextBox ID="confirm-password" Type="InputType.Password" @bind-Value="AccountData.ConfirmPassword" />
+            <ValidationMessage For="@(() => AccountData.ConfirmPassword)" />
         </div>
     </div>
-    <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested"/>
+    <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested" Progress="1"/>
 </EditForm>
 

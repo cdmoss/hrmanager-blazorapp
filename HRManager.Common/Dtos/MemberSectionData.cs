@@ -5,14 +5,19 @@ using System.Text;
 
 namespace HRManager.Common.Dtos
 {
-    public abstract class RegisterSectionData
+    public abstract class MemberSectionData
     {
-        public virtual void AddSectionToMainDto(MemberRegisterDto mainDto)
-        {
-
-        }
+        
     }
-    public class AccountData : RegisterSectionData
+
+    public class AccountData : MemberSectionData
+    {
+        [Required(ErrorMessage = "A valid email is required")]
+        [EmailAddress]
+        public string Email { get; set; }
+    }
+
+    public class AccountRegisterData : MemberSectionData
     {
         [Required(ErrorMessage = "A valid email is required")]
         [EmailAddress]
@@ -23,16 +28,9 @@ namespace HRManager.Common.Dtos
         [RegularExpression(Constants.Regex.Password, ErrorMessage = "Your password must be at least 8 characters and contain one uppercase letter, one lowercase letter, one number and one special character")]
         [Compare(nameof(Password), ErrorMessage = "The entered passwords don't match")]
         public string ConfirmPassword { get; set; }
-
-        public override void AddSectionToMainDto(MemberRegisterDto mainDto)
-        {
-            mainDto.Email = Email;
-            mainDto.Password = Password;
-            mainDto.ConfirmPassword = ConfirmPassword;
-        }
     }
 
-    public class PersonalAndContactData : RegisterSectionData
+    public class PersonalAndContactData : MemberSectionData
     {
         [Required]
         [Display(Name = "First Name (Required)")]
@@ -63,7 +61,7 @@ namespace HRManager.Common.Dtos
         [Required]
         [Display(Name = "Birth Date (Required)")]
         [DataType(DataType.Date)]
-        public DateTime? Birthdate { get; set; }
+        public DateTime Birthdate { get; set; }
         [Required]
         [Display(Name = "Full Name of Emergency Contact (Required)")]
         public string EmergencyFullName { get; set; }
@@ -77,34 +75,20 @@ namespace HRManager.Common.Dtos
         [Required]
         [Display(Name = "Relationship to Emergency Contact (Required)")]
         public string EmergencyRelationship { get; set; }
-
-        public override void AddSectionToMainDto(MemberRegisterDto mainDto)
-        {
-            mainDto.FirstName = FirstName;
-            mainDto.LastName = LastName;
-            mainDto.Address = Address;
-            mainDto.City = City;
-            mainDto.MainPhone = MainPhone;
-            mainDto.AlternatePhone1 = AlternatePhone1;
-            mainDto.AlternatePhone2 = AlternatePhone2;
-            mainDto.EmergencyPhone1 = EmergencyPhone2;
-            mainDto.EmergencyRelationship = EmergencyRelationship;
-            mainDto.EmergencyFullName = EmergencyFullName;
-            mainDto.PostalCode = PostalCode;
-        }
     }
 
-    public class PreferredPositionsData : RegisterSectionData
+    public class PreferredPositionsData : MemberSectionData
     {
-        public IList<Position> Positions { get; set; } = new List<Position>();
-
-        public override void AddSectionToMainDto(MemberRegisterDto mainDto)
+        // this class is to get around a bug preventing us from binding a checkbox to a dictionary value
+        public class PositonSelection
         {
-            mainDto.Positions = Positions;
+            public bool PositionWasSelected { get; set; }
         }
+
+        public Dictionary<int, PositonSelection> SelectedPositions { get; set; } = new Dictionary<int, PositonSelection>();
     }
 
-    public class QualificationsData : RegisterSectionData
+    public class QualificationsData 
     {
         [Display(Name = "Education and Training")]
         public string EducationTraining { get; set; }
@@ -114,19 +98,10 @@ namespace HRManager.Common.Dtos
         public string Experience { get; set; }
         [Display(Name = "Other Boards You've Appeared On")]
         public string OtherBoards { get; set; }
-        public IList<WorkExperienceDto> WorkExperiences { get; set; } = new List<WorkExperienceDto>();
-
-        public override void AddSectionToMainDto(MemberRegisterDto mainDto)
-        {
-            mainDto.EducationTraining = EducationTraining;
-            mainDto.Experience = Experience;
-            mainDto.SkillsInterestsHobbies = SkillsInterestsHobbies;
-            mainDto.OtherBoards = OtherBoards;
-            mainDto.WorkExperiences = WorkExperiences;
-        }
+        public List<WorkExperienceDto> WorkExperiences { get; set; } = new List<WorkExperienceDto>() { new WorkExperienceDto() };
     }
 
-    public class CertificatesData : RegisterSectionData
+    public class CertificatesData : MemberSectionData
     {
         [Display(Name = "Food Safe")]
         public bool FoodSafe { get; set; }
@@ -140,25 +115,10 @@ namespace HRManager.Common.Dtos
         public DateTime? FirstAidCprExpiry { get; set; }
         [Display(Name = "Other Certificates")]
         public string OtherCertificates { get; set; }
-
-        public override void AddSectionToMainDto(MemberRegisterDto mainDto)
-        {
-            mainDto.FirstAidCpr = FirstAidCpr;
-            mainDto.FirstAidCprExpiry = FirstAidCprExpiry;
-            mainDto.FirstAidCprLevel = FirstAidCprLevel;
-            mainDto.FoodSafe = FoodSafe;
-            mainDto.FoodSafeExpiry = FoodSafeExpiry;
-            mainDto.OtherCertificates = OtherCertificates;
-        }
     }
 
-    public class AvailabilitiesData : RegisterSectionData
+    public class AvailabilitiesData : MemberSectionData
     {
-        public IList<AvailabilityDto> Availabilities { get; set; }
-
-        public override void AddSectionToMainDto(MemberRegisterDto mainDto)
-        {
-            mainDto.Availabilities = Availabilities;
-        }
+        public Dictionary<DayOfWeek, List<AvailabilityDto>> Availabilities { get; set; } = new Dictionary<DayOfWeek, List<AvailabilityDto>>();
     }
 }

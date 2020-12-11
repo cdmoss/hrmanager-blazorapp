@@ -93,12 +93,12 @@ namespace HRManager.Common
                 return Enum.GetName(typeof(ApprovalStatus), ApprovalStatus);
             }
         }
-        public IList<Reference> References { get; set; }
-        public IList<WorkExperience> WorkExperiences { get; set; }
-        public IList<Shift> Shifts { get; set; }
-        public IList<Availability> Availabilities { get; set; }
-        public IList<PositionMember> Positions { get; set; }
-        public IList<Alert> Alerts { get; set; }
+        public List<Reference> References { get; set; }
+        public List<WorkExperience> WorkExperiences { get; set; }
+        public List<Shift> Shifts { get; set; }
+        public List<Availability> Availabilities { get; set; }
+        public List<PositionMember> Positions { get; set; }
+        public List<Alert> Alerts { get; set; }
         public bool IsStaff { get; set; }
         public int UserID { get; set; }
         public UserProfile User { get; set; }

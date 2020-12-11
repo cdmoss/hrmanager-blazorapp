@@ -117,6 +117,13 @@ using Syncfusion.Blazor.Buttons;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 1 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\AccountCreds.razor"
+using Blazor.Services;
+
+#line default
+#line hidden
+#nullable disable
     public partial class AccountCreds : RegisterSectionBase
     {
         #pragma warning disable 1998
@@ -125,24 +132,70 @@ using Syncfusion.Blazor.Buttons;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 3 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\AccountCreds.razor"
-             
-    private AccountData accountData = new AccountData();
+#line 5 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\AccountCreds.razor"
+       
+    private UsernameValidator usernameValidator;
 
-    protected override void OnInitialized()
-    {
-        accountData = new AccountData();
-    }
+    [Parameter]
+    public EventCallback<AccountRegisterData> AccountDataChanged { get; set; }
+    [Parameter]
+    public AccountRegisterData AccountData { get; set; }
+
+    //private async Task HandleValidSubmit(EditContext editContext)
+    //{
+    //    usernameValidator.ClearErrors();
+
+    //    var errors = new Dictionary<string, List<string>>();
+    //    errors.Add("UsernameValidation", new List<string>());
+
+    //    try
+    //    {
+    //        var validationResult = await _authService.ValidateUsername(AccountData.Email);
+    //        if (validationResult == "duplicate")
+    //        {
+    //            errors["UsernameValidation"].Add("That email is already in use.");
+    //            usernameValidator.DisplayErrors(errors);
+    //        }
+    //        else if (validationResult == "null")
+    //        {
+    //            errors["UsernameValidation"].Add("There was an error in validating the entered email.");
+    //            usernameValidator.DisplayErrors(errors);
+    //        }
+    //        else
+    //        {
+    //            await GoToNextSection();
+    //        }
+    //    }
+    //    catch (Exception)
+    //    {
+    //        errors["UsernameValidation"].Add("There was an error in validating the entered email.");
+    //        usernameValidator.DisplayErrors(errors);
+    //        throw;
+    //    }
+    //}
 
     protected override async Task GoToNextSection()
     {
-        data = accountData;
+        await AccountDataChanged.InvokeAsync(AccountData);
         await base.GoToNextSection();
+    }
+
+    protected override async Task HandlePreviousSectionRequested()
+    {
+        await AccountDataChanged.InvokeAsync(AccountData);
+        await base.HandlePreviousSectionRequested();
+    }
+
+    protected override async Task HandleDifferentSectionRequested()
+    {
+        await AccountDataChanged.InvokeAsync(AccountData);
+        await base.HandlePreviousSectionRequested();
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAuthService _authService { get; set; }
     }
 }
 #pragma warning restore 1591

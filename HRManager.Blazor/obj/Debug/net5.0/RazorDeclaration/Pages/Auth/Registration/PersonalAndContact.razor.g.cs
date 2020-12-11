@@ -134,12 +134,27 @@ using Syncfusion.Blazor.Calendars;
 #nullable restore
 #line 4 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\PersonalAndContact.razor"
        
-    private PersonalAndContactData personalData = new PersonalAndContactData() { Birthdate = DateTime.Now };
+    [Parameter]
+    public EventCallback<PersonalAndContactData> PersonalDataChanged { get; set; }
+    [Parameter]
+    public PersonalAndContactData PersonalData { get; set; }
 
     protected override async Task GoToNextSection()
     {
-        data = personalData;
+        await PersonalDataChanged.InvokeAsync(PersonalData);
         await base.GoToNextSection();
+    }
+
+    protected override async Task HandlePreviousSectionRequested()
+    {
+        await PersonalDataChanged.InvokeAsync(PersonalData);
+        await base.HandlePreviousSectionRequested();
+    }
+
+    protected override async Task HandleDifferentSectionRequested()
+    {
+        await PersonalDataChanged.InvokeAsync(PersonalData);
+        await base.HandlePreviousSectionRequested();
     }
 
 #line default

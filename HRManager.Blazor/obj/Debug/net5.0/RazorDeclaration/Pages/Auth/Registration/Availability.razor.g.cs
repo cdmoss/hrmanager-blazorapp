@@ -134,21 +134,39 @@ using Syncfusion.Blazor.Navigations;
 #nullable restore
 #line 4 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\Availability.razor"
        
-    private AvailabilitiesData availData = new AvailabilitiesData() { Availabilities = new List<AvailabilityDto>() };
-    private Dictionary<DayOfWeek, List<AvailabilityDto>> AllAvailabilities = new Dictionary<DayOfWeek, List<AvailabilityDto>>();
+    [Parameter]
+    public EventCallback<AvailabilitiesData> AvailabilitiesDataChanged { get; set; }
+    [Parameter]
+    public AvailabilitiesData AvailabilitiesData { get; set; }
+
 
     protected override void OnInitialized()
     {
-        foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+        if (!AvailabilitiesData.Availabilities.Any())
         {
-            AllAvailabilities.Add((DayOfWeek)day, new List<AvailabilityDto>());
+            foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+            {
+                AvailabilitiesData.Availabilities.Add((DayOfWeek)day, new List<AvailabilityDto>());
+            }
         }
     }
 
     protected override async Task GoToNextSection()
     {
-        data = availData;
+        await AvailabilitiesDataChanged.InvokeAsync(AvailabilitiesData);
         await base.GoToNextSection();
+    }
+
+    protected override async Task HandlePreviousSectionRequested()
+    {
+        await AvailabilitiesDataChanged.InvokeAsync(AvailabilitiesData);
+        await base.HandlePreviousSectionRequested();
+    }
+
+    protected override async Task HandleDifferentSectionRequested()
+    {
+        await AvailabilitiesDataChanged.InvokeAsync(AvailabilitiesData);
+        await base.HandlePreviousSectionRequested();
     }
 
 #line default

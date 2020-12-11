@@ -9,25 +9,24 @@ namespace HRManager.Blazor.Pages.Auth.Registration
 {
     public class RegisterSectionBase : ComponentBase
     {
-        public RegisterSectionData data { get; set; }
         [Parameter]
-        public EventCallback<RegisterSectionData> SectionCompleted { get; set; }
+        public EventCallback<MemberSectionData> SectionCompleted { get; set; }
         [Parameter]
-        public EventCallback PreviousSectionRequested { get; set; }
+        public EventCallback<MemberSectionData> PreviousSectionRequested { get; set; }
         [Parameter]
-        public EventCallback DifferentSectionRequested { get; set; }
+        public EventCallback<MemberSectionData> DifferentSectionRequested { get; set; }
 
         protected virtual async Task GoToNextSection()
         {
-            await SectionCompleted.InvokeAsync(data);
+            await SectionCompleted.InvokeAsync();
         }
 
-        protected async Task HandlePreviousSectionRequested()
+        protected virtual async Task HandlePreviousSectionRequested()
         {
             await PreviousSectionRequested.InvokeAsync();
         }
 
-        protected async Task HandleDifferentSectionRequested()
+        protected virtual async Task HandleDifferentSectionRequested()
         {
             await DifferentSectionRequested.InvokeAsync();
         }

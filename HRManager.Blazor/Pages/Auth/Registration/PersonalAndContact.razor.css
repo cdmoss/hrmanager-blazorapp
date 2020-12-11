@@ -1,5 +1,6 @@
 ﻿#form-container {
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:
         "first-name first-name last-name last-name birthdate birthdate"
         "address address city city postal-code postal-code"

@@ -132,56 +132,74 @@ using Syncfusion.Blazor.Calendars;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 13 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Shared\SfTimeRangePicker.razor"
+#line 3 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Shared\SfTimeRangePicker.razor"
        
     [Parameter]
     public TimeSpan InitialStart { get; set; }
     [Parameter]
     public TimeSpan InitialEnd { get; set; }
     [Parameter]
+    public bool IsModified { get; set; }
+    [Parameter]
     public TimeSpan Start { get; set; }
     [Parameter]
     public TimeSpan End { get; set; }
     [Parameter]
+    public EventCallback<bool> IsModifiedChanged { get; set; }
+    [Parameter]
     public EventCallback<TimeSpan> StartChanged { get; set; }
     [Parameter]
     public EventCallback<TimeSpan> EndChanged { get; set; }
+    [Parameter]
+    public EventCallback AvailbilityChanged { get; set; }
 
     private DateTime StartMin { get; set; } = DateTime.Now.Date;
     private DateTime StartMax { get; set; } = DateTime.Now.Date.AddHours(23);
     private DateTime EndMin { get; set; } = DateTime.Now.Date;
     private DateTime EndMax { get; set; } = DateTime.Now.Date.AddHours(23);
 
-    //protected override void OnAfterRender(bool firstRender)
-    //{
-    //    if (firstRender)
-    //    {
-    //        Start = InitialStart;
-    //        End = InitialEnd;
-    //        StateHasChanged();
-    //    }
-    //}
-
-    private void StartWasChanged(Syncfusion.Blazor.Calendars.ChangeEventArgs<TimeSpan> args)
+    protected override async Task OnInitializedAsync()
     {
+        if (!IsModified)
+        {
+            Start = InitialStart;
+            End = InitialEnd;
+            await StartChanged.InvokeAsync(Start);
+            await EndChanged.InvokeAsync(End);
+        }
+    }
+
+    private async Task  StartWasChanged(Syncfusion.Blazor.Calendars.ChangeEventArgs<TimeSpan> args)
+    {
+        IsModified = true;
+        IsModifiedChanged.InvokeAsync(IsModified);
+
         Start = args.Value;
         EndMin = DateTime.Now.Date + Start;
         if (End < Start)
         {
             End = Start;
+            EndChanged.InvokeAsync(End);
+            Start = args.Value;
         }
-        StartChanged.InvokeAsync(Start);
+        await StartChanged.InvokeAsync(Start);
+        await AvailbilityChanged.InvokeAsync();
     }
 
-    private void EndWasChanged(Syncfusion.Blazor.Calendars.ChangeEventArgs<TimeSpan> args)
+    private async Task EndWasChanged(Syncfusion.Blazor.Calendars.ChangeEventArgs<TimeSpan> args)
     {
+        IsModified = true;
+
         End = args.Value;
         StartMax = DateTime.Now.Date + End;
         if (Start > End)
         {
             Start = End;
+            StartChanged.InvokeAsync(Start);
+            End = args.Value;
         }
-        StartChanged.InvokeAsync(End);
+        await EndChanged.InvokeAsync(End);
+        await AvailbilityChanged.InvokeAsync();
     }
 
 #line default

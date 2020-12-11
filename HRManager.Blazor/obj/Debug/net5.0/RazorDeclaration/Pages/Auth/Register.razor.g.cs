@@ -148,21 +148,29 @@ using HRManager.Blazor.Pages.Auth.Registration;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Register.razor"
+#line 10 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Register.razor"
        
-        // TODO: Add redirect URI
+    // TODO: Add redirect URI
 
-        // must create instance of model to be bound*******
+    // must create instance of model to be bound*******
     private MemberRegisterDto mainDto = new MemberRegisterDto() { };
+    private RegisterResult result = new RegisterResult() { };
     private int currentSection = 1;
-
+    private bool loadingSubmission = false;
     private bool ShowErrors;
     private IEnumerable<string> Errors;
 
-    private void HandleSectionCompleted<TSection>(RegisterSectionData sectionData) where TSection : RegisterSectionData
+    private async Task SubmitRegistration()
+    {
+        loadingSubmission = true;
+        currentSection++;
+        result = await _authService.Register(mainDto);
+        loadingSubmission = false;
+    }
+
+    private void HandleSectionCompleted()
     {
         currentSection++;
-        ((TSection)sectionData).AddSectionToMainDto(mainDto);
         StateHasChanged();
     }
 
@@ -172,14 +180,10 @@ using HRManager.Blazor.Pages.Auth.Registration;
         StateHasChanged();
     }
 
-    private void HandleRegistrationSubmitted(RegisterResult result)
-    {
-
-    }
-
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAuthService _authService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager _nav { get; set; }
     }
 }

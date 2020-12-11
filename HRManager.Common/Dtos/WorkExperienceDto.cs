@@ -6,6 +6,7 @@ namespace HRManager.Common.Dtos
     public class WorkExperienceDto
     {
         public int Id { get; set; }
+        public int MemberAdminReadDtoId { get; set; }
         [Display(Name = "Employer Name")]
         public string EmployerName { get; set; }
         [Display(Name = "Employer Address")]

@@ -134,17 +134,27 @@ using Syncfusion.Blazor.Buttons;
 #nullable restore
 #line 5 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\Qualifications.razor"
        
-    private QualificationsData qualData { get; set; } = new QualificationsData();
-
-    protected override void OnInitialized()
-    {
-        qualData.WorkExperiences.Add(new WorkExperienceDto());
-    }
+    [Parameter]
+    public EventCallback<QualificationsData> QualificationsDataChanged { get; set; }
+    [Parameter]
+    public QualificationsData QualificationsData { get; set; }
 
     protected override async Task GoToNextSection()
     {
-        data = qualData;
+        await QualificationsDataChanged.InvokeAsync(QualificationsData);
         await base.GoToNextSection();
+    }
+
+    protected override async Task HandlePreviousSectionRequested()
+    {
+        await QualificationsDataChanged.InvokeAsync(QualificationsData);
+        await base.HandlePreviousSectionRequested();
+    }
+
+    protected override async Task HandleDifferentSectionRequested()
+    {
+        await QualificationsDataChanged.InvokeAsync(QualificationsData);
+        await base.HandlePreviousSectionRequested();
     }
 
     private void HandleCurrentJobCheckChanged()

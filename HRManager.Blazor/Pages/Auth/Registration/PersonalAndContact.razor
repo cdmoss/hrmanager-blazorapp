@@ -2,111 +2,126 @@
 @inherits RegisterSectionBase
 
 @code {
-    private PersonalAndContactData personalData = new PersonalAndContactData() { Birthdate = DateTime.Now };
+    [Parameter]
+    public EventCallback<PersonalAndContactData> PersonalDataChanged { get; set; }
+    [Parameter]
+    public PersonalAndContactData PersonalData { get; set; }
 
     protected override async Task GoToNextSection()
     {
-        data = personalData;
+        await PersonalDataChanged.InvokeAsync(PersonalData);
         await base.GoToNextSection();
+    }
+
+    protected override async Task HandlePreviousSectionRequested()
+    {
+        await PersonalDataChanged.InvokeAsync(PersonalData);
+        await base.HandlePreviousSectionRequested();
+    }
+
+    protected override async Task HandleDifferentSectionRequested()
+    {
+        await PersonalDataChanged.InvokeAsync(PersonalData);
+        await base.HandlePreviousSectionRequested();
     }
 }
 
 <h5>Tell us a bit about yourself and how to contact you</h5>
 <br />
-<EditForm Model="personalData" OnValidSubmit="@GoToNextSection">
+<EditForm Model="PersonalData" OnValidSubmit="@GoToNextSection">
     <DataAnnotationsValidator />
     <div id="form-container">
         <div id="first-name" class="form-group">
             <label class="form-label">First Name:</label>
             <div>
-                <SfTextBox Type="InputType.Text" @bind-Value="personalData.FirstName" />
-                <ValidationMessage For="@(() => personalData.FirstName)" />
+                <SfTextBox Type="InputType.Text" @bind-Value="PersonalData.FirstName" />
+                <ValidationMessage For="@(() => PersonalData.FirstName)" />
             </div>
         </div>
         <div id="last-name" class="form-group">
             <label class="form-label">Last Name:</label>
             <div>
-                <SfTextBox Type="InputType.Text" @bind-Value="personalData.LastName" />
-                <ValidationMessage For="@(() => personalData.LastName)" />
+                <SfTextBox Type="InputType.Text" @bind-Value="PersonalData.LastName" />
+                <ValidationMessage For="@(() => PersonalData.LastName)" />
             </div>
         </div>
         <div id="birthdate" class="form-group">
             <label class="form-label">Date of Birth: <Tooltip Text="You can quickly navigate to a different month by clicking on the name of the month at the top, or to a different year by clicking on the name of the month then on the year.">(Trouble using date selector?)</Tooltip></label>
             <div>
-                <SfDatePicker StrictMode="true" @bind-Value="personalData.Birthdate" />
-                <ValidationMessage For="@(() => personalData.Birthdate)" />
+                <SfDatePicker StrictMode="true" @bind-Value="PersonalData.Birthdate" />
+                <ValidationMessage For="@(() => PersonalData.Birthdate)" />
             </div>
         </div>
         <div id="address" class="form-group">
             <label class="form-label">Address:</label>
             <div>
-                <SfTextBox Type="InputType.Text" @bind-Value="personalData.Address" />
-                <ValidationMessage For="@(() => personalData.Address)" />
+                <SfTextBox Type="InputType.Text" @bind-Value="PersonalData.Address" />
+                <ValidationMessage For="@(() => PersonalData.Address)" />
             </div>
         </div>
         <div id="city" class="form-group">
             <label class="form-label">City:</label>
             <div>
-                <SfTextBox Type="InputType.Text" @bind-Value="personalData.City" />
-                <ValidationMessage For="@(() => personalData.City)" />
+                <SfTextBox Type="InputType.Text" @bind-Value="PersonalData.City" />
+                <ValidationMessage For="@(() => PersonalData.City)" />
             </div>
         </div>
         <div id="postal-code" class="form-group">
             <label class="form-label">Postal Code:</label>
             <div>
-                <SfTextBox Type="InputType.Text" @bind-Value="personalData.PostalCode" />
-                <ValidationMessage For="@(() => personalData.PostalCode)" />
+                <SfTextBox Type="InputType.Text" @bind-Value="PersonalData.PostalCode" />
+                <ValidationMessage For="@(() => PersonalData.PostalCode)" />
             </div>
         </div>
         <div id="main-phone" class="form-group">
             <label class="form-label">Main Phone:</label>
             <div>
-                <SfTextBox Type="InputType.Tel" @bind-Value="personalData.MainPhone" />
-                <ValidationMessage For="@(() => personalData.FirstName)" />
+                <SfTextBox Type="InputType.Tel" @bind-Value="PersonalData.MainPhone" />
+                <ValidationMessage For="@(() => PersonalData.FirstName)" />
             </div>
         </div>
         <div id="alt-phone-1" class="form-group">
             <label class="form-label">Alternate Phone 1 (Optional):</label>
             <div>
-                <SfTextBox Type="InputType.Tel" @bind-Value="personalData.AlternatePhone1" />
-                <ValidationMessage For="@(() => personalData.AlternatePhone1)" />
+                <SfTextBox Type="InputType.Tel" @bind-Value="PersonalData.AlternatePhone1" />
+                <ValidationMessage For="@(() => PersonalData.AlternatePhone1)" />
             </div>
         </div>
         <div id="alt-phone-2" class="form-group">
             <label class="form-label">Alternate Phone 2 (Optional):</label>
             <div>
-                <SfTextBox Type="InputType.Tel" @bind-Value="personalData.AlternatePhone2" />
+                <SfTextBox Type="InputType.Tel" @bind-Value="PersonalData.AlternatePhone2" />
             </div>
         </div>
         <div id="emergency-contact" class="form-group">
             <label class="form-label">Full Name of Emergency Contact:</label>
             <div>
-                <SfTextBox Type="InputType.Text" @bind-Value="personalData.EmergencyFullName" />
-                <ValidationMessage For="@(() => personalData.EmergencyFullName)" />
+                <SfTextBox Type="InputType.Text" @bind-Value="PersonalData.EmergencyFullName" />
+                <ValidationMessage For="@(() => PersonalData.EmergencyFullName)" />
             </div>
         </div>
         <div id="emergency-relationship" class="form-group">
             <label class="form-label">Relationship to Emergency Contact:</label>
             <div>
-                <SfTextBox Type="InputType.Text" @bind-Value="personalData.EmergencyRelationship" />
-                <ValidationMessage For="@(() => personalData.EmergencyRelationship)" />
+                <SfTextBox Type="InputType.Text" @bind-Value="PersonalData.EmergencyRelationship" />
+                <ValidationMessage For="@(() => PersonalData.EmergencyRelationship)" />
             </div>
         </div>
         <div id="emergency-phone-1" class="form-group">
             <label class="form-label">Emergency Phone 1:</label>
             <div>
-                <SfTextBox Type="InputType.Tel" @bind-Value="personalData.EmergencyPhone1" />
-                <ValidationMessage For="@(() => personalData.EmergencyPhone1)" />
+                <SfTextBox Type="InputType.Tel" @bind-Value="PersonalData.EmergencyPhone1" />
+                <ValidationMessage For="@(() => PersonalData.EmergencyPhone1)" />
             </div>
         </div>
         <div id="emergency-phone-2" class="form-group">
             <label class="form-label">Emergency Phone 2 (Optional):</label>
             <div>
-                <SfTextBox Type="InputType.Tel" @bind-Value="personalData.EmergencyPhone2" />
-                <ValidationMessage For="@(() => personalData.EmergencyPhone2)" />
+                <SfTextBox Type="InputType.Tel" @bind-Value="PersonalData.EmergencyPhone2" />
+                <ValidationMessage For="@(() => PersonalData.EmergencyPhone2)" />
             </div>
         </div>
     </div>
-    <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested" />
+    <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested" Progress="2"/>
 </EditForm>
 

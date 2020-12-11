@@ -117,6 +117,13 @@ using Syncfusion.Blazor.Buttons;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 1 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\RegisterSectionButtonContainer.razor"
+using Syncfusion.Blazor.ProgressBar;
+
+#line default
+#line hidden
+#nullable disable
     public partial class RegisterSectionButtonContainer : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -125,10 +132,12 @@ using Syncfusion.Blazor.Buttons;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 1 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\RegisterSectionButtonContainer.razor"
+#line 3 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\RegisterSectionButtonContainer.razor"
        
     [Parameter]
     public EventCallback<string> PreviousSectionRequested { get; set; }
+    [Parameter]
+    public int Progress { get; set; }
 
     private async Task GoToPreviousSection()
     {

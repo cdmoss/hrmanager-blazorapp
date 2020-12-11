@@ -3,9 +3,9 @@
 
 @code {
     [Parameter]
-    public EventCallback<List<AvailabilityDto>> AvailbilitiesChanged { get; set; }
-    [Parameter]
     public List<AvailabilityDto> Availabilities { get; set; }
+    [Parameter]
+    public EventCallback<List<AvailabilityDto>> AvailabilitiesChanged { get; set; }
 
     private void AddTime()
     {
@@ -18,13 +18,18 @@
         Availabilities.Remove(availability);
         StateHasChanged();
     }
+
+    private async Task HandleAvailabilitiesChanged()
+    {
+        await AvailabilitiesChanged.InvokeAsync(Availabilities);
+    }
 }
 
 <div id="day-container" class="mt-3">
     @foreach (var availability in Availabilities)
     {
     <div class="d-flex">
-        <SfTimeRangePicker InitialStart="new TimeSpan(8,0,0)" InitialEnd="new TimeSpan(16,0,0)" @bind-Start="availability.StartTime" @bind-End="availability.EndTime" />
+        <SfTimeRangePicker InitialStart="new TimeSpan(8,0,0)" InitialEnd="new TimeSpan(16,0,0)" @bind-Start="availability.StartTime" @bind-End="availability.EndTime" @bind-IsModified="availability.IsModified" AvailbilityChanged="HandleAvailabilitiesChanged" />
         <div id="remove" @onclick="@(rt => RemoveTime(availability))"><i class="fas fa-times"></i></div>
     </div>
     }

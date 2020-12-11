@@ -5,21 +5,30 @@
 @using HRManager.Blazor.Services
 @using HRManager.Blazor.Pages.Auth.Registration
 @inject NavigationManager _nav
+@inject IAuthService _authService 
 
 @code {
-        // TODO: Add redirect URI
+    // TODO: Add redirect URI
 
-        // must create instance of model to be bound*******
+    // must create instance of model to be bound*******
     private MemberRegisterDto mainDto = new MemberRegisterDto() { };
+    private RegisterResult result = new RegisterResult() { };
     private int currentSection = 1;
-
+    private bool loadingSubmission = false;
     private bool ShowErrors;
     private IEnumerable<string> Errors;
 
-    private void HandleSectionCompleted<TSection>(RegisterSectionData sectionData) where TSection : RegisterSectionData
+    private async Task SubmitRegistration()
+    {
+        loadingSubmission = true;
+        currentSection++;
+        result = await _authService.Register(mainDto);
+        loadingSubmission = false;
+    }
+
+    private void HandleSectionCompleted()
     {
         currentSection++;
-        ((TSection)sectionData).AddSectionToMainDto(mainDto);
         StateHasChanged();
     }
 
@@ -27,11 +36,6 @@
     {
         currentSection--;
         StateHasChanged();
-    }
-
-    private void HandleRegistrationSubmitted(RegisterResult result)
-    {
-
     }
 }
 
@@ -56,26 +60,32 @@
                 _nav.NavigateTo("/auth/login");
                 break;
             case 1:
-                <Availability SectionCompleted="HandleSectionCompleted<AvailabilitiesData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
-                @*<AccountCreds SectionCompleted="HandleSectionCompleted<AccountData>" PreviousSectionRequested="HandlePreviousSectionRequested" />*@
+                <AccountCreds @bind-AccountData="mainDto.Account" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
                 break;
             case 2:
-                <PersonalAndContact SectionCompleted="HandleSectionCompleted<PersonalAndContactData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                <PersonalAndContact @bind-PersonalData="mainDto.Personal" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
                 break;
             case 3:
-                <PreferredPositions SectionCompleted="HandleSectionCompleted<PreferredPositionsData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                <PreferredPositions @bind-PositionsData="mainDto.Positions" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
                 break;
             case 4:
-                @*<Availability SectionCompleted="HandleSectionCompleted<AvailabilitiesData>" PreviousSectionRequested="HandlePreviousSectionRequested" />*@
+                <Availability @bind-AvailabilitiesData="mainDto.Availabilities" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
                 break;
             case 5:
-                <Qualifications SectionCompleted="HandleSectionCompleted<QualificationsData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                <Qualifications @bind-QualificationsData="mainDto.Qualifications" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
                 break;
             case 6:
-                <Certificates SectionCompleted="HandleSectionCompleted<CertificatesData>" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                <Certificates @bind-CertData="mainDto.Certificates" SectionCompleted="SubmitRegistration" PreviousSectionRequested="HandlePreviousSectionRequested" />
                 break;
             case 7:
-                <Review />
+                if (loadingSubmission)
+                {
+                    <p>Waiting for your application to be verified...</p>
+                }
+                else
+                {
+                    <Result RegisterResult="result" />
+                }
                 break;
         }
     </div>

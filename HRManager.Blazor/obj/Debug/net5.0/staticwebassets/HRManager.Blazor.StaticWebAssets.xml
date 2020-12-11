@@ -2,5 +2,6 @@
   <ContentRoot BasePath="/" Path="C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\bin\Debug\net5.0\wwwroot\" />
   <ContentRoot BasePath="/" Path="C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\bundle\" />
   <ContentRoot BasePath="_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication" Path="C:\Users\Chase\.nuget\packages\microsoft.aspnetcore.components.webassembly.authentication\5.0.0\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Radzen.Blazor" Path="C:\Users\Chase\.nuget\packages\radzen.blazor\2.18.3\build\..\staticwebassets\" />
   <ContentRoot BasePath="_content/Syncfusion.Blazor" Path="C:\Users\Chase\.nuget\packages\syncfusion.blazor\18.3.0.47\build\..\staticwebassets\" />
 </StaticWebAssets>

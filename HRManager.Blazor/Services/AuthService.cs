@@ -18,6 +18,7 @@ namespace HRManager.Blazor.Services
         Task<RegisterResult> Register(MemberRegisterDto dto);
         Task<LoginResult> Login(LoginDto dto);
         Task Logout();
+        Task<string> ValidateUsername(string username);
     }
 
     public class AuthService : IAuthService
@@ -62,14 +63,14 @@ namespace HRManager.Blazor.Services
         {
             var response = await _http.PostAsJsonAsync("auth/register", dto);
 
-            if (!response.IsSuccessStatusCode)
-            {
-                var responseString = await response.Content.ReadAsStringAsync();
-                var result = JsonSerializer.Deserialize<RegisterResult>(responseString, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                return new RegisterResult { Successful = false };
-            }
+            return await response.Content.ReadFromJsonAsync<RegisterResult>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
 
-            return new RegisterResult { Successful = true };
+        public async Task<string> ValidateUsername(string username) 
+        {
+            var response = await _http.GetAsync($"auth/validate-username/{username}");
+
+            return await response.Content.ReadAsStringAsync();
         }
     }
 }

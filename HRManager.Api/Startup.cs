@@ -13,7 +13,7 @@ using HRManager.Api.Data;
 using HRManager.Api.Services;
 using HRManager.Common;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Net.Http.Headers;
+using AutoMapper;
 
 namespace HRManager.Api
 {
@@ -61,8 +61,11 @@ namespace HRManager.Api
                 };
             });
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddScoped<IDbSeeder, DbSeeder>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IUserService, EntityUserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

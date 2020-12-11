@@ -128,9 +128,65 @@
     justify-content: center;
     align-items: center;
 }
+/* /Pages/Auth/Registration/Certificates.razor.rz.scp.css */
+#cert-container[b-206ja9dlrr] {
+    gap: 1rem;
+}
+
+#firstaid-container[b-206ja9dlrr] {
+    display: grid;
+    grid-template-columns: 7rem 10rem 10rem;
+    grid-column-gap: 1rem;
+    grid-template-areas: "checkbox expiry level";
+}
+
+.checkbox-container[b-206ja9dlrr] {
+    align-items: center;
+    grid-area: checkbox;
+}
+
+.main-label[b-206ja9dlrr] {
+    grid-area: main-label;
+}
+
+.expiry-container[b-206ja9dlrr] {
+    grid-area: expiry;
+}
+
+.level-container[b-206ja9dlrr] {
+    grid-area: level;
+}
+
+
+#foodsafe-container[b-206ja9dlrr] {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 7rem 10rem 10rem;
+    grid-column-gap: 1rem;
+    grid-template-areas: "checkbox expiry expiry";
+}
+
+.checkbox-container[b-206ja9dlrr] {
+    align-items: center;
+    grid-area: checkbox;
+}
+
+.main-label[b-206ja9dlrr] {
+    grid-area: main-label;
+}
+
+.expiry-container[b-206ja9dlrr] {
+    width: 100%;
+    grid-area: expiry;
+}
+
+.level-container[b-206ja9dlrr] {
+    grid-area: level;
+}
 /* /Pages/Auth/Registration/PersonalAndContact.razor.rz.scp.css */
 #form-container[b-7kdqrhkssl] {
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:
         "first-name first-name last-name last-name birthdate birthdate"
         "address address city city postal-code postal-code"
@@ -259,7 +315,9 @@
 .btn-container[b-ri5iv9gfwb] {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
+/* /Pages/Auth/Registration/Result.razor.rz.scp.css */
 /* /Shared/AdminNavMenu.razor.rz.scp.css */
 .navbar-toggler[b-xf9xl9w4qg] {
     background-color: rgba(255, 255, 255, 0.1);

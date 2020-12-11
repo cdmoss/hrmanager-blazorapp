@@ -1,0 +1,54 @@
+﻿#cert-container {
+    gap: 1rem;
+}
+
+#firstaid-container {
+    display: grid;
+    grid-template-columns: 7rem 10rem 10rem;
+    grid-column-gap: 1rem;
+    grid-template-areas: "checkbox expiry level";
+}
+
+.checkbox-container {
+    align-items: center;
+    grid-area: checkbox;
+}
+
+.main-label {
+    grid-area: main-label;
+}
+
+.expiry-container {
+    grid-area: expiry;
+}
+
+.level-container {
+    grid-area: level;
+}
+
+
+#foodsafe-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 7rem 10rem 10rem;
+    grid-column-gap: 1rem;
+    grid-template-areas: "checkbox expiry expiry";
+}
+
+.checkbox-container {
+    align-items: center;
+    grid-area: checkbox;
+}
+
+.main-label {
+    grid-area: main-label;
+}
+
+.expiry-container {
+    width: 100%;
+    grid-area: expiry;
+}
+
+.level-container {
+    grid-area: level;
+}

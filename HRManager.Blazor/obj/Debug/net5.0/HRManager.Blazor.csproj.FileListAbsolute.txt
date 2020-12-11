@@ -825,3 +825,14 @@ C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\s
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Shared\SfTimeRangePicker.razor.g.cs
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Shared\SfTimeRangePicker.razor.g.cs
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Shared\SfTimeRangePicker.razor.rz.scp.css
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Pages\Auth\Registration\Certificates.razor.rz.scp.css
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\bin\Debug\net5.0\wwwroot\_framework\Radzen.Blazor.dll.gz
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\bin\Debug\net5.0\wwwroot\_framework\System.Linq.Dynamic.Core.dll.gz
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\bin\Debug\net5.0\wwwroot\_framework\Radzen.Blazor.dll
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\bin\Debug\net5.0\wwwroot\_framework\System.Linq.Dynamic.Core.dll
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\build-gz\GJ23eUPz.gz
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\build-gz\1eUm8t1b.gz
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Pages\Auth\Registration\Result.razor.rz.scp.css
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\bin\Debug\net5.0\wwwroot\_framework\FluentValidation.dll.gz
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\bin\Debug\net5.0\wwwroot\_framework\FluentValidation.dll
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\build-gz\gL+BOzbR.gz

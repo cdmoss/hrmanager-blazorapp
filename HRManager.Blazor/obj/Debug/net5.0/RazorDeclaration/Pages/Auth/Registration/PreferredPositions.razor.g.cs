@@ -134,42 +134,46 @@ using Services;
 #nullable restore
 #line 6 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\PreferredPositions.razor"
        
-    class PositonSelection
-    {
-        public bool PositionWasSelected { get; set; }
-    }
 
-    private PreferredPositionsData posData = new PreferredPositionsData();
+    [Parameter]
+    public EventCallback<PreferredPositionsData> PositionsDataChanged { get; set; }
+    [Parameter]
+    public PreferredPositionsData PositionsData { get; set; }
+
     private List<Position> positions = new List<Position>();
-    private Dictionary<Position, PositonSelection> preferredPositions = new Dictionary<Position, PositonSelection>();
 
     protected override async Task OnInitializedAsync()
     {
         positions = await _posService.GetPositions();
 
-        foreach (var pos in positions)
+        if (!PositionsData.SelectedPositions.Any())
         {
-            preferredPositions.Add(pos, new PositonSelection { PositionWasSelected = false});
+            foreach (var position in positions)
+            {
+                if (position != null)
+                {
+                    PositionsData.SelectedPositions.Add(position.Id, new PreferredPositionsData.PositonSelection() { PositionWasSelected = false });
+                }
+            }
         }
     }
 
     protected override async Task GoToNextSection()
     {
-        ExtractSelectedPositionsFromForm();
-
-        data = posData;
+        await PositionsDataChanged.InvokeAsync(PositionsData);
         await base.GoToNextSection();
     }
 
-    private void ExtractSelectedPositionsFromForm()
+    protected override async Task HandlePreviousSectionRequested()
     {
-        foreach (var pos in preferredPositions)
-        {
-            if (pos.Value.PositionWasSelected)
-            {
-                posData.Positions.Add(pos.Key);
-            }
-        }
+        await PositionsDataChanged.InvokeAsync(PositionsData);
+        await base.HandlePreviousSectionRequested();
+    }
+
+    protected override async Task HandleDifferentSectionRequested()
+    {
+        await PositionsDataChanged.InvokeAsync(PositionsData);
+        await base.HandlePreviousSectionRequested();
     }
 
 #line default

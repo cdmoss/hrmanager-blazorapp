@@ -135,9 +135,9 @@ using Syncfusion.Blazor.Inputs;
 #line 4 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\AvailabilityDay.razor"
        
     [Parameter]
-    public EventCallback<List<AvailabilityDto>> AvailbilitiesChanged { get; set; }
-    [Parameter]
     public List<AvailabilityDto> Availabilities { get; set; }
+    [Parameter]
+    public EventCallback<List<AvailabilityDto>> AvailabilitiesChanged { get; set; }
 
     private void AddTime()
     {
@@ -149,6 +149,11 @@ using Syncfusion.Blazor.Inputs;
     {
         Availabilities.Remove(availability);
         StateHasChanged();
+    }
+
+    private async Task HandleAvailabilitiesChanged()
+    {
+        await AvailabilitiesChanged.InvokeAsync(Availabilities);
     }
 
 #line default

@@ -117,6 +117,13 @@ using Syncfusion.Blazor.Buttons;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 1 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\Result.razor"
+using Common.Auth;
+
+#line default
+#line hidden
+#nullable disable
     public partial class Result : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -125,14 +132,20 @@ using Syncfusion.Blazor.Buttons;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 1 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\Result.razor"
+#line 4 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\Result.razor"
       
-    private bool ShowErrors;
-    private IEnumerable<string> Errors;
+    [Parameter]
+    public RegisterResult RegisterResult { get; set; }
+
+    private void GoToLogin()
+    {
+        _nav.NavigateTo("auth/login");
+    }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager _nav { get; set; }
     }
 }
 #pragma warning restore 1591

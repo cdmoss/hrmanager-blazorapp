@@ -3,17 +3,27 @@
 @inherits RegisterSectionBase
 
 @code {
-    private QualificationsData qualData { get; set; } = new QualificationsData();
-
-    protected override void OnInitialized()
-    {
-        qualData.WorkExperiences.Add(new WorkExperienceDto());
-    }
+    [Parameter]
+    public EventCallback<QualificationsData> QualificationsDataChanged { get; set; }
+    [Parameter]
+    public QualificationsData QualificationsData { get; set; }
 
     protected override async Task GoToNextSection()
     {
-        data = qualData;
+        await QualificationsDataChanged.InvokeAsync(QualificationsData);
         await base.GoToNextSection();
+    }
+
+    protected override async Task HandlePreviousSectionRequested()
+    {
+        await QualificationsDataChanged.InvokeAsync(QualificationsData);
+        await base.HandlePreviousSectionRequested();
+    }
+
+    protected override async Task HandleDifferentSectionRequested()
+    {
+        await QualificationsDataChanged.InvokeAsync(QualificationsData);
+        await base.HandlePreviousSectionRequested();
     }
 
     private void HandleCurrentJobCheckChanged()
@@ -25,28 +35,28 @@
 
 <h5>What kind of similar things have you done before? (Optional)</h5>
 <br />
-<EditForm Model="qualData" OnValidSubmit="GoToNextSection">
+<EditForm Model="QualificationsData" OnValidSubmit="GoToNextSection">
     <DataAnnotationsValidator />
     <div id="general-experience">
         <div id="education" class="form-group">
             <label>Education and Training</label>
-            <SfTextBox Multiline="true" @bind-Value="qualData.EducationTraining" />
-            <ValidationMessage For="@(() => qualData.EducationTraining)" />
+            <SfTextBox Multiline="true" @bind-Value="QualificationsData.EducationTraining" />
+            <ValidationMessage For="@(() => QualificationsData.EducationTraining)" />
         </div>
         <div id="skills" class="form-group">
             <label>Skills, Interests and Hobbies</label>
-            <SfTextBox Multiline="true" @bind-Value="qualData.SkillsInterestsHobbies" />
-            <ValidationMessage For="@(() => qualData.SkillsInterestsHobbies)" />
+            <SfTextBox Multiline="true" @bind-Value="QualificationsData.SkillsInterestsHobbies" />
+            <ValidationMessage For="@(() => QualificationsData.SkillsInterestsHobbies)" />
         </div>
         <div id="experience" class="form-group">
             <label>Volunteer Experience</label>
-            <SfTextBox Multiline="true" @bind-Value="qualData.Experience" />
-            <ValidationMessage For="@(() => qualData.Experience)" />
+            <SfTextBox Multiline="true" @bind-Value="QualificationsData.Experience" />
+            <ValidationMessage For="@(() => QualificationsData.Experience)" />
         </div>
         <div id="boards" class="form-group">
             <label>Volunteer Boards</label>
-            <SfTextBox Multiline="true" @bind-Value="qualData.OtherBoards" />
-            <ValidationMessage For="@(() => qualData.OtherBoards)" />
+            <SfTextBox Multiline="true" @bind-Value="QualificationsData.OtherBoards" />
+            <ValidationMessage For="@(() => QualificationsData.OtherBoards)" />
         </div>
     </div>
     <hr/>
@@ -55,34 +65,34 @@
     <div id="work-experience">
         <div id="employer-name" class="form-group">
             <label>Place of Work</label>
-            <SfTextBox @bind-Value="qualData.WorkExperiences.FirstOrDefault().EmployerName" />
-            <ValidationMessage For="@(() => qualData.WorkExperiences.FirstOrDefault().EmployerName)" />
+            <SfTextBox @bind-Value="QualificationsData.WorkExperiences.FirstOrDefault().EmployerName" />
+            <ValidationMessage For="@(() => QualificationsData.WorkExperiences.FirstOrDefault().EmployerName)" />
         </div>
         <div id="employer-address" class="form-group">
             <label>Address</label>
-            <SfTextBox @bind-Value="qualData.WorkExperiences.FirstOrDefault().EmployerAddress" />
-            <ValidationMessage For="@(() => qualData.WorkExperiences.FirstOrDefault().EmployerAddress)" />
+            <SfTextBox @bind-Value="QualificationsData.WorkExperiences.FirstOrDefault().EmployerAddress" />
+            <ValidationMessage For="@(() => QualificationsData.WorkExperiences.FirstOrDefault().EmployerAddress)" />
         </div>
-        @if (qualData.WorkExperiences.FirstOrDefault().CurrentJob)
+        @if (QualificationsData.WorkExperiences.FirstOrDefault().CurrentJob)
         {
             <div id="date" class="form-group">
                 <label>Start Date</label>
-                <SfDatePicker @bind-Value="qualData.WorkExperiences.FirstOrDefault().StartDate" />
-                <ValidationMessage For="@(() => qualData.WorkExperiences.FirstOrDefault().StartDate)" />
+                <SfDatePicker @bind-Value="QualificationsData.WorkExperiences.FirstOrDefault().StartDate" />
+                <ValidationMessage For="@(() => QualificationsData.WorkExperiences.FirstOrDefault().StartDate)" />
             </div>
         }
         else
         {
             <div id="date" class="form-group">
                 <label>Period Worked</label>
-                <SfDateRangePicker @bind-StartDate="qualData.WorkExperiences.FirstOrDefault().StartDate" @bind-EndDate="qualData.WorkExperiences.FirstOrDefault().EndDate" />
+                <SfDateRangePicker @bind-StartDate="QualificationsData.WorkExperiences.FirstOrDefault().StartDate" @bind-EndDate="QualificationsData.WorkExperiences.FirstOrDefault().EndDate" />
             </div>
         }
         <div id="current" class="form-group" >
-            <SfCheckBox @bind-Checked="qualData.WorkExperiences.FirstOrDefault().CurrentJob" @onchange="HandleCurrentJobCheckChanged" />
-            <ValidationMessage For="@(() => qualData.WorkExperiences.FirstOrDefault().CurrentJob)" />
+            <SfCheckBox @bind-Checked="QualificationsData.WorkExperiences.FirstOrDefault().CurrentJob" @onchange="HandleCurrentJobCheckChanged" />
+            <ValidationMessage For="@(() => QualificationsData.WorkExperiences.FirstOrDefault().CurrentJob)" />
             <label>Current Job?</label>
         </div>
     </div>
-    <RegisterSectionButtonContainer  />
+    <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested" Progress="5"/>
 </EditForm>
