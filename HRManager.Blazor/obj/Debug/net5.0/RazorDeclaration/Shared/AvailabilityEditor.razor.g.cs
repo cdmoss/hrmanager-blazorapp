@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace HRManager.Blazor.Pages.Auth.Registration
+namespace HRManager.Blazor.Shared
 {
     #line hidden
     using System;
@@ -104,6 +104,13 @@ using Syncfusion.Blazor;
 #line hidden
 #nullable disable
 #nullable restore
+#line 14 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
+using Syncfusion.Blazor.Inputs;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 15 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\_Imports.razor"
 using Syncfusion.Blazor.Buttons;
 
@@ -111,20 +118,13 @@ using Syncfusion.Blazor.Buttons;
 #line hidden
 #nullable disable
 #nullable restore
-#line 1 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\AvailabilityDay.razor"
-using Syncfusion.Blazor.Calendars;
+#line 1 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Shared\AvailabilityEditor.razor"
+using Syncfusion.Blazor.Navigations;
 
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 2 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\AvailabilityDay.razor"
-using Syncfusion.Blazor.Inputs;
-
-#line default
-#line hidden
-#nullable disable
-    public partial class AvailabilityDay : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class AvailabilityEditor : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -132,29 +132,14 @@ using Syncfusion.Blazor.Inputs;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 4 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\AvailabilityDay.razor"
+#line 3 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Shared\AvailabilityEditor.razor"
        
     [Parameter]
-    public List<AvailabilityDto> Availabilities { get; set; }
+    public EventCallback<Dictionary<DayOfWeek, List<AvailabilityDto>>> AvailabilitiesDataChanged { get; set; }
     [Parameter]
-    public EventCallback<List<AvailabilityDto>> AvailabilitiesChanged { get; set; }
-
-    private void AddTime()
-    {
-        Availabilities.Add(new AvailabilityDto());
-        StateHasChanged();
-    }
-
-    private void RemoveTime(AvailabilityDto availability)
-    {
-        Availabilities.Remove(availability);
-        StateHasChanged();
-    }
-
-    private async Task HandleAvailabilitiesChanged()
-    {
-        await AvailabilitiesChanged.InvokeAsync(Availabilities);
-    }
+    public Dictionary<DayOfWeek, List<AvailabilityDto>> AvailabilitiesData { get; set; }
+    [Parameter]
+    public bool IsReadOnly { get; set; }
 
 #line default
 #line hidden

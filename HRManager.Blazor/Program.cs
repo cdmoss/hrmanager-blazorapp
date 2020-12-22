@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Blazored.LocalStorage;
 using Syncfusion.Blazor;
+using Blazorise;
+using Blazorise.Bootstrap;
+using Blazorise.Icons.FontAwesome;
 
 namespace HRManager.Blazor
 {
@@ -17,6 +20,15 @@ namespace HRManager.Blazor
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzYxNzIzQDMxMzgyZTMzMmUzMEhCYTNRVEtJcmN5cDI4YXJidFhyRVBIM0xTTk41OHlQSjBiNFBGN1NXNFU9");
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
+            builder.Services
+                .AddBlazorise(options =>
+                {
+                    options.ChangeTextOnKeyPress = true;
+                })
+                .AddBootstrapProviders()
+                .AddFontAwesomeIcons();
+
             builder.RootComponents.Add<App>("#app");
             builder.Services.AddOptions();
             builder.Services.AddAuthorizationCore();
@@ -30,7 +42,13 @@ namespace HRManager.Blazor
             builder.Services.AddScoped<PositionsService>();
             builder.Services.AddSyncfusionBlazor();
 
-            await builder.Build().RunAsync();
+            var host = builder.Build();
+
+            host.Services
+                .UseBootstrapProviders()
+                .UseFontAwesomeIcons();
+
+            await host.RunAsync();
         }
     }
 }

@@ -1,34 +1,103 @@
 ﻿@page "/admin/members"
 @using HRManager.Common
+@using Shared
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Authorization
 @using Syncfusion.Blazor.Grids
 @using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Navigations
+@using Blazorise
 @attribute [Authorize(Roles = "SuperAdmin, Admin")]
 
 <AuthorizeView>
     <Authorized>
-        <SfGrid TValue="MemberAdminReadEditDto" 
-                DataSource="members" 
-                AllowFiltering="true" 
-                AllowGrouping="true" 
-                AllowPaging="true" 
-                AllowSorting="true" 
+        <SfGrid TValue="MemberAdminReadEditDto"
+                DataSource="members"
+                AllowFiltering="true"
+                AllowGrouping="true"
+                AllowPaging="true"
+                AllowSorting="true"
                 AllowExcelExport="true"
                 AllowMultiSorting="true"
                 AllowSelection="true"
                 AllowPdfExport="true">
+            <GridTemplates>
+                <DetailTemplate Context="detailContext">
+                    @{
+                        var member = (detailContext as MemberAdminReadEditDto);
+                        var tabNames = new string[]
+                        {
+                            "personal," + member.Id,
+                            "avail," + member.Id,
+                            "positions," + member.Id,
+                            "qual," + member.Id,
+                            "cert," + member.Id,
+                            "check," + member.Id,
+                        };
+                    }
+                    <Tabs SelectedTab="@selectedTabs[member.Id]" SelectedTabChanged="@OnTabChanged">
+                        <Items>
+                            <Tab Name="@tabNames[0]">Personal and Contact</Tab>
+                            <Tab Name="@tabNames[1]">Availabilities</Tab>
+                            <Tab Name="@tabNames[2]">Positions</Tab>
+                            <Tab Name="@tabNames[3]">Qualifications</Tab>
+                            <Tab Name="@tabNames[4]">Certifications</Tab>
+                            <Tab Name="@tabNames[5]">Checks</Tab>
+                        </Items>
+                        <Content>
+                            <TabPanel Name="personal">
+                                <div class="personal-container">
+                                    <dl>
+                                        <dt>Birth Date:</dt>
+                                        <dd>@member.Birthdate</dd>
+                                        <dt>Alternate Phone 1:</dt>
+                                        <dd>@member.AlternatePhone1</dd>
+                                        <dt>Alternate Phone 2:</dt>
+                                        <dd>@member.AlternatePhone2</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>Address:</dt>
+                                        <dd>@member.Address</dd>
+                                        <dt>City:</dt>
+                                        <dd>@member.City</dd>
+                                        <dt>Postal Code:</dt>
+                                        <dd>@member.PostalCode</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>Emergency Contact:</dt>
+                                        <dd>@member.EmergencyFullName</dd>
+                                        <dt>Relationship to Emergency Contect:</dt>
+                                        <dd>@member.EmergencyRelationship</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>Emergency Contact Phone 1:</dt>
+                                        <dd>@member.EmergencyPhone1</dd>
+                                        <dt>Emergency Contact Phone 2:</dt>
+                                        <dd>@member.EmergencyPhone2</dd>
+                                        <dt>Emergency Contact Phone 2:</dt>
+                                    </dl>
+                                </div>
+                            </TabPanel>
+                            <TabPanel Name="avail">
+                                <div class="availability-container">
+                                    <AvailabilityEditor @bind-AvailabilitiesData="@member.Availabilities" IsReadOnly="true"/>
+                                </div>
+                            </TabPanel>
+                        </Content>
+                    </Tabs>
+                </DetailTemplate>
+            </GridTemplates>
             <GridColumns>
-                <GridColumn Field=@nameof(MemberAdminReadEditDto.Personal.FirstName) HeaderText="First Name" TextAlign="TextAlign.Center" />
-                <GridColumn Field=@nameof(MemberAdminReadEditDto.Personal.LastName) HeaderText="Last Name" TextAlign="TextAlign.Center" />
-                <GridColumn Field=@nameof(MemberAdminReadEditDto.AccountData.Email) HeaderText="Email" TextAlign="TextAlign.Center" />
-                <GridColumn Field=@nameof(MemberAdminReadEditDto.Personal.MainPhone) HeaderText="Phone" TextAlign="TextAlign.Center" />
-                <GridColumn Field=@nameof(MemberAdminReadEditDto.ApprovalStatus) HeaderText="Status" TextAlign="TextAlign.Center" />
+                <GridColumn Field="FirstName" HeaderText="First Name" TextAlign="TextAlign.Center" />
+                <GridColumn Field="LastName" HeaderText="Last Name" TextAlign="TextAlign.Center" />
+                <GridColumn Field="Email" HeaderText="Email" TextAlign="TextAlign.Center" />
+                <GridColumn Field="MainPhone" HeaderText="Phone" TextAlign="TextAlign.Center" />
+                <GridColumn Field="ApprovalStatus" HeaderText="Status" TextAlign="TextAlign.Center" />
             </GridColumns>
         </SfGrid>
     </Authorized>
     <NotAuthorized>
-       
+
     </NotAuthorized>
 </AuthorizeView>
 

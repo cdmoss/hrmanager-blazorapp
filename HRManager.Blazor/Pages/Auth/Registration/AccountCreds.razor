@@ -65,7 +65,7 @@
 
 <h5>What email and password would you like to use?</h5>
 <br/>
-<EditForm Model="AccountData" OnValidSubmit="@GoToNextSection">
+<EditForm id="1" Model="AccountData" OnValidSubmit="@GoToNextSection">
     <DataAnnotationsValidator />
     <UsernameValidator @ref="usernameValidator"/>
     <div class="form-group">
@@ -89,6 +89,5 @@
             <ValidationMessage For="@(() => AccountData.ConfirmPassword)" />
         </div>
     </div>
-    <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested" Progress="1"/>
 </EditForm>
 

@@ -3,18 +3,18 @@
 
 @code {
     [Parameter]
-    public EventCallback<AvailabilitiesData> AvailabilitiesDataChanged { get; set; }
+    public EventCallback<Dictionary<DayOfWeek, List<AvailabilityDto>>> AvailabilitiesDataChanged { get; set; }
     [Parameter]
-    public AvailabilitiesData AvailabilitiesData { get; set; }
+    public Dictionary<DayOfWeek, List<AvailabilityDto>> AvailabilitiesData { get; set; }
 
 
     protected override void OnInitialized()
     {
-        if (!AvailabilitiesData.Availabilities.Any())
+        if (!AvailabilitiesData.Any())
         {
             foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
             {
-                AvailabilitiesData.Availabilities.Add((DayOfWeek)day, new List<AvailabilityDto>());
+                AvailabilitiesData.Add((DayOfWeek)day, new List<AvailabilityDto>());
             }
         }
     }
@@ -40,39 +40,7 @@
 
 <h5>When are you able to volunteer with us?</h5>
 <br />
-<EditForm Model="AvailabilitiesData" OnValidSubmit="GoToNextSection">
+<EditForm id="4" Model="AvailabilitiesData" OnValidSubmit="GoToNextSection">
     <DataAnnotationsValidator />
-    <SfTab>
-        <TabItems>
-            <TabItem>
-                <HeaderTemplate>Monday</HeaderTemplate>
-                <ContentTemplate><AvailabilityDay @bind-Availabilities="AvailabilitiesData.Availabilities[DayOfWeek.Monday]" /></ContentTemplate>
-            </TabItem>
-            <TabItem>
-                <HeaderTemplate>Tuesday</HeaderTemplate>
-                <ContentTemplate><AvailabilityDay @bind-Availabilities="AvailabilitiesData.Availabilities[DayOfWeek.Tuesday]" /></ContentTemplate>
-            </TabItem>
-            <TabItem>
-                <HeaderTemplate>Wednesday</HeaderTemplate>
-                <ContentTemplate><AvailabilityDay @bind-Availabilities="AvailabilitiesData.Availabilities[DayOfWeek.Wednesday]" /></ContentTemplate>
-            </TabItem>
-            <TabItem>
-                <HeaderTemplate>Thursday</HeaderTemplate>
-                <ContentTemplate><AvailabilityDay @bind-Availabilities="AvailabilitiesData.Availabilities[DayOfWeek.Thursday]" /></ContentTemplate>
-            </TabItem>
-            <TabItem>
-                <HeaderTemplate>Friday</HeaderTemplate>
-                <ContentTemplate><AvailabilityDay @bind-Availabilities="AvailabilitiesData.Availabilities[DayOfWeek.Friday]" /></ContentTemplate>
-            </TabItem>
-            <TabItem>
-                <HeaderTemplate>Saturday</HeaderTemplate>
-                <ContentTemplate><AvailabilityDay @bind-Availabilities="AvailabilitiesData.Availabilities[DayOfWeek.Saturday]" /></ContentTemplate>
-            </TabItem>
-            <TabItem>
-                <HeaderTemplate>Sunday</HeaderTemplate>
-                <ContentTemplate><AvailabilityDay @bind-Availabilities="AvailabilitiesData.Availabilities[DayOfWeek.Sunday]" /></ContentTemplate>
-            </TabItem>
-        </TabItems>
-    </SfTab>
-    <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested" Progress="4"/>
+    <AvailabilityEditor @bind-AvailabilitiesData="AvailabilitiesData"/> 
 </EditForm>

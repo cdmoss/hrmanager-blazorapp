@@ -1,0 +1,45 @@
+﻿@using Syncfusion.Blazor.Navigations 
+ 
+@code {
+    [Parameter]
+    public EventCallback<Dictionary<DayOfWeek, List<AvailabilityDto>>> AvailabilitiesDataChanged { get; set; }
+    [Parameter]
+    public Dictionary<DayOfWeek, List<AvailabilityDto>> AvailabilitiesData { get; set; }
+    [Parameter]
+    public bool IsReadOnly { get; set; }
+}
+
+<CascadingValue Name="IsReadOnly" TValue="bool" Value="@IsReadOnly">
+    <SfTab>
+        <TabItems>
+            <TabItem>
+                <HeaderTemplate>Monday</HeaderTemplate>
+                <ContentTemplate><AvailabilityDay Day="DayOfWeek.Monday" @bind-Availabilities="AvailabilitiesData[DayOfWeek.Monday]" IsReadOnly="@IsReadOnly" /></ContentTemplate>
+            </TabItem>
+            <TabItem>
+                <HeaderTemplate>Tuesday</HeaderTemplate>
+                <ContentTemplate><AvailabilityDay Day="DayOfWeek.Tuesday" @bind-Availabilities="AvailabilitiesData[DayOfWeek.Tuesday]" /></ContentTemplate>
+            </TabItem>
+            <TabItem>
+                <HeaderTemplate>Wednesday</HeaderTemplate>
+                <ContentTemplate><AvailabilityDay Day="DayOfWeek.Wednesday" @bind-Availabilities="AvailabilitiesData[DayOfWeek.Wednesday]" /></ContentTemplate>
+            </TabItem>
+            <TabItem>
+                <HeaderTemplate>Thursday</HeaderTemplate>
+                <ContentTemplate><AvailabilityDay Day="DayOfWeek.Thursday" @bind-Availabilities="AvailabilitiesData[DayOfWeek.Thursday]" /></ContentTemplate>
+            </TabItem>
+            <TabItem>
+                <HeaderTemplate>Friday</HeaderTemplate>
+                <ContentTemplate><AvailabilityDay Day="DayOfWeek.Friday" @bind-Availabilities="AvailabilitiesData[DayOfWeek.Friday]" /></ContentTemplate>
+            </TabItem>
+            <TabItem>
+                <HeaderTemplate>Saturday</HeaderTemplate>
+                <ContentTemplate><AvailabilityDay Day="DayOfWeek.Saturday" @bind-Availabilities="AvailabilitiesData[DayOfWeek.Saturday]" /></ContentTemplate>
+            </TabItem>
+            <TabItem>
+                <HeaderTemplate>Sunday</HeaderTemplate>
+                <ContentTemplate><AvailabilityDay Day="DayOfWeek.Sunday" @bind-Availabilities="AvailabilitiesData[DayOfWeek.Sunday]" /></ContentTemplate>
+            </TabItem>
+        </TabItems>
+    </SfTab>
+</CascadingValue>

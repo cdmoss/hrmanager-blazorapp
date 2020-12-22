@@ -6,9 +6,9 @@
 @code {
 
     [Parameter]
-    public EventCallback<PreferredPositionsData> PositionsDataChanged { get; set; }
+    public EventCallback<Dictionary<int, PositonSelection>> PositionsDataChanged { get; set; }
     [Parameter]
-    public PreferredPositionsData PositionsData { get; set; }
+    public Dictionary<int, PositonSelection> PositionsData { get; set; }
 
     private List<Position> positions = new List<Position>();
 
@@ -16,13 +16,13 @@
     {
         positions = await _posService.GetPositions();
 
-        if (!PositionsData.SelectedPositions.Any())
+        if (!PositionsData.Any())
         {
             foreach (var position in positions)
             {
                 if (position != null)
                 {
-                    PositionsData.SelectedPositions.Add(position.Id, new PreferredPositionsData.PositonSelection() { PositionWasSelected = false });
+                    PositionsData.Add(position.Id, new PositonSelection() { PositionWasSelected = false });
                 }
             }
         }
@@ -49,7 +49,7 @@
 
 <h5>What volunteering positions interest you most?</h5>
 <br/>
-<EditForm Model="PositionsData" OnValidSubmit="GoToNextSection">
+<EditForm id="3" Model="PositionsData" OnValidSubmit="GoToNextSection">
     <DataAnnotationsValidator />
     <div id="positions-container" class="d-flex">
         @if (positions.Any(p => p != null))
@@ -57,13 +57,12 @@
             foreach (var position in positions)
             {
                 { var pos = position; }
-                <div class="position-container form-group col-6">
-                    <SfCheckBox @bind-Checked="PositionsData.SelectedPositions[position.Id].PositionWasSelected" />
+                <div class="position-container form-group col-4">
+                    <SfCheckBox @bind-Checked="PositionsData[position.Id].PositionWasSelected" />
                     <label class="form-check-label">@position.Name</label>
                 </div>
             }
         }
     </div>
-    <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested" Progress="3"/>
 </EditForm>
 

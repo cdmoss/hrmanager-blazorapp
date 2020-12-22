@@ -1,9 +1,4 @@
 #positions-container[b-xhcaqkj4gj] {
-   align-items: center;
-}
-
-.position-container[b-xhcaqkj4gj] {
     display: flex;
-    gap: 1rem;
-    align-items: center;
+    flex-wrap: wrap   
 }

@@ -67,10 +67,10 @@ namespace HRManager.Common.Dtos
     public class MemberRegisterDto
     {
         public AccountRegisterData Account { get; set; } = new AccountRegisterData();
-        public PersonalAndContactData Personal { get; set; } = new PersonalAndContactData();
-        public PreferredPositionsData Positions { get; set; } = new PreferredPositionsData();
+        public PersonalAndContactData Personal { get; set; } = new PersonalAndContactData{Birthdate = DateTime.Now};
+        public Dictionary<int, PositonSelection> Positions { get; set; } = new Dictionary<int, PositonSelection>();
         public QualificationsData Qualifications { get; set; } = new QualificationsData();
-        public AvailabilitiesData Availabilities { get; set; } = new AvailabilitiesData();
+        public Dictionary<DayOfWeek, List<AvailabilityDto>> Availabilities { get; set; } = new Dictionary<DayOfWeek, List<AvailabilityDto>>();
         public CertificatesData Certificates { get; set; } = new CertificatesData();
     }
 }

@@ -153,7 +153,7 @@ using HRManager.Blazor.Pages.Auth.Registration;
     // TODO: Add redirect URI
 
     // must create instance of model to be bound*******
-    private MemberRegisterDto mainDto = new MemberRegisterDto() { };
+    private MemberRegisterDto mainDto = new MemberRegisterDto();
     private RegisterResult result = new RegisterResult() { };
     private int currentSection = 1;
     private bool loadingSubmission = false;

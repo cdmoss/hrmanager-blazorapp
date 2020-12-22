@@ -135,18 +135,18 @@ using Syncfusion.Blazor.Navigations;
 #line 4 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Auth\Registration\Availability.razor"
        
     [Parameter]
-    public EventCallback<AvailabilitiesData> AvailabilitiesDataChanged { get; set; }
+    public EventCallback<Dictionary<DayOfWeek, List<AvailabilityDto>>> AvailabilitiesDataChanged { get; set; }
     [Parameter]
-    public AvailabilitiesData AvailabilitiesData { get; set; }
+    public Dictionary<DayOfWeek, List<AvailabilityDto>> AvailabilitiesData { get; set; }
 
 
     protected override void OnInitialized()
     {
-        if (!AvailabilitiesData.Availabilities.Any())
+        if (!AvailabilitiesData.Any())
         {
             foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
             {
-                AvailabilitiesData.Availabilities.Add((DayOfWeek)day, new List<AvailabilityDto>());
+                AvailabilitiesData.Add((DayOfWeek)day, new List<AvailabilityDto>());
             }
         }
     }

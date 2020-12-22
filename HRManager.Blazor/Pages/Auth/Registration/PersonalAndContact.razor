@@ -28,7 +28,7 @@
 
 <h5>Tell us a bit about yourself and how to contact you</h5>
 <br />
-<EditForm Model="PersonalData" OnValidSubmit="@GoToNextSection">
+<EditForm id="2" Model="PersonalData" OnValidSubmit="@GoToNextSection">
     <DataAnnotationsValidator />
     <div id="form-container">
         <div id="first-name" class="form-group">
@@ -122,6 +122,5 @@
             </div>
         </div>
     </div>
-    <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested" Progress="2"/>
 </EditForm>
 

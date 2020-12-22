@@ -589,7 +589,23 @@
       "url": "_content\/Microsoft.AspNetCore.Components.WebAssembly.Authentication\/AuthenticationService.js"
     },
     {
-      "hash": "sha256-w7aS+t3CjXB+SLNKNrj6NxMJXxg2D6zyOjJVN6LVQbA=",
+      "hash": "sha256-rqrcz1WuvtmQgfLQPJQ3uNwS8OCvWuuJlypLq4vr8mw=",
+      "url": "_content\/Blazorise\/blazorise.css"
+    },
+    {
+      "hash": "sha256-TN3M03fTV1nBmTqEQaznn2y7QFoXTvXMs8tqQhvgIsY=",
+      "url": "_content\/Blazorise\/blazorise.js"
+    },
+    {
+      "hash": "sha256-ncVu2bZLZZdQNkZZE9XqlyukUn\/3PyQzbuBlgMSEyfw=",
+      "url": "_content\/Blazorise.Bootstrap\/blazorise.bootstrap.css"
+    },
+    {
+      "hash": "sha256-VhNwMWRD5r3vrVRnyTdJz6BZQfrzaWJOJgh7HUWoSF0=",
+      "url": "_content\/Blazorise.Bootstrap\/blazorise.bootstrap.js"
+    },
+    {
+      "hash": "sha256-MyHOQ6JsaKtgv5GPBBjJXdm+eWW2Xfj+1DyHDupQJLk=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -599,6 +615,18 @@
     {
       "hash": "sha256-LbVFInFoxYrxwTGfltPxIbhu1vEOYusJAapzXFqwC4M=",
       "url": "_framework\/Blazored.SessionStorage.dll"
+    },
+    {
+      "hash": "sha256-WrpI66og3MnJAWQVZ8t0+PF3grRFpEGI+T2V7mFvUyY=",
+      "url": "_framework\/Blazorise.dll"
+    },
+    {
+      "hash": "sha256-7ZBRUEeHiCC7GM\/Ej6wacAKP\/5uJGw1HlE05TgdqztA=",
+      "url": "_framework\/Blazorise.Bootstrap.dll"
+    },
+    {
+      "hash": "sha256-xMZPwoKBqKfdY1RqsAeVsYQwNenX2H2Lva29DzaR+Rs=",
+      "url": "_framework\/Blazorise.Icons.FontAwesome.dll"
     },
     {
       "hash": "sha256-dDHZEPbxC3+WNnW\/LVvADZn5pxbwjYrBnEJIvpJcRPs=",
@@ -1557,19 +1585,19 @@
       "url": "_framework\/dotnet.5.0.0.js"
     },
     {
-      "hash": "sha256-O5wISwuIIYHpclFKi351CmhaNxXyooO1stD5E2Z47o0=",
+      "hash": "sha256-uxJ6lNxBWT+nTqDthrM4j\/HTBGeBlFA7pr6+tapEOmQ=",
       "url": "_framework\/HRManager.Common.dll"
     },
     {
-      "hash": "sha256-eMAN65SmZ66DQGWDdq\/hv7wjJNrpgn1I\/WI2L+AKLXE=",
+      "hash": "sha256-SGNQllmEKU9aE24MROxMFuH2e\/vG+88o8y3vApLQFUs=",
       "url": "_framework\/HRManager.Common.pdb"
     },
     {
-      "hash": "sha256-kcCigxbxRvYUcq6AiaL7g7rcu2XPEINhkHZvEMu1l1g=",
+      "hash": "sha256-\/jgPjiXo0u0M0wxK9vRMIVRGnJFVP5uvm71MMLZgHNY=",
       "url": "_framework\/HRManager.Blazor.dll"
     },
     {
-      "hash": "sha256-mnF0\/s7JJaDSJqXReUj2RWk4+ikJ+Tgw3X3COrZbmBo=",
+      "hash": "sha256-eO92\/FycrY2qNxZMckR9U\/rbFrOoLb\/zDUHROgwkLf4=",
       "url": "_framework\/HRManager.Blazor.pdb"
     },
     {
@@ -1583,6 +1611,18 @@
     {
       "hash": "sha256-Z8K5tj2ClwwkMJ9BvPWXo+lqm0a5x1TpJhGKi\/V4PkY=",
       "url": "_framework\/Blazored.SessionStorage.dll.gz"
+    },
+    {
+      "hash": "sha256-NeaDCoGDZIM3KZp\/V3ykjPIvfsFIx2PgyMbluupEHHQ=",
+      "url": "_framework\/Blazorise.dll.gz"
+    },
+    {
+      "hash": "sha256-+obZR99a5wfoi1UR4unTbZg+4qaR4V6HP\/hmgaziLjU=",
+      "url": "_framework\/Blazorise.Bootstrap.dll.gz"
+    },
+    {
+      "hash": "sha256-21WNBMQHtJDaTDEzDsCJzrKBJi11gMEFj\/cnTlMyUTk=",
+      "url": "_framework\/Blazorise.Icons.FontAwesome.dll.gz"
     },
     {
       "hash": "sha256-AdjWnUv5nO9o3uSMkcg2o5LfJvpSzJq4Ev3c6g6kA94=",
@@ -2541,7 +2581,7 @@
       "url": "_framework\/dotnet.5.0.0.js.gz"
     },
     {
-      "hash": "sha256-eKMx7o2hW3tutwDlKwu1rSOA1pqv2dt5entc8L8fJ78=",
+      "hash": "sha256-FWOb64m3NLtWIP4M2\/cddEeQkMXcCAh7bddAzwxoQVo=",
       "url": "_framework\/HRManager.Common.dll.gz"
     },
     {
@@ -2749,7 +2789,7 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-llPZjEqdcVRDU7H8DPqTXwAXTq6tgJEGjJb1lUDuSSM=",
+      "hash": "sha256-Zae0C0J57fnZqjpyAA2AH46MhCS7y5fleyM8mMfxzTM=",
       "url": "index.html"
     },
     {
@@ -2765,13 +2805,13 @@
       "url": "sample-data\/weather.json"
     },
     {
-      "hash": "sha256-LhiR5RMvsuE7rQZP\/iyIT\/SMcHxGZpx2ny4D4pr5V1A=",
+      "hash": "sha256-TXSyCZsnQCufb4TmBKM633A9sKMzOet679qI+CXU7so=",
       "url": "HRManager.Blazor.styles.css"
     },
     {
-      "hash": "sha256-Qf9cLgVTFZYO6Vv1y12L12TQHa\/0vkhIINSlE6wyKxs=",
+      "hash": "sha256-fJmzyb75XVwlaFe5j\/dAZ8T5wCkWH3TN5oBmTFHITYQ=",
       "url": "HRManager.Blazor.bundle.scp.css"
     }
   ],
-  "version": "RKxP3jmk"
+  "version": "DC4GSs9v"
 };

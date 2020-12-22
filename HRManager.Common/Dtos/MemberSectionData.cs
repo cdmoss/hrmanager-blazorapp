@@ -5,6 +5,12 @@ using System.Text;
 
 namespace HRManager.Common.Dtos
 {
+    // this class is to get around a bug preventing us from binding a checkbox to a dictionary value
+    public class PositonSelection
+    {
+        public bool PositionWasSelected { get; set; }
+    }
+
     public abstract class MemberSectionData
     {
         
@@ -77,17 +83,6 @@ namespace HRManager.Common.Dtos
         public string EmergencyRelationship { get; set; }
     }
 
-    public class PreferredPositionsData : MemberSectionData
-    {
-        // this class is to get around a bug preventing us from binding a checkbox to a dictionary value
-        public class PositonSelection
-        {
-            public bool PositionWasSelected { get; set; }
-        }
-
-        public Dictionary<int, PositonSelection> SelectedPositions { get; set; } = new Dictionary<int, PositonSelection>();
-    }
-
     public class QualificationsData 
     {
         [Display(Name = "Education and Training")]
@@ -115,10 +110,5 @@ namespace HRManager.Common.Dtos
         public DateTime? FirstAidCprExpiry { get; set; }
         [Display(Name = "Other Certificates")]
         public string OtherCertificates { get; set; }
-    }
-
-    public class AvailabilitiesData : MemberSectionData
-    {
-        public Dictionary<DayOfWeek, List<AvailabilityDto>> Availabilities { get; set; } = new Dictionary<DayOfWeek, List<AvailabilityDto>>();
     }
 }

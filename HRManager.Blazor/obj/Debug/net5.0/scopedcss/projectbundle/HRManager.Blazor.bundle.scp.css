@@ -1,5 +1,13 @@
 @import '';
 
+/* /Pages/Admin/Members.razor.rz.scp.css */
+.personal-container[b-zz367dz00p] {
+    display: flex;
+    padding: 3rem;
+    grid-gap: 1.5rem;
+    justify-content: space-evenly;
+    align-content: center;
+}
 /* /Pages/Auth/AuthLayout.razor.rz.scp.css */
 #form-area[b-8mm2ph5hc9] {
     display: flex;
@@ -102,31 +110,6 @@
 
 #forgot-link[b-12i3y2xcfw] {
     font-size: 12px;
-}
-/* /Pages/Auth/Registration/AvailabilityDay.razor.rz.scp.css */
-#day-container[b-rtkfl0rgxc] {
-    display: flex;
-    flex-direction: column;
-    row-gap: .5rem;
-}
-
-#btn-container[b-rtkfl0rgxc] {
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    gap: 1rem;
-}
-
-#btn-add[b-rtkfl0rgxc] {
-    width: 100%;
-}
-
-#remove[b-rtkfl0rgxc] {
-    cursor: pointer;
-    grid-area: remove;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 /* /Pages/Auth/Registration/Certificates.razor.rz.scp.css */
 #cert-container[b-206ja9dlrr] {
@@ -251,13 +234,8 @@
 
 /* /Pages/Auth/Registration/PreferredPositions.razor.rz.scp.css */
 #positions-container[b-xhcaqkj4gj] {
-   align-items: center;
-}
-
-.position-container[b-xhcaqkj4gj] {
     display: flex;
-    gap: 1rem;
-    align-items: center;
+    flex-wrap: wrap   
 }
 /* /Pages/Auth/Registration/Qualifications.razor.rz.scp.css */
 #work-experience[b-lin6usk1ol] {
@@ -380,6 +358,31 @@
         /* Never collapse the sidebar for wide screens */
         display: block;
     }
+}
+/* /Shared/AvailabilityDay.razor.rz.scp.css */
+#day-container[b-kob16tfzdg] {
+    display: flex;
+    flex-direction: column;
+    row-gap: .5rem;
+}
+
+#btn-container[b-kob16tfzdg] {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    gap: 1rem;
+}
+
+#btn-add[b-kob16tfzdg] {
+    width: 100%;
+}
+
+#remove[b-kob16tfzdg] {
+    cursor: pointer;
+    grid-area: remove;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-ljcv0tknf5] {

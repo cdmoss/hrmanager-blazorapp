@@ -517,7 +517,6 @@ C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\R
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Auth\AuthLayout.razor.g.cs
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Auth\Login.razor.g.cs
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Auth\Register.razor.g.cs
-C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Auth\Registration\AvailabilityDay.razor.g.cs
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Auth\Registration\PersonalAndContact.razor.g.cs
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Auth\Registration\PreferredPositions.razor.g.cs
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Auth\Registration\RegisterSectionButtonContainer.razor.g.cs
@@ -551,7 +550,6 @@ C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\R
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Auth\AuthLayout.razor.g.cs
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Auth\Login.razor.g.cs
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Auth\Register.razor.g.cs
-C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Auth\Registration\AvailabilityDay.razor.g.cs
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Auth\Registration\PersonalAndContact.razor.g.cs
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Auth\Registration\PreferredPositions.razor.g.cs
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Auth\Registration\RegisterSectionButtonContainer.razor.g.cs
@@ -802,7 +800,6 @@ C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\s
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Pages\Auth\AuthLayout.razor.rz.scp.css
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Pages\Auth\Login.razor.rz.scp.css
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Pages\Auth\Register.razor.rz.scp.css
-C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Pages\Auth\Registration\AvailabilityDay.razor.rz.scp.css
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Pages\Auth\Registration\PersonalAndContact.razor.rz.scp.css
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Pages\Auth\Registration\PreferredPositions.razor.rz.scp.css
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Pages\Auth\Registration\RegisterSectionButtonContainer.razor.rz.scp.css
@@ -836,3 +833,18 @@ C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\s
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\bin\Debug\net5.0\wwwroot\_framework\FluentValidation.dll.gz
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\bin\Debug\net5.0\wwwroot\_framework\FluentValidation.dll
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\build-gz\gL+BOzbR.gz
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\bin\Debug\net5.0\wwwroot\_framework\Blazorise.dll.gz
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\bin\Debug\net5.0\wwwroot\_framework\Blazorise.Bootstrap.dll.gz
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\bin\Debug\net5.0\wwwroot\_framework\Blazorise.Icons.FontAwesome.dll.gz
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\bin\Debug\net5.0\wwwroot\_framework\Blazorise.dll
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\bin\Debug\net5.0\wwwroot\_framework\Blazorise.Bootstrap.dll
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\bin\Debug\net5.0\wwwroot\_framework\Blazorise.Icons.FontAwesome.dll
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\build-gz\M7KXBase.gz
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\build-gz\QInq1jPx.gz
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\build-gz\SfvMBD6C.gz
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Pages\Admin\Members.razor.rz.scp.css
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Shared\AvailabilityEditor.razor.g.cs
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Shared\AvailabilityDay.razor.g.cs
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Shared\AvailabilityEditor.razor.g.cs
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Shared\AvailabilityDay.razor.g.cs
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Shared\AvailabilityDay.razor.rz.scp.css

@@ -28,6 +28,59 @@
           "lib/netstandard2.0/Blazored.SessionStorage.dll": {}
         }
       },
+      "Blazorise/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.props": {}
+        }
+      },
+      "Blazorise.Bootstrap/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Bootstrap.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Bootstrap.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.Bootstrap.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Bootstrap.props": {}
+        }
+      },
+      "Blazorise.Icons.FontAwesome/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Icons.FontAwesome.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Icons.FontAwesome.dll": {}
+        }
+      },
       "FluentValidation/9.3.0": {
         "type": "package",
         "compile": {
@@ -1134,6 +1187,59 @@
           "lib/netstandard2.0/Blazored.SessionStorage.dll": {}
         }
       },
+      "Blazorise/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.props": {}
+        }
+      },
+      "Blazorise.Bootstrap/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Bootstrap.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Bootstrap.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.Bootstrap.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Bootstrap.props": {}
+        }
+      },
+      "Blazorise.Icons.FontAwesome/0.9.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.4",
+          "Microsoft.AspNetCore.Components": "5.0.0",
+          "Microsoft.AspNetCore.Components.Web": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Blazorise.Icons.FontAwesome.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazorise.Icons.FontAwesome.dll": {}
+        }
+      },
       "FluentValidation/9.3.0": {
         "type": "package",
         "compile": {
@@ -2200,6 +2306,63 @@
         "blazored.sessionstorage.1.0.12.nupkg.sha512",
         "blazored.sessionstorage.nuspec",
         "lib/netstandard2.0/Blazored.SessionStorage.dll"
+      ]
+    },
+    "Blazorise/0.9.2.4": {
+      "sha512": "8aWVxfNOays7UG1VpDYyePQVUKLSAT2LPKw4/r8VZE13Ijz0sxCWQt1KVmST+NGtUWT0PchbKqtlqGbAG9UwBg==",
+      "type": "package",
+      "path": "blazorise/0.9.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.0.9.2.4.nupkg.sha512",
+        "blazorise.nuspec",
+        "build/Blazorise.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazorise.props",
+        "buildTransitive/Blazorise.props",
+        "lib/net5.0/Blazorise.dll",
+        "lib/netstandard2.1/Blazorise.dll",
+        "staticwebassets/blazorise.css",
+        "staticwebassets/blazorise.js"
+      ]
+    },
+    "Blazorise.Bootstrap/0.9.2.4": {
+      "sha512": "LF+SmTh2imnfxwFLrB0tHYwY9mYNGH3lrFWwG0B+N3Fo/qwPdwFlH5aNgckl31HnIGtIfLppaaK9cyu1qcHLpg==",
+      "type": "package",
+      "path": "blazorise.bootstrap/0.9.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.bootstrap.0.9.2.4.nupkg.sha512",
+        "blazorise.bootstrap.nuspec",
+        "build/Blazorise.Bootstrap.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazorise.Bootstrap.props",
+        "buildTransitive/Blazorise.Bootstrap.props",
+        "lib/net5.0/Blazorise.Bootstrap.dll",
+        "lib/netstandard2.1/Blazorise.Bootstrap.dll",
+        "staticwebassets/blazorise.bootstrap.css",
+        "staticwebassets/blazorise.bootstrap.js"
+      ]
+    },
+    "Blazorise.Icons.FontAwesome/0.9.2.4": {
+      "sha512": "BvROZ5Dk7Ee59rI5Ew5WYwWDbRIkq2hht8HuDyqPNFjgCqS8xDyhHvsjF7Xtq2WuFDrV9e9UY7xf997AyU0Vlw==",
+      "type": "package",
+      "path": "blazorise.icons.fontawesome/0.9.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.icons.fontawesome.0.9.2.4.nupkg.sha512",
+        "blazorise.icons.fontawesome.nuspec",
+        "lib/net5.0/Blazorise.Icons.FontAwesome.dll",
+        "lib/netstandard2.1/Blazorise.Icons.FontAwesome.dll"
       ]
     },
     "FluentValidation/9.3.0": {
@@ -4239,6 +4402,8 @@
     "net5.0": [
       "Blazored.LocalStorage >= 3.0.0",
       "Blazored.SessionStorage >= 1.0.12",
+      "Blazorise.Bootstrap >= 0.9.2.4",
+      "Blazorise.Icons.FontAwesome >= 0.9.2.4",
       "FluentValidation >= 9.3.0",
       "HRManager.Common >= 1.0.0",
       "Microsoft.AspNetCore.Components.WebAssembly >= 5.0.0",
@@ -4306,6 +4471,14 @@
           "Blazored.SessionStorage": {
             "target": "Package",
             "version": "[1.0.12, )"
+          },
+          "Blazorise.Bootstrap": {
+            "target": "Package",
+            "version": "[0.9.2.4, )"
+          },
+          "Blazorise.Icons.FontAwesome": {
+            "target": "Package",
+            "version": "[0.9.2.4, )"
           },
           "FluentValidation": {
             "target": "Package",

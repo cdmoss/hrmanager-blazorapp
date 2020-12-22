@@ -136,9 +136,9 @@ using Services;
        
 
     [Parameter]
-    public EventCallback<PreferredPositionsData> PositionsDataChanged { get; set; }
+    public EventCallback<Dictionary<int, PositonSelection>> PositionsDataChanged { get; set; }
     [Parameter]
-    public PreferredPositionsData PositionsData { get; set; }
+    public Dictionary<int, PositonSelection> PositionsData { get; set; }
 
     private List<Position> positions = new List<Position>();
 
@@ -146,13 +146,13 @@ using Services;
     {
         positions = await _posService.GetPositions();
 
-        if (!PositionsData.SelectedPositions.Any())
+        if (!PositionsData.Any())
         {
             foreach (var position in positions)
             {
                 if (position != null)
                 {
-                    PositionsData.SelectedPositions.Add(position.Id, new PreferredPositionsData.PositonSelection() { PositionWasSelected = false });
+                    PositionsData.Add(position.Id, new PositonSelection() { PositionWasSelected = false });
                 }
             }
         }

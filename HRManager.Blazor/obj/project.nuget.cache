@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "h4BtSmtdvJ+MEEsw+I61e9QygrLjqkdIuyvIdTSi7PaKDGA+n9dRc8fdD3pNiyvdc0tom86Y/pzJ2aqo5Yc7Hg==",
+  "dgSpecHash": "fDmMns5BXnZNDh0GBIc7nvr0FoG1PcAXD6tln2MnqW4qQ4T9uPgLaCL3Eexye2fK5Yzz8H/nlNLdyoIfPvQudw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Blazor\\HRManager.Blazor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Chase\\.nuget\\packages\\blazored.localstorage\\3.0.0\\blazored.localstorage.3.0.0.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\blazored.sessionstorage\\1.0.12\\blazored.sessionstorage.1.0.12.nupkg.sha512",
+    "C:\\Users\\Chase\\.nuget\\packages\\blazorise\\0.9.2.4\\blazorise.0.9.2.4.nupkg.sha512",
+    "C:\\Users\\Chase\\.nuget\\packages\\blazorise.bootstrap\\0.9.2.4\\blazorise.bootstrap.0.9.2.4.nupkg.sha512",
+    "C:\\Users\\Chase\\.nuget\\packages\\blazorise.icons.fontawesome\\0.9.2.4\\blazorise.icons.fontawesome.0.9.2.4.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\fluentvalidation\\9.3.0\\fluentvalidation.9.3.0.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

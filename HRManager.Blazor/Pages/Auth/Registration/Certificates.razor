@@ -49,7 +49,7 @@
 
 <h5>Relevant Certificates (Optional)</h5>
 <br />
-<EditForm Model="CertData" OnValidSubmit="ModalShow">
+<EditForm id="6" Model="CertData" OnValidSubmit="ModalShow">
     <div id="cert-container" class="d-flex flex-column">
         <div id="firstaid-container">
             <div class="checkbox-container">
@@ -93,7 +93,6 @@
             </div>
         </div>
     </div>
-    <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested" Progress="6" />
 </EditForm>
 
 @if (showModal)

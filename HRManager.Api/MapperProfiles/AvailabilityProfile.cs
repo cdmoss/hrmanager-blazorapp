@@ -8,8 +8,7 @@ namespace HRManager.Api.MapperProfiles
     {
         public AvailabilityProfile()
         {
-            CreateMap<Availability, AvailabilityDto>();
-            CreateMap<AvailabilityDto, Availability>();
+            CreateMap<Availability, AvailabilityDto>().ReverseMap();
         }
     }
 }

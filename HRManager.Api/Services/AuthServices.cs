@@ -67,12 +67,13 @@ namespace HRManager.Api.Services
         private MemberProfile CreateMemberProfile(MemberRegisterDto dto)
         {
             var availabilityDtos = new List<AvailabilityDto>();
-            foreach (var availabilityList in dto.Availabilities.Availabilities)
+            foreach (var availabilityList in dto.Availabilities)
             {
                 availabilityDtos.AddRange(availabilityList.Value);
             }
 
             var availabilities = _mapper.Map<List<Availability>>(availabilityDtos);
+
             var workExperiences = _mapper.Map<List<WorkExperience>>(dto.Qualifications.WorkExperiences);
 
             var member = new MemberProfile
@@ -101,13 +102,13 @@ namespace HRManager.Api.Services
                 OtherCertificates = dto.Certificates.OtherCertificates,
                 PostalCode = dto.Personal.PostalCode,
                 SkillsInterestsHobbies = dto.Qualifications.SkillsInterestsHobbies,
-                WorkExperiences = workExperiences,
+                WorkExperiences = workExperiences
             };
 
             // TODO: Clean this up
             var positions = new List<PositionMember>();
 
-            foreach (var position in dto.Positions.SelectedPositions)
+            foreach (var position in dto.Positions)
             {
                 if (position.Value.PositionWasSelected)
                 {

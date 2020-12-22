@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 
 namespace HRManager.Common
 {
+    public enum AssociationType
+    {
+        Preferred,
+        Assigned,
+        PreferredAndAssigned
+    }
+
     [Serializable]
     public class PositionMember
     {
-        public enum AssociationType
-        {
-            Preferred,
-            Assigned,
-            PreferredAndAssigned
-        }
 
         public int Id { get; set; }
         public MemberProfile Member { get; set; }

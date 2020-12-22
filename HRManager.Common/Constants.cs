@@ -20,8 +20,8 @@ namespace HRManager.Common
         }
         public class UserNames
         {
-            public const string SuperAdmin = "super";
-            public const string Admin = "admin";
+            public const string SuperAdmin = "super@email.com";
+            public const string Admin = "admin@email.com";
             public const string Member = "test@gmail.com";
         }
     }

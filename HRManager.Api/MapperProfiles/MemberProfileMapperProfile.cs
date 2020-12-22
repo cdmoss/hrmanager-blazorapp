@@ -13,11 +13,19 @@ namespace HRManager.Api.MapperProfiles
         public MemberProfileMapperProfile()
         {
             // source --> target
-            CreateMap<MemberProfile, MemberAdminReadEditDto>();
-            CreateMap<MemberAdminReadEditDto, MemberProfile>();
-            CreateMap<MemberProfile, MemberReadEditDto>();
-            CreateMap<MemberReadEditDto, MemberProfile>();
-            CreateMap<MemberRegisterDto, MemberProfile>();
+            CreateMap<MemberProfile, MemberAdminReadEditDto>().ForMember(p => p.Availabilities, opt => opt.Ignore())
+                .ReverseMap().ForMember(p => p.Availabilities, opt => opt.Ignore());
+            CreateMap<MemberRegisterDto, MemberProfile>()
+                .ForMember(p => p.Availabilities, opt => opt.Ignore())
+                .ForMember(p => p.Positions, opt => opt.Ignore())
+                .ReverseMap()
+                .ForMember(p => p.Availabilities, opt => opt.Ignore())
+                .ForMember(p => p.Positions, opt => opt.Ignore());
+
+            CreateMap<MemberProfile, AccountData>().ReverseMap();
+            CreateMap<MemberProfile, PersonalAndContactData>().ReverseMap();
+            CreateMap<MemberProfile, QualificationsData>().ReverseMap();
+            CreateMap<MemberProfile, CertificatesData>().ReverseMap();
         }
     }
 }
