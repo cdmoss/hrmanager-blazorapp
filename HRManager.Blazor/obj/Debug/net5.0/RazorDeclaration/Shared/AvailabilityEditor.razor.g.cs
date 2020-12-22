@@ -124,6 +124,13 @@ using Syncfusion.Blazor.Navigations;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Shared\AvailabilityEditor.razor"
+using Blazorise;
+
+#line default
+#line hidden
+#nullable disable
     public partial class AvailabilityEditor : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -132,7 +139,7 @@ using Syncfusion.Blazor.Navigations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 3 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Shared\AvailabilityEditor.razor"
+#line 4 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Shared\AvailabilityEditor.razor"
        
     [Parameter]
     public EventCallback<Dictionary<DayOfWeek, List<AvailabilityDto>>> AvailabilitiesDataChanged { get; set; }
@@ -140,6 +147,13 @@ using Syncfusion.Blazor.Navigations;
     public Dictionary<DayOfWeek, List<AvailabilityDto>> AvailabilitiesData { get; set; }
     [Parameter]
     public bool IsReadOnly { get; set; }
+
+    string selectedTab = "Monday";
+
+    private void OnTabChanged(string name)
+    {
+        selectedTab = name;
+    }
 
 #line default
 #line hidden

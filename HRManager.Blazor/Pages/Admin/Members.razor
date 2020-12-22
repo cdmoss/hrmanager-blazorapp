@@ -35,56 +35,210 @@
                             "check," + member.Id,
                         };
                     }
-                    <Tabs SelectedTab="@selectedTabs[member.Id]" SelectedTabChanged="@OnTabChanged">
-                        <Items>
-                            <Tab Name="@tabNames[0]">Personal and Contact</Tab>
-                            <Tab Name="@tabNames[1]">Availabilities</Tab>
-                            <Tab Name="@tabNames[2]">Positions</Tab>
-                            <Tab Name="@tabNames[3]">Qualifications</Tab>
-                            <Tab Name="@tabNames[4]">Certifications</Tab>
-                            <Tab Name="@tabNames[5]">Checks</Tab>
-                        </Items>
-                        <Content>
-                            <TabPanel Name="personal">
-                                <div class="personal-container">
-                                    <dl>
-                                        <dt>Birth Date:</dt>
-                                        <dd>@member.Birthdate</dd>
-                                        <dt>Alternate Phone 1:</dt>
-                                        <dd>@member.AlternatePhone1</dd>
-                                        <dt>Alternate Phone 2:</dt>
-                                        <dd>@member.AlternatePhone2</dd>
-                                    </dl>
-                                    <dl>
-                                        <dt>Address:</dt>
-                                        <dd>@member.Address</dd>
-                                        <dt>City:</dt>
-                                        <dd>@member.City</dd>
-                                        <dt>Postal Code:</dt>
-                                        <dd>@member.PostalCode</dd>
-                                    </dl>
-                                    <dl>
-                                        <dt>Emergency Contact:</dt>
-                                        <dd>@member.EmergencyFullName</dd>
-                                        <dt>Relationship to Emergency Contect:</dt>
-                                        <dd>@member.EmergencyRelationship</dd>
-                                    </dl>
-                                    <dl>
-                                        <dt>Emergency Contact Phone 1:</dt>
-                                        <dd>@member.EmergencyPhone1</dd>
-                                        <dt>Emergency Contact Phone 2:</dt>
-                                        <dd>@member.EmergencyPhone2</dd>
-                                        <dt>Emergency Contact Phone 2:</dt>
-                                    </dl>
-                                </div>
-                            </TabPanel>
-                            <TabPanel Name="avail">
-                                <div class="availability-container">
-                                    <AvailabilityEditor @bind-AvailabilitiesData="@member.Availabilities" IsReadOnly="true"/>
-                                </div>
-                            </TabPanel>
-                        </Content>
-                    </Tabs>
+                    <div class="p-3">
+                        <Tabs SelectedTab="@selectedTabs[member.Id]" SelectedTabChanged="@OnTabChanged">
+                            <Items>
+                                <Tab Class="main-tab" Name="@tabNames[0]">Personal and Contact</Tab>
+                                <Tab Class="main-tab" Name="@tabNames[1]">Availabilities</Tab>
+                                <Tab Class="main-tab" Name="@tabNames[2]">Positions</Tab>
+                                <Tab Class="main-tab" Name="@tabNames[3]">Qualifications</Tab>
+                                <Tab Class="main-tab" Name="@tabNames[4]">Certifications</Tab>
+                                <Tab Class="main-tab" Name="@tabNames[5]">Checks</Tab>
+                            </Items>
+                            <Content>
+                                <TabPanel Name="@tabNames[0]">
+                                    <div class="personal-container p-2">
+                                        <div>
+                                            <div>
+                                                <span class="text-nowrap font-weight-bold">Birth Date:</span>
+                                                <span class="text-nowrap font-weight-bold">Alternate Phone 1:</span>
+                                                <span class="text-nowrap font-weight-bold">Alternate Phone 2:</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-nowrap">@member.AlternatePhone1</span>
+                                                <span class="text-nowrap">@member.AlternatePhone2</span>
+                                                <span class="text-nowrap">@member.Birthdate</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <span class="text-nowrap font-weight-bold">Address:</span>
+                                                <span class="text-nowrap font-weight-bold">City:</span>
+                                                <span class="text-nowrap font-weight-bold">Postal Code:</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-nowrap">@member.Address</span>
+                                                <span class="text-nowrap">@member.City</span>
+                                                <span class="text-nowrap">@member.PostalCode</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <span class="text-nowrap font-weight-bold">Emergency Contact:</span>
+                                                <span class="text-nowrap font-weight-bold">Relationship to Emergency Contact:</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-nowrap">@member.EmergencyFullName</span>
+                                                <span class="text-nowrap">@member.EmergencyRelationship</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <span class="text-nowrap font-weight-bold">Emergency Contact phone 1:</span>
+                                                <span class="text-nowrap font-weight-bold">Emergency Contact phone 2:</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-nowrap">@member.EmergencyPhone1</span>
+                                                <span class="text-nowrap">@member.EmergencyPhone2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </TabPanel>
+                                <TabPanel Name="@tabNames[1]">
+                                    <div class="availability-container p-2">
+                                        <AvailabilityEditor @bind-AvailabilitiesData="@member.Availabilities" IsReadOnly="true" />
+                                    </div>
+                                </TabPanel>
+                                <TabPanel Name="@tabNames[2]">
+                                    <div class="positions-container p-2">
+                                        <h6>Assigned Positions</h6>
+                                        <div>
+                                            @{
+                                                string positionList = "";
+                                                foreach (var position in member.Positions.Where(p =>
+                                                    p.Association == AssociationType.Assigned ||
+                                                    p.Association == AssociationType.PreferredAndAssigned))
+                                                {
+                                                    positionList += position.Position.Name + ", ";
+                                                }
+
+                                                positionList = positionList.Trim(' ').Trim(',');
+                                            }
+                                            <span>@positionList</span>
+                                        </div>
+                                        <br />
+                                        <h6>Preferred Positions</h6>
+                                        <div>
+                                            @{
+                                                positionList = "";
+                                                foreach (var position in member.Positions.Where(p =>
+                                                    p.Association == AssociationType.Preferred ||
+                                                    p.Association == AssociationType.PreferredAndAssigned))
+                                                {
+                                                    positionList += position.Position.Name + ", ";
+                                                }
+
+                                                positionList = positionList.Trim(' ').Trim(',');
+                                            }
+                                            <span>@positionList</span>
+                                        </div>
+                                    </div>
+                                </TabPanel>
+                                <TabPanel Name="@tabNames[3]">
+                                    <div class="qualifications-container p-2">
+                                        <div id="general-experience">
+                                            <h6>General Experience</h6>
+                                            <div id="general-experience-content pb-1">
+                                                <div id="general-experience-column">
+                                                    <div id="education" class="form-group">
+                                                        <label><strong>Education and Training</strong></label>
+                                                        <p>@member.EducationTraining</p>
+                                                    </div>
+                                                    <div id="skills" class="form-group">
+                                                        <label><strong>Skills, Interests and Hobbies</strong></label>
+                                                        <p>@member.SkillsInterestsHobbies</p>
+                                                    </div>
+                                                </div>
+                                                <div id="general-experience-column">
+                                                    <div id="experience" class="form-group">
+                                                        <label><strong>Volunteer Experience</strong></label>
+                                                        <p>@member.Experience</p>
+                                                    </div>
+                                                    <div id="boards" class="form-group">
+                                                        <label><strong>Volunteer Boards</strong></label>
+                                                        <p>@member.OtherBoards</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(member.WorkExperiences.FirstOrDefault().EmployerName) && !string.IsNullOrEmpty(member.WorkExperiences.FirstOrDefault().EmployerAddress))
+                                        {
+                                        <div id="work-experience">
+                                            <h6>Last or Current Job</h6>
+                                            <div id="work-experience-content">
+                                                <div id="work-experience-column">
+                                                    <div id="employer-name" class="form-group">
+                                                        <label><strong>Place of Work</strong></label>
+                                                        <p>@member.WorkExperiences.FirstOrDefault().EmployerName</p>
+                                                    </div>
+                                                    <div id="employer-address" class="form-group">
+                                                        <label><strong>Address</strong></label>
+                                                        <p>@member.WorkExperiences.FirstOrDefault().EmployerAddress</p>
+                                                    </div>
+                                                </div>
+                                                <div id="work-experience-column">
+                                                    <div id="date" class="form-group">
+                                                        <label><strong>Start Date</strong></label>
+                                                        <p>@member.WorkExperiences.FirstOrDefault().StartDate</p>
+                                                    </div>
+                                                    @if (member.WorkExperiences.FirstOrDefault().CurrentJob)
+                                                    {
+                                                    <div id="date" class="form-group">
+                                                        <p><strong>Current Job</strong></p>
+                                                    </div>
+                                                    }
+                                                    else
+                                                    {
+                                                    <div id="date" class="form-group">
+                                                        <label><strong>End Date</strong></label>
+                                                        <p>@member.WorkExperiences.FirstOrDefault().EndDate</p>
+                                                    </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </div>
+                                </TabPanel>
+                                <TabPanel Name="@tabNames[4]">
+                                    <div class="cert-container p-2">
+                                        <dl class="dl-horizontal">
+                                            <dt>First Aid:</dt>
+                                            <dd>
+                                                @if (member.FirstAidCpr)
+                                                {
+                                                    <dl>
+                                                        <dt>Level</dt>
+                                                        <dd>@member.FirstAidCprLevel</dd>
+                                                        <dt>Expiry</dt>
+                                                        <dd>@member.FirstAidCprExpiry</dd>
+                                                    </dl>
+                                                }
+                                                None
+                                            </dd>
+                                        </dl>
+                                        <dl class="dl-horizontal">
+                                            <dt>Food Safe:</dt>
+                                            <dd>
+                                                @if (member.FoodSafe)
+                                                {
+                                                    <dl>
+                                                        <dt>Expiry</dt>
+                                                        <dd>@member.FirstAidCprExpiry</dd>
+                                                    </dl>
+                                                }
+                                                None
+                                            </dd>
+                                        </dl>
+                                        <dl class="dl-horizontal">
+                                            <dt>Other:</dt>
+                                            <dd>@member.OtherCertificates</dd>
+                                        </dl>
+                                    </div>
+                                </TabPanel>
+                            </Content>
+                        </Tabs>
+                    </div>
                 </DetailTemplate>
             </GridTemplates>
             <GridColumns>

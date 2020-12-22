@@ -27,7 +27,10 @@ namespace HRManager.Api.Services
 
         public List<MemberAdminReadEditDto> GetMembers()
         {
-            var members = _context.Members.Include(p => p.User).Include(p => p.Availabilities).ToList();
+            var members = _context.Members.Include(p => p.User)
+                .Include(p => p.Availabilities)
+                .Include(p => p.Positions).ThenInclude(p => p.Position)
+                .Include(p => p.WorkExperiences).ToList();
             var memberDtos = new List<MemberAdminReadEditDto>();
 
             foreach (var member in members)

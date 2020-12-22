@@ -82,6 +82,10 @@ a, .btn-link {
             box-shadow: 0 0 0 .2rem rgba(116,182,46,.5)
         }
 
+.main-tab > a {
+    color: var(--main-green);
+}
+
 .content {
     padding-top: 1.1rem;
 }

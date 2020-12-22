@@ -1,7 +1,43 @@
 .personal-container[b-zz367dz00p] {
     display: flex;
     padding: 3rem;
-    grid-gap: 1.5rem;
-    justify-content: space-evenly;
-    align-content: center;
+    gap: 4rem;
+    justify-content: start;
 }
+
+.personal-container > div[b-zz367dz00p] {
+    display: flex;
+    gap: 1rem;
+}
+
+    .personal-container > div > div[b-zz367dz00p] {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        gap: 1rem;
+    }
+
+.qualifications-container[b-zz367dz00p] {
+    display: flex;
+    padding: 3rem;
+    gap: 7rem;
+    justify-content: start;
+}
+
+    .qualifications-container > div[b-zz367dz00p] {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+        .qualifications-container > div > div[b-zz367dz00p] {
+            display: flex;
+            width: auto;
+            gap: 2.5rem;
+        }
+            .qualifications-container > div > div > div[b-zz367dz00p] {
+                display: flex;
+                flex-direction: column;
+                width: auto;
+                gap: 1rem;
+            }

@@ -125,8 +125,11 @@ using Syncfusion.Blazor.Buttons;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 40 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Shared\AdminNavMenu.razor"
+#line 3 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Shared\AdminNavMenu.razor"
        
+    [Parameter]
+    public EventCallback<string> PageChanged { get; set; }
+
     private bool collapseNavMenu = true;
 
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
@@ -134,6 +137,11 @@ using Syncfusion.Blazor.Buttons;
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    private async Task ChangePage(string pageName)
+    {
+        await PageChanged.InvokeAsync(pageName);
     }
 
 #line default

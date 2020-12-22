@@ -1,5 +1,24 @@
 ﻿@namespace HRManager.Blazor.Shared
 
+@code {
+    [Parameter]
+    public EventCallback<string> PageChanged { get; set; }
+
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+    private async Task ChangePage(string pageName)
+    {
+        await PageChanged.InvokeAsync(pageName);
+    }
+}
+
 <div class="top-row pl-4 navbar navbar-dark">
     <a class="navbar-brand" href="">HRManager.Blazor</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -10,40 +29,29 @@
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="admin/dashboard">
+            <NavLink class="nav-link" href="admin/dashboard" @onclick="@(cp => ChangePage("Dashboard"))">
                 <i class="fas fa-tachometer-alt" aria-hidden="true"></i> &nbsp; Dashboard
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="admin/alerts">
+            <NavLink class="nav-link" href="admin/alerts" @onclick="@(cp => ChangePage("Alerts"))">
                 <i class="fas fa-exclamation-circle" aria-hidden="true"></i> &nbsp; Alerts
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="admin/members">
+            <NavLink class="nav-link" href="admin/members" @onclick="@(cp => ChangePage("Members"))">
                 <i class="fas fa-users" aria-hidden="true"></i> &nbsp; Team
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="admin/calendar">
+            <NavLink class="nav-link" href="admin/calendar" @onclick="@(cp => ChangePage("Schedule"))">
                 <i class="fas fa-calendar-alt" aria-hidden="true"></i> &nbsp; Calendar
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="admin/timesheet">
+            <NavLink class="nav-link" href="admin/timesheet" @onclick="@(cp => ChangePage("Time Sheet"))">
                 <i class="fas fa-clock" aria-hidden="true"></i> &nbsp; Timesheet
             </NavLink>
         </li>
     </ul>
 </div>
-
-@code {
-    private bool collapseNavMenu = true;
-
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}

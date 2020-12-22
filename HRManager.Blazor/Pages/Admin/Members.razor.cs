@@ -31,16 +31,15 @@ namespace HRManager.Blazor.Pages.Admin
 
                 foreach (var member in members)
                 {
-                    selectedTabs.Add(member.Id, "personal");
+                    selectedTabs.Add(member.Id, "personal" + member.Id);
                 }
             }
         }
 
         private void OnTabChanged(string name)
         {
-            string[] splitName = name.Split(',');
-            int id = Convert.ToInt32(splitName[1]);
-            selectedTabs[id] = splitName[0];
+            int id = Convert.ToInt32(name.Split(',')[1]);
+            selectedTabs[id] = name;
         }
     }
 }

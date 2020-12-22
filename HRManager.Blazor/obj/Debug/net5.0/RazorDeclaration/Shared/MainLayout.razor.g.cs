@@ -136,6 +136,7 @@ using Microsoft.AspNetCore.Components.Authorization;
        
     [CascadingParameter]
     private Task<AuthenticationState> authState { get; set; }
+    private string currentPage = "Members";
     private string navMenuType;
 
     protected override async Task OnInitializedAsync()
@@ -150,6 +151,11 @@ using Microsoft.AspNetCore.Components.Authorization;
         {
             navMenuType = "member";
         }
+    }
+
+    private void OnPageChanged(string pageName)
+    {
+        currentPage = pageName;
     }
 
 #line default

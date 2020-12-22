@@ -245,12 +245,12 @@
       "netstandard.dll": "sha256-4QNBIB4DMwj82CYd96oFrTh3fcrmyaDjtQ2dBTyWz7Q=",
       "System.Private.CoreLib.dll": "sha256-5Zk+rN+j5FbFEQJdT8YR2O0i6KWpvrERsaPZCv69DmI=",
       "HRManager.Common.dll": "sha256-uxJ6lNxBWT+nTqDthrM4j\/HTBGeBlFA7pr6+tapEOmQ=",
-      "HRManager.Blazor.dll": "sha256-\/jgPjiXo0u0M0wxK9vRMIVRGnJFVP5uvm71MMLZgHNY="
+      "HRManager.Blazor.dll": "sha256-2FEDKpFjL+4ZuaBfUJ1VXBotRTuT31roZHRGvl9UoMI="
     },
     "lazyAssembly": null,
     "pdb": {
       "HRManager.Common.pdb": "sha256-SGNQllmEKU9aE24MROxMFuH2e\/vG+88o8y3vApLQFUs=",
-      "HRManager.Blazor.pdb": "sha256-eO92\/FycrY2qNxZMckR9U\/rbFrOoLb\/zDUHROgwkLf4="
+      "HRManager.Blazor.pdb": "sha256-A7n8Lp4qKOxj1BZGZ\/nlTzBoFsfaDMbc0nX3gXtbqzU="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-2ldEe2K8ARFKSIBsv+Hr3iNQzq9qh1H\/dwdu2r+AIyY=",
