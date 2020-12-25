@@ -97,13 +97,10 @@ namespace HRManager.Common
         public List<WorkExperience> WorkExperiences { get; set; }
         public List<Shift> Shifts { get; set; }
         public List<Availability> Availabilities { get; set; }
-        public List<PositionMember> Positions { get; set; }
+        public List<MemberPosition> Positions { get; set; }
         public List<Alert> Alerts { get; set; }
         public bool IsStaff { get; set; }
         public int UserID { get; set; }
         public UserProfile User { get; set; }
-
-        [NotMapped]
-        public string FullNameWithID { get { return Id + " " + FirstName + " " + LastName; } }
     }
 }

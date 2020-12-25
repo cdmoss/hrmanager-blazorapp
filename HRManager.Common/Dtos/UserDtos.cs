@@ -75,7 +75,7 @@ namespace HRManager.Common.Dtos
         [Display(Name = "Other Boards You've Appeared On")]
         public string OtherBoards { get; set; }
         public List<WorkExperienceDto> WorkExperiences { get; set; } = new List<WorkExperienceDto>() { new WorkExperienceDto() };
-        public List<PositionMemberDto> Positions { get; set; } = new List<PositionMemberDto>();
+        public List<MemberPositionDto> Positions { get; set; } = new List<MemberPositionDto>();
         public Dictionary<DayOfWeek, List<AvailabilityDto>> Availabilities { get; set; } = new Dictionary<DayOfWeek, List<AvailabilityDto>>();
         [Display(Name = "Food Safe")]
         public bool FoodSafe { get; set; }

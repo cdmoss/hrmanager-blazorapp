@@ -13,7 +13,7 @@ namespace HRManager.Common
     }
 
     [Serializable]
-    public class PositionMember
+    public class MemberPosition
     {
 
         public int Id { get; set; }

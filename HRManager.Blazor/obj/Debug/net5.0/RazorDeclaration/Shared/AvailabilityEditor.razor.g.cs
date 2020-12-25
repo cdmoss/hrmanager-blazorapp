@@ -148,7 +148,7 @@ using Blazorise;
     [Parameter]
     public bool IsReadOnly { get; set; }
 
-    string selectedTab = "Monday";
+    string selectedTab = "mon";
 
     private void OnTabChanged(string name)
     {

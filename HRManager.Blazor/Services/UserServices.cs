@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.Json;
 using System.Threading.Tasks;
+using HRManager.Common;
 using HRManager.Common.Dtos;
 
 namespace HRManager.Blazor.Services
 {
     public interface IUserService
     {
-        Task<List<MemberAdminReadEditDto>> GetMembers();
+        Task<ApiResult<List<MemberAdminReadEditDto>>> GetMembers();
+        Task<ApiResult<List<MemberAdminReadEditDto>>> UpdateMember(MemberAdminReadEditDto dto);
     }
 
     public class HttpUserService : IUserService
@@ -22,11 +25,15 @@ namespace HRManager.Blazor.Services
             _http = http;
         }
 
-        public async Task<List<MemberAdminReadEditDto>> GetMembers()
+        public async Task<ApiResult<List<MemberAdminReadEditDto>>> GetMembers()
         {
-            return await _http.GetFromJsonAsync<List<MemberAdminReadEditDto>>("users/members");
+            return await _http.GetFromJsonAsync<ApiResult<List<MemberAdminReadEditDto>>>("users/members");
         }
 
-        
+        public async Task<ApiResult<List<MemberAdminReadEditDto>>> UpdateMember(MemberAdminReadEditDto dto)
+        {
+            var response = await _http.PostAsJsonAsync("users/update-member", dto);
+            return await response.Content.ReadFromJsonAsync<ApiResult<List<MemberAdminReadEditDto>>>();
+        }
     }
 }

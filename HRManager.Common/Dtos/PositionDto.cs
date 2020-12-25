@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HRManager.Common.Dtos
 {
-    public class PositionMemberDto
+    public class MemberPositionDto
     {
         public Position Position { get; set; }
         public AssociationType Association { get; set; }

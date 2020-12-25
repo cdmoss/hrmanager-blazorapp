@@ -1,0 +1,172 @@
+﻿/*Personal and Contact*/
+#form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "first-name first-name first-name first-name last-name last-name last-name last-name birthdate birthdate birthdate birthdate" "address address address address city city city city postal-code postal-code postal-code postal-code" "email email email main-phone main-phone main-phone alt-phone-1 alt-phone-1 alt-phone-1 alt-phone-2 alt-phone-2 alt-phone-2" "emergency-contact emergency-contact emergency-contact emergency-contact emergency-contact emergency-contact emergency-relationship emergency-relationship emergency-relationship emergency-relationship emergency-relationship emergency-relationship" "emergency-phone-1 emergency-phone-1 emergency-phone-1 emergency-phone-1 emergency-phone-1 emergency-phone-1 emergency-phone-2 emergency-phone-2 emergency-phone-2 emergency-phone-2 emergency-phone-2 emergency-phone-2";
+    grid-column-gap: 1rem;
+    grid-row-gap: .5rem;
+}
+
+#email {
+    grid-area: email;
+}
+
+#first-name {
+    grid-area: first-name;
+}
+
+#last-name {
+    grid-area: last-name;
+}
+
+#address {
+    grid-area: address;
+}
+
+#city {
+    grid-area: city;
+}
+
+#postal-code {
+    grid-area: postal-code;
+}
+
+#main-phone {
+    grid-area: main-phone;
+}
+
+#alt-phone-1 {
+    grid-area: alt-phone-1;
+}
+
+#alt-phone-2 {
+    grid-area: alt-phone-2;
+}
+
+#birthdate {
+    grid-area: birthdate;
+}
+
+#emergency-contact {
+    grid-area: emergency-contact;
+}
+
+#emergency-relationship {
+    grid-area: emergency-relationship;
+}
+
+#emergency-phone-1 {
+    grid-area: emergency-phone-1;
+}
+
+#emergency-phone-2 {
+    grid-area: emergency-phone-2;
+}
+
+/*Qualifications*/
+#work-experience {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 1rem;
+    grid-template-areas: "employer-name employer-address date" "current current current";
+}
+
+#employer-name {
+    grid-area: employer-name;
+}
+
+#employer-address {
+    grid-area: employer-address;
+}
+
+#date {
+    grid-area: date;
+}
+
+#general-experience {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 1rem;
+    grid-template-areas: "education skills" "experience boards";
+}
+
+#education {
+    grid-area: education;
+}
+
+#skills {
+    grid-area: skills;
+}
+
+#experience {
+    grid-area: experience;
+}
+
+#boards {
+    grid-area: boards;
+}
+
+#current {
+    grid-area: current;
+    height: auto;
+    width: 100%;
+    text-align: right;
+}
+
+/*Certificates*/
+#cert-container {
+    gap: 1rem;
+}
+
+#firstaid-container {
+    display: grid;
+    grid-template-columns: 7rem 10rem 10rem;
+    grid-column-gap: 1rem;
+    grid-template-areas: "checkbox expiry level";
+}
+
+.checkbox-container {
+    align-items: center;
+    grid-area: checkbox;
+}
+
+.main-label {
+    grid-area: main-label;
+}
+
+.expiry-container {
+    grid-area: expiry;
+}
+
+.level-container {
+    grid-area: level;
+}
+
+
+#foodsafe-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 7rem 10rem 10rem;
+    grid-column-gap: 1rem;
+    grid-template-areas: "checkbox expiry expiry";
+}
+
+.checkbox-container {
+    align-items: center;
+    grid-area: checkbox;
+}
+
+.main-label {
+    grid-area: main-label;
+}
+
+.expiry-container {
+    width: 100%;
+    grid-area: expiry;
+}
+
+.level-container {
+    grid-area: level;
+}
+

@@ -106,14 +106,14 @@ namespace HRManager.Api.Services
             };
 
             // TODO: Clean this up
-            var positions = new List<PositionMember>();
+            var positions = new List<MemberPosition>();
 
             foreach (var position in dto.Positions)
             {
                 if (position.Value.PositionWasSelected)
                 {
                     var p = _context.Positions.FirstOrDefault(p => p.Id == position.Key);
-                    positions.Add(new PositionMember() { Position = p, Member = member });
+                    positions.Add(new MemberPosition() { Position = p, Member = member });
                 }
             }
 

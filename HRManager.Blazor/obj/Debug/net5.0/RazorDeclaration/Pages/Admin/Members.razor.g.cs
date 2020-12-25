@@ -154,20 +154,27 @@ using Syncfusion.Blazor.Data;
 #nullable disable
 #nullable restore
 #line 8 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Admin\Members.razor"
-using Syncfusion.Blazor.Navigations;
+using Syncfusion.Blazor.Calendars;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 9 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Admin\Members.razor"
-using Blazorise;
+using Syncfusion.Blazor.Navigations;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 10 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Admin\Members.razor"
+using Blazorise;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Admin\Members.razor"
            [Authorize(Roles = "SuperAdmin, Admin")]
 
 #line default

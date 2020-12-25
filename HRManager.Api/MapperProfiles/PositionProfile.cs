@@ -12,7 +12,7 @@ namespace HRManager.Api.MapperProfiles
     {
         public PositionProfile()
         {
-            CreateMap<PositionMember, PositionMemberDto>().ReverseMap();
+            CreateMap<MemberPosition, MemberPositionDto>().ReverseMap();
         }
     }
 }

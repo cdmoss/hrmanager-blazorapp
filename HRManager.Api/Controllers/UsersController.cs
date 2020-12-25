@@ -1,4 +1,5 @@
 ﻿using HRManager.Api.Services;
+using HRManager.Common.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace HRManager.Api.Controllers
 {
-    [Route("[controller]")]
+    [Authorize]
+    [Route("users")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -25,6 +27,13 @@ namespace HRManager.Api.Controllers
         public IActionResult GetMembers()
         {
             return new ObjectResult(_userService.GetMembers());
+        }
+
+        [Authorize(Roles = "Admin, SuperAdmin")]
+        [HttpPost("update-member")]
+        public IActionResult UpdateMember([FromBody]MemberAdminReadEditDto dto)
+        {
+            return new ObjectResult(_userService.UpdateMember(dto));
         }
     }
 }

@@ -848,3 +848,10 @@ C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\R
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Shared\AvailabilityEditor.razor.g.cs
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Shared\AvailabilityDay.razor.g.cs
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Shared\AvailabilityDay.razor.rz.scp.css
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\GridEditTemplate.razor.g.cs
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\GridReadTemplate.razor.g.cs
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Admin\GridEditTemplate.razor.g.cs
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Admin\GridReadTemplate.razor.g.cs
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Pages\Admin\GridReadTemplate.razor.rz.scp.css
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Pages\Admin\GridEditTemplate.razor.rz.scp.css
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Pages\Admin\Calendar.razor.rz.scp.css

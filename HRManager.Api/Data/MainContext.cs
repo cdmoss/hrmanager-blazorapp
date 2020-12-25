@@ -25,10 +25,15 @@ namespace HRManager.Api.Data
         public DbSet<ShiftRequestAlert> ShiftAlerts { get; set; }
         public DbSet<ApplicationAlert> ApplicationAlerts { get; set; }
         public DbSet<Position> Positions { get; set; }
-        public DbSet<PositionMember> PositionMember { get; set; }
+        public DbSet<MemberPosition> PositionMember { get; set; }
         public DbSet<Reminder> Reminders { get; set; }
         public DbSet<ClockedTime> ClockedTime { get; set; }
 
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -46,8 +51,8 @@ namespace HRManager.Api.Data
             modelBuilder.Entity<Shift>().HasOne(p => p.Member).WithMany(b => b.Shifts).OnDelete(DeleteBehavior.SetNull);
             modelBuilder.Entity<Alert>().HasOne(p => p.Member).WithMany(b => b.Alerts).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<ShiftRequestAlert>().HasOne(p => p.OriginalShift).WithMany().OnDelete(DeleteBehavior.SetNull);
-            modelBuilder.Entity<PositionMember>().HasOne(p => p.Member).WithMany(b => b.Positions).OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<PositionMember>().HasOne(p => p.Position).WithMany().OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<MemberPosition>().HasOne(p => p.Member).WithMany(b => b.Positions).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<MemberPosition>().HasOne(p => p.Position).WithMany().OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<UserProfile>()
                 .HasOne(l => l.Member)

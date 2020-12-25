@@ -117,6 +117,20 @@ using Syncfusion.Blazor.Buttons;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Admin\Calendar.razor"
+using Syncfusion.Blazor.Schedule;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Admin\Calendar.razor"
+using Common.Dtos;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/admin/calendar")]
     public partial class Calendar : Microsoft.AspNetCore.Components.ComponentBase
     {

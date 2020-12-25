@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HRManager.Api.Migrations
 {
     [DbContext(typeof(MainContext))]
-    [Migration("20201221034213_init")]
+    [Migration("20201225143015_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -108,6 +108,31 @@ namespace HRManager.Api.Migrations
                     b.HasIndex("PositionId");
 
                     b.ToTable("ClockedTime");
+                });
+
+            modelBuilder.Entity("HRManager.Common.MemberPosition", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<int>("Association")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("MemberId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("PositionId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MemberId");
+
+                    b.HasIndex("PositionId");
+
+                    b.ToTable("PositionMember");
                 });
 
             modelBuilder.Entity("HRManager.Common.MemberProfile", b =>
@@ -249,31 +274,6 @@ namespace HRManager.Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Positions");
-                });
-
-            modelBuilder.Entity("HRManager.Common.PositionMember", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<int>("Association")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("MemberId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("PositionId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MemberId");
-
-                    b.HasIndex("PositionId");
-
-                    b.ToTable("PositionMember");
                 });
 
             modelBuilder.Entity("HRManager.Common.Reference", b =>
@@ -676,18 +676,7 @@ namespace HRManager.Api.Migrations
                     b.Navigation("Position");
                 });
 
-            modelBuilder.Entity("HRManager.Common.MemberProfile", b =>
-                {
-                    b.HasOne("HRManager.Common.UserProfile", "User")
-                        .WithOne("Member")
-                        .HasForeignKey("HRManager.Common.MemberProfile", "UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("HRManager.Common.PositionMember", b =>
+            modelBuilder.Entity("HRManager.Common.MemberPosition", b =>
                 {
                     b.HasOne("HRManager.Common.MemberProfile", "Member")
                         .WithMany("Positions")
@@ -702,6 +691,17 @@ namespace HRManager.Api.Migrations
                     b.Navigation("Member");
 
                     b.Navigation("Position");
+                });
+
+            modelBuilder.Entity("HRManager.Common.MemberProfile", b =>
+                {
+                    b.HasOne("HRManager.Common.UserProfile", "User")
+                        .WithOne("Member")
+                        .HasForeignKey("HRManager.Common.MemberProfile", "UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("HRManager.Common.Reference", b =>

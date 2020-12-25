@@ -1,0 +1,325 @@
+﻿@using Blazorise
+@using Syncfusion.Blazor.Calendars
+@using Syncfusion.Blazor.DropDowns
+
+@code {
+    [Parameter]
+    public MemberAdminReadEditDto Member { get; set; }
+    [Parameter]
+    public List<Position> Positions { get; set; }
+    [Parameter]
+    public EventCallback<MemberAdminReadEditDto> MemberChanged { get; set; }
+
+    Dictionary<AssociationType, string[]> selectedPositions { get; set; }
+
+    protected override void OnInitialized()
+    {
+        selectedPositions = new Dictionary<AssociationType, string[]>();
+
+        var preferred = Member.Positions.Where(p => p.Association == AssociationType.Preferred).Select(p => p.Position.Name).ToArray();
+        var assigned = Member.Positions.Where(p => p.Association == AssociationType.Assigned).Select(p => p.Position.Name).ToArray();
+        var preferredAndAssigned = Member.Positions.Where(p => p.Association == AssociationType.PreferredAndAssigned).Select(p => p.Position.Name).ToArray();
+
+        selectedPositions.Add(AssociationType.Assigned, assigned);
+        selectedPositions.Add(AssociationType.Preferred, preferred);
+        selectedPositions.Add(AssociationType.PreferredAndAssigned, preferredAndAssigned);
+    }
+
+    string selectedTab = "personal";
+
+    public async Task UpdatePositions()
+    {
+        var memberPositions = new List<MemberPositionDto>();
+
+        foreach (var position in selectedPositions[AssociationType.Preferred])
+        {
+            var memberPosition = new MemberPositionDto()
+            {
+                Position = Positions.FirstOrDefault(p => p.Name == position),
+                Association = AssociationType.Preferred
+            };
+
+            memberPositions.Add(memberPosition);
+        }
+
+        foreach (var position in selectedPositions[AssociationType.Assigned])
+        {
+            var memberPosition = new MemberPositionDto()
+            {
+                Position = Positions.FirstOrDefault(p => p.Name == position),
+                Association = AssociationType.Assigned
+            };
+
+            memberPositions.Add(memberPosition);
+        }
+
+        foreach (var position in selectedPositions[AssociationType.PreferredAndAssigned])
+        {
+            if (selectedPositions[AssociationType.Assigned].Contains(position))
+            {
+                var memberPosition = new MemberPositionDto()
+                {
+                    Position = Positions.FirstOrDefault(p => p.Name == position),
+                    Association = AssociationType.PreferredAndAssigned
+                };
+
+                memberPositions.Add(memberPosition);
+            }
+        }
+
+        Member.Positions = memberPositions;
+
+        await MemberChanged.InvokeAsync(Member);
+    }
+
+    private void OnTabChanged(string name)
+    {
+        selectedTab = name;
+    }
+}
+<div class="p-2">
+    <Tabs SelectedTab="@selectedTab" SelectedTabChanged="@OnTabChanged">
+        <Items>
+            <Tab Class="main-tab" Name="personal">Personal and Contact</Tab>
+            <Tab Class="main-tab" Name="positions">Positions</Tab>
+            <Tab Class="main-tab" Name="avail">Availabilities</Tab>
+            <Tab Class="main-tab" Name="qual">Qualifications</Tab>
+            <Tab Class="main-tab" Name="cert">Certifications</Tab>
+            <Tab Class="main-tab" Name="check">Checks</Tab>
+        </Items>
+        <Content>
+            <TabPanel Name="personal">
+                <div id="form-container" class="p-3">
+                    <div id="first-name" class="form-group">
+                        <label class="form-label">First Name:</label>
+                        <div>
+                            <SfTextBox Type="InputType.Text" @bind-Value="Member.FirstName" />
+                            <ValidationMessage For="@(() => Member.FirstName)" />
+                        </div>
+                    </div>
+                    <div id="last-name" class="form-group">
+                        <label class="form-label">Last Name:</label>
+                        <div>
+                            <SfTextBox Type="InputType.Text" @bind-Value="Member.LastName" />
+                            <ValidationMessage For="@(() => Member.LastName)" />
+                        </div>
+                    </div>
+                    <div id="birthdate" class="form-group">
+                        <label class="form-label">Date of Birth:</label>
+                        <div>
+                            <SfDatePicker StrictMode="true" @bind-Value="Member.Birthdate" />
+                            <ValidationMessage For="@(() => Member.Birthdate)" />
+                        </div>
+                    </div>
+                    <div id="address" class="form-group">
+                        <label class="form-label">Address:</label>
+                        <div>
+                            <SfTextBox Type="InputType.Text" @bind-Value="Member.Address" />
+                            <ValidationMessage For="@(() => Member.Address)" />
+                        </div>
+                    </div>
+                    <div id="city" class="form-group">
+                        <label class="form-label">City:</label>
+                        <div>
+                            <SfTextBox Type="InputType.Text" @bind-Value="Member.City" />
+                            <ValidationMessage For="@(() => Member.City)" />
+                        </div>
+                    </div>
+                    <div id="postal-code" class="form-group">
+                        <label class="form-label">Postal Code:</label>
+                        <div>
+                            <SfTextBox Type="InputType.Text" @bind-Value="Member.PostalCode" />
+                            <ValidationMessage For="@(() => Member.PostalCode)" />
+                        </div>
+                    </div>
+                    <div id="email" class="form-group">
+                        <label class="form-label">Email:</label>
+                        <div>
+                            <SfTextBox Type="InputType.Text" @bind-Value="Member.Email" />
+                            <ValidationMessage For="@(() => Member.Email)" />
+                        </div>
+                    </div>
+                    <div id="main-phone" class="form-group">
+                        <label class="form-label">Main Phone:</label>
+                        <div>
+                            <SfTextBox Type="InputType.Tel" @bind-Value="Member.MainPhone" />
+                            <ValidationMessage For="@(() => Member.FirstName)" />
+                        </div>
+                    </div>
+                    <div id="alt-phone-1" class="form-group">
+                        <label class="form-label">Alternate Phone 1 (Optional):</label>
+                        <div>
+                            <SfTextBox Type="InputType.Tel" @bind-Value="Member.AlternatePhone1" />
+                            <ValidationMessage For="@(() => Member.AlternatePhone1)" />
+                        </div>
+                    </div>
+                    <div id="alt-phone-2" class="form-group">
+                        <label class="form-label">Alternate Phone 2 (Optional):</label>
+                        <div>
+                            <SfTextBox Type="InputType.Tel" @bind-Value="Member.AlternatePhone2" />
+                        </div>
+                    </div>
+                    <div id="emergency-contact" class="form-group">
+                        <label class="form-label">Full Name of Emergency Contact:</label>
+                        <div>
+                            <SfTextBox Type="InputType.Text" @bind-Value="Member.EmergencyFullName" />
+                            <ValidationMessage For="@(() => Member.EmergencyFullName)" />
+                        </div>
+                    </div>
+                    <div id="emergency-relationship" class="form-group">
+                        <label class="form-label">Relationship to Emergency Contact:</label>
+                        <div>
+                            <SfTextBox Type="InputType.Text" @bind-Value="Member.EmergencyRelationship" />
+                            <ValidationMessage For="@(() => Member.EmergencyRelationship)" />
+                        </div>
+                    </div>
+                    <div id="emergency-phone-1" class="form-group">
+                        <label class="form-label">Emergency Phone 1:</label>
+                        <div>
+                            <SfTextBox Type="InputType.Tel" @bind-Value="Member.EmergencyPhone1" />
+                            <ValidationMessage For="@(() => Member.EmergencyPhone1)" />
+                        </div>
+                    </div>
+                    <div id="emergency-phone-2" class="form-group">
+                        <label class="form-label">Emergency Phone 2 (Optional):</label>
+                        <div>
+                            <SfTextBox Type="InputType.Tel" @bind-Value="Member.EmergencyPhone2" />
+                            <ValidationMessage For="@(() => Member.EmergencyPhone2)" />
+                        </div>
+                    </div>
+                </div>
+            </TabPanel>
+            <TabPanel Name="positions">
+                <div class="d-flex p-3">
+                    <div class="d-flex flex-column mr-2">
+                        <label><strong>Preferred Positions</strong></label>
+                        <SfMultiSelect Mode="VisualMode.Box" @bind-Value="@selectedPositions[AssociationType.Preferred]" DataSource="Positions" >
+                            <MultiSelectFieldSettings Text="Name" Value="Name" />
+                        </SfMultiSelect>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <label><strong>Assigned Positions</strong></label>
+                        <SfMultiSelect Mode="VisualMode.Box" @bind-Value="@selectedPositions[AssociationType.Assigned]" DataSource="Positions" >
+                            <MultiSelectFieldSettings Text="Name" Value="Name" />
+                        </SfMultiSelect>
+                    </div>
+                </div>
+            </TabPanel>
+            <TabPanel Name="avail">
+                <div class="availability-container p-3">
+                    <AvailabilityEditor @bind-AvailabilitiesData="@Member.Availabilities" IsReadOnly="false" />
+                </div>
+            </TabPanel>
+            <TabPanel Name="qual">
+                <div class="p-3">
+                    <div id="general-experience">
+                        <div id="education" class="form-group">
+                            <label>Education and Training</label>
+                            <SfTextBox Multiline="true" @bind-Value="Member.EducationTraining" />
+                            <ValidationMessage For="@(() => Member.EducationTraining)" />
+                        </div>
+                        <div id="skills" class="form-group">
+                            <label>Skills, Interests and Hobbies</label>
+                            <SfTextBox Multiline="true" @bind-Value="Member.SkillsInterestsHobbies" />
+                            <ValidationMessage For="@(() => Member.SkillsInterestsHobbies)" />
+                        </div>
+                        <div id="experience" class="form-group">
+                            <label>Volunteer Experience</label>
+                            <SfTextBox Multiline="true" @bind-Value="Member.Experience" />
+                            <ValidationMessage For="@(() => Member.Experience)" />
+                        </div>
+                        <div id="boards" class="form-group">
+                            <label>Volunteer Boards</label>
+                            <SfTextBox Multiline="true" @bind-Value="Member.OtherBoards" />
+                            <ValidationMessage For="@(() => Member.OtherBoards)" />
+                        </div>
+                    </div>
+                    <hr />
+                    <h6>Last or Current Job</h6>
+                    <br />
+                    <div id="work-experience">
+                        <div id="employer-name" class="form-group">
+                            <label>Place of Work</label>
+                            <SfTextBox @bind-Value="Member.WorkExperiences.FirstOrDefault().EmployerName" />
+                            <ValidationMessage For="@(() => Member.WorkExperiences.FirstOrDefault().EmployerName)" />
+                        </div>
+                        <div id="employer-address" class="form-group">
+                            <label>Address</label>
+                            <SfTextBox @bind-Value="Member.WorkExperiences.FirstOrDefault().EmployerAddress" />
+                            <ValidationMessage For="@(() => Member.WorkExperiences.FirstOrDefault().EmployerAddress)" />
+                        </div>
+                        @if (Member.WorkExperiences.FirstOrDefault().CurrentJob)
+                        {
+                            <div id="date" class="form-group">
+                                <label>Start Date</label>
+                                <SfDatePicker @bind-Value="Member.WorkExperiences.FirstOrDefault().StartDate" />
+                                <ValidationMessage For="@(() => Member.WorkExperiences.FirstOrDefault().StartDate)" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div id="date" class="form-group">
+                                <label>Period Worked</label>
+                                <SfDateRangePicker @bind-StartDate="Member.WorkExperiences.FirstOrDefault().StartDate" @bind-EndDate="Member.WorkExperiences.FirstOrDefault().EndDate" />
+                            </div>
+                        }
+                        <div id="current" class="form-group">
+                            <SfCheckBox @bind-Checked="Member.WorkExperiences.FirstOrDefault().CurrentJob" />
+                            <ValidationMessage For="@(() => Member.WorkExperiences.FirstOrDefault().CurrentJob)" />
+                            <label>Current Job?</label>
+                        </div>
+                    </div>
+                </div>
+            </TabPanel>
+            <TabPanel Name="cert">
+                <div id="cert-container" class="d-flex flex-column p-3">
+                    <div id="firstaid-container">
+                        <div class="checkbox-container">
+                            <SfCheckBox @bind-Checked="Member.FirstAidCpr" />
+                            <label>First Aid</label>
+                        </div>
+                        <div class="expiry-container mr-1">
+                            @if (Member.FirstAidCpr)
+                            {
+                                <label class="expiry-label">Expiry:</label>
+                                <SfDatePicker CssClass="expiry" @bind-Value="Member.FirstAidCprExpiry" />
+                            }
+
+                        </div>
+                        <div class="level-container">
+                            @if (Member.FirstAidCpr)
+                            {
+                                <label>Level:</label>
+                                <SfTextBox @bind-Value="Member.FirstAidCprLevel" />
+                            }
+                        </div>
+                    </div>
+                    <div id="foodsafe-container">
+                        <div class="checkbox-container">
+                            <SfCheckBox @bind-Checked="Member.FoodSafe" />
+                            <label>Food Safe</label>
+                        </div>
+                        <div class="expiry-container ">
+                            @if (Member.FoodSafe)
+                            {
+                                <label>Expiry:</label>
+                                <SfDatePicker @bind-Value="Member.FoodSafeExpiry" />
+                            }
+
+                        </div>
+                    </div>
+                    <div id="othercerts-container">
+                        <div class="expiry-container ">
+                            <label>Other Certificates:</label>
+                            <SfTextBox @bind-Value="Member.OtherCertificates" Multiline="true" />
+                        </div>
+                    </div>
+                </div>
+            </TabPanel>
+            <TabPanel Name="check">
+            </TabPanel>
+        </Content>
+    </Tabs>
+</div>
+
+

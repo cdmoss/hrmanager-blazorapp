@@ -1,7 +1,16 @@
 ﻿@page "/admin/calendar"
 
-<h1>Hello, world!</h1>
+@using Syncfusion.Blazor.Schedule
+@using Common.Dtos 
 
-Welcome to your new app.
+@if (!string.IsNullOrEmpty(error))
+{
+    <p>@error</p>
+}
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div id="schedule-container">
+    <SfSchedule TValue="ShiftReadEditDto">
+        <ScheduleEventSettings TValue="ShiftReadEditDto" DataSource="shifts" AllowAdding="true" AllowEditing="true" AllowDeleting="true" AllowEditFollowingEvents="true"/>
+        <ScheduleEvents TValue="ShiftReadEditDto" ActionCompleted="OnActionCompleted" OnActionBegin="OnActionBegin" />
+    </SfSchedule>
+</div>

@@ -38,6 +38,7 @@ namespace HRManager.Blazor
             builder.Services.AddScoped(client => new HttpClient { BaseAddress = new Uri("http://localhost:5001") });
 
             builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<IShiftService, HttpShiftService>();
             builder.Services.AddScoped<IUserService, HttpUserService>();
             builder.Services.AddScoped<PositionsService>();
             builder.Services.AddSyncfusionBlazor();

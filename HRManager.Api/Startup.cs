@@ -66,6 +66,7 @@ namespace HRManager.Api
             services.AddScoped<IDbSeeder, DbSeeder>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUserService, EntityUserService>();
+            services.AddScoped<IShiftService, EntityShiftService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
