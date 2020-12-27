@@ -126,6 +126,27 @@ using Syncfusion.Blazor.Schedule;
 #nullable disable
 #nullable restore
 #line 4 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Admin\Calendar.razor"
+using Syncfusion.Blazor.Calendars;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Admin\Calendar.razor"
+using Syncfusion.Blazor.DropDowns;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Admin\Calendar.razor"
+using Microsoft.AspNetCore.Components.Authorization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 7 "C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Blazor\Pages\Admin\Calendar.razor"
 using Common.Dtos;
 
 #line default

@@ -14,42 +14,42 @@ namespace HRManager.Api.Services
 {
     public interface IUserService
     {
-        ApiResult<List<MemberAdminReadEditDto>> GetMembers();
-        ApiResult<List<MemberAdminReadEditDto>> UpdateMember(MemberAdminReadEditDto dto);
+        Task<ApiResult<List<TDto>>> GetMembers<TDto>() where TDto : MemberDto;
+        Task<ApiResult<List<MemberAdminReadEditDto>>> UpdateMember(MemberAdminReadEditDto dto);
     }
-    public class EntityUserService : IUserService
+    public class EFUserService : IUserService
     {
         private readonly MainContext _context;
         private readonly IMapper _mapper;
-        private readonly ILogger<EntityUserService> _logger;
+        private readonly ILogger<EFUserService> _logger;
 
-        public EntityUserService(MainContext context, ILogger<EntityUserService> logger, IMapper mapper)
+        public EFUserService(MainContext context, ILogger<EFUserService> logger, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
             _logger = logger;
         }
 
-        public ApiResult<List<MemberAdminReadEditDto>> GetMembers()
+        public async Task<ApiResult<List<TDto>>> GetMembers<TDto>() where TDto : MemberDto
         {
             try
             {
-                var members = _context.Members.Include(p => p.User)
+                var members = await _context.Members.Include(p => p.User)
                 .Include(p => p.Availabilities)
                 .Include(p => p.Positions).ThenInclude(p => p.Position)
-                .Include(p => p.WorkExperiences).ToList();
+                .Include(p => p.WorkExperiences).ToListAsync();
 
-                return new ApiResult<List<MemberAdminReadEditDto>>
+                return new ApiResult<List<TDto>>
                 {
-                    Dto = _mapper.Map<List<MemberAdminReadEditDto>>(members),
+                    Dto = _mapper.Map<List<TDto>>(members),
                     Successful = true
                 };
             }
             catch (Exception ex)
             {
-                _logger.LogError("An error occured when trying to fetch member information:\n\n" + ex.Message);
+                _logger.LogError("An error occured when trying to fetch member information:\n\n" + ex.Message + "\n\nStack Trace: \n" + ex.StackTrace);
 
-                return new ApiResult<List<MemberAdminReadEditDto>>
+                return new ApiResult<List<TDto>>
                 {
                     Successful = false,
                     Error = ex.Message
@@ -57,11 +57,11 @@ namespace HRManager.Api.Services
             }
         }
 
-        public ApiResult<List<MemberAdminReadEditDto>> UpdateMember(MemberAdminReadEditDto dto)
+        public async Task<ApiResult<List<MemberAdminReadEditDto>>> UpdateMember(MemberAdminReadEditDto dto)
         {
             try
             {
-                var member = _context.Members.Include(m => m.User).FirstOrDefault(m => m.Id == dto.Id);
+                var member = await _context.Members.Include(m => m.User).FirstOrDefaultAsync(m => m.Id == dto.Id);
 
                 UpdateMemberProperties(dto, member);
 
@@ -71,9 +71,9 @@ namespace HRManager.Api.Services
                     _context.Entry(position.Position).State = EntityState.Detached;
                 }
 
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
-                var result = GetMembers();
+                var result = await GetMembers<MemberAdminReadEditDto>();
                 return result;
             }
             catch (Exception ex)

@@ -605,7 +605,7 @@
       "url": "_content\/Blazorise.Bootstrap\/blazorise.bootstrap.js"
     },
     {
-      "hash": "sha256-Ltw0x4Vi749\/WbhtxzfgM4qcxJ\/1jZmlE4YtSpjgY+E=",
+      "hash": "sha256-qZeWZWW3TCPvkOoy778CG\/W1M25bU4PcyqZjtrJhQV8=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -1585,19 +1585,19 @@
       "url": "_framework\/dotnet.5.0.0.js"
     },
     {
-      "hash": "sha256-TcMPD+2GE6lyR9iPgp6zLnEKrLXDER1MJou\/lX6bNX4=",
+      "hash": "sha256-vyQ5JJY37pQ9YtMu1G7dcuzqZtOSQiMt7IY3ReB1h7I=",
       "url": "_framework\/HRManager.Common.dll"
     },
     {
-      "hash": "sha256-\/KvUt\/fmxTTzrTejrhr\/ZKGOyYvrebzAuC8vWrCMryc=",
+      "hash": "sha256-S9lAY+WKYwKxTpqlZRoBKGVasGAwBaYBcKiEOUwicrg=",
       "url": "_framework\/HRManager.Common.pdb"
     },
     {
-      "hash": "sha256-V3ey3ReI8h+50mTEUxqHmh1X+mjIrvYZhQp6SDO1Qhc=",
+      "hash": "sha256-tE+U23LzSiKtugmtbGD6Za54XiBMl8FtzAcEoluo4+o=",
       "url": "_framework\/HRManager.Blazor.dll"
     },
     {
-      "hash": "sha256-Wc5C+QZrbY6KI\/5+avLvSGaepoNJlvOh\/XUTq\/PW4iI=",
+      "hash": "sha256-ILqOqy12zlyXA1iWrSWPLVsHumjEmODx\/b8kmoJUejQ=",
       "url": "_framework\/HRManager.Blazor.pdb"
     },
     {
@@ -2581,11 +2581,11 @@
       "url": "_framework\/dotnet.5.0.0.js.gz"
     },
     {
-      "hash": "sha256-aU+AqlTo3KvCZLX03\/tSfFzFx+rLWPPeoZMTJ28Bqe4=",
+      "hash": "sha256-mjZrx8NmDvwWmvsR51\/iAA0qvnwXdbtP4znQCbMJay8=",
       "url": "_framework\/HRManager.Common.dll.gz"
     },
     {
-      "hash": "sha256-AZkEqeHam0bJPrbi5UJFc2AEIWsJPdTvEgElwhlUUO4=",
+      "hash": "sha256-2s9vLRKBpaZCpkie7scV0NFOiPF+A8zJCQvlEkSGRPU=",
       "url": "css\/app.css"
     },
     {
@@ -2805,13 +2805,13 @@
       "url": "sample-data\/weather.json"
     },
     {
-      "hash": "sha256-CQPcwIiWww2b6WUMs1jVkelKxo3Q3E6mKaD\/khvChV0=",
+      "hash": "sha256-VX47HCLDz6yez\/Hzn1VdFjm97FYvJvlOO2i4vlNTnNA=",
       "url": "HRManager.Blazor.styles.css"
     },
     {
-      "hash": "sha256-yqxMaPH55ETiwY2f4IIdiVuEeTzjJYBrMMPM\/qbdq+E=",
+      "hash": "sha256-4zaSGxuEBUWMC921iXDEWlPNlLVCdq1uFyYM5jEWbSI=",
       "url": "HRManager.Blazor.bundle.scp.css"
     }
   ],
-  "version": "7JQC8tw0"
+  "version": "+H9zzmsi"
 };

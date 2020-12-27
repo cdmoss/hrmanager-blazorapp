@@ -12,7 +12,7 @@ namespace HRManager.Blazor.Services
 {
     public interface IUserService
     {
-        Task<ApiResult<List<MemberAdminReadEditDto>>> GetMembers();
+        Task<ApiResult<List<TDto>>> GetMembers<TDto>() where TDto : MemberDto;
         Task<ApiResult<List<MemberAdminReadEditDto>>> UpdateMember(MemberAdminReadEditDto dto);
     }
 
@@ -25,9 +25,9 @@ namespace HRManager.Blazor.Services
             _http = http;
         }
 
-        public async Task<ApiResult<List<MemberAdminReadEditDto>>> GetMembers()
+        public async Task<ApiResult<List<TDto>>> GetMembers<TDto>() where TDto : MemberDto
         {
-            return await _http.GetFromJsonAsync<ApiResult<List<MemberAdminReadEditDto>>>("users/members");
+            return await _http.GetFromJsonAsync<ApiResult<List<TDto>>>("users/members");
         }
 
         public async Task<ApiResult<List<MemberAdminReadEditDto>>> UpdateMember(MemberAdminReadEditDto dto)

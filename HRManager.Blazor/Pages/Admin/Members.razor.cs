@@ -19,7 +19,7 @@ namespace HRManager.Blazor.Pages.Admin
         [Inject]
         private IUserService _userService { get; set; }
         [Inject]
-        private PositionsService _posService { get; set; }
+        private IPositionService _posService { get; set; }
         private List<MemberAdminReadEditDto> members;
         private List<Position> positions;
         private GridEditTemplate editTemplate = new GridEditTemplate();
@@ -35,19 +35,25 @@ namespace HRManager.Blazor.Pages.Admin
 
             if (user.Identity.IsAuthenticated)
             {
-                var result = await _userService.GetMembers();
-                if (result.Successful)
+                var memberResult = await _userService.GetMembers<MemberAdminReadEditDto>();
+                if (memberResult.Successful)
                 {
-                    members = result.Dto;
-                    positions = await _posService.GetPositions();
-                    foreach (var member in members)
+                    members = memberResult.Dto;
+
+                    var positionResult = await _posService.GetPositions();
+                    if (positionResult.Successful)
                     {
-                        selectedTabs.Add(member.Id, "personal," + member.Id);
+                        positions = positionResult.Dto;
+
+                        foreach (var member in members)
+                        {
+                            selectedTabs.Add(member.Id, "personal," + member.Id);
+                        }
                     }
                 }
                 else
                 {
-                    error = result.Error;
+                    error = memberResult.Error;
                 }
             }
         }

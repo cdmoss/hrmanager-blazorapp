@@ -1,16 +1,67 @@
 ﻿@page "/admin/calendar"
 
 @using Syncfusion.Blazor.Schedule
-@using Common.Dtos 
+@using Syncfusion.Blazor.Calendars
+@using Syncfusion.Blazor.DropDowns
+@using Microsoft.AspNetCore.Components.Authorization
+@using Common.Dtos
 
 @if (!string.IsNullOrEmpty(error))
 {
     <p>@error</p>
 }
 
-<div id="schedule-container">
-    <SfSchedule TValue="ShiftReadEditDto">
-        <ScheduleEventSettings TValue="ShiftReadEditDto" DataSource="shifts" AllowAdding="true" AllowEditing="true" AllowDeleting="true" AllowEditFollowingEvents="true"/>
-        <ScheduleEvents TValue="ShiftReadEditDto" ActionCompleted="OnActionCompleted" OnActionBegin="OnActionBegin" />
-    </SfSchedule>
-</div>
+<AuthorizeView>
+    <div id="schedule-container">
+        <SfSchedule Width="100%" Height="100%" TValue="ShiftReadEditDto"  CurrentView="currentView">
+            <ScheduleResources>
+                <ScheduleResource TItem="Position" TValue="int" DataSource="@positions" Field="PositionId" Title="Position" Name="Positions" TextField="Name" IdField="Id" ColorField="Color" AllowMultiple="false" />
+            </ScheduleResources>
+            <ScheduleGroup Context="groupContext" ByGroupID="false" Resources="@resourceNames" />
+            <ScheduleEventSettings TValue="ShiftReadEditDto" DataSource="shifts" AllowAdding="true" AllowEditing="true" AllowDeleting="true" AllowEditFollowingEvents="true" />
+            <ScheduleEvents TValue="ShiftReadEditDto" ActionCompleted="OnActionCompleted" OnActionBegin="OnActionBegin" />
+            <ScheduleTemplates>
+                <EditorTemplate Context="editorContext">
+                    @{
+                        var shift = (editorContext as ShiftReadEditDto);
+                    }
+                    <div id="editor-container">
+                        <div id="editor-daterange" class="form-group">
+                            <label>Work Period:</label>
+                            <SfTimeRangePicker InitialStart="@shift.StartTime" InitialEnd="shift.EndTime" @bind-Start="@shift.StartTime" @bind-End="@shift.EndTime" />
+                        </div>
+                        <div id="editor-position" class="form-group">
+                            <label>Position:</label>
+                            <SfDropDownList TValue="int?" DataSource="positions" @bind-Value="shift.PositionId" TItem="Position">
+                                <DropDownListFieldSettings Text="Name" Value="Id" />
+                            </SfDropDownList>
+                        </div>
+                        <div id="editor-member" class="form-group">
+                            <label>Volunteer:</label>
+                            <SfDropDownList ID="editor-member" TValue="int?" DataSource="members" @bind-Value="shift.MemberProfileId" TItem="MemberMinimalDto">
+                                <DropDownListTemplates TItem="MemberMinimalDto">
+                                    <ItemTemplate Context="memberDropDownContext">
+                                        @{var member = (memberDropDownContext as MemberMinimalDto);}
+                                        <span>@member.FirstName @member.LastName</span>
+                                    </ItemTemplate>
+                                </DropDownListTemplates>
+                                <DropDownListFieldSettings Text="FullName" Value="Id" />
+                            </SfDropDownList>
+                        </div>
+                        <div id="editor-notes" class="form-group">
+                            <label>Notes:</label>
+                            <SfTextBox @bind-Value="shift.Description" Multiline="true" />
+                        </div>
+                    </div>
+                </EditorTemplate>
+            </ScheduleTemplates>
+            <ScheduleViews>
+                <ScheduleView Option="View.TimelineDay" />
+                <ScheduleView Option="View.Agenda" />
+                <ScheduleView Option="View.TimelineMonth" />
+                <ScheduleView Option="View.TimelineYear" />
+                <ScheduleView Option="View.MonthAgenda" />
+            </ScheduleViews>
+        </SfSchedule>
+    </div>
+</AuthorizeView>

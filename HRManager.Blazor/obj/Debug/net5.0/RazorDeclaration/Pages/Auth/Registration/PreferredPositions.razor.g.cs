@@ -144,8 +144,12 @@ using Services;
 
     protected override async Task OnInitializedAsync()
     {
-        positions = await _posService.GetPositions();
+        var positionsResult = await _posService.GetPositions();
 
+        if (positionsResult.Successful)
+        {
+            positions = positionsResult.Dto;
+        }
         if (!PositionsData.Any())
         {
             foreach (var position in positions)
@@ -179,7 +183,7 @@ using Services;
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private PositionsService _posService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IPositionService _posService { get; set; }
     }
 }
 #pragma warning restore 1591

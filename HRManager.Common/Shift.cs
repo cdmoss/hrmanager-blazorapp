@@ -14,8 +14,8 @@ namespace HRManager.Common
     {
         public int Id { get; set; }
         public string Subject { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public DateTime? StartTime { get; set; }
+        public DateTime? EndTime { get; set; }
         public int? PositionId { get; set; }
         public Position Position { get; set; }
         public int? MemberProfileId { get; set; }

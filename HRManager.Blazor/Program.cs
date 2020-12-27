@@ -40,7 +40,8 @@ namespace HRManager.Blazor
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IShiftService, HttpShiftService>();
             builder.Services.AddScoped<IUserService, HttpUserService>();
-            builder.Services.AddScoped<PositionsService>();
+            builder.Services.AddScoped<IPositionService, HttpPositionService>();
+            builder.Services.AddScoped<IScheduleService, HttpScheduleService>();
             builder.Services.AddSyncfusionBlazor();
 
             var host = builder.Build();

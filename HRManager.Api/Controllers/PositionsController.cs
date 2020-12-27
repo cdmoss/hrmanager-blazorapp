@@ -1,4 +1,5 @@
 ﻿using HRManager.Api.Data;
+using HRManager.Api.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,18 +13,17 @@ namespace HRManager.Api.Controllers
     [ApiController]
     public class PositionsController : ControllerBase
     {
-        private readonly MainContext _context;
+        private readonly IPositionService _positionService;
 
-        public PositionsController(MainContext context)
+        public PositionsController(IPositionService positionService)
         {
-            _context = context;
+            _positionService = positionService;
         }
 
         [HttpGet("all")]
-        public IActionResult GetAllPositions()
+        public async Task<IActionResult> GetAllPositions()
         {
-            var positions = _context.Positions.Where(p => p.Name != "All").ToList();
-
+            var positions = await _positionService.GetPositions();
             return new ObjectResult(positions);
         }
     }

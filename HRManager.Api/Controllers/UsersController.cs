@@ -24,16 +24,16 @@ namespace HRManager.Api.Controllers
 
         [Authorize(Roles = "Admin, SuperAdmin")]
         [HttpGet("members")]
-        public IActionResult GetMembers()
+        public async Task<IActionResult> GetMembers()
         {
-            return new ObjectResult(_userService.GetMembers());
+            return new ObjectResult(await _userService.GetMembers<MemberAdminReadEditDto>());
         }
 
         [Authorize(Roles = "Admin, SuperAdmin")]
         [HttpPost("update-member")]
-        public IActionResult UpdateMember([FromBody]MemberAdminReadEditDto dto)
+        public async Task<IActionResult> UpdateMember([FromBody]MemberAdminReadEditDto dto)
         {
-            return new ObjectResult(_userService.UpdateMember(dto));
+            return new ObjectResult(await _userService.UpdateMember(dto));
         }
     }
 }

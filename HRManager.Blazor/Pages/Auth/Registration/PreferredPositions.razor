@@ -1,7 +1,7 @@
 ﻿@using Syncfusion.Blazor.Buttons
 @using Services
 @inherits RegisterSectionBase
-@inject PositionsService _posService
+@inject IPositionService _posService
 
 @code {
 
@@ -14,8 +14,12 @@
 
     protected override async Task OnInitializedAsync()
     {
-        positions = await _posService.GetPositions();
+        var positionsResult = await _posService.GetPositions();
 
+        if (positionsResult.Successful)
+        {
+            positions = positionsResult.Dto;
+        }
         if (!PositionsData.Any())
         {
             foreach (var position in positions)

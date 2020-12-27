@@ -11,6 +11,8 @@ C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Api\bin\Debug\net5.0\AspN
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Api\bin\Debug\net5.0\AspNet.Security.OpenIdConnect.Extensions.dll
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Api\bin\Debug\net5.0\AspNet.Security.OpenIdConnect.Primitives.dll
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Api\bin\Debug\net5.0\AspNet.Security.OpenIdConnect.Server.dll
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Api\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Api\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Api\bin\Debug\net5.0\CryptoHelper.dll
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Api\bin\Debug\net5.0\Humanizer.dll
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Api\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
@@ -131,5 +133,3 @@ C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Api\obj\Debug\net5.0\HRMa
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Api\obj\Debug\net5.0\ref\HRManager.Api.dll
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Api\obj\Debug\net5.0\HRManager.Api.pdb
 C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Api\obj\Debug\net5.0\HRManager.Api.genruntimeconfig.cache
-C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Api\bin\Debug\net5.0\AutoMapper.dll
-C:\Users\Chase\Desktop\Programming\HRManager\HRManager.Api\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

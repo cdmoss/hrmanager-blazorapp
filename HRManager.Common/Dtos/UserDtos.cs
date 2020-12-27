@@ -13,10 +13,12 @@ namespace HRManager.Common.Dtos
         public string Password { get; set; }
     }
 
-    
-    
+    public abstract class MemberDto
+    {
 
-    public class MemberAdminReadEditDto
+    }    
+
+    public class MemberAdminReadEditDto : MemberDto
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "A valid email is required")]
@@ -111,16 +113,16 @@ namespace HRManager.Common.Dtos
         public bool IsStaff { get; set; }
     }
 
-    public class MemberMinimalDto
+    public class MemberMinimalDto : MemberDto
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string FullNameWithID { get { return Id + " " + FirstName + " " + LastName; } }
+        public string FullName { get { return FirstName + " " + LastName; } }
         public ApprovalStatus ApprovalStatus { get; set; }
     }
 
-    public class MemberReadEditDto
+    public class MemberReadEditDto : MemberDto
     {
         public int Id { get; set; }
         [Required]

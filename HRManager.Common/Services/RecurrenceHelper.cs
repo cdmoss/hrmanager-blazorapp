@@ -39,7 +39,7 @@ namespace HRManager.Common.Services
 
         #region Out of the Box Methods
 
-        public static IEnumerable<DateTime> GetRecurrenceDateTimeCollection(string RRule, DateTime RecStartDate)
+        public static IEnumerable<DateTime> GetRecurrenceDateTimeCollection(string RRule, DateTime? RecStartDate)
         {
             var filteredDates = GetRecurrenceDateCollection(RRule, RecStartDate, null, 43);
             return filteredDates;
@@ -62,14 +62,14 @@ namespace HRManager.Common.Services
             return filteredDates;
         }
 
-        public static IEnumerable<DateTime> GetRecurrenceDateCollection(string RRule, DateTime RecStartDate, string RecException, int NeverCount)
+        public static IEnumerable<DateTime> GetRecurrenceDateCollection(string RRule, DateTime? RecStartDate, string RecException, int NeverCount)
         {
             List<DateTime> RecDateCollection = new List<DateTime>();
-            DateTime startDate = RecStartDate;
+            DateTime startDate = RecStartDate.Value;
             var ruleSeperator = new[] { '=', ';', ',' };
             var weeklySeperator = new[] { ';' };
             string[] ruleArray = RRule.Split(ruleSeperator);
-            FindKeyIndex(ruleArray, RecStartDate);
+            FindKeyIndex(ruleArray, RecStartDate.Value);
             string[] weeklyRule = RRule.Split(weeklySeperator);
             FindWeeklyRule(weeklyRule);
             if (RecException != null)

@@ -1,6 +1,7 @@
 /* /Pages/Admin/Calendar.razor.rz.scp.css */
 #schedule-container[b-v9rxn3epto]{
-    overflow: hidden;
+    overflow: scroll;
+    height: 100vh;
 }
 /* /Pages/Admin/GridEditTemplate.razor.rz.scp.css */
 /*Personal and Contact*/

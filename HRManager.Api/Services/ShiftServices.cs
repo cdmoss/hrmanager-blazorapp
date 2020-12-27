@@ -13,31 +13,31 @@ namespace HRManager.Api.Services
 {
     public interface IShiftService
     {
-        ApiResult<List<ShiftReadEditDto>> GetShifts();
-        ApiResult<List<ShiftReadEditDto>> AddShifts(List<ShiftReadEditDto> dto);
-        ApiResult<List<ShiftReadEditDto>> UpdateShifts(List<ShiftReadEditDto> dto);
-        ApiResult<List<ShiftReadEditDto>> DeleteShifts(List<int> id);
+        Task<ApiResult<List<ShiftReadEditDto>>> GetShifts();
+        Task<ApiResult<List<ShiftReadEditDto>>> AddShifts(List<ShiftReadEditDto> dto);
+        Task<ApiResult<List<ShiftReadEditDto>>> UpdateShifts(List<ShiftReadEditDto> dto);
+        Task<ApiResult<List<ShiftReadEditDto>>> DeleteShifts(List<int> id);
     }
 
-    public class EntityShiftService : IShiftService
+    public class EFShiftService : IShiftService
     {
         private readonly MainContext _context;
         private readonly IMapper _mapper;
-        private readonly ILogger<EntityShiftService> _logger;
+        private readonly ILogger<EFShiftService> _logger;
 
-        public EntityShiftService(MainContext context, IMapper mapper, ILogger<EntityShiftService> logger)
+        public EFShiftService(MainContext context, IMapper mapper, ILogger<EFShiftService> logger)
         {
             _context = context;
             _mapper = mapper;
             _logger = logger;
         }
 
-        public ApiResult<List<ShiftReadEditDto>> GetShifts()
+        public async Task<ApiResult<List<ShiftReadEditDto>>> GetShifts()
         {
             try
             {
-                var shifts = _context.Shifts.Include(s => s.Member)
-                .Include(s => s.Position).ToList();
+                var shifts = await _context.Shifts.Include(s => s.Member)
+                .Include(s => s.Position).ToListAsync();
                 var shiftDtos = _mapper.Map<List<ShiftReadEditDto>>(shifts);
 
                 return new ApiResult<List<ShiftReadEditDto>>
@@ -58,13 +58,22 @@ namespace HRManager.Api.Services
             }
         }
 
-        public ApiResult<List<ShiftReadEditDto>> AddShifts(List<ShiftReadEditDto> dto)
+        public async Task<ApiResult<List<ShiftReadEditDto>>> AddShifts(List<ShiftReadEditDto> dtos)
         {
             try
             {
-                var member = _mapper.Map<List<Shift>>(dto);
-                _context.AddRange(member);
-                _context.SaveChanges();
+                var shifts = _mapper.Map<List<Shift>>(dtos);
+                _context.AddRange(shifts);
+
+                shifts.ForEach(async s =>
+                {
+                    var position = await _context.Positions.FirstOrDefaultAsync(p => p.Id == s.PositionId);
+                    var member = _context.Members.FirstOrDefault(m => m.Id == s.MemberProfileId);
+                    s.Subject = position.Name + " - " + member.FirstName + " " + member.LastName;
+                    s.Position = position;
+                });
+
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -77,17 +86,23 @@ namespace HRManager.Api.Services
                 };
             }
 
-            return GetShifts();
+            return await GetShifts();
         }
 
-        public ApiResult<List<ShiftReadEditDto>> UpdateShifts(List<ShiftReadEditDto> dtos)
+        public async Task<ApiResult<List<ShiftReadEditDto>>> UpdateShifts(List<ShiftReadEditDto> dtos)
         {
             try
             {
                 Dictionary<Shift, ShiftReadEditDto> shiftPairs = new Dictionary<Shift, ShiftReadEditDto>();
                 foreach (var dto in dtos)
                 {
-                    shiftPairs.Add(_context.Shifts.FirstOrDefault(s => s.Id == dto.Id), dto);
+                    // load subject and position into each dto
+                    var position = await _context.Positions.FirstOrDefaultAsync(p => p.Id == dto.PositionId);
+                    var member = _context.Members.FirstOrDefault(m => m.Id == dto.MemberProfileId);
+                    dto.Subject = position.Name + " - " + member.FirstName + " " + member.LastName;
+                    dto.Position = position;
+
+                    shiftPairs.Add(await _context.Shifts.FirstOrDefaultAsync(s => s.Id == dto.Id), dto);
                 }
 
                 foreach (var pair in shiftPairs)
@@ -95,7 +110,7 @@ namespace HRManager.Api.Services
                     UpdateShftProperties(pair.Key, pair.Value);
                 }
 
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -108,16 +123,16 @@ namespace HRManager.Api.Services
                 };
             }
 
-            return GetShifts();
+            return await GetShifts();
         }
 
-        public ApiResult<List<ShiftReadEditDto>> DeleteShifts(List<int> ids)
+        public async Task<ApiResult<List<ShiftReadEditDto>>> DeleteShifts(List<int> ids)
         {
             try
             {
-                var deletedShifts = _context.Shifts.Where(s => ids.Contains(s.Id)).ToList();
+                var deletedShifts = await _context.Shifts.Where(s => ids.Contains(s.Id)).ToListAsync();
                 _context.RemoveRange(deletedShifts);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -130,7 +145,7 @@ namespace HRManager.Api.Services
                 };
             }
 
-            return GetShifts();
+            return await GetShifts();
         }
 
         private void UpdateShftProperties(Shift shift, ShiftReadEditDto dto)

@@ -19,6 +19,8 @@ namespace HRManager.Api.MapperProfiles
                 .ReverseMap()
                 .ForMember(dest => dest.Availabilities, opt => opt.MapFrom<MemberDtoToDomainAvailResolver>())
                 .ForPath(dest => dest.User.Email, opt => opt.MapFrom(s => s.Email));
+            CreateMap<MemberProfile, MemberMinimalDto>().ReverseMap();
+
             CreateMap<MemberRegisterDto, MemberProfile>()
                 .ForMember(p => p.Availabilities, opt => opt.Ignore())
                 .ForMember(p => p.Positions, opt => opt.Ignore())
