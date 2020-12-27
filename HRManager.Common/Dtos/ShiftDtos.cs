@@ -10,8 +10,8 @@ namespace HRManager.Common.Dtos
         [DateLessThan("EndTime")]
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-        public int? PositionId { get; set; }
-        public int? MemberProfileId { get; set; }
+        public int PositionId { get; set; }
+        public int MemberProfileId { get; set; }
         public Position Position { get; set; }
         public MemberMinimalDto Member { get; set; }
         public string Description { get; set; }

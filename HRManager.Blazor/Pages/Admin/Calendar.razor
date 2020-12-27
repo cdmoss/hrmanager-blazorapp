@@ -13,32 +13,42 @@
 
 <AuthorizeView>
     <div id="schedule-container">
-        <SfSchedule Width="100%" Height="100%" TValue="ShiftReadEditDto"  CurrentView="currentView">
+        <SfSchedule @ref="schedule" Width="100%" Height="100%" TValue="ShiftReadEditDto" CurrentView="currentView">
             <ScheduleResources>
-                <ScheduleResource TItem="Position" TValue="int" DataSource="@positions" Field="PositionId" Title="Position" Name="Positions" TextField="Name" IdField="Id" ColorField="Color" AllowMultiple="false" />
+                <ScheduleResource TItem="Position" TValue="int[]" DataSource="@positions" Field="PositionId" Title="Position" Name="Positions" TextField="Name" IdField="Id" ColorField="Color" AllowMultiple="true" />
             </ScheduleResources>
-            <ScheduleGroup Context="groupContext" ByGroupID="false" Resources="@resourceNames" />
+            <ScheduleGroup Resources="@resourceNames" />
             <ScheduleEventSettings TValue="ShiftReadEditDto" DataSource="shifts" AllowAdding="true" AllowEditing="true" AllowDeleting="true" AllowEditFollowingEvents="true" />
-            <ScheduleEvents TValue="ShiftReadEditDto" ActionCompleted="OnActionCompleted" OnActionBegin="OnActionBegin" />
-            <ScheduleTemplates>
-                <EditorTemplate Context="editorContext">
-                    @{
-                        var shift = (editorContext as ShiftReadEditDto);
-                    }
-                    <div id="editor-container">
+            <ScheduleEvents OnActionBegin="OnActionBegin" OnPopupOpen="OnPopupOpen" TValue="ShiftReadEditDto" />
+            <ScheduleViews>
+                <ScheduleView Option="View.TimelineDay" />
+                <ScheduleView Option="View.TimelineMonth" />
+                <ScheduleView Option="View.TimelineYear" />
+            </ScheduleViews>
+        </SfSchedule>
+    </div>
+
+    <Syncfusion.Blazor.Popups.SfDialog @bind-Visible="@showEditor" Width="30%" IsModal="true" ShowCloseIcon="true" >
+        <Syncfusion.Blazor.Popups.DialogTemplates>
+            <Header>Shift Details</Header>
+            <Content>
+                <EditForm Context="editContext" Model="focusedShift" OnValidSubmit="SaveShift">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <div id="editor-container p-3">
                         <div id="editor-daterange" class="form-group">
                             <label>Work Period:</label>
-                            <SfTimeRangePicker InitialStart="@shift.StartTime" InitialEnd="shift.EndTime" @bind-Start="@shift.StartTime" @bind-End="@shift.EndTime" />
+                            <SfTimeRangePicker InitialStart="@focusedShift.StartTime" InitialEnd="focusedShift.EndTime" @bind-Start="@focusedShift.StartTime" @bind-End="@focusedShift.EndTime" />
                         </div>
                         <div id="editor-position" class="form-group">
                             <label>Position:</label>
-                            <SfDropDownList TValue="int?" DataSource="positions" @bind-Value="shift.PositionId" TItem="Position">
+                            <SfDropDownList TValue="int" ID="PositionId" DataSource="positions" @bind-Value="focusedShift.PositionId" TItem="Position">
                                 <DropDownListFieldSettings Text="Name" Value="Id" />
                             </SfDropDownList>
                         </div>
                         <div id="editor-member" class="form-group">
                             <label>Volunteer:</label>
-                            <SfDropDownList ID="editor-member" TValue="int?" DataSource="members" @bind-Value="shift.MemberProfileId" TItem="MemberMinimalDto">
+                            <SfDropDownList ID="editor-member" TValue="int" DataSource="members" @bind-Value="focusedShift.MemberProfileId" TItem="MemberMinimalDto">
                                 <DropDownListTemplates TItem="MemberMinimalDto">
                                     <ItemTemplate Context="memberDropDownContext">
                                         @{var member = (memberDropDownContext as MemberMinimalDto);}
@@ -50,18 +60,16 @@
                         </div>
                         <div id="editor-notes" class="form-group">
                             <label>Notes:</label>
-                            <SfTextBox @bind-Value="shift.Description" Multiline="true" />
+                            <SfTextBox @bind-Value="focusedShift.Description" Multiline="true" />
+                        </div>
+                        <div class="d-flex align-items-center justify-content-end" >
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </div>
-                </EditorTemplate>
-            </ScheduleTemplates>
-            <ScheduleViews>
-                <ScheduleView Option="View.TimelineDay" />
-                <ScheduleView Option="View.Agenda" />
-                <ScheduleView Option="View.TimelineMonth" />
-                <ScheduleView Option="View.TimelineYear" />
-                <ScheduleView Option="View.MonthAgenda" />
-            </ScheduleViews>
-        </SfSchedule>
-    </div>
+                </EditForm>
+            </Content>
+        </Syncfusion.Blazor.Popups.DialogTemplates>
+    </Syncfusion.Blazor.Popups.SfDialog>
 </AuthorizeView>
+
+

@@ -65,13 +65,13 @@ namespace HRManager.Api.Services
                 var shifts = _mapper.Map<List<Shift>>(dtos);
                 _context.AddRange(shifts);
 
-                shifts.ForEach(async s =>
+                foreach (var shift in shifts)
                 {
-                    var position = await _context.Positions.FirstOrDefaultAsync(p => p.Id == s.PositionId);
-                    var member = _context.Members.FirstOrDefault(m => m.Id == s.MemberProfileId);
-                    s.Subject = position.Name + " - " + member.FirstName + " " + member.LastName;
-                    s.Position = position;
-                });
+                    var position = await _context.Positions.FirstOrDefaultAsync(p => p.Id == shift.PositionId);
+                    var member = await _context.Members.FirstOrDefaultAsync(m => m.Id == shift.MemberProfileId);
+                    shift.Subject = position.Name + " - " + member.FirstName + " " + member.LastName;
+                    shift.Position = position;
+                }
 
                 await _context.SaveChangesAsync();
             }
@@ -98,7 +98,7 @@ namespace HRManager.Api.Services
                 {
                     // load subject and position into each dto
                     var position = await _context.Positions.FirstOrDefaultAsync(p => p.Id == dto.PositionId);
-                    var member = _context.Members.FirstOrDefault(m => m.Id == dto.MemberProfileId);
+                    var member = await _context.Members.FirstOrDefaultAsync(m => m.Id == dto.MemberProfileId);
                     dto.Subject = position.Name + " - " + member.FirstName + " " + member.LastName;
                     dto.Position = position;
 
