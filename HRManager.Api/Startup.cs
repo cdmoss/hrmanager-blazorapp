@@ -1,19 +1,20 @@
+using AutoMapper;
+using HRManager.Api.Services;
+using HRManager.Api.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using System;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
-using HRManager.Api.Data;
-using HRManager.Api.Services;
-using HRManager.Common;
-using Microsoft.AspNetCore.Identity;
-using AutoMapper;
+using IdentityServer4.AccessTokenValidation;
+using System.Security.Claims;
+using IdentityModel;
 
 namespace HRManager.Api
 {
@@ -29,66 +30,49 @@ namespace HRManager.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MainContext>(options =>
-            {
-                options.UseNpgsql(
-                    Configuration.GetConnectionString("MainDevConnection"));
-            });
+            services.AddDbContext<MainContext>(opt =>
+                opt.UseSqlite(Configuration.GetConnectionString("MainDevConnection")));
 
-            services.AddCors();
             services.AddControllers();
-
-            services.AddIdentity<UserProfile, IdentityRole<int>>(options =>
-                    options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<MainContext>()
-                .AddDefaultTokenProviders();
-
-            services.AddAuthentication(options =>
+            services.AddSwaggerGen(c =>
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secretdsfdsfsfsdfsfsdfsfsfsfsfgghdgfhdf")),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ValidateLifetime = true,
-                    ClockSkew = TimeSpan.FromMinutes(5),
-                    RequireExpirationTime = false
-                };
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "HRManager.Api", Version = "v1" });
             });
+
+            services.AddAuthentication(
+                IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = "https://localhost:5002";
+                    options.RoleClaimType = JwtClaimTypes.Role;
+                });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddScoped<IDbSeeder, DbSeeder>();
-            services.AddScoped<IAuthService, AuthService>();
-            services.AddScoped<IUserService, EFUserService>();
+            services.AddScoped<IRegistrationService, EFIdentityService>();
+            services.AddScoped<IMemberService, EFMemberService>();
             services.AddScoped<IShiftService, EFShiftService>();
             services.AddScoped<IPositionService, EFPositionService>();
             services.AddScoped<IScheduleService, EFScheduleService>();
+            services.AddScoped<IDbSeeder, DbSeeder>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider services)
+        public void Configure(IServiceProvider services, IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HRManager.Api v1"));
             }
 
             var seeder = services.GetService<IDbSeeder>();
             seeder.Seed(env.IsDevelopment());
 
-            app.UseRouting();
+            app.UseHttpsRedirection();
 
-            app.UseCors(policy => policy.WithOrigins("http://localhost:5000", "https://localhost:5001")
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true) // allow any origin
-                .AllowCredentials()); // allow credentials
+            app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();

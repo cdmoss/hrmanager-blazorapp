@@ -9,6 +9,7 @@ namespace HRManager.Common
     public class MemberProfile
     {
         public int Id { get; set; }
+        public string Email { get; set; }
         [Required]
         [Display(Name = "First name (Required)")]
         public string FirstName { get; set; }
@@ -100,7 +101,5 @@ namespace HRManager.Common
         public List<MemberPosition> Positions { get; set; }
         public List<Alert> Alerts { get; set; }
         public bool IsStaff { get; set; }
-        public int UserID { get; set; }
-        public UserProfile User { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 
 @code {
     [Parameter]
-    public MemberAdminReadEditDto Member { get; set; }
+    public AdminMemberDto Member { get; set; }
 
     string selectedTab = "personal";
 
@@ -156,7 +156,7 @@
                                 <div class="work-experience-column">
                                     <div class="date form-group">
                                         <label><strong>Start Date</strong></label>
-                                        <p>@Member.WorkExperiences.FirstOrDefault().StartDate.Value.ToString("MMMM dd yyyy")</p>
+                                        <p>@Member.WorkExperiences.FirstOrDefault().StartDate.ToString("MMMM dd yyyy")</p>
                                     </div>
                                     @if (Member.WorkExperiences.FirstOrDefault().CurrentJob)
                                     {
@@ -168,7 +168,7 @@
                                     {
                                         <div class="date form-group">
                                             <label><strong>End Date</strong></label>
-                                            <p>@Member.WorkExperiences.FirstOrDefault().EndDate.Value.ToString("MMMM dd yyyy")</p>
+                                            <p>@Member.WorkExperiences.FirstOrDefault().EndDate.ToString("MMMM dd yyyy")</p>
                                         </div>
                                     }
                                 </div>

@@ -1,11 +1,253 @@
 @import '';
 
-/* /Pages/Admin/Calendar.razor.rz.scp.css */
+/* _content/HRManager.Blazor/Pages/Account/AuthLayout.razor.rz.scp.css */
+#form-area[b-zmrq1ypuhk] {
+    display: flex;
+    vertical-align: middle;
+    height: 100%;
+    background-color: var(--main-green);
+}
+/* _content/HRManager.Blazor/Pages/Account/Register.razor.rz.scp.css */
+#register-form[b-pg4w4jd0hl] {
+    width: auto;
+    margin: auto;
+    box-shadow: 0px 0px 4px 1px gray;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#img-container[b-pg4w4jd0hl] {
+    height: 5rem;
+    grid-area: img-container;
+    display: flex;
+    align-items: center;
+}
+
+    #img-container > img[b-pg4w4jd0hl] {
+        margin-left: auto;
+        margin-right: auto;
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+    }
+
+#register-container[b-pg4w4jd0hl] {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: space-between;
+    padding-left: 1.5rem;
+    grid-area: form-container;
+    border-left: 1px solid #d3d3d3;
+}
+
+.btn[b-pg4w4jd0hl] {
+    width: 100%;
+}
+
+#btn-container[b-pg4w4jd0hl] {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+#forgot-link[b-pg4w4jd0hl] {
+    font-size: 12px;
+}
+/* _content/HRManager.Blazor/Pages/Account/Registration/Certificates.razor.rz.scp.css */
+#cert-container[b-kbisjezppt] {
+    gap: 1rem;
+}
+
+#firstaid-container[b-kbisjezppt] {
+    display: grid;
+    grid-template-columns: 7rem 10rem 10rem;
+    grid-column-gap: 1rem;
+    grid-template-areas: "checkbox expiry level";
+}
+
+.checkbox-container[b-kbisjezppt] {
+    align-items: center;
+    grid-area: checkbox;
+}
+
+.main-label[b-kbisjezppt] {
+    grid-area: main-label;
+}
+
+.expiry-container[b-kbisjezppt] {
+    grid-area: expiry;
+}
+
+.level-container[b-kbisjezppt] {
+    grid-area: level;
+}
+
+
+#foodsafe-container[b-kbisjezppt] {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 7rem 10rem 10rem;
+    grid-column-gap: 1rem;
+    grid-template-areas: "checkbox expiry expiry";
+}
+
+.checkbox-container[b-kbisjezppt] {
+    align-items: center;
+    grid-area: checkbox;
+}
+
+.main-label[b-kbisjezppt] {
+    grid-area: main-label;
+}
+
+.expiry-container[b-kbisjezppt] {
+    width: 100%;
+    grid-area: expiry;
+}
+
+.level-container[b-kbisjezppt] {
+    grid-area: level;
+}
+/* _content/HRManager.Blazor/Pages/Account/Registration/PersonalAndContact.razor.rz.scp.css */
+#form-container[b-a3hryydj8v] {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "first-name first-name last-name last-name birthdate birthdate"
+        "address address city city postal-code postal-code"
+        "main-phone main-phone alt-phone-1 alt-phone-1 alt-phone-2 alt-phone-2"
+        "emergency-contact emergency-contact emergency-contact emergency-relationship emergency-relationship emergency-relationship"
+        "emergency-phone-1 emergency-phone-1 emergency-phone-1 emergency-phone-2 emergency-phone-2 emergency-phone-2";
+    grid-column-gap: 1rem;
+    grid-row-gap: .5rem;
+}
+
+#first-name[b-a3hryydj8v] {
+    grid-area: first-name;
+}
+
+#last-name[b-a3hryydj8v] {
+    grid-area: last-name;
+}
+
+#address[b-a3hryydj8v] {
+    grid-area: address;
+}
+
+#city[b-a3hryydj8v] {
+    grid-area: city;
+}
+
+#postal-code[b-a3hryydj8v] {
+    grid-area: postal-code;
+}
+
+#main-phone[b-a3hryydj8v] {
+    grid-area: main-phone;
+}
+
+#alt-phone-1[b-a3hryydj8v] {
+    grid-area: alt-phone-1;
+}
+
+#alt-phone-2[b-a3hryydj8v] {
+    grid-area: alt-phone-2;
+}
+
+#birthdate[b-a3hryydj8v] {
+    grid-area: birthdate;
+}
+
+#emergency-contact[b-a3hryydj8v] {
+    grid-area: emergency-contact;
+}
+
+#emergency-relationship[b-a3hryydj8v] {
+    grid-area: emergency-relationship;
+}
+
+#emergency-phone-1[b-a3hryydj8v] {
+    grid-area: emergency-phone-1;
+}
+
+#emergency-phone-2[b-a3hryydj8v] {
+    grid-area: emergency-phone-2;
+}
+
+/* _content/HRManager.Blazor/Pages/Account/Registration/PreferredPositions.razor.rz.scp.css */
+#positions-container[b-i1m8hgt6ua] {
+    display: flex;
+    flex-wrap: wrap   
+}
+/* _content/HRManager.Blazor/Pages/Account/Registration/Qualifications.razor.rz.scp.css */
+#work-experience[b-5z5b513j2u] {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 1rem;
+    grid-template-areas: "employer-name employer-address date" "current current current";
+}
+
+#employer-name[b-5z5b513j2u] {
+    grid-area: employer-name;
+}
+
+#employer-address[b-5z5b513j2u] {
+    grid-area: employer-address;
+}
+
+#date[b-5z5b513j2u] {
+    grid-area: date;
+}
+
+#general-experience[b-5z5b513j2u] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 1rem;
+    grid-template-areas: "education skills" "experience boards";
+}
+
+#education[b-5z5b513j2u] {
+    grid-area: education;
+}
+
+#skills[b-5z5b513j2u] {
+    grid-area: skills;
+}
+
+#experience[b-5z5b513j2u] {
+    grid-area: experience;
+}
+
+#boards[b-5z5b513j2u] {
+    grid-area: boards;
+}
+
+#current[b-5z5b513j2u] {
+    grid-area: current;
+    height: auto;
+    width: 100%;
+    text-align: right;
+}
+
+
+/* _content/HRManager.Blazor/Pages/Account/Registration/RegisterSectionButtonContainer.razor.rz.scp.css */
+.btn-container[b-pf1xp863fm] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* _content/HRManager.Blazor/Pages/Account/Registration/Result.razor.rz.scp.css */
+/* _content/HRManager.Blazor/Pages/Admin/Calendar.razor.rz.scp.css */
 #schedule-container[b-v9rxn3epto]{
     overflow: scroll;
     height: 94vh;
 }
-/* /Pages/Admin/GridEditTemplate.razor.rz.scp.css */
+/* _content/HRManager.Blazor/Pages/Admin/GridEditTemplate.razor.rz.scp.css */
 /*Personal and Contact*/
 #form-container[b-ba838onjlc] {
     display: grid;
@@ -178,7 +420,7 @@
     grid-area: level;
 }
 
-/* /Pages/Admin/GridReadTemplate.razor.rz.scp.css */
+/* _content/HRManager.Blazor/Pages/Admin/GridReadTemplate.razor.rz.scp.css */
 .personal-container[b-zpb88bmdfj] {
     display: flex;
     padding: 3rem;
@@ -257,296 +499,8 @@
         flex-direction: column;
         gap: .5rem;
     }
-/* /Pages/Admin/Members.razor.rz.scp.css */
-/* /Pages/Auth/AuthLayout.razor.rz.scp.css */
-#form-area[b-8mm2ph5hc9] {
-    display: flex;
-    vertical-align: middle;
-    height: 100%;
-    background-color: var(--main-green);
-}
-/* /Pages/Auth/Login.razor.rz.scp.css */
-#login-form[b-xgczc5qief] {
-    width: 40%;
-    margin: auto;
-    box-shadow: 0px 0px 4px 1px gray;
-    display: grid;
-    grid-template-areas: "img-container form-container";
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 2rem;
-}
-
-#img-container[b-xgczc5qief] {
-    grid-area: img-container;
-    display: flex;
-    align-items: center;
-}
-
-    #img-container > img[b-xgczc5qief] {
-        height: auto;
-        width: 100%;
-        object-fit: cover;
-    }
-
-#form-container[b-xgczc5qief] {
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    justify-content: space-between;
-    padding-left: 1.5rem;
-    grid-area: form-container;
-    border-left: 1px solid #d3d3d3;
-}
-
-.btn[b-xgczc5qief] {
-    width: 100%;
-}
-
-#btn-container[b-xgczc5qief] {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-}
-
-#forgot-link[b-xgczc5qief] {
-    font-size: 12px;
-}
-/* /Pages/Auth/Register.razor.rz.scp.css */
-#register-form[b-12i3y2xcfw] {
-    width: auto;
-    margin: auto;
-    box-shadow: 0px 0px 4px 1px gray;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-#img-container[b-12i3y2xcfw] {
-    height: 5rem;
-    grid-area: img-container;
-    display: flex;
-    align-items: center;
-}
-
-    #img-container > img[b-12i3y2xcfw] {
-        margin-left: auto;
-        margin-right: auto;
-        height: 100%;
-        width: auto;
-        object-fit: cover;
-    }
-
-#register-container[b-12i3y2xcfw] {
-    height: auto;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    justify-content: space-between;
-    padding-left: 1.5rem;
-    grid-area: form-container;
-    border-left: 1px solid #d3d3d3;
-}
-
-.btn[b-12i3y2xcfw] {
-    width: 100%;
-}
-
-#btn-container[b-12i3y2xcfw] {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-}
-
-#forgot-link[b-12i3y2xcfw] {
-    font-size: 12px;
-}
-/* /Pages/Auth/Registration/Certificates.razor.rz.scp.css */
-#cert-container[b-206ja9dlrr] {
-    gap: 1rem;
-}
-
-#firstaid-container[b-206ja9dlrr] {
-    display: grid;
-    grid-template-columns: 7rem 10rem 10rem;
-    grid-column-gap: 1rem;
-    grid-template-areas: "checkbox expiry level";
-}
-
-.checkbox-container[b-206ja9dlrr] {
-    align-items: center;
-    grid-area: checkbox;
-}
-
-.main-label[b-206ja9dlrr] {
-    grid-area: main-label;
-}
-
-.expiry-container[b-206ja9dlrr] {
-    grid-area: expiry;
-}
-
-.level-container[b-206ja9dlrr] {
-    grid-area: level;
-}
-
-
-#foodsafe-container[b-206ja9dlrr] {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 7rem 10rem 10rem;
-    grid-column-gap: 1rem;
-    grid-template-areas: "checkbox expiry expiry";
-}
-
-.checkbox-container[b-206ja9dlrr] {
-    align-items: center;
-    grid-area: checkbox;
-}
-
-.main-label[b-206ja9dlrr] {
-    grid-area: main-label;
-}
-
-.expiry-container[b-206ja9dlrr] {
-    width: 100%;
-    grid-area: expiry;
-}
-
-.level-container[b-206ja9dlrr] {
-    grid-area: level;
-}
-/* /Pages/Auth/Registration/PersonalAndContact.razor.rz.scp.css */
-#form-container[b-7kdqrhkssl] {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas:
-        "first-name first-name last-name last-name birthdate birthdate"
-        "address address city city postal-code postal-code"
-        "main-phone main-phone alt-phone-1 alt-phone-1 alt-phone-2 alt-phone-2"
-        "emergency-contact emergency-contact emergency-contact emergency-relationship emergency-relationship emergency-relationship"
-        "emergency-phone-1 emergency-phone-1 emergency-phone-1 emergency-phone-2 emergency-phone-2 emergency-phone-2";
-    grid-column-gap: 1rem;
-    grid-row-gap: .5rem;
-}
-
-#first-name[b-7kdqrhkssl] {
-    grid-area: first-name;
-}
-
-#last-name[b-7kdqrhkssl] {
-    grid-area: last-name;
-}
-
-#address[b-7kdqrhkssl] {
-    grid-area: address;
-}
-
-#city[b-7kdqrhkssl] {
-    grid-area: city;
-}
-
-#postal-code[b-7kdqrhkssl] {
-    grid-area: postal-code;
-}
-
-#main-phone[b-7kdqrhkssl] {
-    grid-area: main-phone;
-}
-
-#alt-phone-1[b-7kdqrhkssl] {
-    grid-area: alt-phone-1;
-}
-
-#alt-phone-2[b-7kdqrhkssl] {
-    grid-area: alt-phone-2;
-}
-
-#birthdate[b-7kdqrhkssl] {
-    grid-area: birthdate;
-}
-
-#emergency-contact[b-7kdqrhkssl] {
-    grid-area: emergency-contact;
-}
-
-#emergency-relationship[b-7kdqrhkssl] {
-    grid-area: emergency-relationship;
-}
-
-#emergency-phone-1[b-7kdqrhkssl] {
-    grid-area: emergency-phone-1;
-}
-
-#emergency-phone-2[b-7kdqrhkssl] {
-    grid-area: emergency-phone-2;
-}
-
-/* /Pages/Auth/Registration/PreferredPositions.razor.rz.scp.css */
-#positions-container[b-xhcaqkj4gj] {
-    display: flex;
-    flex-wrap: wrap   
-}
-/* /Pages/Auth/Registration/Qualifications.razor.rz.scp.css */
-#work-experience[b-lin6usk1ol] {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 1rem;
-    grid-template-areas: "employer-name employer-address date" "current current current";
-}
-
-#employer-name[b-lin6usk1ol] {
-    grid-area: employer-name;
-}
-
-#employer-address[b-lin6usk1ol] {
-    grid-area: employer-address;
-}
-
-#date[b-lin6usk1ol] {
-    grid-area: date;
-}
-
-#general-experience[b-lin6usk1ol] {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-column-gap: 1rem;
-    grid-template-areas: "education skills" "experience boards";
-}
-
-#education[b-lin6usk1ol] {
-    grid-area: education;
-}
-
-#skills[b-lin6usk1ol] {
-    grid-area: skills;
-}
-
-#experience[b-lin6usk1ol] {
-    grid-area: experience;
-}
-
-#boards[b-lin6usk1ol] {
-    grid-area: boards;
-}
-
-#current[b-lin6usk1ol] {
-    grid-area: current;
-    height: auto;
-    width: 100%;
-    text-align: right;
-}
-
-
-/* /Pages/Auth/Registration/RegisterSectionButtonContainer.razor.rz.scp.css */
-.btn-container[b-ri5iv9gfwb] {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-/* /Pages/Auth/Registration/Result.razor.rz.scp.css */
-/* /Shared/AdminNavMenu.razor.rz.scp.css */
+/* _content/HRManager.Blazor/Pages/Admin/Members.razor.rz.scp.css */
+/* _content/HRManager.Blazor/Shared/AdminNavMenu.razor.rz.scp.css */
 .navbar-toggler[b-xf9xl9w4qg] {
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -609,7 +563,7 @@
         display: block;
     }
 }
-/* /Shared/AvailabilityDay.razor.rz.scp.css */
+/* _content/HRManager.Blazor/Shared/AvailabilityDay.razor.rz.scp.css */
 #day-container[b-kob16tfzdg] {
     display: flex;
     flex-direction: column;
@@ -634,7 +588,7 @@
     justify-content: center;
     align-items: center;
 }
-/* /Shared/MainLayout.razor.rz.scp.css */
+/* _content/HRManager.Blazor/Shared/MainLayout.razor.rz.scp.css */
 .page[b-ljcv0tknf5] {
     position: relative;
     display: flex;
@@ -705,7 +659,7 @@
         padding-right: 1.5rem !important;
     }
 }
-/* /Shared/MemberNavMenu.razor.rz.scp.css */
+/* _content/HRManager.Blazor/Shared/MemberNavMenu.razor.rz.scp.css */
 .navbar-toggler[b-g8qsd4ocdo] {
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -768,7 +722,7 @@
         display: block;
     }
 }
-/* /Shared/SfTimeRangePicker.razor.rz.scp.css */
+/* _content/HRManager.Blazor/Shared/SfTimeRangePicker.razor.rz.scp.css */
 #range-container[b-1vxdimv5x7] {
     display: grid;
     grid-template-areas: "start divider end remove";
@@ -790,7 +744,7 @@
     justify-content: center;
     align-items: center;
 }
-/* /Shared/Tooltip.razor.rz.scp.css */
+/* _content/HRManager.Blazor/Shared/Tooltip.razor.rz.scp.css */
 .tooltip-wrapper[b-dxkjfv48p0] {
     position: relative;
     display: inline-block;

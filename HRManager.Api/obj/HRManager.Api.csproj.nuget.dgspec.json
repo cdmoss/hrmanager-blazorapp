@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Api\\HRManager.Api.csproj": {}
+    "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Api\\HRManager.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Api\\HRManager.Api.csproj": {
+    "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Api\\HRManager.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Api\\HRManager.Api.csproj",
+        "projectUniqueName": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Api\\HRManager.Api.csproj",
         "projectName": "HRManager.Api",
-        "projectPath": "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Api\\HRManager.Api.csproj",
+        "projectPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Api\\HRManager.Api.csproj",
         "packagesPath": "C:\\Users\\Chase\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Api\\obj\\",
+        "outputPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -32,8 +32,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Common\\HRManager.Common.csproj": {
-                "projectPath": "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Common\\HRManager.Common.csproj"
+              "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj": {
+                "projectPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj"
               }
             }
           }
@@ -52,57 +52,49 @@
               "target": "Package",
               "version": "[8.1.0, )"
             },
+            "IdentityServer4.AccessTokenValidation": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.0, )",
+              "noWarn": [
+                "NU1605"
+              ]
             },
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+            "Microsoft.AspNetCore.Authentication.OpenIdConnect": {
               "target": "Package",
-              "version": "[5.0.0, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.0, )",
+              "noWarn": [
+                "NU1605"
+              ]
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.10.9, )"
             },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[5.0.0, )"
-            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
-            "OpenIddict": {
+            "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[2.0.1, )"
-            },
-            "OpenIddict.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[2.0.1, )"
-            },
-            "System.IdentityModel.Tokens.Jwt": {
-              "target": "Package",
-              "version": "[6.8.0, )"
+              "version": "[5.6.3, )"
             }
           },
           "imports": [
@@ -127,14 +119,14 @@
         }
       }
     },
-    "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Common\\HRManager.Common.csproj": {
+    "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Common\\HRManager.Common.csproj",
+        "projectUniqueName": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj",
         "projectName": "HRManager.Common",
-        "projectPath": "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Common\\HRManager.Common.csproj",
+        "projectPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj",
         "packagesPath": "C:\\Users\\Chase\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Common\\obj\\",
+        "outputPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

@@ -13,12 +13,11 @@ namespace HRManager.Api.MapperProfiles
         public MemberProfileMapperProfile()
         {
             // source --> target
-            CreateMap<MemberProfile, MemberAdminReadEditDto>()
+            CreateMap<MemberProfile, AdminMemberDto>()
                 .ForMember(dest => dest.Availabilities, opt => opt.MapFrom<MemberDomainToDtoAvailResolver>())
-                .ForPath(dest => dest.Email, opt => opt.MapFrom(s => s.User.Email))
                 .ReverseMap()
-                .ForMember(dest => dest.Availabilities, opt => opt.MapFrom<MemberDtoToDomainAvailResolver>())
-                .ForPath(dest => dest.User.Email, opt => opt.MapFrom(s => s.Email));
+                .ForMember(dest => dest.Availabilities, opt => opt.MapFrom<MemberDtoToDomainAvailResolver>());
+
             CreateMap<MemberProfile, MemberMinimalDto>().ReverseMap();
 
             CreateMap<MemberRegisterDto, MemberProfile>()
@@ -35,9 +34,9 @@ namespace HRManager.Api.MapperProfiles
         }
     }
 
-    public class MemberDomainToDtoAvailResolver : IValueResolver<MemberProfile, MemberAdminReadEditDto, Dictionary<DayOfWeek, List<AvailabilityDto>>>
+    public class MemberDomainToDtoAvailResolver : IValueResolver<MemberProfile, AdminMemberDto, Dictionary<DayOfWeek, List<AvailabilityDto>>>
     {
-        public Dictionary<DayOfWeek, List<AvailabilityDto>> Resolve(MemberProfile domain, MemberAdminReadEditDto dto, Dictionary<DayOfWeek, List<AvailabilityDto>> destMember, ResolutionContext context)
+        public Dictionary<DayOfWeek, List<AvailabilityDto>> Resolve(MemberProfile domain, AdminMemberDto dto, Dictionary<DayOfWeek, List<AvailabilityDto>> destMember, ResolutionContext context)
         {
             var availabilities = new Dictionary<DayOfWeek, List<AvailabilityDto>>();
             foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
@@ -62,7 +61,7 @@ namespace HRManager.Api.MapperProfiles
         }
     }
 
-    public class MemberDtoToDomainAvailResolver : IValueResolver<MemberAdminReadEditDto, MemberProfile, List<Availability>>
+    public class MemberDtoToDomainAvailResolver : IValueResolver<AdminMemberDto, MemberProfile, List<Availability>>
     {
         private readonly IMapper _mapper;
 
@@ -71,7 +70,7 @@ namespace HRManager.Api.MapperProfiles
             _mapper = mapper;
         }
 
-        public List<Availability> Resolve(MemberAdminReadEditDto dto, MemberProfile domain, List<Availability> destMember, ResolutionContext context)
+        public List<Availability> Resolve(AdminMemberDto dto, MemberProfile domain, List<Availability> destMember, ResolutionContext context)
         {
             var availabilities = new List<Availability>();
 
@@ -82,22 +81,6 @@ namespace HRManager.Api.MapperProfiles
             }
 
             return availabilities;
-        }
-    }
-
-    public class MemberDomainToDtoEmailResolver : IValueResolver<MemberProfile, MemberAdminReadEditDto, string>
-    {
-        public string Resolve(MemberProfile domain, MemberAdminReadEditDto dto, string destMember, ResolutionContext context)
-        {
-            return domain.User.Email;
-        }
-    }
-
-    public class MemberDtoToDomainEmailResolver : IValueResolver<MemberAdminReadEditDto, MemberProfile, string>
-    {
-        public string Resolve(MemberAdminReadEditDto dto, MemberProfile domain, string destMember, ResolutionContext context)
-        {
-            return dto.Email;
         }
     }
 }

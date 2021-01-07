@@ -22,14 +22,14 @@ namespace HRManager.Api.Controllers
             _shiftService = shiftService;
         }
 
-        [Authorize(Roles = "Admin, SuperAdmin")]
+        //[Authorize(Roles = "Admin, SuperAdmin")]
         [HttpGet("all")]
         public async Task<IActionResult> GetMembers()
         {
             return new ObjectResult(await _shiftService.GetShifts());
         }
 
-        [Authorize(Roles = "Admin, SuperAdmin")]
+        //[Authorize(Roles = "Admin, SuperAdmin")]
         [HttpPost("add")]
         public async Task<IActionResult> AddShift([FromBody] List<ShiftReadEditDto> dtos)
         {

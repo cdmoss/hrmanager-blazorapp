@@ -12,14 +12,10 @@ namespace HRManager.Api.Services
 {
     public class DbSeeder : IDbSeeder
     {
-        private readonly RoleManager<IdentityRole<int>> _roleManager;
-        private readonly UserManager<UserProfile> _userManager;
         private readonly MainContext _context;
 
-        public DbSeeder(RoleManager<IdentityRole<int>> roleManager, UserManager<UserProfile> userManager, MainContext MainContext)
+        public DbSeeder(MainContext MainContext)
         {
-            _roleManager = roleManager;
-            _userManager = userManager;
             _context = MainContext;
         }
 
@@ -27,12 +23,8 @@ namespace HRManager.Api.Services
         {
             bool result = true;
 
-            result &= SeedRoles();
-
             result &= SeedTestMember();
-            result &= SeedAdmin();
 
-            result &= SeedSuperAdmin();
             result &= SeedPositions();
 
             return result;
@@ -42,69 +34,18 @@ namespace HRManager.Api.Services
         {
             bool result = true;
 
-            result &= SeedRoles();
-
             if (isDev)
             {
                 result &= SeedTestMember();
-                result &= SeedAdmin();
             }
 
-            result &= SeedSuperAdmin();
             result &= SeedPositions();
 
             return result;
         }
 
-        private bool RoleExists(string roleName)
+        private bool CreateMember()
         {
-            return _roleManager.FindByNameAsync(roleName).Result != null;
-        }
-
-        private bool UserExists(string userName)
-        {
-            return _userManager.FindByNameAsync(userName).Result != null;
-        }
-
-        private IdentityResult CreateRole(string roleName)
-        {
-            var role = new IdentityRole<int>(roleName)
-            {
-                NormalizedName = roleName.ToUpper()
-            };
-
-            return _roleManager.CreateAsync(role).Result;
-        }
-
-        private bool CreateUser(string userName, string userRole)
-        {
-            var user = new UserProfile()
-            {
-                UserName = userName,
-                NormalizedUserName = userName.ToUpper(),
-                EmailConfirmed = true
-            };
-
-            IdentityResult result = _userManager.CreateAsync(user, "P@$$W0rd").Result;
-
-            if (result.Succeeded)
-                SetUserToRole(user, userRole);
-            else
-                return false;
-
-            return true;
-        }
-
-        private bool CreateMember(string userName, string userRole)
-        {
-            var user = new UserProfile()
-            {
-                UserName = userName,
-                NormalizedUserName = userName.ToUpper(),
-                EmailConfirmed = true,
-                Email = "cdmossing@gmail.com"
-            };
-
             MemberProfile mem = new MemberProfile()
             {
                 FirstName = "testfirst",
@@ -157,90 +98,15 @@ namespace HRManager.Api.Services
 
             mem.References = references;
             mem.WorkExperiences = workExperiences;
-            user.Member = mem;
-
-            IdentityResult result = _userManager.CreateAsync(user, "P@$$W0rd").Result;
-
-            if (result.Succeeded)
-                SetUserToRole(user, userRole);
-            else
-                return false;
 
             return true;
         }
-
-        private void SetUserToRole(UserProfile user, string userRole)
-        {
-            _userManager.AddToRoleAsync(user, userRole).Wait();
-        }
-
-        private bool SeedSuperAdmin()
-        {
-            if (!UserExists(Constants.UserNames.SuperAdmin))
-            {
-                bool userCreatedAndRoleWasSet = CreateUser(Constants.UserNames.SuperAdmin, Constants.RoleNames.SuperAdmin);
-
-                if (!userCreatedAndRoleWasSet)
-                    return false;
-            }
-            return true;
-        }
-
-        private bool SeedAdmin()
-        {
-            if (!UserExists(Constants.UserNames.Admin))
-            {
-                bool userCreatedAndRoleWasSet = CreateUser(Constants.UserNames.Admin, Constants.RoleNames.Admin);
-
-                if (!userCreatedAndRoleWasSet)
-                    return false;
-            }
-            return true;
-        }
-
         private bool SeedTestMember()
         {
-            if (!UserExists(Constants.UserNames.Member))
-            {
-                bool memberCreated = CreateMember(Constants.UserNames.Member, Constants.RoleNames.Member);
+            bool memberCreated = CreateMember();
 
-                if (!memberCreated)
-                    return false;
-            }
-            return true;
-        }
-
-        private bool SeedRoles()
-        {
-            if (!RoleExists(Constants.RoleNames.SuperAdmin))
-            {
-                IdentityResult superAdminResult = CreateRole(Constants.RoleNames.SuperAdmin);
-
-                if (!superAdminResult.Succeeded)
-                {
-                    return false;
-                }
-            }
-            if (!RoleExists(Constants.RoleNames.Admin))
-            {
-                IdentityResult adminResult = CreateRole(Constants.RoleNames.Admin);
-
-                if (!adminResult.Succeeded)
-                {
-                    return false;
-                }
-            }
-            if (!RoleExists(Constants.RoleNames.Member))
-            {
-                IdentityResult memberResult = CreateRole(Constants.RoleNames.Member);
-
-                if (!memberResult.Succeeded)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+            return memberCreated;
+        }   
 
         private bool SeedPositions()
         {

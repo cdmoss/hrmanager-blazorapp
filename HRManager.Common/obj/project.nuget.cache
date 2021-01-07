@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dBtvhFaACD7MvRNvfBUYDlqRcqi88FfBGWV0UtTGBSBSiPU0ty9HBUBLkqVEqUOZe5DnjkRCIGVFy+9OKFcKvw==",
+  "dgSpecHash": "rH4pbhx05Q+iXNADobfmie0EXpgCedyzSoDFx86xYn8oxhNAvpQsrU4NsuV2ZEy+TGyOVnWXeGmPFxhs9H1J/w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Common\\HRManager.Common.csproj",
+  "projectFilePath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Chase\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

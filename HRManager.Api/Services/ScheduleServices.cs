@@ -14,10 +14,10 @@ namespace HRManager.Api.Services
     public class EFScheduleService : IScheduleService
     {
         private readonly IShiftService _shiftService;
-        private readonly IUserService _userService;
+        private readonly IMemberService _userService;
         private readonly IPositionService _positionService;
 
-        public EFScheduleService(IShiftService shiftService, IUserService userService, IPositionService positionService)
+        public EFScheduleService(IShiftService shiftService, IMemberService userService, IPositionService positionService)
         {
             _shiftService = shiftService;
             _userService = userService;

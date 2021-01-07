@@ -1,56 +1,27 @@
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
-using System.Net.Http;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using HRManager.Blazor.Services;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-using Blazored.LocalStorage;
-using Syncfusion.Blazor;
-using Blazorise;
-using Blazorise.Bootstrap;
-using Blazorise.Icons.FontAwesome;
 
 namespace HRManager.Blazor
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzYxNzIzQDMxMzgyZTMzMmUzMEhCYTNRVEtJcmN5cDI4YXJidFhyRVBIM0xTTk41OHlQSjBiNFBGN1NXNFU9");
-            var builder = WebAssemblyHostBuilder.CreateDefault(args);
-
-            builder.Services
-                .AddBlazorise(options =>
-                {
-                    options.ChangeTextOnKeyPress = true;
-                })
-                .AddBootstrapProviders()
-                .AddFontAwesomeIcons();
-
-            builder.RootComponents.Add<App>("#app");
-            builder.Services.AddOptions();
-            builder.Services.AddAuthorizationCore();
-            builder.Services.AddBlazoredLocalStorage();
-            builder.Services.AddScoped<TokenAuthenticationStateProvider>();
-            builder.Services.AddScoped<AuthenticationStateProvider>(provider => provider.GetRequiredService<TokenAuthenticationStateProvider>());
-            builder.Services.AddScoped(client => new HttpClient { BaseAddress = new Uri("http://localhost:5001") });
-
-            builder.Services.AddScoped<IAuthService, AuthService>();
-            builder.Services.AddScoped<IShiftService, HttpShiftService>();
-            builder.Services.AddScoped<IUserService, HttpUserService>();
-            builder.Services.AddScoped<IPositionService, HttpPositionService>();
-            builder.Services.AddScoped<IScheduleService, HttpScheduleService>();
-            builder.Services.AddSyncfusionBlazor();
-
-            var host = builder.Build();
-
-            host.Services
-                .UseBootstrapProviders()
-                .UseFontAwesomeIcons();
-
-            await host.RunAsync();
+            CreateHostBuilder(args).Build().Run();
         }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStaticWebAssets();
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }

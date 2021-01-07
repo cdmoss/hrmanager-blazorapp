@@ -1,5 +1,7 @@
 ﻿@inherits LayoutComponentBase
 @using Microsoft.AspNetCore.Components.Authorization
+@namespace HRManager.Blazor.Pages.Shared
+@inject HRManager.Blazor.Services.TokenProvider _tokenProvider 
 
 @code {
     [CascadingParameter]
@@ -41,10 +43,11 @@
         }
     </div>
     <div class="main">
-        <div class="top-row px-4">
+        <form action="/Account/Logout" method="post" class="top-row px-4">
             <span class="font-weight-bold my-auto">@currentPage</span>
-            <a href="/auth/login"  class="ml-md-auto">Logout</a>
-        </div>
+            <button type="submit" class="ml-md-auto">Logout</button>
+            <input type="hidden" name="_RequestVerificationToken" value="@_tokenProvider.XsrfToken"/>
+        </form>
 
         @Body
 

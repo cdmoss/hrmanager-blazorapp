@@ -63,15 +63,27 @@ namespace HRManager.Api.Services
             try
             {
                 var shifts = _mapper.Map<List<Shift>>(dtos);
-                _context.AddRange(shifts);
-
                 foreach (var shift in shifts)
                 {
                     var position = await _context.Positions.FirstOrDefaultAsync(p => p.Id == shift.PositionId);
                     var member = await _context.Members.FirstOrDefaultAsync(m => m.Id == shift.MemberProfileId);
-                    shift.Subject = position.Name + " - " + member.FirstName + " " + member.LastName;
-                    shift.Position = position;
+
+                    // when a shift that has been edited from a recurring set is added, its Position is outdated at this moment, so null it out.
+                    // not doing so will cause a unique constraint error in the positions table
+                    shift.Position = null;
+
+                    shift.Subject = member != null ?
+                        position.Name + " - " + member.FirstName + " " + member.LastName :
+                        position.Name + " - Open ";
+
+                    // this must be set back to null to avoid foreign key constraint
+                    if (member == null)
+                    {
+                        shift.MemberProfileId = null;
+                    }
                 }
+
+                _context.AddRange(shifts);
 
                 await _context.SaveChangesAsync();
             }
@@ -99,8 +111,17 @@ namespace HRManager.Api.Services
                     // load subject and position into each dto
                     var position = await _context.Positions.FirstOrDefaultAsync(p => p.Id == dto.PositionId);
                     var member = await _context.Members.FirstOrDefaultAsync(m => m.Id == dto.MemberProfileId);
-                    dto.Subject = position.Name + " - " + member.FirstName + " " + member.LastName;
+
+                    dto.Subject = member != null ?
+                        position.Name + " - " + member.FirstName + " " + member.LastName :
+                        position.Name + " - Open ";
                     dto.Position = position;
+
+                    // this must be set back to null to avoid foreign key constraint
+                    if (member == null)
+                    {
+                        dto.MemberProfileId = null;
+                    }
 
                     shiftPairs.Add(await _context.Shifts.FirstOrDefaultAsync(s => s.Id == dto.Id), dto);
                 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.Threading.Tasks;
 using HRManager.Blazor.Services;
+using HRManager.Blazor.Shared;
 using Syncfusion.Blazor;
 using System;
 using HRManager.Common;
@@ -17,10 +18,10 @@ namespace HRManager.Blazor.Pages.Admin
         [CascadingParameter]
         private Task<AuthenticationState> authenticationStateTask { get; set; }
         [Inject]
-        private IUserService _userService { get; set; }
+        private IMemberService _memberService { get; set; }
         [Inject]
         private IPositionService _posService { get; set; }
-        private List<MemberAdminReadEditDto> members;
+        private List<AdminMemberDto> members;
         private List<Position> positions;
         private GridEditTemplate editTemplate = new GridEditTemplate();
         string error;
@@ -35,12 +36,12 @@ namespace HRManager.Blazor.Pages.Admin
 
             if (user.Identity.IsAuthenticated)
             {
-                var memberResult = await _userService.GetMembers<MemberAdminReadEditDto>();
+                var memberResult = await _memberService.GetFullMembers();
                 if (memberResult.Successful)
                 {
                     members = memberResult.Dto;
 
-                    var positionResult = await _posService.GetPositions();
+                    var positionResult = _posService.GetPositions();
                     if (positionResult.Successful)
                     {
                         positions = positionResult.Dto;
@@ -58,13 +59,13 @@ namespace HRManager.Blazor.Pages.Admin
             }
         }
 
-        private async Task BeginActionHandler(ActionEventArgs<MemberAdminReadEditDto> args)
+        private async Task BeginActionHandler(ActionEventArgs<AdminMemberDto> args)
         {
             if (args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.Save))
             {
                 await editTemplate.UpdatePositions();
 
-                var result = await _userService.UpdateMember(args.Data);
+                var result = await _memberService.UpdateMember(args.Data);
                 if (result.Successful)
                 {
                     members = result.Dto;

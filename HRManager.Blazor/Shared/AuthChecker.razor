@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Components.Authorization 
 @inject NavigationManager _nav
+@namespace HRManager.Blazor.Pages.Shared
 
 @code {
     [CascadingParameter]
@@ -9,7 +10,7 @@
     {
         if (!(await authState).User.Identity.IsAuthenticated)
         {
-            _nav.NavigateTo("/auth/login");
+            _nav.NavigateTo($"/account/login?redirectUri={_nav.Uri}", true);
         }
     }
 }

@@ -1,14 +1,15 @@
 ﻿@using Blazorise
 @using Syncfusion.Blazor.Calendars
 @using Syncfusion.Blazor.DropDowns
+@using HRManager.Blazor.Pages.Admin
 
 @code {
     [Parameter]
-    public MemberAdminReadEditDto Member { get; set; }
+    public AdminMemberDto Member { get; set; }
     [Parameter]
     public List<Position> Positions { get; set; }
     [Parameter]
-    public EventCallback<MemberAdminReadEditDto> MemberChanged { get; set; }
+    public EventCallback<AdminMemberDto> MemberChanged { get; set; }
 
     Dictionary<AssociationType, string[]> selectedPositions { get; set; }
 
@@ -237,7 +238,7 @@
                     <hr />
                     <h6>Last or Current Job</h6>
                     <br />
-                    <div id="work-experience">
+                    @*<div id="work-experience">
                         <div id="employer-name" class="form-group">
                             <label>Place of Work</label>
                             <SfTextBox @bind-Value="Member.WorkExperiences.FirstOrDefault().EmployerName" />
@@ -252,7 +253,7 @@
                         {
                             <div id="date" class="form-group">
                                 <label>Start Date</label>
-                                <SfDatePicker @bind-Value="Member.WorkExperiences.FirstOrDefault().StartDate" />
+                                <SfDatePicker TValue="DateTime" @bind-Value="Member.WorkExperiences.FirstOrDefault().StartDate" />
                                 <ValidationMessage For="@(() => Member.WorkExperiences.FirstOrDefault().StartDate)" />
                             </div>
                         }
@@ -268,7 +269,7 @@
                             <ValidationMessage For="@(() => Member.WorkExperiences.FirstOrDefault().CurrentJob)" />
                             <label>Current Job?</label>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </TabPanel>
             <TabPanel Name="cert">

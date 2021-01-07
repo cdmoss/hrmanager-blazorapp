@@ -1,0 +1,94 @@
+﻿@layout HRManager.Blazor.Pages.Account.AuthLayout
+@page "/account/register"
+@using HRManager.Common.Dtos
+@using HRManager.Common.Auth
+@using HRManager.Blazor.Services
+@using HRManager.Blazor.Pages.Account.Registration
+@inject NavigationManager _nav
+@inject IRegistrationService _regService 
+
+@code {
+    // TODO: Add redirect URI
+
+    // must create instance of model to be bound*******
+    private MemberRegisterDto mainDto = new MemberRegisterDto();
+    private RegisterResult result = new RegisterResult() { };
+    private int currentSection = 1;
+    private bool loadingSubmission = false;
+    private bool ShowErrors;
+    private IEnumerable<string> Errors;
+
+    private async Task SubmitRegistration()
+    {
+        loadingSubmission = true;
+        currentSection++;
+        result = await _regService.Register(mainDto);
+        loadingSubmission = false;
+    }
+
+    private void HandleSectionCompleted()
+    {
+        currentSection++;
+        StateHasChanged();
+    }
+
+    private void HandlePreviousSectionRequested()
+    {
+        currentSection--;
+        StateHasChanged();
+    }
+}
+
+@if (ShowErrors)
+{
+    <div class="alert alert-danger" role="alert">
+        @foreach (var error in Errors)
+        {
+            <p>@error</p>
+        }
+    </div>
+}
+
+<div id="register-form" class="card bg-light p-5">
+    <div id="img-container">
+        <img src="/MHFB.png" alt="MHFB Logo" />
+    </div>
+    <div id="form-container">
+        @switch (currentSection)
+        {
+            case 0:
+                _nav.NavigateTo("/auth/login");
+                break;
+            case 1:
+                <AccountCreds @bind-AccountData="mainDto.Account" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                break;
+            case 2:
+                <PersonalAndContact @bind-PersonalData="mainDto.Personal" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                break;
+            case 3:
+                <PreferredPositions @bind-PositionsData="mainDto.Positions" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                break;
+            case 4:
+                <Availability @bind-AvailabilitiesData="mainDto.Availabilities" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                break;
+            case 5:
+                <Qualifications @bind-QualificationsData="mainDto.Qualifications" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                break;
+            case 6:
+                <Certificates @bind-CertData="mainDto.Certificates" SectionCompleted="SubmitRegistration" PreviousSectionRequested="HandlePreviousSectionRequested" />
+                break;
+            case 7:
+                if (loadingSubmission)
+                {
+                    <p>Waiting for your application to be verified...</p>
+                }
+                else
+                {
+                    <Result RegisterResult="result" />
+                }
+                break;
+        }
+        <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested" Progress="@currentSection" />
+    </div>
+</div>
+

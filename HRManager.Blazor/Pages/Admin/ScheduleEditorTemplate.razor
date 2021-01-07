@@ -1,0 +1,57 @@
+﻿@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Schedule
+
+@code {
+    [Parameter]
+    public ShiftReadEditDto Shift { get; set; }
+    [Parameter]
+    public EventCallback<ShiftReadEditDto> ShiftChanged { get; set; }
+    [Parameter]
+    public List<Position> Positions { get; set; }
+    [Parameter]
+    public List<MemberMinimalDto> Members { get; set; }
+    private SfRecurrenceEditor recurrence;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (Shift.RecurrenceID != null)
+        {
+            recurrence.SelectedType = RepeatType.None;
+        }
+    }
+}
+
+<div id="editor-container p-3">
+    <div id="editor-daterange" class="form-group">
+        <label>Work Period:</label>
+        <HRManager.Blazor.Pages.Shared.SfTimeRangePicker InitialStart="@Shift.StartTime" InitialEnd="Shift.EndTime" @bind-Start="@Shift.StartTime" @bind-End="@Shift.EndTime" />
+    </div>
+    <div id="editor-recurrence" class="form-group">
+        <SfRecurrenceEditor @ref="recurrence" @bind-Value="@Shift.RecurrenceRule" />
+    </div>
+    <div id="editor-position" class="form-group">
+        <label>Position:</label>
+        <SfDropDownList TValue="int" ID="PositionId" DataSource="Positions" @bind-Value="Shift.PositionId" TItem="Position">
+            <DropDownListFieldSettings Text="Name" Value="Id" />
+        </SfDropDownList>
+    </div>
+    <div id="editor-member" class="form-group">
+        <label>Volunteer:</label>
+        <SfDropDownList ID="editor-member" TValue="int?" DataSource="Members" @bind-Value="Shift.MemberProfileId" TItem="MemberMinimalDto">
+            <DropDownListTemplates TItem="MemberMinimalDto">
+                <ItemTemplate Context="memberDropDownContext">
+                    @{var member = (memberDropDownContext as MemberMinimalDto);}
+                    <span>@member.FirstName @member.LastName</span>
+                </ItemTemplate>
+            </DropDownListTemplates>
+            <DropDownListFieldSettings Text="FullName" Value="Id" />
+        </SfDropDownList>
+    </div>
+    <div id="editor-notes" class="form-group">
+        <label>Notes:</label>
+        <SfTextBox @bind-Value="Shift.Description" Multiline="true" />
+    </div>
+    @*<div class="d-flex align-items-center justify-content-end">
+        <button type="submit" @onclick="SignalCompletedForm" class="btn btn-primary">Save</button>
+    </div>*@
+</div>

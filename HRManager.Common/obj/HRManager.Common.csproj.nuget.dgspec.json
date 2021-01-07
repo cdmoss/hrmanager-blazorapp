@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Common\\HRManager.Common.csproj": {}
+    "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Common\\HRManager.Common.csproj": {
+    "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Common\\HRManager.Common.csproj",
+        "projectUniqueName": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj",
         "projectName": "HRManager.Common",
-        "projectPath": "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Common\\HRManager.Common.csproj",
+        "projectPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj",
         "packagesPath": "C:\\Users\\Chase\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chase\\Desktop\\Programming\\HRManager\\HRManager.Common\\obj\\",
+        "outputPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

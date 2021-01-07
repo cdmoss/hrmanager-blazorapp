@@ -5,11 +5,10 @@ using HRManager.Common;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc;
 
 namespace HRManager.Api.Data
 {
-    public class MainContext : IdentityDbContext<UserProfile, IdentityRole<int>, int>
+    public class MainContext : DbContext
     {
         public MainContext(DbContextOptions<MainContext> options)
             : base(options)
@@ -39,12 +38,6 @@ namespace HRManager.Api.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<UserProfile>().Ignore(p => p.AccessFailedCount);
-            modelBuilder.Entity<UserProfile>().Ignore(p => p.LockoutEnabled);
-            modelBuilder.Entity<UserProfile>().Ignore(p => p.LockoutEnd);
-            modelBuilder.Entity<UserProfile>().Ignore(p => p.PhoneNumber);
-            modelBuilder.Entity<UserProfile>().Ignore(p => p.PhoneNumberConfirmed);
-
             modelBuilder.Entity<Reference>().HasOne(p => p.Member).WithMany(b => b.References).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<WorkExperience>().HasOne(p => p.Member).WithMany(b => b.WorkExperiences).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Availability>().HasOne(p => p.Member).WithMany(b => b.Availabilities).OnDelete(DeleteBehavior.Cascade);
@@ -53,12 +46,6 @@ namespace HRManager.Api.Data
             modelBuilder.Entity<ShiftRequestAlert>().HasOne(p => p.OriginalShift).WithMany().OnDelete(DeleteBehavior.SetNull);
             modelBuilder.Entity<MemberPosition>().HasOne(p => p.Member).WithMany(b => b.Positions).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<MemberPosition>().HasOne(p => p.Position).WithMany().OnDelete(DeleteBehavior.SetNull);
-
-            modelBuilder.Entity<UserProfile>()
-                .HasOne(l => l.Member)
-                .WithOne(s => s.User)
-                .HasForeignKey<MemberProfile>(l => l.UserID)
-                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

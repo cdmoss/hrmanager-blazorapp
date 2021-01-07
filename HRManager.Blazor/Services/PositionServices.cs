@@ -1,4 +1,5 @@
 ﻿using HRManager.Common;
+using IdentityModel.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +12,22 @@ namespace HRManager.Blazor.Services
 {
     public interface IPositionService
     {
-        Task<ApiResult<List<Position>>> GetPositions();
+        ApiResult<List<Position>> GetPositions();
     }
 
     public class HttpPositionService : IPositionService
     {
         private readonly HttpClient _http;
 
-        public HttpPositionService(HttpClient http)
+        public HttpPositionService(IHttpClientFactory httpFactory, TokenProvider tokenProvider)
         {
-            _http = http;
+            _http = httpFactory.CreateClient("ApiClient");
+            _http.SetBearerToken(tokenProvider.AccessToken);
         }
 
-        public async Task<ApiResult<List<Position>>> GetPositions()
+        public ApiResult<List<Position>> GetPositions()
         {
-            return await _http.GetFromJsonAsync<ApiResult<List<Position>>>("positions/all", new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return _http.GetFromJsonAsync<ApiResult<List<Position>>>("positions/all", new JsonSerializerOptions { PropertyNameCaseInsensitive = true }).Result;
         }
     }
 }

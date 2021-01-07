@@ -8,7 +8,7 @@
 @using Syncfusion.Blazor.Calendars
 @using Syncfusion.Blazor.Navigations
 @using Blazorise
-@attribute [Authorize(Roles = "SuperAdmin, Admin")]
+@*@attribute [Authorize(Roles = "SuperAdmin, Admin")]*@
 
 <AuthorizeView>
     <Authorized>
@@ -18,7 +18,7 @@
         }
         else
         {
-            <SfGrid TValue="MemberAdminReadEditDto"
+            <SfGrid TValue="AdminMemberDto"
                     DataSource="members"
                     AllowFiltering="true"
                     AllowGrouping="true"
@@ -31,7 +31,7 @@
                 <GridEditSettings AllowEditing="true" AllowAdding="true" Mode="EditMode.Dialog">
                     <Template Context="editContext">
                         @{
-                            var member = (editContext as MemberAdminReadEditDto);
+                            var member = (editContext as AdminMemberDto);
                         }
                         <GridEditTemplate @ref="editTemplate" @bind-Member="member" Positions="positions" />
                     </Template>
@@ -39,7 +39,7 @@
                 <GridTemplates>
                     <DetailTemplate Context="detailContext">
                         @{
-                            var member = (detailContext as MemberAdminReadEditDto);
+                            var member = (detailContext as AdminMemberDto);
                             var tabNames = new string[]
                             {
                             "personal," + member.Id,
@@ -61,7 +61,7 @@
                     <GridColumn Field="MainPhone" HeaderText="Phone" TextAlign="TextAlign.Center" />
                     <GridColumn Field="ApprovalStatus" HeaderText="Status" TextAlign="TextAlign.Center" />
                 </GridColumns>
-                <GridEvents TValue="MemberAdminReadEditDto" OnActionBegin="BeginActionHandler" />
+                <GridEvents TValue="AdminMemberDto" OnActionBegin="BeginActionHandler" />
             </SfGrid>
         }
     </Authorized>
