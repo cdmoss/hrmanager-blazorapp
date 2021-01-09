@@ -33,6 +33,8 @@ namespace HRManager.Idp.Services
                 claims.Add(new Claim(JwtClaimTypes.Role, role));
             }
 
+            claims.Add(new Claim("member_id", user.MemberId.ToString()));
+
             context.IssuedClaims = claims.ToList();
         }
 

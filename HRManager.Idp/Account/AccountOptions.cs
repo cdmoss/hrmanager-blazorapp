@@ -4,7 +4,7 @@
 
 using System;
 
-namespace IdentityServerHost.Quickstart.UI
+namespace HRManager.Idp
 {
     public class AccountOptions
     {
@@ -13,7 +13,7 @@ namespace IdentityServerHost.Quickstart.UI
         public static TimeSpan RememberMeLoginDuration = TimeSpan.FromDays(30);
 
         public static bool ShowLogoutPrompt = true;
-        public static bool AutomaticRedirectAfterSignOut = false;
+        public static bool AutomaticRedirectAfterSignOut = true;
 
         public static string InvalidCredentialsErrorMessage = "Invalid username or password";
     }

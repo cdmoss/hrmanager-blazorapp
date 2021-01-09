@@ -2,10 +2,21 @@
     background-color: var(--main-green);
 }
 
-#login-form {
+#page-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#card-container {
     width: 40%;
     margin: auto;
     box-shadow: 0px 0px 4px 1px gray;
+}
+
+#controls-container {
+
     display: grid;
     grid-template-areas: "img-container form-container";
     grid-template-columns: 1fr 1fr;
@@ -27,11 +38,19 @@
 #form-container {
     display: flex;
     flex-direction: column;
-    justify-items: center;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-evenly;
     padding-left: 1.5rem;
     grid-area: form-container;
     border-left: 1px solid #d3d3d3;
+}
+
+#greeting-container {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    gap: 1rem;
+    width: 50%;
 }
 
 .btn {

@@ -111,41 +111,40 @@ using Syncfusion.Blazor.Buttons;
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Calendar.razor"
+#line 3 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Calendar.razor"
 using HRManager.Blazor.Adaptors;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Calendar.razor"
+#line 4 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Calendar.razor"
 using Syncfusion.Blazor.Schedule;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Calendar.razor"
+#line 5 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Calendar.razor"
 using Syncfusion.Blazor.DropDowns;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Calendar.razor"
+#line 6 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Calendar.razor"
 using Syncfusion.Blazor.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Calendar.razor"
+#line 7 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Calendar.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     [Microsoft.AspNetCore.Components.RouteAttribute("/admin/calendar")]
     public partial class Calendar : Microsoft.AspNetCore.Components.ComponentBase
     {

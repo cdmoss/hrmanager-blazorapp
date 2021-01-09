@@ -125,7 +125,7 @@ using Microsoft.AspNetCore.Components.Authorization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 6 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Shared\MainLayout.razor"
+#line 7 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Shared\MainLayout.razor"
        
     [CascadingParameter]
     private Task<AuthenticationState> authState { get; set; }
@@ -134,8 +134,16 @@ using Microsoft.AspNetCore.Components.Authorization;
 
     protected override async Task OnInitializedAsync()
     {
+
         var user = (await authState).User;
 
+        // if user isn't authenticated, redirect them to login
+        if (!user.Identity.IsAuthenticated)
+        {
+            _nav.NavigateTo($"/account/login?redirectUri={_nav.Uri}", true);
+        }
+
+        // if they are, determine what role they're in and redirect them accordingly
         if (user.IsInRole("Admin") || user.IsInRole("SuperAdmin"))
         {
             navMenuType = "admin";
@@ -155,6 +163,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HRManager.Blazor.Services.TokenProvider _tokenProvider { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager _nav { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -129,9 +129,9 @@ using Services;
        
 
     [Parameter]
-    public EventCallback<Dictionary<int, PositonSelection>> PositionsDataChanged { get; set; }
+    public EventCallback<Dictionary<int, PositionSelection>> PositionsDataChanged { get; set; }
     [Parameter]
-    public Dictionary<int, PositonSelection> PositionsData { get; set; }
+    public Dictionary<int, PositionSelection> PositionsData { get; set; }
 
     private List<Position> positions = new List<Position>();
 
@@ -149,7 +149,7 @@ using Services;
             {
                 if (position != null)
                 {
-                    PositionsData.Add(position.Id, new PositonSelection() { PositionWasSelected = false });
+                    PositionsData.Add(position.Id, new PositionSelection() { PositionWasSelected = false });
                 }
             }
         }

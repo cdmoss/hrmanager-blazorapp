@@ -14,13 +14,13 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Idp\Views\_ViewImports.cshtml"
-using IdentityServerHost.Quickstart.UI;
+using HRManager.Idp;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d6646e81661d34334dbdfdb3580e2d1aa608ae8c", @"/Views/Account/Logout.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"006d45f54c892aa41ae6f574ad35634ca97cf035", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1791f549aaa2a81ff928db26f26343002656172f", @"/Views/_ViewImports.cshtml")]
     public class Views_Account_Logout : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<LogoutViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Logout", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -50,7 +50,7 @@ using IdentityServerHost.Quickstart.UI;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("\n<div class=\"logout-page\">\n    <div class=\"lead\">\n        <h1>Logout</h1>\n        <p>Would you like to logut of IdentityServer?</p>\n    </div>\n\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d6646e81661d34334dbdfdb3580e2d1aa608ae8c3561", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d6646e81661d34334dbdfdb3580e2d1aa608ae8c3542", async() => {
                 WriteLiteral("\n        <input type=\"hidden\" name=\"logoutId\"");
                 BeginWriteAttribute("value", " value=\"", 242, "\"", 265, 1);
 #nullable restore

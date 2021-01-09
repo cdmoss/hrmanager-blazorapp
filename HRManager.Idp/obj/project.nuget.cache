@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "V4gkDcgTiLXSQUHLajriQMl8IASoZazPRyS9+CbwTe8ZKfJXMMs8sdGwvXd1iAU0ng1c68PJsh/+/3jmVgFZ6w==",
+  "dgSpecHash": "k3etnyY0nOfNLA2FcqJqj5eqdvTRrd+ZVXCoSmLfJN9T3BSccYkhSzRxCKUr6vEcDGtwj8LhOfWhdcCBx+OcwA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Idp\\HRManager.Idp.csproj",
   "expectedPackageFiles": [
@@ -95,6 +95,7 @@
     "C:\\Users\\Chase\\.nuget\\packages\\system.io.filesystem\\4.0.1\\system.io.filesystem.4.0.1.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\system.io.filesystem.primitives\\4.0.1\\system.io.filesystem.primitives.4.0.1.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\Chase\\.nuget\\packages\\system.net.http.json\\5.0.0\\system.net.http.json.5.0.0.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\Chase\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",

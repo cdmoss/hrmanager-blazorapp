@@ -1,7 +1,8 @@
 ﻿@inherits LayoutComponentBase
 @using Microsoft.AspNetCore.Components.Authorization
 @namespace HRManager.Blazor.Pages.Shared
-@inject HRManager.Blazor.Services.TokenProvider _tokenProvider 
+@inject NavigationManager _nav
+@inject HRManager.Blazor.Services.TokenProvider _tokenProvider
 
 @code {
     [CascadingParameter]
@@ -11,8 +12,16 @@
 
     protected override async Task OnInitializedAsync()
     {
+
         var user = (await authState).User;
 
+        // if user isn't authenticated, redirect them to login
+        if (!user.Identity.IsAuthenticated)
+        {
+            _nav.NavigateTo($"/account/login?redirectUri={_nav.Uri}", true);
+        }
+
+        // if they are, determine what role they're in and redirect them accordingly
         if (user.IsInRole("Admin") || user.IsInRole("SuperAdmin"))
         {
             navMenuType = "admin";
@@ -29,13 +38,13 @@
     }
 }
 
-<AuthChecker/>
+<AuthChecker />
 
 <div class="page">
     <div class="sidebar">
         @if (navMenuType == "admin")
         {
-            <AdminNavMenu PageChanged="OnPageChanged"/>
+            <AdminNavMenu PageChanged="OnPageChanged" />
         }
         else if (navMenuType == "member")
         {
@@ -43,10 +52,11 @@
         }
     </div>
     <div class="main">
-        <form action="/Account/Logout" method="post" class="top-row px-4">
+        <form action="/account/logout" method="post" class="top-row px-4">
             <span class="font-weight-bold my-auto">@currentPage</span>
-            <button type="submit" class="ml-md-auto">Logout</button>
-            <input type="hidden" name="_RequestVerificationToken" value="@_tokenProvider.XsrfToken"/>
+            @*<button type="submit" class="ml-md-auto">Logout</button>*@
+            <a href="/account/logout" class="ml-md-auto">Logout</a>
+            <input type="hidden" name="_RequestVerificationToken" value="@_tokenProvider.XsrfToken" />
         </form>
 
         @Body

@@ -68,7 +68,7 @@ namespace HRManager.Common.Dtos
     {
         public AccountRegisterData Account { get; set; } = new AccountRegisterData();
         public PersonalAndContactData Personal { get; set; } = new PersonalAndContactData{Birthdate = DateTime.Now};
-        public Dictionary<int, PositonSelection> Positions { get; set; } = new Dictionary<int, PositonSelection>();
+        public Dictionary<int, PositionSelection> Positions { get; set; } = new Dictionary<int, PositionSelection>();
         public QualificationsData Qualifications { get; set; } = new QualificationsData();
         public Dictionary<DayOfWeek, List<AvailabilityDto>> Availabilities { get; set; } = new Dictionary<DayOfWeek, List<AvailabilityDto>>();
         public CertificatesData Certificates { get; set; } = new CertificatesData();

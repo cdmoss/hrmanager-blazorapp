@@ -14,7 +14,7 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Idp\Views\_ViewImports.cshtml"
-using IdentityServerHost.Quickstart.UI;
+using HRManager.Idp;
 
 #line default
 #line hidden
@@ -27,7 +27,7 @@ using IdentityServer4.Extensions;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"22839409fc109dd84183b6072322ffcdbeed7d85", @"/Views/Shared/_Nav.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"006d45f54c892aa41ae6f574ad35634ca97cf035", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1791f549aaa2a81ff928db26f26343002656172f", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__Nav : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/icon.png"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -76,9 +76,9 @@ using IdentityServer4.Extensions;
 #line hidden
 #nullable disable
             WriteLiteral("\n<div class=\"nav-page\">\n    <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "22839409fc109dd84183b6072322ffcdbeed7d856089", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "22839409fc109dd84183b6072322ffcdbeed7d856070", async() => {
                 WriteLiteral("\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "22839409fc109dd84183b6072322ffcdbeed7d856354", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "22839409fc109dd84183b6072322ffcdbeed7d856335", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -124,7 +124,7 @@ using IdentityServer4.Extensions;
 #line hidden
 #nullable disable
             WriteLiteral(" <b class=\"caret\"></b></a>\n                    \n                    <div class=\"dropdown-menu\">\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "22839409fc109dd84183b6072322ffcdbeed7d859348", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "22839409fc109dd84183b6072322ffcdbeed7d859329", async() => {
                 WriteLiteral("Logout");
             }
             );

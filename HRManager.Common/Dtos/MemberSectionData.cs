@@ -6,7 +6,7 @@ using System.Text;
 namespace HRManager.Common.Dtos
 {
     // this class is to get around a bug preventing us from binding a checkbox to a dictionary value
-    public class PositonSelection
+    public class PositionSelection
     {
         public bool PositionWasSelected { get; set; }
     }

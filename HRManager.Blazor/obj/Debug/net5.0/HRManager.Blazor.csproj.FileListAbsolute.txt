@@ -259,3 +259,8 @@ C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debu
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\HRManager.Blazor.Resources.SfResources.en-US.resources
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\HRManager.Blazor.csproj.GenerateResource.cache
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\en-US\HRManager.Blazor.resources.dll
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Account\Logout.cshtml.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Account\Greeting.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Account\Greeting.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Account\PostLoginRedirector.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Account\PostLoginRedirector.razor.g.cs

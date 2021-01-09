@@ -1,0 +1,51 @@
+﻿@layout AuthLayout
+@page "/account/post-login"
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.WebUtilities
+@using Microsoft.Extensions.Primitives
+@inject NavigationManager _nav
+
+@code {
+    [CascadingParameter]
+    private Task<AuthenticationState> authState { get; set; }
+    private string message;
+    protected override async Task OnInitializedAsync()
+    {
+        var user = (await authState).User;
+
+        if (!user.Identity.IsAuthenticated)
+        {
+            _nav.NavigateTo($"/account/login?redirectUri={_nav.Uri}", true);
+        }
+        else
+        {
+            // get destination query paramater
+            var uri = _nav.ToAbsoluteUri(_nav.Uri);
+            var query = QueryHelpers.ParseQuery(uri.Query);
+            StringValues destinationQuery = "";
+            query.TryGetValue("destination", out destinationQuery);
+            string destination = destinationQuery.ToString();
+
+            // get user role
+            string userRole = user.Claims.FirstOrDefault(c => c.Type == "role").Value.ToLower();
+            userRole = userRole == "superadmin" ? "admin" : userRole;
+
+            // navigate to destination if user has an appropriate role
+            if (destination.Contains(userRole))
+            {
+                _nav.NavigateTo(destination);
+            }
+            else
+            {
+                if (userRole == "admin")
+                {
+                    _nav.NavigateTo("/admin/members");
+                }
+                else if (userRole == "member")
+                {
+                    _nav.NavigateTo("/member/information");
+                }
+            }
+        }
+    }
+}

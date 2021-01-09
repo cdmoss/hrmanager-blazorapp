@@ -84,16 +84,17 @@ namespace HRManager.Blazor
                         options.ClientId = "blazorclient";
                         options.ClientSecret = "secret";
                         options.ResponseType = "code"; // PKCE protection is used by default
-                    options.Scope.Add("role"); // openid and profile scopes are requested by default
-                    options.Scope.Add("profile");
+                        options.Scope.Add("role"); // openid and profile scopes are requested by default
+                        options.Scope.Add("profile");
                         options.Scope.Add("main.super_admin");
                         options.Scope.Add("main.admin");
                         options.Scope.Add("main.member");
                         options.ClaimActions.DeleteClaim("sid"); // uneeded
-                    options.ClaimActions.DeleteClaim("idp"); // uneeded
-                    options.ClaimActions.DeleteClaim("s_hash"); // uneeded
-                    options.ClaimActions.DeleteClaim("auth_time"); // uneeded
-                    options.ClaimActions.MapUniqueJsonKey("role", "role");
+                        options.ClaimActions.DeleteClaim("idp"); // uneeded
+                        options.ClaimActions.DeleteClaim("s_hash"); // uneeded
+                        options.ClaimActions.DeleteClaim("auth_time"); // uneeded
+                        options.ClaimActions.MapUniqueJsonKey("role", "role");
+                        options.ClaimActions.MapUniqueJsonKey("member_id", "member_id");
                         options.SaveTokens = true;
                         options.GetClaimsFromUserInfoEndpoint = true;
                         options.TokenValidationParameters.NameClaimType = JwtClaimTypes.GivenName;
@@ -121,6 +122,7 @@ namespace HRManager.Blazor
             services.AddScoped<IShiftService, HttpShiftService>();
             services.AddScoped<IMemberService, HttpMemberService>();
             services.AddScoped<IPositionService, HttpPositionService>();
+            services.AddScoped<IRegistrationService, RegistrationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

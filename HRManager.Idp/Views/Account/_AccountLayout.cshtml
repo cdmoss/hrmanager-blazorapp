@@ -1,0 +1,13 @@
+﻿@{ Layout = "_Layout"; }
+
+<div class="page-container">
+    <div class="card-container card bg-light p-5">
+        <partial name="_ValidationSummary" />
+        <div id="img-container">
+            <img src="/MHFB.png" alt="MHFB Logo" />
+        </div>
+        @RenderBody()
+    </div>
+</div>
+
+@RenderSection("scripts", required: false)

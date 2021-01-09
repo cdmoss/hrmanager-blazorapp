@@ -14,13 +14,13 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Idp\Views\_ViewImports.cshtml"
-using IdentityServerHost.Quickstart.UI;
+using HRManager.Idp;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b0cce317cedb4c2ce9a911aa8989418721b2688f", @"/Views/Device/Success.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"006d45f54c892aa41ae6f574ad35634ca97cf035", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1791f549aaa2a81ff928db26f26343002656172f", @"/Views/_ViewImports.cshtml")]
     public class Views_Device_Success : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

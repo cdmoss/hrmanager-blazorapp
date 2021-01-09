@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 
-namespace IdentityServerHost.Quickstart.UI
+namespace HRManager.Idp
 {
     public class ConsentInputModel
     {

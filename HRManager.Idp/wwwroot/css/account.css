@@ -2,14 +2,14 @@
     background-color: var(--main-green);
 }
 
-#login-container {
+.page-container {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#login-form {
+.card-container {
     width: 40%;
     margin: auto;
     box-shadow: 0px 0px 4px 1px gray;
@@ -31,10 +31,21 @@
         object-fit: cover;
     }
 
-#form-container {
+#loggedout-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#loggedout-container > a {
+    width: 50%;
+}
+
+#login-container {
     display: flex;
     flex-direction: column;
-    justify-items: center;
+    /*ju-items: center;*/
     justify-content: space-between;
     padding-left: 1.5rem;
     grid-area: form-container;

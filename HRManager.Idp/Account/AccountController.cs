@@ -18,7 +18,7 @@ using System;
 using System.Threading.Tasks;
 using HRManager.Idp.Entities;
 
-namespace IdentityServerHost.Quickstart.UI
+namespace HRManager.Idp
 {
     [SecurityHeaders]
     [AllowAnonymous]

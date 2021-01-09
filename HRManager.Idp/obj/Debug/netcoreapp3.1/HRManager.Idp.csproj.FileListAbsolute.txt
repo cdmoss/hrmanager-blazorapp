@@ -119,3 +119,5 @@ C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Idp\bin\Debug\n
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Idp\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Idp\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Idp\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Idp\obj\Debug\netcoreapp3.1\Razor\Views\Account\_AccountLayout.cshtml.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Idp\bin\Debug\netcoreapp3.1\System.Net.Http.Json.dll

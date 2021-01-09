@@ -3,7 +3,7 @@
 
 
 using HRManager.Idp.Data;
-using IdentityServerHost.Quickstart.UI;
+using HRManager.Idp;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -57,8 +57,13 @@ namespace HRManager.Idp
                 .AddInMemoryClients(Config.GetClients)
                 .AddAspNetIdentity<AppUser>();
 
+            // TODO: add proper ssl certificate
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
+            services.AddHttpClient("ApiClient", options =>
+            {
+                options.BaseAddress = new Uri("https://localhost:5001");
+            });
 
             services.AddScoped<IProfileService, ProfileService>();
         }
@@ -70,6 +75,7 @@ namespace HRManager.Idp
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
             

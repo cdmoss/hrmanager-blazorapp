@@ -131,7 +131,7 @@ using HRManager.Blazor.Pages.Account.Registration;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.LayoutAttribute(typeof(HRManager.Blazor.Pages.Account.AuthLayout))]
+    [Microsoft.AspNetCore.Components.LayoutAttribute(typeof(AuthLayout))]
     [Microsoft.AspNetCore.Components.RouteAttribute("/account/register")]
     public partial class Register : Microsoft.AspNetCore.Components.ComponentBase
     {

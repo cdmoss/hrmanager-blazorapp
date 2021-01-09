@@ -2,7 +2,7 @@ using System;
 using IdentityServer4.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace IdentityServerHost.Quickstart.UI
+namespace HRManager.Idp
 {
     public static class Extensions
     {

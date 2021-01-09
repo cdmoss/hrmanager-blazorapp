@@ -1,0 +1,21 @@
+﻿@layout AuthLayout
+@page "/" 
+
+@code {
+
+}
+
+<div id="page-container">
+    <div id="controls-container">
+        <div id="img-container">
+            <img src="/MHFB.png" alt="MHFB Logo" />
+        </div>
+        <div id="form-container">
+            <div id="greeting-container">
+                <a href="account/post-login?destination=member/information" class="btn btn-primary">Login as Member</a>
+                <a href="account/post-login?destination=admin/members" class="btn btn-primary">Login as Admin</a>
+                <a href="account/register" class="btn btn-primary">Apply for Volunteering</a>
+            </div>
+        </div>
+    </div>
+</div>

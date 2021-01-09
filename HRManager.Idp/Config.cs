@@ -17,7 +17,7 @@ namespace HRManager.Idp
             { 
                 new IdentityResources.OpenId(),
                 new IdentityResource(name: "role", userClaims: new [] { JwtClaimTypes.Role }),
-                new IdentityResource(name: "profile", userClaims: new [] { "profile_id" })
+                new IdentityResource(name: "profile", userClaims: new [] { "member_id" })
             };
 
         public static IEnumerable<ApiScope> GetApiScopes =>

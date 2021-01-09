@@ -28,15 +28,9 @@ namespace HRManager.Blazor.Services
 
         public async Task<RegisterResult> Register(MemberRegisterDto dto)
         {
-            string avail = JsonSerializer.Serialize(dto.Availabilities, new JsonSerializerOptions() { WriteIndented = true});
-            string dtoString = JsonSerializer.Serialize(dto, new JsonSerializerOptions() { WriteIndented = true });
-
             var idpClient = _httpFactory.CreateClient("IdpClient");
 
-            var response = await idpClient.PostAsJsonAsync("auth/register", dto, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-
-
+            var response = await idpClient.PostAsJsonAsync("users/register", dto, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             return await response.Content.ReadFromJsonAsync<RegisterResult>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
     }
