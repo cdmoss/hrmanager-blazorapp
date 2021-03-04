@@ -53,7 +53,7 @@ namespace HRManager.Test
                         var userManager = TestHelpers.Identity.CreateUserManager(context);
                         var roleManager = TestHelpers.Identity.CreateRoleManager(context);
 
-                        var seeder = new DbSeeder(userManager, roleManager, new NullLogger<DbSeeder>());
+                        var seeder = new DbSeeder(context, userManager, roleManager, new NullLogger<DbSeeder>());
 
                         var ids = new List<int>();
 

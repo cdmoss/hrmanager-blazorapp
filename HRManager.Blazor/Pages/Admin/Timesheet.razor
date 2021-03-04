@@ -5,6 +5,7 @@
 @using Syncfusion.Blazor.Grids
 @using Syncfusion.Blazor.DropDowns
 @using Syncfusion.Blazor.Calendars
+@using HRManager.Blazor.Pages.Shared
 @using HRManager.Blazor.Pages.Shared.PageMenus
 @inherits TimesheetBase
 
@@ -21,11 +22,10 @@
         else
         {
             <div class="menu">
-                <TimesheetMenu 
-                    AddEntryClicked="ShowAddEntryModal" 
-                    ClockInClicked="ShowClockInModal" 
-                    GetCurrentClicked="GetCurrent"
-                    GetArchivedClicked="GetArchived"/>
+                <TimesheetMenu AddEntryClicked="ShowAddEntryModal"
+                               ClockInClicked="ShowClockInModal"
+                               GetCurrentClicked="GetCurrent"
+                               GetArchivedClicked="GetArchived" />
             </div>
             <SfGrid TValue="TimeEntryReadEditDto"
                     DataSource="timeEntries"
@@ -46,22 +46,22 @@
                     </Template>
                 </GridEditSettings>
                 @*<GridTemplates>
-                    <DetailTemplate Context="detailContext">
-                        @{
-                            var member = (detailContext as TimeEntryReadEditDto);
-                            var tabNames = new string[]
-                            {
-                                "personal," + member.Id,
-                                "avail," + member.Id,
-                                "positions," + member.Id,
-                                "qual," + member.Id,
-                                "cert," + member.Id,
-                                "check," + member.Id,
-                            };
-                        }
-                        <GridReadTemplate Member="member" />
-                    </DetailTemplate>
-                </GridTemplates>*@
+                        <DetailTemplate Context="detailContext">
+                            @{
+                                var member = (detailContext as TimeEntryReadEditDto);
+                                var tabNames = new string[]
+                                {
+                                    "personal," + member.Id,
+                                    "avail," + member.Id,
+                                    "positions," + member.Id,
+                                    "qual," + member.Id,
+                                    "cert," + member.Id,
+                                    "check," + member.Id,
+                                };
+                            }
+                            <GridReadTemplate Member="member" />
+                        </DetailTemplate>
+                    </GridTemplates>*@
                 <GridColumns>
                     <GridColumn Field="Member.FullName" HeaderText="Worked by" TextAlign="TextAlign.Center" />
                     <GridColumn Field="StartTime" HeaderText="Start time" Type="ColumnType.DateTime" TextAlign="TextAlign.Center" />
@@ -77,8 +77,8 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <EditForm Model="newEntry" OnValidSubmit="SaveFullEntry" Context="newEntryContext" id="add-full-modal">
-                                <DataAnnotationsValidator/>
-                                <CustomValidator @ref="timeEntryValidator"/>
+                                <DataAnnotationsValidator />
+                                <CustomValidator @ref="timeEntryValidator" />
                                 <!-- Modal Header -->
                                 <div class="modal-header">
                                     <h5 class="modal-title">New time entry</h5>
@@ -86,7 +86,7 @@
                                 </div>
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                    <ValidationSummary/>
+                                    <ValidationSummary />
                                     <label>Position worked</label>
                                     <SfDropDownList TValue="int" ID="PositionId" DataSource="positions" @bind-Value="newEntry.PositionId" TItem="Position">
                                         <DropDownListFieldSettings Text="Name" Value="Id" />
@@ -101,16 +101,11 @@
                                         </DropDownListTemplates>
                                         <DropDownListFieldSettings Text="FullName" Value="Id" />
                                     </SfDropDownList>
-                                    <div class="d-flex mt-3">
-                                        <div class="d-flex flex-column">
-                                            <label>Start time</label>
-                                            <SfDateTimePicker TValue="DateTime" @bind-Value="newEntry.StartTime" />
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <label>End time</label>
-                                            <SfDateTimePicker TValue="DateTime?" @bind-Value="newEntry.EndTime" />
-                                        </div>
-                                    </div>
+
+                                    <label class="mt-3">Date worked</label>
+                                    <SfDatePicker TValue="DateTime" @bind-Value="newDate" />
+                                    <label class="mt-3">Time worked</label>
+                                    <SfTimeRangePicker InitialStart="DateTime.Now.Date.AddHours(8)" InitialEnd="DateTime.Now.Date.AddHours(16)" @bind-Start="newStartTime" @bind-End="newEndTime" />
                                 </div>
 
                                 <!-- Modal footer -->

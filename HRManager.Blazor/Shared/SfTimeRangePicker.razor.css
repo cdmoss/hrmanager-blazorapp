@@ -1,20 +1,24 @@
 ﻿#range-container {
-    display: grid;
+    /*    display: grid;
     grid-template-areas: "start divider end remove";
     grid-template-columns: 3fr .5fr 3fr .5fr;
-    width: 100%;
+    width: 100%;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
 }
 
-#start {
+/*#start {
     grid-area: start;
 }
 
 #end {
     grid-area: end;
-}
+}*/
 
 #divider {
-    grid-area: divider;
+    /*grid-area: divider;*/
     display: flex;
     justify-content: center;
     align-items: center;

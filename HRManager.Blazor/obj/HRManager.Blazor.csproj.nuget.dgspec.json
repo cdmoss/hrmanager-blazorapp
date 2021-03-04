@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Blazor\\HRManager.Blazor.csproj": {}
+    "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Blazor\\HRManager.Blazor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Blazor\\HRManager.Blazor.csproj": {
+    "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Blazor\\HRManager.Blazor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Blazor\\HRManager.Blazor.csproj",
+        "projectUniqueName": "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Blazor\\HRManager.Blazor.csproj",
         "projectName": "HRManager.Blazor",
-        "projectPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Blazor\\HRManager.Blazor.csproj",
-        "packagesPath": "C:\\Users\\Chase\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Blazor\\obj\\",
+        "projectPath": "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Blazor\\HRManager.Blazor.csproj",
+        "packagesPath": "C:\\Users\\Brendan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Blazor\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Chase\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Brendan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj": {
-                "projectPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj"
+              "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj": {
+                "projectPath": "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj"
               }
             }
           }
@@ -151,24 +151,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj": {
+    "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj",
+        "projectUniqueName": "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj",
         "projectName": "HRManager.Common",
-        "projectPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj",
-        "packagesPath": "C:\\Users\\Chase\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\obj\\",
+        "projectPath": "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj",
+        "packagesPath": "C:\\Users\\Brendan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Chase\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Brendan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -223,7 +223,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

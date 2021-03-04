@@ -31,6 +31,9 @@ namespace HRManager.Blazor.Pages.Admin
         protected TSGridEditTemplate editTemplate = new TSGridEditTemplate();
         protected bool showAddEntryModal = false;
         protected bool showClockInModal = false;
+        protected DateTime newStartTime = DateTime.Now.Date + new TimeSpan(8, 0, 0, 0, 0);
+        protected DateTime newEndTime = DateTime.Now.Date + new TimeSpan(16, 0, 0, 0, 0);
+        protected DateTime newDate = DateTime.Now.Date;
 
         protected override async Task OnInitializedAsync()
         {
@@ -111,6 +114,9 @@ namespace HRManager.Blazor.Pages.Admin
             }
             else
             {
+                newEntry.StartTime = newDate + newStartTime.TimeOfDay;
+                newEntry.EndTime = newDate + newEndTime.TimeOfDay;
+
                 var result = await _tsService.AddTimeEntry(newEntry);
                 if (result.Successful)
                 {

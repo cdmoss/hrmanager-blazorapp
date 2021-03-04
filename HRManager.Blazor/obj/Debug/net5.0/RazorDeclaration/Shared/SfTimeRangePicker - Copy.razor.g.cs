@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace HRManager.Blazor.Pages.Account.Registration
+namespace HRManager.Blazor.Pages.Shared
 {
     #line hidden
     using System;
@@ -111,13 +111,13 @@ using Syncfusion.Blazor.Buttons;
 #line hidden
 #nullable disable
 #nullable restore
-#line 1 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Registration\PersonalAndContact.razor"
+#line 1 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\Shared\SfTimeRangePicker - Copy.razor"
 using Syncfusion.Blazor.Calendars;
 
 #line default
 #line hidden
 #nullable disable
-    public partial class PersonalAndContact : RegisterSectionBase
+    public partial class SfTimeRangePicker___Copy : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -125,30 +125,74 @@ using Syncfusion.Blazor.Calendars;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 4 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Registration\PersonalAndContact.razor"
+#line 4 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\Shared\SfTimeRangePicker - Copy.razor"
        
-    // TODO: fix validation of optional inputs
     [Parameter]
-    public EventCallback<PersonalAndContactData> PersonalDataChanged { get; set; }
+    public DateTime InitialStart { get; set; }
     [Parameter]
-    public PersonalAndContactData PersonalData { get; set; }
+    public DateTime InitialEnd { get; set; }
+    [Parameter]
+    public bool IsModified { get; set; }
+    [Parameter]
+    public DateTime Start { get; set; }
+    [Parameter]
+    public DateTime? End { get; set; }
+    [Parameter]
+    public EventCallback<bool> IsModifiedChanged { get; set; }
+    [Parameter]
+    public EventCallback<DateTime> StartChanged { get; set; }
+    [Parameter]
+    public EventCallback<DateTime?> EndChanged { get; set; }
+    [Parameter]
+    public EventCallback AvailbilityChanged { get; set; }
 
-    protected override async Task GoToNextSection()
+    private DateTime StartMin { get; set; } = DateTime.Now.Date;
+    private DateTime StartMax { get; set; } = DateTime.Now.Date.AddHours(23);
+    private DateTime EndMin { get; set; } = DateTime.Now.Date;
+    private DateTime EndMax { get; set; } = DateTime.Now.Date.AddHours(23);
+
+    protected override async Task OnInitializedAsync()
     {
-        await PersonalDataChanged.InvokeAsync(PersonalData);
-        await base.GoToNextSection();
+        if (!IsModified)
+        {
+            Start = InitialStart;
+            End = InitialEnd;
+            await StartChanged.InvokeAsync(Start);
+            await EndChanged.InvokeAsync(End);
+        }
     }
 
-    protected override async Task HandlePreviousSectionRequested()
+    private async Task  StartWasChanged(Syncfusion.Blazor.Calendars.ChangeEventArgs<DateTime> args)
     {
-        await PersonalDataChanged.InvokeAsync(PersonalData);
-        await base.HandlePreviousSectionRequested();
+        IsModified = true;
+        await IsModifiedChanged.InvokeAsync(IsModified);
+
+        Start = args.Value;
+        EndMin = Start;
+        if (End < Start)
+        {
+            End = Start;
+            await EndChanged.InvokeAsync(End);
+            Start = args.Value;
+        }
+        await StartChanged.InvokeAsync(Start);
+        await AvailbilityChanged.InvokeAsync();
     }
 
-    protected override async Task HandleDifferentSectionRequested()
+    private async Task EndWasChanged(Syncfusion.Blazor.Calendars.ChangeEventArgs<DateTime?> args)
     {
-        await PersonalDataChanged.InvokeAsync(PersonalData);
-        await base.HandlePreviousSectionRequested();
+        IsModified = true;
+
+        End = args.Value;
+        StartMax = End.Value;
+        if (Start > End)
+        {
+            Start = End.Value;
+            await StartChanged.InvokeAsync(Start);
+            End = args.Value;
+        }
+        await EndChanged.InvokeAsync(End);
+        await AvailbilityChanged.InvokeAsync();
     }
 
 #line default

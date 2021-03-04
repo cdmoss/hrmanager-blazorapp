@@ -110,7 +110,7 @@ namespace HRManager.Api.Services
                 var clockedInEntry = dbEntries.FirstOrDefault(t => t.MemberId == dto.MemberId && t.EndTime == null);
                 if (clockedInEntry != null)
                 {
-                    if (dto.EndTime.Value <= clockedInEntry.StartTime)
+                    if (dto.EndTime.Value >= clockedInEntry.StartTime)
                     {
                         _logger.LogWarning($"The given time entry for {member.FirstName} {member.LastName} overlapped their current clocked in entry.");
                         return new ApiResult<List<TimeEntryReadEditDto>>
