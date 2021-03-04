@@ -68,9 +68,29 @@ namespace HRManager.Common.Dtos
     {
         public AccountRegisterData Account { get; set; } = new AccountRegisterData();
         public PersonalAndContactData Personal { get; set; } = new PersonalAndContactData{Birthdate = DateTime.Now};
-        public Dictionary<int, PositionSelection> Positions { get; set; } = new Dictionary<int, PositionSelection>();
+        // string containing ids of selected positions
+        public string Positions { get; set; }
         public QualificationsData Qualifications { get; set; } = new QualificationsData();
         public Dictionary<DayOfWeek, List<AvailabilityDto>> Availabilities { get; set; } = new Dictionary<DayOfWeek, List<AvailabilityDto>>();
         public CertificatesData Certificates { get; set; } = new CertificatesData();
+    }
+
+    public class IdentityDto
+    {
+        public int MemberId { get; set; }
+        public AccountRegisterData Data { get; set; }
+    }
+
+    public class ChangePasswordDto
+    {
+        [Required]
+        public Guid Id { get; set; }
+        public string OldPassword { get; set; }
+        [Required(ErrorMessage = "A valid password is required")]
+        public string NewPassword { get; set; }
+        [Required]
+        [RegularExpression(Constants.Regex.Password, ErrorMessage = "Your password must be at least 8 characters and contain one uppercase letter, one lowercase letter, one number and one special character")]
+        [Compare(nameof(NewPassword), ErrorMessage = "The entered passwords don't match")]
+        public string ConfirmNewPassword { get; set; }
     }
 }

@@ -1,8 +1,9 @@
 ﻿@namespace HRManager.Blazor.Pages.Shared
+@using HRManager.Blazor.Pages.Shared.PageMenus
 
 @code {
     [Parameter]
-    public EventCallback<string> PageChanged { get; set; }
+    public EventCallback<RenderFragment> PageChanged { get; set; }
 
     private bool collapseNavMenu = false;
 
@@ -13,43 +14,50 @@
         collapseNavMenu = !collapseNavMenu;
     }
 
-    private async Task ChangePage(string pageName)
+    private async Task ChangePage(Type pageMenu)
     {
-        await PageChanged.InvokeAsync(pageName);
+        var menu = CreateMenu(pageMenu);
+        await PageChanged.InvokeAsync(menu);
     }
+
+    private RenderFragment CreateMenu(Type menuType) => builder =>
+    {
+        builder.OpenComponent(0, menuType);
+        builder.CloseComponent();
+    };
 }
 
-<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">HRManager.Blazor</a>
+<div class="mainpage-title">
+    <a class="" href=""><img src="/MHFB.png" /></a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
+        <i class="fas fa-bars"></i>
     </button>
 </div>
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="admin/dashboard" @onclick="@(cp => ChangePage("Dashboard"))">
+        <li class="nav-item">
+            <NavLink class="nav-link" href="admin/dashboard" @onclick="(cp => ChangePage(typeof(MembersMenu)))">
                 <i class="fas fa-tachometer-alt" aria-hidden="true"></i> &nbsp; Dashboard
             </NavLink>
         </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="admin/alerts" @onclick="@(cp => ChangePage("Alerts"))">
+        <li class="nav-item">
+            <NavLink class="nav-link" href="admin/alerts" @onclick="@(cp => ChangePage(typeof(AlertsMenu)))">
                 <i class="fas fa-exclamation-circle" aria-hidden="true"></i> &nbsp; Alerts
             </NavLink>
         </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="admin/members" @onclick="@(cp => ChangePage("Members"))">
+        <li class="nav-item">
+            <NavLink class="nav-link" href="admin/members" @onclick="@(cp => ChangePage(typeof(MembersMenu)))">
                 <i class="fas fa-users" aria-hidden="true"></i> &nbsp; Team
             </NavLink>
         </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="admin/calendar" @onclick="@(cp => ChangePage("Schedule"))">
+        <li class="nav-item">
+            <NavLink class="nav-link" href="admin/calendar" @onclick="@(cp => ChangePage(typeof(AdminCalendarMenu)))">
                 <i class="fas fa-calendar-alt" aria-hidden="true"></i> &nbsp; Calendar
             </NavLink>
         </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="admin/timesheet" @onclick="@(cp => ChangePage("Time Sheet"))">
+        <li class="nav-item">
+            <NavLink class="nav-link" href="admin/timesheet" @onclick="@(cp => ChangePage(typeof(TimesheetMenu)))">
                 <i class="fas fa-clock" aria-hidden="true"></i> &nbsp; Timesheet
             </NavLink>
         </li>

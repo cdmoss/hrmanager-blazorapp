@@ -14,10 +14,12 @@ namespace HRManager.Api.Controllers
     public class PositionsController : ControllerBase
     {
         private readonly IPositionService _positionService;
+        private readonly IDbSeeder _seeder;
 
-        public PositionsController(IPositionService positionService)
+        public PositionsController(IPositionService positionService, IDbSeeder seeder)
         {
             _positionService = positionService;
+            _seeder = seeder;
         }
 
         [HttpGet("all")]
@@ -25,6 +27,13 @@ namespace HRManager.Api.Controllers
         {
             var positions = await _positionService.GetPositions();
             return new ObjectResult(positions);
+        }
+
+        [HttpGet("seed")]
+        public IActionResult SeedPositions()
+        {
+            var result = _seeder.SeedPositions();
+            return new ObjectResult(result);
         }
     }
 }

@@ -7,9 +7,13 @@ namespace HRManager.Common.Dtos
     public interface IMemberDto
     {
         public int Id { get; set; }
-    }    
+    }
+    public interface IDetailedMemberDto : IMemberDto
+    {
+        Dictionary<DayOfWeek, List<AvailabilityDto>> Availabilities { get; set; }
+    }
 
-    public class AdminMemberDto : IMemberDto
+    public class AdminMemberDto : IDetailedMemberDto
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "A valid email is required")]
@@ -86,8 +90,8 @@ namespace HRManager.Common.Dtos
         public bool ConfirmationOfProfessionalDesignation { get; set; }
         public bool ChildWelfareCheck { get; set; }
         public ApprovalStatus ApprovalStatus { get; set; }
-        public List<Reference> References { get; set; }
-        public List<WorkExperience> WorkExperiences { get; set; }
+        public List<ReferenceDto> References { get; set; }
+        public List<WorkExperienceDto> WorkExperiences { get; set; }
         public bool IsStaff { get; set; }
     }
 
@@ -100,12 +104,18 @@ namespace HRManager.Common.Dtos
         public ApprovalStatus ApprovalStatus { get; set; }
     }
 
-    public class NonAdminMemberDto : IMemberDto
+    public class NonAdminMemberDto : IDetailedMemberDto
     {
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "A valid email is required")]
         [EmailAddress]
         public string Email { get; set; }
+        [Required]
+        [Display(Name = "First Name (Required)")]
+        public string FirstName { get; set; }
+        [Required]
+        [Display(Name = "Last Name (Required)")]
+        public string LastName { get; set; }
         [Required]
         public string Address { get; set; }
         [Required]
@@ -138,5 +148,6 @@ namespace HRManager.Common.Dtos
         [Display(Name = "Emergency Contact Relationship")]
         public string EmergencyRelationship { get; set; }
         public List<MemberPositionDto> Positions { get; set; } = new List<MemberPositionDto>();
+        public Dictionary<DayOfWeek, List<AvailabilityDto>> Availabilities { get; set; } = new Dictionary<DayOfWeek, List<AvailabilityDto>>();
     }
 }

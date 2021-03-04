@@ -75,33 +75,6 @@ namespace HRManager.Api.Migrations
                     b.ToTable("Availabilities");
                 });
 
-            modelBuilder.Entity("HRManager.Common.ClockedTime", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("EndTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("MemberId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("PositionId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MemberId");
-
-                    b.HasIndex("PositionId");
-
-                    b.ToTable("ClockedTime");
-                });
-
             modelBuilder.Entity("HRManager.Common.MemberPosition", b =>
                 {
                     b.Property<int>("Id")
@@ -123,7 +96,7 @@ namespace HRManager.Api.Migrations
 
                     b.HasIndex("PositionId");
 
-                    b.ToTable("PositionMember");
+                    b.ToTable("MemberPositions");
                 });
 
             modelBuilder.Entity("HRManager.Common.MemberProfile", b =>
@@ -168,6 +141,7 @@ namespace HRManager.Api.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("EmergencyFullName")
@@ -364,6 +338,33 @@ namespace HRManager.Api.Migrations
                     b.ToTable("Shifts");
                 });
 
+            modelBuilder.Entity("HRManager.Common.TimeEntry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("EndTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("MemberId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("PositionId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MemberId");
+
+                    b.HasIndex("PositionId");
+
+                    b.ToTable("TimeEntries");
+                });
+
             modelBuilder.Entity("HRManager.Common.WorkExperience", b =>
                 {
                     b.Property<int>("Id")
@@ -463,21 +464,6 @@ namespace HRManager.Api.Migrations
                     b.Navigation("Member");
                 });
 
-            modelBuilder.Entity("HRManager.Common.ClockedTime", b =>
-                {
-                    b.HasOne("HRManager.Common.MemberProfile", "Member")
-                        .WithMany()
-                        .HasForeignKey("MemberId");
-
-                    b.HasOne("HRManager.Common.Position", "Position")
-                        .WithMany()
-                        .HasForeignKey("PositionId");
-
-                    b.Navigation("Member");
-
-                    b.Navigation("Position");
-                });
-
             modelBuilder.Entity("HRManager.Common.MemberPosition", b =>
                 {
                     b.HasOne("HRManager.Common.MemberProfile", "Member")
@@ -521,6 +507,25 @@ namespace HRManager.Api.Migrations
                     b.Navigation("Position");
                 });
 
+            modelBuilder.Entity("HRManager.Common.TimeEntry", b =>
+                {
+                    b.HasOne("HRManager.Common.MemberProfile", "Member")
+                        .WithMany("TimeEntries")
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HRManager.Common.Position", "Position")
+                        .WithMany()
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Member");
+
+                    b.Navigation("Position");
+                });
+
             modelBuilder.Entity("HRManager.Common.WorkExperience", b =>
                 {
                     b.HasOne("HRManager.Common.MemberProfile", "Member")
@@ -558,6 +563,8 @@ namespace HRManager.Api.Migrations
                     b.Navigation("References");
 
                     b.Navigation("Shifts");
+
+                    b.Navigation("TimeEntries");
 
                     b.Navigation("WorkExperiences");
                 });

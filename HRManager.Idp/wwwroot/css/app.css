@@ -18,6 +18,10 @@ a, .btn-link {
     color: #0366d6;
 }
 
+.btn, .card, .form-control, {
+    border-radius: 0px;
+}
+
 .btn-primary {
     color: #fff;
     background-color: var(--main-green);

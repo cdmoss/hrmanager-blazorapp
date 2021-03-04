@@ -1,6 +1,22 @@
 ﻿@namespace HRManager.Blazor.Pages.Shared
+@using HRManager.Blazor.Pages.Shared.PageMenus
 
 @code {
+    [Parameter]
+    public EventCallback<RenderFragment> PageChanged { get; set; }
+
+    private async Task ChangePage(Type menuType)
+    {
+        var menu = CreateMenu(menuType);
+        await PageChanged.InvokeAsync(menu);
+    }
+
+    private RenderFragment CreateMenu(Type menuType) => builder =>
+    {
+        builder.OpenComponent(0, menuType);
+        builder.CloseComponent();
+    };
+
     private bool collapseNavMenu = false;
 
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
@@ -11,22 +27,22 @@
     }
 }
 
-<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">HRManager.Blazor</a>
+<div class="mainpage-title">
+    <a class="" href=""><img src="/MHFB.png" /></a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
+        <i class="fas fa-bars"></i>
     </button>
 </div>
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="member/information">
+            <NavLink class="nav-link" href="member/information" @onclick="(cp => ChangePage(typeof(InformationMenu)))">
                 <i class="fas fa-info" aria-hidden="true"></i> &nbsp; My Information
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="member/calendar">
+            <NavLink class="nav-link" href="member/calendar" @onclick="(cp => ChangePage(typeof(MemberCalendarMenu)))">
                 <i class="fas fa-calendar" aria-hidden="true"></i> &nbsp; Calendar
             </NavLink>
         </li>

@@ -12,8 +12,7 @@ namespace HRManager.Api.MapperProfiles
     {
         public WorkExperienceProfile()
         {
-            CreateMap<WorkExperience, WorkExperienceDto>();
-            CreateMap<WorkExperienceDto, WorkExperience>();
+            CreateMap<WorkExperience, WorkExperienceDto>().ReverseMap();
         }
     }
 }

@@ -117,54 +117,13 @@ using Syncfusion.Blazor.Navigations;
 #line default
 #line hidden
 #nullable disable
-    public partial class Availability : RegisterSectionBase
+    public partial class Availability : AvailabilityBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 4 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Registration\Availability.razor"
-       
-    [Parameter]
-    public EventCallback<Dictionary<DayOfWeek, List<AvailabilityDto>>> AvailabilitiesDataChanged { get; set; }
-    [Parameter]
-    public Dictionary<DayOfWeek, List<AvailabilityDto>> AvailabilitiesData { get; set; }
-
-
-    protected override void OnInitialized()
-    {
-        if (!AvailabilitiesData.Any())
-        {
-            foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
-            {
-                AvailabilitiesData.Add((DayOfWeek)day, new List<AvailabilityDto>());
-            }
-        }
-    }
-
-    protected override async Task GoToNextSection()
-    {
-        await AvailabilitiesDataChanged.InvokeAsync(AvailabilitiesData);
-        await base.GoToNextSection();
-    }
-
-    protected override async Task HandlePreviousSectionRequested()
-    {
-        await AvailabilitiesDataChanged.InvokeAsync(AvailabilitiesData);
-        await base.HandlePreviousSectionRequested();
-    }
-
-    protected override async Task HandleDifferentSectionRequested()
-    {
-        await AvailabilitiesDataChanged.InvokeAsync(AvailabilitiesData);
-        await base.HandlePreviousSectionRequested();
-    }
-
-#line default
-#line hidden
-#nullable disable
     }
 }
 #pragma warning restore 1591

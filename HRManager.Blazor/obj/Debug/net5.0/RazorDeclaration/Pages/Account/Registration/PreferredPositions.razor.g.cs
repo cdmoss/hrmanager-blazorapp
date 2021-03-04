@@ -117,66 +117,13 @@ using Services;
 #line default
 #line hidden
 #nullable disable
-    public partial class PreferredPositions : RegisterSectionBase
+    public partial class PreferredPositions : PreferredPositionsBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 6 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Registration\PreferredPositions.razor"
-       
-
-    [Parameter]
-    public EventCallback<Dictionary<int, PositionSelection>> PositionsDataChanged { get; set; }
-    [Parameter]
-    public Dictionary<int, PositionSelection> PositionsData { get; set; }
-
-    private List<Position> positions = new List<Position>();
-
-    protected override void OnInitialized()
-    {
-        var positionsResult = _posService.GetPositions();
-
-        if (positionsResult.Successful)
-        {
-            positions = positionsResult.Dto;
-        }
-        if (!PositionsData.Any())
-        {
-            foreach (var position in positions)
-            {
-                if (position != null)
-                {
-                    PositionsData.Add(position.Id, new PositionSelection() { PositionWasSelected = false });
-                }
-            }
-        }
-    }
-
-    protected override async Task GoToNextSection()
-    {
-        await PositionsDataChanged.InvokeAsync(PositionsData);
-        await base.GoToNextSection();
-    }
-
-    protected override async Task HandlePreviousSectionRequested()
-    {
-        await PositionsDataChanged.InvokeAsync(PositionsData);
-        await base.HandlePreviousSectionRequested();
-    }
-
-    protected override async Task HandleDifferentSectionRequested()
-    {
-        await PositionsDataChanged.InvokeAsync(PositionsData);
-        await base.HandlePreviousSectionRequested();
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IPositionService _posService { get; set; }
     }
 }
 #pragma warning restore 1591

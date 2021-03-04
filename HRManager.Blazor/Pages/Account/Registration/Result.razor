@@ -3,15 +3,15 @@
 
 @code{
     [Parameter]
-    public RegisterResult RegisterResult { get; set; }
+    public bool IsSuccessful { get; set; }
 
     private void GoToLogin()
     {
-        _nav.NavigateTo("auth/login");
+        _nav.NavigateTo("/");
     }
 }
 
-@if (RegisterResult.Successful)
+@if (IsSuccessful)
 {
     <p>You have successfully applied for a volunteering position at the Medicine Hat Food Bank!</p>
     <p>You can now log in with the email and password you entered. Once we've accepted your application, you will be able sign up for shifts with the calendar. We will email you once we've evaluated your application.</p>

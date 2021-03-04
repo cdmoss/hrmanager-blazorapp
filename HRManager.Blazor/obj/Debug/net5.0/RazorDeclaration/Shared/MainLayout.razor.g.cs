@@ -129,7 +129,12 @@ using Microsoft.AspNetCore.Components.Authorization;
        
     [CascadingParameter]
     private Task<AuthenticationState> authState { get; set; }
-    private string currentPage = "Members";
+
+    [CascadingParameter]
+    private RenderFragment PageMenu { get; set; }
+
+
+    private string currentPage;
     private string navMenuType;
 
     protected override async Task OnInitializedAsync()
@@ -147,16 +152,18 @@ using Microsoft.AspNetCore.Components.Authorization;
         if (user.IsInRole("Admin") || user.IsInRole("SuperAdmin"))
         {
             navMenuType = "admin";
+            currentPage = "Members";
         }
         else if (user.IsInRole("Member"))
         {
             navMenuType = "member";
+            currentPage = "Information";
         }
     }
 
-    private void OnPageChanged(string pageName)
+    private void OnPageChanged(RenderFragment pageMenu)
     {
-        currentPage = pageName;
+        PageMenu = pageMenu;
     }
 
 #line default

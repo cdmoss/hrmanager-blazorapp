@@ -16,10 +16,12 @@ namespace HRManager.Api.Services
     {
         Task<ApiResult<List<TDto>>> GetMembers<TDto>() where TDto : IMemberDto;
         Task<ApiResult<TDto>> GetMember<TDto>(int id) where TDto : IMemberDto;
-        Task<ApiResult<object>> AddMember(MemberRegisterDto dto);
+        Task<ApiResult<int>> AddMember(MemberRegisterDto dto);
         Task<ApiResult<List<AdminMemberDto>>> UpdateMemberForAdmin(AdminMemberDto dto);
         Task<ApiResult<NonAdminMemberDto>> UpdateMemberForMember(NonAdminMemberDto dto);
+        Task<ApiResult<object>> DeleteMember(int id);
     }
+
     public class EFMemberService : IMemberService
     {
         private readonly MainContext _context;
@@ -42,11 +44,22 @@ namespace HRManager.Api.Services
                 .Include(p => p.Positions).ThenInclude(p => p.Position)
                 .Include(p => p.WorkExperiences).ToListAsync();
 
-                return new ApiResult<List<TDto>>
+                if (!members.Any())
                 {
-                    Dto = _mapper.Map<List<TDto>>(members),
+                    return new ApiResult<List<TDto>>
+                    {
+                        Successful = false,
+                        Error = "No member information was found in the database."
+                    };
+                }
+
+                var result = new ApiResult<List<TDto>>
+                {
+                    Data = _mapper.Map<List<TDto>>(members),
                     Successful = true
                 };
+
+                return result;
             }
             catch (Exception ex)
             {
@@ -72,7 +85,7 @@ namespace HRManager.Api.Services
 
                 return new ApiResult<TDto>
                 {
-                    Dto = _mapper.Map<TDto>(member),
+                    Data = _mapper.Map<TDto>(member),
                     Successful = true
                 };
             }
@@ -88,24 +101,35 @@ namespace HRManager.Api.Services
             }
         }
 
-        public async Task<ApiResult<object>> AddMember(MemberRegisterDto dto)
+        public async Task<ApiResult<int>> AddMember(MemberRegisterDto dto)
         {
             try
             {
-                var member = CreateMemberProfileFromRegisterDto(dto);
+                if (dto == null)
+                {
+                    _logger.LogWarning("User attemped registeration with null data.");
+                    return new ApiResult<int>
+                    {
+                        Successful = false,
+                        Error = "No registration was sent to the server."
+                    };
+                }
+
+                var member = CreateMemberProfile(dto);
                 _context.Add(member);
                 await _context.SaveChangesAsync();
 
-                _logger.LogError($"New member profile for {dto.Personal.FirstName} {dto.Personal.LastName} was successfully created");
-                return new ApiResult<object>
+                _logger.LogInformation($"New member profile for {dto.Personal.FirstName} {dto.Personal.LastName} was successfully created");
+                return new ApiResult<int>
                 {
-                    Successful = true,
+                    Data = member.Id,
+                    Successful = true
                 };
             }
             catch (Exception ex)
             {
                 _logger.LogError("An issue occured when trying to add a member: \n" + ex.Message + "\n\nStack Trace: \n" + ex.StackTrace);
-                return new ApiResult<object>
+                return new ApiResult<int>
                 {
                     Successful = false,
                     Error = "Something went wrong when trying to load the members. Please try to reload the page."
@@ -119,7 +143,7 @@ namespace HRManager.Api.Services
             try
             {
                 var member = await _context.Members.FirstOrDefaultAsync(m => m.Id == dto.Id);
-
+                // TODO: update identity account username before updating the rest of member information
                 UpdateMemberPropertiesForAdmin(dto, member);
 
                 // detach all positions to prevent duplicate entity tracking error when saving
@@ -139,7 +163,7 @@ namespace HRManager.Api.Services
                 return new ApiResult<List<AdminMemberDto>>
                 {
                     Successful = false,
-                    Error = "Something went wrong when trying to load the members. Please try to reload the page."
+                    Error = "An issue occured when trying to update a member."
                 };
             }
             
@@ -150,7 +174,7 @@ namespace HRManager.Api.Services
             try
             {
                 var member = await _context.Members.FirstOrDefaultAsync(m => m.Id == dto.Id);
-
+                // TODO: update identity account username before updating the rest of member information
                 UpdateMemberPropertiesForMember(dto, member);
 
                 // detach all positions to prevent duplicate entity tracking error when saving
@@ -170,7 +194,7 @@ namespace HRManager.Api.Services
                 return new ApiResult<NonAdminMemberDto>
                 {
                     Successful = false,
-                    Error = "Something went wrong when trying to load the members. Please try to reload the page."
+                    Error = "An issue occured when trying to update a member."
                 };
             }
 
@@ -178,9 +202,9 @@ namespace HRManager.Api.Services
 
         private void UpdateMemberPropertiesForAdmin(AdminMemberDto dto, MemberProfile member) 
         {
-            var tempMember = _mapper.Map<MemberProfile>(member);
+            var tempMember = _mapper.Map<MemberProfile>(dto);
 
-            member.Email = dto.Email;
+            member.Email = tempMember.Email;
             member.FirstName = tempMember.FirstName;
             member.LastName = tempMember.LastName;
             member.Address = tempMember.Address;
@@ -218,11 +242,9 @@ namespace HRManager.Api.Services
 
         private void UpdateMemberPropertiesForMember(NonAdminMemberDto dto, MemberProfile member)
         {
-            var tempMember = _mapper.Map<MemberProfile>(member);
+            var tempMember = _mapper.Map<MemberProfile>(dto);
 
-            member.Email = dto.Email;
-            member.FirstName = tempMember.FirstName;
-            member.LastName = tempMember.LastName;
+            member.Email = tempMember.Email;
             member.Address = tempMember.Address;
             member.City = tempMember.City;
             member.PostalCode = tempMember.PostalCode;
@@ -249,46 +271,76 @@ namespace HRManager.Api.Services
             member.Positions = tempMember.Positions;
         }
 
-        public MemberProfile CreateMemberProfileFromRegisterDto(MemberRegisterDto dto)
+        private MemberProfile CreateMemberProfile(MemberRegisterDto dto)
         {
-            var member = new MemberProfile();
-            var tempMember = 
+            var availabilityDtos = new List<AvailabilityDto>();
+            foreach (var availabilityList in dto.Availabilities)
+            {
+                availabilityDtos.AddRange(availabilityList.Value);
+            }
 
-            member.Email = dto.Account.Email;
-            member.FirstName = dto.Personal.FirstName;
-            member.LastName = dto.Personal.LastName;
-            member.Address = dto.Personal.Address;
-            member.City = dto.Personal.City;
-            member.PostalCode = dto.Personal.PostalCode;
-            member.MainPhone = dto.Personal.MainPhone;
-            member.AlternatePhone1 = dto.Personal.AlternatePhone1;
-            member.AlternatePhone2 = dto.Personal.AlternatePhone2;
-            member.Birthdate = dto.Personal.Birthdate;
-            member.EmergencyFullName = dto.Personal.EmergencyFullName;
-            member.EmergencyPhone1 = dto.Personal.EmergencyPhone1;
-            member.EmergencyPhone2 = dto.Personal.EmergencyPhone2;
-            member.EmergencyRelationship = dto.Personal.EmergencyRelationship;
-            member.FoodSafe = dto.Certificates.FoodSafe;
-            member.FoodSafeExpiry = dto.Certificates.FoodSafeExpiry;
-            member.FirstAidCprLevel = dto.Certificates.FirstAidCprLevel;
-            member.FirstAidCpr = dto.Certificates.FirstAidCpr;
-            member.FirstAidCprExpiry = dto.Certificates.FirstAidCprExpiry;
-            member.OtherCertificates = dto.Certificates.OtherCertificates;
-            member.EducationTraining = dto.Qualifications.EducationTraining;
-            member.SkillsInterestsHobbies = dto.Qualifications.SkillsInterestsHobbies;
-            member.Experience = dto.Qualifications.Experience;
-            member.OtherBoards = dto.Qualifications.OtherBoards;
-            // TODO: add mandatory checks to registration process
-            //member.VolunteerConfidentiality = dto.qu.VolunteerConfidentiality;
-            //member.VolunteerEthics = dto.VolunteerEthics;
-            //member.CriminalRecordCheck = dto.CriminalRecordCheck;
-            //member.DrivingAbstract = dto.DrivingAbstract;
-            //member.ConfirmationOfProfessionalDesignation = dto.ConfirmationOfProfessionalDesignation;
-            //member.ChildWelfareCheck = dto.ChildWelfareCheck;
-            member.WorkExperiences = _mapper.Map<List<WorkExperience>>(dto.Qualifications.WorkExperiences);
-            member.ApprovalStatus = ApprovalStatus.Pending;
-            member.Availabilities = ConvertAvailabilitiesRegisteredToDomain(dto.Availabilities);
-            member.Positions = ConvertRegisteredPositionsToMemberPositions(dto.Positions, member);
+            var availabilities = _mapper.Map<List<Availability>>(availabilityDtos);
+
+            var workExperiences = _mapper.Map<List<WorkExperience>>(dto.Qualifications.WorkExperiences);
+
+            var member = new MemberProfile
+            {
+                IsStaff = false,
+                Email = dto.Account.Email,
+                FirstName = dto.Personal.FirstName,
+                LastName = dto.Personal.LastName,
+                Address = dto.Personal.Address,
+                City = dto.Personal.City,
+                MainPhone = dto.Personal.MainPhone,
+                Birthdate = dto.Personal.Birthdate,
+                AlternatePhone1 = dto.Personal.AlternatePhone1,
+                AlternatePhone2 = dto.Personal.AlternatePhone2,
+                EmergencyPhone1 = dto.Personal.EmergencyPhone1,
+                EmergencyPhone2 = dto.Personal.EmergencyPhone2,
+                EmergencyFullName = dto.Personal.EmergencyFullName,
+                EmergencyRelationship = dto.Personal.EmergencyRelationship,
+                Availabilities = availabilities,
+                EducationTraining = dto.Qualifications.EducationTraining,
+                Experience = dto.Qualifications.Experience,
+                OtherBoards = dto.Qualifications.OtherBoards,
+                FirstAidCpr = dto.Certificates.FirstAidCpr,
+                FirstAidCprExpiry = dto.Certificates.FirstAidCprExpiry,
+                FirstAidCprLevel = dto.Certificates.FirstAidCprLevel,
+                FoodSafe = dto.Certificates.FoodSafe,
+                FoodSafeExpiry = dto.Certificates.FoodSafeExpiry,
+                OtherCertificates = dto.Certificates.OtherCertificates,
+                PostalCode = dto.Personal.PostalCode,
+                SkillsInterestsHobbies = dto.Qualifications.SkillsInterestsHobbies,
+                WorkExperiences = workExperiences,
+                ApprovalStatus = ApprovalStatus.Pending,
+                // TODO: add mandatory checks to registration process
+                // VolunteerConfidentiality = dto.qu.VolunteerConfidentiality;
+                // VolunteerEthics = dto.VolunteerEthics;
+                // CriminalRecordCheck = dto.CriminalRecordCheck;
+                // DrivingAbstract = dto.DrivingAbstract;
+                // ConfirmationOfProfessionalDesignation = dto.ConfirmationOfProfessionalDesignation;
+                // ChildWelfareCheck = dto.ChildWelfareCheck;
+             };
+
+            member.Alerts = new List<Alert>() { new ApplicationAlert() { Member = member, Date = DateTime.Now  } };
+
+            var positions = new List<MemberPosition>();
+
+            if (!string.IsNullOrEmpty(dto.Positions))
+            {
+                var positionIdArray = dto.Positions.Split(',');
+                int currentId;
+                foreach (var positionId in positionIdArray)
+                {
+                    if (int.TryParse(positionId, out currentId))
+                    {
+                        var selectedPosition = _context.Positions.FirstOrDefault(p => p.Id == currentId);
+                        positions.Add(new MemberPosition { Member = member, Position = selectedPosition });
+                    }
+                }
+            }
+
+            member.Positions = positions;
 
             return member;
         }
@@ -306,24 +358,48 @@ namespace HRManager.Api.Services
             return availabilities;
         }
 
-        private List<MemberPosition> ConvertRegisteredPositionsToMemberPositions(Dictionary<int, PositionSelection> registeredPositions, MemberProfile member)
+        private List<MemberPosition> ConvertRegisteredPositionsToMemberPositions(List<int> registeredPositions, MemberProfile member)
         {
             var positions = new List<MemberPosition>();
 
-            foreach (var position in registeredPositions)
+            foreach (var positionId in registeredPositions)
             {
-                if (position.Value.PositionWasSelected)
+                positions.Add(new MemberPosition
                 {
-                    positions.Add(new MemberPosition
-                    {
-                        Association = AssociationType.Preferred,
-                        Position = _context.Positions.FirstOrDefault(p => p.Id == position.Key),
-                        Member = member
-                    });
-                }
+                    Association = AssociationType.Preferred,
+                    Position = _context.Positions.FirstOrDefault(p => p.Id == positionId),
+                    Member = member
+                });
             }
 
             return positions;
+        }
+
+        public async Task<ApiResult<object>> DeleteMember(int id)
+        {
+            try
+            {
+                var member = await _context.Members.FirstOrDefaultAsync(m => m.Id == id);
+
+                _context.Remove(member);
+                _context.SaveChanges();
+
+                return new ApiResult<object>()
+                {
+                    Successful = true
+                };
+            }
+            catch (Exception ex)
+            {
+                string errorString = $"An error occurred when deleting member {id}:\n{ex.Message}";
+                _logger.LogError(errorString);
+
+                return new ApiResult<object>()
+                {
+                    Successful = false,
+                    Error = errorString
+                };
+            }
         }
     }
 }

@@ -143,21 +143,42 @@ using HRManager.Blazor.Pages.Account.Registration;
 #nullable restore
 #line 10 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor"
        
-    // TODO: Add redirect URI
-
     // must create instance of model to be bound*******
     private MemberRegisterDto mainDto = new MemberRegisterDto();
-    private RegisterResult result = new RegisterResult() { };
+    private bool isSuccessful;
     private int currentSection = 1;
     private bool loadingSubmission = false;
     private bool ShowErrors;
+    private int test;
     private IEnumerable<string> Errors;
 
     private async Task SubmitRegistration()
     {
         loadingSubmission = true;
         currentSection++;
-        result = await _regService.Register(mainDto);
+        isSuccessful = await _regService.Register(mainDto);
+        loadingSubmission = false;
+    }
+
+    private async Task TestRegistration()
+    {
+        mainDto.Account.Email = "test@email.com";
+        mainDto.Account.Password = "P@$$W0rd";
+        mainDto.Account.ConfirmPassword = "P@$$W0rd";
+        mainDto.Personal.FirstName = "Test First";
+        mainDto.Personal.LastName = "Test last";
+        mainDto.Personal.Address = "test address";
+        mainDto.Personal.City = "test city";
+        mainDto.Personal.MainPhone = "5555555555";
+        mainDto.Personal.Birthdate = DateTime.Now;
+        mainDto.Personal.EmergencyPhone1 = "5555555555";
+        mainDto.Personal.EmergencyRelationship = "test relationship";
+        mainDto.Personal.EmergencyFullName = "test emerg name";
+        mainDto.Personal.PostalCode = "t5t5t5";
+
+        loadingSubmission = true;
+        currentSection = 7;
+        isSuccessful = await _regService.Register(mainDto);
         loadingSubmission = false;
     }
 

@@ -117,47 +117,13 @@ using Syncfusion.Blazor.Buttons;
 #line default
 #line hidden
 #nullable disable
-    public partial class Qualifications : RegisterSectionBase
+    public partial class Qualifications : QualificationsBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 5 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Registration\Qualifications.razor"
-       
-    [Parameter]
-    public EventCallback<QualificationsData> QualificationsDataChanged { get; set; }
-    [Parameter]
-    public QualificationsData QualificationsData { get; set; }
-
-    protected override async Task GoToNextSection()
-    {
-        await QualificationsDataChanged.InvokeAsync(QualificationsData);
-        await base.GoToNextSection();
-    }
-
-    protected override async Task HandlePreviousSectionRequested()
-    {
-        await QualificationsDataChanged.InvokeAsync(QualificationsData);
-        await base.HandlePreviousSectionRequested();
-    }
-
-    protected override async Task HandleDifferentSectionRequested()
-    {
-        await QualificationsDataChanged.InvokeAsync(QualificationsData);
-        await base.HandlePreviousSectionRequested();
-    }
-
-    private void HandleCurrentJobCheckChanged()
-    {
-        StateHasChanged();
-    }
-
-#line default
-#line hidden
-#nullable disable
     }
 }
 #pragma warning restore 1591

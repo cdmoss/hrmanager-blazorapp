@@ -117,75 +117,13 @@ using Blazor.Services;
 #line default
 #line hidden
 #nullable disable
-    public partial class AccountCreds : HRManager.Blazor.Pages.Account.Registration.RegisterSectionBase
+    public partial class AccountCreds : HRManager.Blazor.Pages.Account.Registration.AccountCredsBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 4 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Registration\AccountCreds.razor"
-       
-    [Parameter]
-    public EventCallback<AccountRegisterData> AccountDataChanged { get; set; }
-    [Parameter]
-    public AccountRegisterData AccountData { get; set; }
-
-    //private async Task HandleValidSubmit(EditContext editContext)
-    //{
-    //    usernameValidator.ClearErrors();
-
-    //    var errors = new Dictionary<string, List<string>>();
-    //    errors.Add("UsernameValidation", new List<string>());
-
-    //    try
-    //    {
-    //        var validationResult = await _authService.ValidateUsername(AccountData.Email);
-    //        if (validationResult == "duplicate")
-    //        {
-    //            errors["UsernameValidation"].Add("That email is already in use.");
-    //            usernameValidator.DisplayErrors(errors);
-    //        }
-    //        else if (validationResult == "null")
-    //        {
-    //            errors["UsernameValidation"].Add("There was an error in validating the entered email.");
-    //            usernameValidator.DisplayErrors(errors);
-    //        }
-    //        else
-    //        {
-    //            await GoToNextSection();
-    //        }
-    //    }
-    //    catch (Exception)
-    //    {
-    //        errors["UsernameValidation"].Add("There was an error in validating the entered email.");
-    //        usernameValidator.DisplayErrors(errors);
-    //        throw;
-    //    }
-    //}
-
-    protected override async Task GoToNextSection()
-    {
-        await AccountDataChanged.InvokeAsync(AccountData);
-        await base.GoToNextSection();
-    }
-
-    protected override async Task HandlePreviousSectionRequested()
-    {
-        await AccountDataChanged.InvokeAsync(AccountData);
-        await base.HandlePreviousSectionRequested();
-    }
-
-    protected override async Task HandleDifferentSectionRequested()
-    {
-        await AccountDataChanged.InvokeAsync(AccountData);
-        await base.HandlePreviousSectionRequested();
-    }
-
-#line default
-#line hidden
-#nullable disable
     }
 }
 #pragma warning restore 1591

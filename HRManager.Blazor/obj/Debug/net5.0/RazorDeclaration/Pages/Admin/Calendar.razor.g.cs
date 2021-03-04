@@ -145,8 +145,15 @@ using Microsoft.AspNetCore.Components.Authorization;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 8 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Calendar.razor"
+using HRManager.Blazor.Pages.Shared.PageMenus;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/admin/calendar")]
-    public partial class Calendar : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class Calendar : CalendarBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)

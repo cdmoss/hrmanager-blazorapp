@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace HRManager.Blazor.Pages.Account
+namespace HRManager.Blazor.Pages.Account.Registration
 {
     #line hidden
     using System;
@@ -112,7 +112,7 @@ using Syncfusion.Blazor.Buttons;
 #nullable disable
     [Microsoft.AspNetCore.Components.LayoutAttribute(typeof(AuthLayout))]
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class Greeting : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class Greeting : GreetingBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)

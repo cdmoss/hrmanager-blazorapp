@@ -19,27 +19,44 @@ namespace HRManager.Blazor.Services
 
     public class HttpMemberService : IMemberService
     {
-        private readonly HttpClient _http;
+        private readonly HttpClient _apiClient;
+        private readonly HttpClient _idpClient;
 
         public HttpMemberService(IHttpClientFactory httpFactory, TokenProvider tokenProvider)
         {
-            _http = httpFactory.CreateClient("ApiClient");
-            _http.SetBearerToken(tokenProvider.AccessToken);
+            _apiClient = httpFactory.CreateClient("ApiClient");
+            _idpClient = httpFactory.CreateClient("IdpClient");
+            _apiClient.SetBearerToken(tokenProvider.AccessToken);
         }
 
         public async Task<ApiResult<List<AdminMemberDto>>> GetFullMembers()
         {
-            return await _http.GetFromJsonAsync<ApiResult<List<AdminMemberDto>>>("members/all/full");
+            try
+            {
+                var apiResult = await _apiClient.GetFromJsonAsync<ApiResult<List<AdminMemberDto>>>("members/all/full");
+
+                return apiResult;
+            }
+            catch (Exception ex)
+            {
+                return new ApiResult<List<AdminMemberDto>>
+                {
+                    Successful = false,
+                    Error = $"Something went wrong when trying to retrieve member information:\n\n{ex.Message}\n{ex.StackTrace}"
+                };
+            }
         }
 
         public ApiResult<List<MemberMinimalDto>> GetMinimalMembers()
         {
-            return _http.GetFromJsonAsync<ApiResult<List<MemberMinimalDto>>>("members/all/minimal").Result;
+            return _apiClient.GetFromJsonAsync<ApiResult<List<MemberMinimalDto>>>("members/all/minimal").Result;
         }
 
         public async Task<ApiResult<List<AdminMemberDto>>> UpdateMember(AdminMemberDto dto)
         {
-            var response = await _http.PostAsJsonAsync("members/update-member", dto);
+            var response = await _idpClient.PostAsJsonAsync("users/update", dto);
+
+            response = await _apiClient.PostAsJsonAsync("members/update-member", dto);
             return await response.Content.ReadFromJsonAsync<ApiResult<List<AdminMemberDto>>>();
         }
     }

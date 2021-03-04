@@ -14,9 +14,14 @@ namespace HRManager.Api.MapperProfiles
         {
             // source --> target
             CreateMap<MemberProfile, AdminMemberDto>()
-                .ForMember(dest => dest.Availabilities, opt => opt.MapFrom<MemberDomainToDtoAvailResolver>())
+                .ForMember(dest => dest.Availabilities, opt => opt.MapFrom<MemberDomainToDtoAvailResolver<AdminMemberDto>>())
                 .ReverseMap()
-                .ForMember(dest => dest.Availabilities, opt => opt.MapFrom<MemberDtoToDomainAvailResolver>());
+                .ForMember(dest => dest.Availabilities, opt => opt.MapFrom<MemberDtoToDomainAvailResolver<AdminMemberDto>>());
+            // source --> target
+            CreateMap<MemberProfile, NonAdminMemberDto>()
+                .ForMember(dest => dest.Availabilities, opt => opt.MapFrom<MemberDomainToDtoAvailResolver<NonAdminMemberDto>>())
+                .ReverseMap()
+                .ForMember(dest => dest.Availabilities, opt => opt.MapFrom<MemberDtoToDomainAvailResolver<NonAdminMemberDto>>());
 
             CreateMap<MemberProfile, MemberMinimalDto>().ReverseMap();
 
@@ -34,9 +39,9 @@ namespace HRManager.Api.MapperProfiles
         }
     }
 
-    public class MemberDomainToDtoAvailResolver : IValueResolver<MemberProfile, AdminMemberDto, Dictionary<DayOfWeek, List<AvailabilityDto>>>
+    public class MemberDomainToDtoAvailResolver<TDto> : IValueResolver<MemberProfile, TDto, Dictionary<DayOfWeek, List<AvailabilityDto>>> where TDto : IDetailedMemberDto
     {
-        public Dictionary<DayOfWeek, List<AvailabilityDto>> Resolve(MemberProfile domain, AdminMemberDto dto, Dictionary<DayOfWeek, List<AvailabilityDto>> destMember, ResolutionContext context)
+        public Dictionary<DayOfWeek, List<AvailabilityDto>> Resolve(MemberProfile domain, TDto dto, Dictionary<DayOfWeek, List<AvailabilityDto>> destMember, ResolutionContext context)
         {
             var availabilities = new Dictionary<DayOfWeek, List<AvailabilityDto>>();
             foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
@@ -61,7 +66,7 @@ namespace HRManager.Api.MapperProfiles
         }
     }
 
-    public class MemberDtoToDomainAvailResolver : IValueResolver<AdminMemberDto, MemberProfile, List<Availability>>
+    public class MemberDtoToDomainAvailResolver<TDto> : IValueResolver<TDto, MemberProfile, List<Availability>> where TDto : IDetailedMemberDto
     {
         private readonly IMapper _mapper;
 
@@ -70,7 +75,7 @@ namespace HRManager.Api.MapperProfiles
             _mapper = mapper;
         }
 
-        public List<Availability> Resolve(AdminMemberDto dto, MemberProfile domain, List<Availability> destMember, ResolutionContext context)
+        public List<Availability> Resolve(TDto dto, MemberProfile domain, List<Availability> destMember, ResolutionContext context)
         {
             var availabilities = new List<Availability>();
 

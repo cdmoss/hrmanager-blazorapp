@@ -30,7 +30,7 @@ namespace HRManager.Api.Services
             try
             {
                 var positions = await _context.Positions.Where(p => p.Name != "All").ToListAsync();
-                return new ApiResult<List<Position>> { Dto = positions, Successful = true };
+                return new ApiResult<List<Position>> { Data = positions, Successful = true };
             }
             catch (Exception ex)
             {

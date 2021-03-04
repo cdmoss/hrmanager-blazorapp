@@ -16,7 +16,7 @@
     background-color: #f7f7f7;
     border-bottom: 1px solid #d6d5d5;
     justify-content: flex-end;
-    height: 3.5rem;
+    height: 5rem;
     display: flex;
     align-items: center;
 }
@@ -31,19 +31,52 @@
         text-overflow: ellipsis;
     }
 
-@media (max-width: 640.98px) {
-    .top-row:not(.auth)[b-ljcv0tknf5] {
-        display: none;
-    }
-
-    .top-row.auth[b-ljcv0tknf5] {
-        justify-content: space-between;
-    }
-
-    .top-row a[b-ljcv0tknf5], .top-row .btn-link[b-ljcv0tknf5] {
-        margin-left: 0;
-    }
+[b-ljcv0tknf5] .menu {
+    padding: 0 1rem;
+    height: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    background-color: #f1f1e8;
 }
+
+[b-ljcv0tknf5] .mainpage-title {
+    display: flex;
+    justify-content: end;
+    align-content:center;
+    height: 8rem;
+    position: relative;
+    margin-bottom: .5rem;
+}
+
+    [b-ljcv0tknf5] .mainpage-title > a {
+        display: flex;
+        justify-content: center;
+        align-content: start;
+        width: 100%;
+        height: 100%;
+        margin: 1rem;
+        padding-bottom: .5rem;
+        border-bottom: 1px solid #d7d7d7;
+    }
+
+        [b-ljcv0tknf5] .mainpage-title > a > img {
+            height: 100%;
+        }
+
+    [b-ljcv0tknf5] .mainpage-title > button {
+        text-align: right;
+        z-index: 1;
+        width: auto;
+        position: absolute;
+        bottom: .5rem;
+        right: .5rem;
+    }
+
+    [b-ljcv0tknf5] .mainpage-title > button > i {
+        color: white;
+    }
 
 @media (min-width: 641px) {
     .page[b-ljcv0tknf5] {
@@ -51,7 +84,7 @@
     }
 
     .sidebar[b-ljcv0tknf5] {
-        width: 250px;
+        width: 12rem;
         height: 100vh;
         position: sticky;
         top: 0;

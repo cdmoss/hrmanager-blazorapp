@@ -2,7 +2,9 @@
 using HRManager.Common.Dtos;
 using HRManager.Idp.Data;
 using HRManager.Idp.Entities;
+using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -15,89 +17,118 @@ namespace HRManager.Idp.Services
 {
     public interface IUserService
     {
-        Task<ApiResult<object>> RegisterUser(MemberRegisterDto dto);
+        Task<ApiResult<object>> RegisterUser(IdentityDto dto);
+        Task<ApiResult<object>> UpdateUsername(string newUsername, Guid id);
+        Task<ApiResult<object>> ChangePassword(ChangePasswordDto dto);
         Task<ApiResult<object>> RemoveUser(Guid id);
     }
 
     public class UserService : IUserService
     {
-        private readonly IdentityContext _context;
-        private readonly HttpClient _http;
         private readonly UserManager<AppUser> _userManager;
-        private readonly RoleManager<IdentityRole<Guid>> _roleManager;
         private readonly ILogger<UserService> _logger;
+
         public UserService(
-            IdentityContext context, 
             UserManager<AppUser> userManager,
-            RoleManager<IdentityRole<Guid>> roleManager,
-            IHttpClientFactory httpFactory,
             ILogger<UserService> logger)
         {
-            _context = context;
-            _http = httpFactory.CreateClient("ApiClient");
             _userManager = userManager;
-            _roleManager = roleManager;
             _logger = logger;
         }
 
-        public async Task<ApiResult<object>> RegisterUser(MemberRegisterDto dto)
+        public async Task<ApiResult<object>> ChangePassword(ChangePasswordDto dto)
         {
+            var user = await _userManager.FindByIdAsync(dto.Id.ToString());
+            if (dto.OldPassword == dto.NewPassword)
+            {
+                return new ApiResult<object>
+                {
+                    Successful = false,
+                    Error = "Your new password must be different than your old password."
+                };
+            }
+
+            var result = await _userManager.ChangePasswordAsync(user, dto.OldPassword, dto.NewPassword);
+
+            if (result.Succeeded)
+            {
+                return new ApiResult<object>
+                {
+                    Successful = true
+                };
+            }
+            else
+            {
+                string errorString = "";
+                foreach (var error in result.Errors)
+                {
+                    errorString += error.Description;
+                }
+
+                _logger.LogError(errorString);
+
+                return new ApiResult<object>
+                {
+                    Successful = false,
+                    Error = errorString
+                };
+            }
+        }
+
+        public async Task<ApiResult<object>> RegisterUser(IdentityDto dto)
+        {
+            var result = new ApiResult<object>();
+
             if (dto != null)
             {
+                // create user account
                 var user = new AppUser
                 {
-                    Email = dto.Account.Email,
+                    Email = dto.Data.Email,
                     // TODO: Add email confirmation
                     EmailConfirmed = true,
-                    UserName = dto.Account.Email
+                    UserName = dto.Data.Email,
+                    MemberId = dto.MemberId
                 };
 
-                var identityResult = await _userManager.CreateAsync(user, dto.Account.Password);
+                var identityResult = await _userManager.CreateAsync(user, dto.Data.Password);
 
                 if (identityResult.Succeeded)
                 {
-                    _logger.LogInformation($"New user {dto.Personal.FirstName} {dto.Personal.LastName} was successfully created");
+                    _logger.LogInformation($"Registration: New user {dto.Data.Password} was successfully created");
 
-                    dto.Account.Password = null;
-                    var response = await _http.PostAsJsonAsync("members/register", dto);
+                    // add member role to user
+                    var roleResult = await _userManager.AddToRoleAsync(user, "Member");
 
-                    if (response.IsSuccessStatusCode)
+                    if (roleResult.Succeeded)
                     {
-                        var memberResult = await response.Content.ReadFromJsonAsync<ApiResult<object>>();
-                        if (memberResult.Successful)
+                        _logger.LogInformation($"Registration: New user {dto.Data.Email} was added to member role");
+                        _logger.LogInformation($"Registration complete for user {dto.Data.Email}");
+                        result = new ApiResult<object>
                         {
-                            _logger.LogInformation($"New member profile created for {dto.Personal.FirstName} {dto.Personal.LastName}");
-                            return memberResult;
-                        }
-                        else
-                        {
-                            _logger.LogError($"An error occurred when creating a member profile for {dto.Personal.FirstName} {dto.Personal.LastName}:");
-                            _logger.LogError($"{memberResult.Error}");
-                            return memberResult;
-                        }
+                            Successful = true
+                        };
                     }
                     else
                     {
-                        _logger.LogError($"Api return unsuccessful status code {response.StatusCode} when creating member profile {dto.Personal.FirstName} {dto.Personal.LastName}");
-                        return new ApiResult<object>
+                        _logger.LogError($"Registration Error: An error occurred when adding role to {dto.Data.Email}:");
+                        result = new ApiResult<object>
                         {
-                            Error = "Api return unsuccessful status code {response.StatusCode} when creating member profile {dto.Personal.FirstName} {dto.Personal.LastName}",
+                            Error = $"Registration Error: An error occurred when adding role to {dto.Data.Email}:",
                             Successful = false
                         };
                     }
                 }
                 else
                 {
-                    _logger.LogError($"An error occured when creating new user {dto.Personal.FirstName} {dto.Personal.LastName}:");
-                    string errorString = "An error occured when creating new user {dto.Personal.FirstName} {dto.Personal.LastName}:\n\n";
+                    _logger.LogError($"An error occured when creating new user {dto.Data.Email}:");
+                    string errorString = $"An error occured when creating new user {dto.Data.Email}:\n\n";
                     foreach (var error in identityResult.Errors)
                     {
                         _logger.LogError($"{error.Code}: {error.Description}");
                         errorString += error + ".\n";
                     }
-
-
-                    return new ApiResult<object>
+                    result = new ApiResult<object>
                     {
                         Error = errorString,
                         Successful = false
@@ -106,17 +137,82 @@ namespace HRManager.Idp.Services
             }
             else
             {
-                return new ApiResult<object>
+                result = new ApiResult<object>
                 {
                     Error = "Invalid registration data",
                     Successful = false
                 };
             }
+
+            // something went wrong, return result
+            return result;
         }
 
-        public Task<ApiResult<object>> RemoveUser(Guid id)
+        public async Task<ApiResult<object>> RemoveUser(Guid id)
         {
-            throw new NotImplementedException();
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+            {
+                _logger.LogError("No user could be found for that id.");
+                return new ApiResult<object>
+                {
+                    Successful = false,
+                    Error = "No user could be found for that id."
+                };
+            }
+            var result = await _userManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                return new ApiResult<object>
+                {
+                    Successful = true
+                };
+            }
+            else
+            {
+                string errorString = "";
+                foreach (var error in result.Errors)
+                {
+                    errorString += error.Description + " ";
+                }
+
+                _logger.LogError(errorString);
+
+                return new ApiResult<object>
+                {
+                    Successful = false,
+                    Error = errorString
+                };
+            }
+        }
+
+        public async Task<ApiResult<object>> UpdateUsername(string newUsername, Guid id)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            var result = await _userManager.SetUserNameAsync(user, newUsername);
+            if (result.Succeeded)
+            {
+                return new ApiResult<object>
+                {
+                    Successful = true
+                };
+            }
+            else
+            {
+                string errorString = "";
+                foreach (var error in result.Errors)
+                {
+                    errorString += error.Description + " ";
+                }
+
+                _logger.LogError(errorString);
+
+                return new ApiResult<object>
+                {
+                    Successful = false,
+                    Error = errorString
+                };
+            }
         }
     }
 }

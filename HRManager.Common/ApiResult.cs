@@ -4,9 +4,9 @@ using System.Text;
 
 namespace HRManager.Common
 {
-    public class ApiResult<TDto>
+    public class ApiResult<TData>
     {
-        public TDto Dto { get; set; }
+        public TData Data { get; set; }
         public bool Successful { get; set; }
         public string Error { get; set; }
     }

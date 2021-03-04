@@ -19,7 +19,7 @@ namespace HRManager.Blazor.Adaptors
 
         public override object Read(DataManagerRequest dataManagerRequest, string key = null)
         {
-            return _shiftService.GetShifts().Dto;
+            return _shiftService.GetShifts().Data;
         }
 
         public override object Insert(DataManager dataManager, object data, string key)

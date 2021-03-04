@@ -7,109 +7,184 @@ using HRManager.Common;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace HRManager.Api.Services
 {
+    public interface IDbSeeder
+    {
+        ApiResult<List<int>> SeedMembers();
+        ApiResult<object> SeedPositions();
+        ApiResult<object> SeedShifts();
+        ApiResult<object> SeedTimeEntries();
+        ApiResult<object> ClearDatabase();
+    }
+
     public class DbSeeder : IDbSeeder
     {
         private readonly MainContext _context;
+        private readonly ILogger<DbSeeder> _logger;
 
-        public DbSeeder(MainContext MainContext)
+        public DbSeeder(MainContext MainContext, ILogger<DbSeeder> logger)
         {
             _context = MainContext;
+            _logger = logger;
+
+            _context.Database.EnsureCreated();
         }
 
-        public bool TestSeed()
+        public ApiResult<object> ClearDatabase()
         {
-            bool result = true;
+            _context.RemoveRange(_context.Members.ToList());
+            _context.RemoveRange(_context.Positions.ToList());
+            _context.RemoveRange(_context.Shifts.ToList());
+            _context.RemoveRange(_context.Alerts.ToList());
+            _context.SaveChangesAsync();
 
-            result &= SeedTestMember();
-
-            result &= SeedPositions();
-
-            return result;
+            return null;
         }
 
-        public bool Seed(bool isDev)
+        public ApiResult<List<int>> SeedMembers()
         {
-            bool result = true;
-
-            if (isDev)
+            try
             {
-                result &= SeedTestMember();
+                if (_context.Members.Any())
+                {
+                    return new ApiResult<List<int>>() { Successful = true };
+                }
+
+                var testMembers = new List<MemberProfile>();
+
+                for (int i = 1; i <= 10; i++)
+                {
+                    testMembers.Add(new MemberProfile()
+                    {
+                        Email = $"test{i}@email.com",
+                        FirstName = $"testfirst{i}",
+                        LastName = $"testlast{i}",
+                        Address = "testAddress",
+                        City = "testcity",
+                        PostalCode = "T1R1L9",
+                        MainPhone = "5555555555",
+                        AlternatePhone1 = "5555555555",
+                        AlternatePhone2 = "5555555555",
+                        ApprovalStatus = ApprovalStatus.Pending,
+                        Birthdate = DateTime.Now,
+                        EmergencyFullName = "testemergency",
+                        EmergencyPhone1 = "5555555555",
+                        EmergencyPhone2 = "5555555555",
+                        EmergencyRelationship = "testrelationship",
+                        FoodSafe = false,
+                        FirstAidCpr = false,
+                        OtherCertificates = "TestOther",
+                        EducationTraining = "testeducation",
+                        SkillsInterestsHobbies = "testskills",
+                        Experience = "testexperience",
+                        OtherBoards = "otherboards",
+                        References = new List<Reference>() { new Reference()
+                        {
+                            Name = "Steve",
+                            Phone = "4034056785",
+                            Relationship = "Instructor",
+                            Occupation = "Professor"
+                        }},
+                        WorkExperiences = new List<WorkExperience>() {new WorkExperience()
+                        {
+                            EmployerName = "testemployer",
+                            EmployerAddress = "testaddress",
+                            StartDate = DateTime.Now,
+                            EndDate = DateTime.Now.AddDays(20),
+                            EmployerPhone = "5555555555",
+                            ContactPerson = "testcontact",
+                            PositionWorked = "testposition"
+                        }}
+                    });
+                }
+
+                _context.AddRange(testMembers);
+                _context.SaveChanges();
+
+                return new ApiResult<List<int>>() { Data = testMembers.Select(m => m.Id).ToList(), Successful = true };
+            }
+            catch (Exception ex)
+            {
+                string errorString = $"Something went wrong when trying to seed members in the database:\nError:{ex.Message}";
+                if (ex.Message.ToLower().Contains("inner exception"))
+                {
+                    errorString += $"\nInner Exception: {ex.InnerException}";
+                }
+                errorString += $"\nInner Exception: {ex.StackTrace}";
+
+                _logger.LogError(errorString);
+                return new ApiResult<List<int>>() { Error = "Something went wrong when trying to seed members in the database.", Successful = false };
+            }
+        }
+
+        public ApiResult<object> SeedShifts()
+        {
+            try
+            {
+                if (_context.Shifts.Any())
+                {
+                    return new ApiResult<object>() { Successful = true };
+                }
+
+                bool membersSeeded = _context.Members.Any();
+                bool positionsSeeded = _context.Positions.Any();
+
+                if (!(membersSeeded && positionsSeeded))
+                {
+                    return new ApiResult<object>() { Successful = false, Error = "Members and positions must be seeded before shifts." };
+                }
+
+                var members = _context.Members.ToList();
+
+                var shifts = new List<Shift>();
+
+                int dayOfMonth = 1;
+                foreach (var member in members)
+                {
+
+
+                    shifts.Add(new Shift()
+                    {
+                        Member = member,
+                        Position = _context.Positions.FirstOrDefault(),
+                        StartTime = new DateTime(1, 1, dayOfMonth, 8, 0, 0),
+                        EndTime = new DateTime(1, 1, dayOfMonth, 14, 0, 0),
+                        Subject = "Test Shift",
+                    });
+
+                    dayOfMonth++;
+                }
+
+                _context.AddRange(shifts);
+                _context.SaveChanges();
+
+                return new ApiResult<object>() { Successful = true };
+            }
+            catch (Exception ex)
+            {
+                string errorString = $"Something went wrong when trying to seed shifts in the database:\nError:{ex.Message}";
+                if (ex.Message.ToLower().Contains("inner exception"))
+                {
+                    errorString += $"\nInner Exception: {ex.InnerException}";
+                }
+                errorString += $"\nInner Exception: {ex.StackTrace}";
+
+                _logger.LogError(errorString);
+                return new ApiResult<object>() { Error = "Something went wrong when trying to seed shifts in the database.", Successful = false };
+            }
+        }
+
+
+        public ApiResult<object> SeedPositions()
+        {
+            if (_context.Positions.Any())
+            {
+                return new ApiResult<object>() { Successful = true };
             }
 
-            result &= SeedPositions();
-
-            return result;
-        }
-
-        private bool CreateMember()
-        {
-            MemberProfile mem = new MemberProfile()
-            {
-                FirstName = "testfirst",
-                LastName = "testlast",
-                Address = "testAddress",
-                City = "testcity",
-                PostalCode = "T1R1L9",
-                MainPhone = "5555555555",
-                AlternatePhone1 = "5555555555",
-                AlternatePhone2 = "5555555555",
-                ApprovalStatus = ApprovalStatus.Pending,
-                Birthdate = DateTime.Now,
-                EmergencyFullName = "testemergency",
-                EmergencyPhone1 = "5555555555",
-                EmergencyPhone2 = "5555555555",
-                EmergencyRelationship = "testrelationship",
-                FoodSafe = false,
-                FirstAidCpr = false,
-                OtherCertificates = "TestOther",
-                EducationTraining = "testeducation",
-                SkillsInterestsHobbies = "testskills",
-                Experience = "testexperience",
-                OtherBoards = "otherboards",
-            };
-
-            Reference reference = new Reference()
-            {
-                Name = "Steve",
-                Member = mem,
-                Phone = "4034056785",
-                Relationship = "Instructor",
-                Occupation = "Professor"
-            };
-
-            WorkExperience workExp = new WorkExperience()
-            {
-                EmployerName = "testemployer",
-                EmployerAddress = "testaddress",
-                StartDate = DateTime.Now,
-                EndDate = DateTime.Now.AddDays(20),
-                EmployerPhone = "5555555555",
-                ContactPerson = "testcontact",
-                PositionWorked = "testposition"
-            };
-
-            List<Reference> references = new List<Reference>();
-            references.Add(reference);
-            List<WorkExperience> workExperiences = new List<WorkExperience>();
-            workExperiences.Add(workExp);
-
-            mem.References = references;
-            mem.WorkExperiences = workExperiences;
-
-            return true;
-        }
-        private bool SeedTestMember()
-        {
-            bool memberCreated = CreateMember();
-
-            return memberCreated;
-        }   
-
-        private bool SeedPositions()
-        {
             if (_context.Positions.Count() == 0)
             {
                 try
@@ -134,12 +209,62 @@ namespace HRManager.Api.Services
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    return false;
+                    _logger.LogError($"An error occurred when seeding positions:\n\n{ex.Message}\n{ex.StackTrace}");
+                    return new ApiResult<object> { Successful = false, Error = "Something went wrong when seeding the positions." };
                 }
             }
-            return true;
+            return new ApiResult<object> { Successful = true };
         }
 
+        public ApiResult<object> SeedTimeEntries()
+        {
+            try
+            {
+                if (_context.TimeEntries.Any())
+                {
+                    return new ApiResult<object>() { Successful = true };
+                }
+
+                bool membersSeeded = _context.Members.Any();
+                bool positionsSeeded = _context.Positions.Any();
+
+                if (!(membersSeeded && positionsSeeded))
+                {
+                    return new ApiResult<object>() { Successful = false, Error = "Members and positions must be seeded before shifts." };
+                }
+
+                var members = _context.Members.ToList();
+
+                var timeEntries = new List<TimeEntry>();
+                foreach (var member in members)
+                {
+                    timeEntries.Add(new TimeEntry()
+                    {
+                        Member = member,
+                        Position = _context.Positions.FirstOrDefault(),
+                        StartTime = new DateTime(1, 1, 1, 8, 0, 0),
+                        EndTime = new DateTime?(new DateTime(1, 1, 1, 4, 0, 0))
+                    });
+
+                    timeEntries.Add(new TimeEntry()
+                    {
+                        Member = member,
+                        Position = _context.Positions.FirstOrDefault(),
+                        StartTime = DateTime.Now,
+                        EndTime = null
+                    });
+                }
+
+                _context.AddRange(timeEntries);
+                _context.SaveChanges();
+
+                return new ApiResult<object>() { Successful = true };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"An error occurred when seeding time entries:\n\n{ex.Message}\n{ex.StackTrace}");
+                return new ApiResult<object> { Successful = false, Error = "Something went wrong when seeding the time entries." };
+            }
+        }
     }
 }

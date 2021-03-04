@@ -18,9 +18,18 @@ a, .btn-link {
     color: #0366d6;
 }
 
-.btn-primary {
+.card, .btn, .form-control, .e-input-group, .e-input-group.e-control-wrapper, .e-btn {
+    border-radius: 0px !important;
+}
+
+.navbar-toggler {
+    background-color: transparent !important;
+}
+
+.btn-primary, .e-primary {
     color: #fff;
     background-color: var(--main-green);
+    border: none;
     border-color: var(--main-green);
 }
 
@@ -52,6 +61,7 @@ a, .btn-link {
 
 .btn-outline-primary {
     color: var(--main-green);
+    border-radius: 0px;
     background-color: rgba(0,0,0,0);
     border-color: var(--main-green);
 }

@@ -48,17 +48,15 @@ namespace HRManager.Api
                 });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-            services.AddScoped<IRegistrationService, EFIdentityService>();
             services.AddScoped<IMemberService, EFMemberService>();
             services.AddScoped<IShiftService, EFShiftService>();
             services.AddScoped<IPositionService, EFPositionService>();
-            services.AddScoped<IScheduleService, EFScheduleService>();
+            services.AddScoped<ITimesheetService, EFTimeSheetService>();
             services.AddScoped<IDbSeeder, DbSeeder>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IServiceProvider services, IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -66,9 +64,6 @@ namespace HRManager.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HRManager.Api v1"));
             }
-
-            var seeder = services.GetService<IDbSeeder>();
-            seeder.Seed(env.IsDevelopment());
 
             app.UseHttpsRedirection();
 

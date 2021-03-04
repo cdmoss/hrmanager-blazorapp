@@ -128,11 +128,11 @@ using Common.Auth;
 #line 4 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Registration\Result.razor"
       
     [Parameter]
-    public RegisterResult RegisterResult { get; set; }
+    public bool IsSuccessful { get; set; }
 
     private void GoToLogin()
     {
-        _nav.NavigateTo("auth/login");
+        _nav.NavigateTo("/");
     }
 
 #line default

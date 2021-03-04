@@ -1,64 +1,21 @@
-﻿@inherits RegisterSectionBase
+﻿@inherits CertificatesBase
 @using Syncfusion.Blazor.Calendars
 @using Syncfusion.Blazor.Popups
-@inject NavigationManager _nav
 
-@code {
-    [Parameter]
-    public CertificatesData CertData { get; set; }
-    [Parameter]
-    public EventCallback<CertificatesData> CertDataChanged { get; set; }
-    [Parameter]
-    public EventCallback SubmitRegistration { get; set; }
-    bool popUpVisible = false;
 
-    protected override async Task GoToNextSection()
-    {
-        await CertDataChanged.InvokeAsync(CertData);
-        await base.GoToNextSection();
-    }
-
-    private void OpenPopup()
-    {
-        popUpVisible = true;
-    }
-
-    private void ClosePopup()
-    {
-        popUpVisible = false;
-    }
-
-    protected override async Task HandlePreviousSectionRequested()
-    {
-        await CertDataChanged.InvokeAsync(CertData);
-        await base.HandlePreviousSectionRequested();
-    }
-
-    protected override async Task HandleDifferentSectionRequested()
-    {
-        await CertDataChanged.InvokeAsync(CertData);
-        await base.HandlePreviousSectionRequested();
-    }
-
-    bool showModal = false;
-
-    void ModalShow() => showModal = true;
-    void ModalCancel() => showModal = false;
-}
-
-<h5>Relevant Certificates (Optional)</h5>
+<h5>Relevant certificates (optional)</h5>
 <br />
 <EditForm id="6" Model="CertData" OnValidSubmit="ModalShow">
     <div id="cert-container" class="d-flex flex-column">
         <div id="firstaid-container">
             <div class="checkbox-container">
                 <SfCheckBox @bind-Checked="CertData.FirstAidCpr" />
-                <label>First Aid</label>
+                <label>First aid</label>
             </div>
             <div class="expiry-container mr-1">
                 @if (CertData.FirstAidCpr)
                 {
-                    <label class="expiry-label">Expiry:</label>
+                    <label class="expiry-label">Expiry</label>
                     <SfDatePicker CssClass="expiry" @bind-Value="CertData.FirstAidCprExpiry" />
                 }
 
@@ -66,7 +23,7 @@
             <div class="level-container">
                 @if (CertData.FirstAidCpr)
                 {
-                    <label>Level:</label>
+                    <label>Level</label>
                     <SfTextBox @bind-Value="CertData.FirstAidCprLevel" />
                 }
             </div>
@@ -74,7 +31,7 @@
         <div id="foodsafe-container">
             <div class="checkbox-container">
                 <SfCheckBox @bind-Checked="CertData.FoodSafe" />
-                <label>Food Safe</label>
+                <label>Food safe</label>
             </div>
             <div class="expiry-container ">
                 @if (CertData.FoodSafe)
@@ -87,7 +44,7 @@
         </div>
         <div id="othercerts-container">
             <div class="expiry-container ">
-                <label>Other Certificates:</label>
+                <label>Other certificates</label>
                 <SfTextBox @bind-Value="CertData.OtherCertificates" Multiline="true" />
             </div>
         </div>
@@ -102,7 +59,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h5 class="modal-title">Submit Application</h5>
+                    <h5 class="modal-title">Submit application</h5>
                     <button type="button" class="close" @onclick="@ModalCancel">&times;</button>
                 </div>
 

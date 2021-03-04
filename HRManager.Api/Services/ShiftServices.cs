@@ -38,17 +38,18 @@ namespace HRManager.Api.Services
             {
                 var shifts = await _context.Shifts.Include(s => s.Member)
                 .Include(s => s.Position).ToListAsync();
+
                 var shiftDtos = _mapper.Map<List<ShiftReadEditDto>>(shifts);
 
                 return new ApiResult<List<ShiftReadEditDto>>
                 {
-                    Dto = shiftDtos,
+                    Data = shiftDtos,
                     Successful = true
                 };
             }
             catch (Exception ex)
             {
-                _logger.LogError("An error occured when trying to fetch member information:\n\n" + ex.Message);
+                _logger.LogError("An error occured when trying to fetch shifts:\n\n" + ex.Message);
 
                 return new ApiResult<List<ShiftReadEditDto>>
                 {

@@ -10,8 +10,7 @@ namespace HRManager.Api.Data
 {
     public class MainContext : DbContext
     {
-        public MainContext(DbContextOptions<MainContext> options)
-            : base(options)
+        public MainContext(DbContextOptions<MainContext> options) : base(options)
         {
         }
 
@@ -24,9 +23,9 @@ namespace HRManager.Api.Data
         public DbSet<ShiftRequestAlert> ShiftAlerts { get; set; }
         public DbSet<ApplicationAlert> ApplicationAlerts { get; set; }
         public DbSet<Position> Positions { get; set; }
-        public DbSet<MemberPosition> PositionMember { get; set; }
+        public DbSet<MemberPosition> MemberPositions { get; set; }
         public DbSet<Reminder> Reminders { get; set; }
-        public DbSet<ClockedTime> ClockedTime { get; set; }
+        public DbSet<TimeEntry> TimeEntries { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -43,6 +42,7 @@ namespace HRManager.Api.Data
             modelBuilder.Entity<Availability>().HasOne(p => p.Member).WithMany(b => b.Availabilities).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Shift>().HasOne(p => p.Member).WithMany(b => b.Shifts).OnDelete(DeleteBehavior.SetNull);
             modelBuilder.Entity<Alert>().HasOne(p => p.Member).WithMany(b => b.Alerts).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<TimeEntry>().HasOne(p => p.Member).WithMany(b => b.TimeEntries).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<ShiftRequestAlert>().HasOne(p => p.OriginalShift).WithMany().OnDelete(DeleteBehavior.SetNull);
             modelBuilder.Entity<MemberPosition>().HasOne(p => p.Member).WithMany(b => b.Positions).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<MemberPosition>().HasOne(p => p.Position).WithMany().OnDelete(DeleteBehavior.SetNull);

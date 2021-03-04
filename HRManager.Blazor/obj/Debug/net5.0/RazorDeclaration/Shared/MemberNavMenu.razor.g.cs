@@ -110,6 +110,13 @@ using Syncfusion.Blazor.Buttons;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Shared\MemberNavMenu.razor"
+using HRManager.Blazor.Pages.Shared.PageMenus;
+
+#line default
+#line hidden
+#nullable disable
     public partial class MemberNavMenu : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -118,8 +125,23 @@ using Syncfusion.Blazor.Buttons;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 3 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Shared\MemberNavMenu.razor"
+#line 4 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Shared\MemberNavMenu.razor"
        
+    [Parameter]
+    public EventCallback<RenderFragment> PageChanged { get; set; }
+
+    private async Task ChangePage(Type menuType)
+    {
+        var menu = CreateMenu(menuType);
+        await PageChanged.InvokeAsync(menu);
+    }
+
+    private RenderFragment CreateMenu(Type menuType) => builder =>
+    {
+        builder.OpenComponent(0, menuType);
+        builder.CloseComponent();
+    };
+
     private bool collapseNavMenu = false;
 
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;

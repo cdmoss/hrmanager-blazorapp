@@ -14,11 +14,9 @@ namespace HRManager.Blazor.Pages.Account
     {
         public async Task OnGetAsync()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            await HttpContext.SignOutAsync(OpenIdConnectDefaults.AuthenticationScheme);
+
         }
 
-        [ValidateAntiForgeryToken]
         public async Task OnPostAsync()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

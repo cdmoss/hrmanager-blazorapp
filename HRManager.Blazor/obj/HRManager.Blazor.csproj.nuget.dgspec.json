@@ -126,7 +126,7 @@
             },
             "Syncfusion.Blazor": {
               "target": "Package",
-              "version": "[18.3.0.53, )"
+              "version": "[18.4.0.33, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",

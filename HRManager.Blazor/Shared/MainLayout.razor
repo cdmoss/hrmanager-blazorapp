@@ -7,7 +7,12 @@
 @code {
     [CascadingParameter]
     private Task<AuthenticationState> authState { get; set; }
-    private string currentPage = "Members";
+
+    [CascadingParameter]
+    private RenderFragment PageMenu { get; set; }
+
+
+    private string currentPage;
     private string navMenuType;
 
     protected override async Task OnInitializedAsync()
@@ -25,16 +30,18 @@
         if (user.IsInRole("Admin") || user.IsInRole("SuperAdmin"))
         {
             navMenuType = "admin";
+            currentPage = "Members";
         }
         else if (user.IsInRole("Member"))
         {
             navMenuType = "member";
+            currentPage = "Information";
         }
     }
 
-    private void OnPageChanged(string pageName)
+    private void OnPageChanged(RenderFragment pageMenu)
     {
-        currentPage = pageName;
+        PageMenu = pageMenu;
     }
 }
 
@@ -48,18 +55,10 @@
         }
         else if (navMenuType == "member")
         {
-            <MemberNavMenu />
+            <MemberNavMenu PageChanged="OnPageChanged" />
         }
     </div>
     <div class="main">
-        <form action="/account/logout" method="post" class="top-row px-4">
-            <span class="font-weight-bold my-auto">@currentPage</span>
-            @*<button type="submit" class="ml-md-auto">Logout</button>*@
-            <a href="/account/logout" class="ml-md-auto">Logout</a>
-            <input type="hidden" name="_RequestVerificationToken" value="@_tokenProvider.XsrfToken" />
-        </form>
-
         @Body
-
     </div>
 </div>

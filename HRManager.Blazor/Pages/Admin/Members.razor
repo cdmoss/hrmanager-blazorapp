@@ -8,32 +8,39 @@
 @using Syncfusion.Blazor.Calendars
 @using Syncfusion.Blazor.Navigations
 @using Blazorise
-@*@attribute [Authorize(Roles = "SuperAdmin, Admin")]*@
+@using HRManager.Blazor.Pages.Shared.PageMenus
+@inherits MembersBase
 
 <AuthorizeView>
     <Authorized>
-        @if (!string.IsNullOrEmpty(error))
+        <div class="menu">
+            <MembersMenu />
+        </div>
+        @if (errors.Any())
         {
-            <p>@error</p>
+            foreach (string error in errors)
+            {
+                <p>@error</p>
+            }
         }
         else
         {
             <SfGrid TValue="AdminMemberDto"
                     DataSource="members"
                     AllowFiltering="true"
-                    AllowGrouping="true"
                     AllowPaging="true"
                     AllowSorting="true"
                     AllowExcelExport="true"
                     AllowMultiSorting="true"
                     AllowSelection="true"
                     AllowPdfExport="true">
+                <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
                 <GridEditSettings AllowEditing="true" AllowAdding="true" Mode="EditMode.Dialog">
                     <Template Context="editContext">
                         @{
                             var member = (editContext as AdminMemberDto);
                         }
-                        <GridEditTemplate @ref="editTemplate" @bind-Member="member" Positions="positions" />
+                        <MemberGridEditTemplate @ref="editTemplate" @bind-SelectedMember="member" Positions="positions" />
                     </Template>
                 </GridEditSettings>
                 <GridTemplates>
@@ -50,11 +57,10 @@
                             "check," + member.Id,
                             };
                         }
-                        <GridReadTemplate Member="member" />
+                        <MemberGridReadTemplate SelectedMember="member" />
                     </DetailTemplate>
                 </GridTemplates>
                 <GridColumns>
-                    <GridColumn Field="Id" HeaderText="ID" TextAlign="TextAlign.Center" IsPrimaryKey="true" />
                     <GridColumn Field="FirstName" HeaderText="First Name" TextAlign="TextAlign.Center" />
                     <GridColumn Field="LastName" HeaderText="Last Name" TextAlign="TextAlign.Center" />
                     <GridColumn Field="Email" HeaderText="Email" TextAlign="TextAlign.Center" />

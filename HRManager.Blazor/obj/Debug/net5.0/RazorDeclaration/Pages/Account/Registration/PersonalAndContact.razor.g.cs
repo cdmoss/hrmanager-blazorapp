@@ -127,6 +127,7 @@ using Syncfusion.Blazor.Calendars;
 #nullable restore
 #line 4 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Registration\PersonalAndContact.razor"
        
+    // TODO: fix validation of optional inputs
     [Parameter]
     public EventCallback<PersonalAndContactData> PersonalDataChanged { get; set; }
     [Parameter]

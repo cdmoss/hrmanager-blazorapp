@@ -1,0 +1,45 @@
+﻿@namespace HRManager.Blazor.Pages.Shared.PageMenus
+
+@code {
+    [Parameter]
+    public EventCallback AddEntryClicked { get; set; }
+    [Parameter]
+    public EventCallback ClockInClicked { get; set; }
+    [Parameter]
+    public EventCallback GetArchivedClicked { get; set; }
+    [Parameter]
+    public EventCallback GetCurrentClicked { get; set; }
+
+    private async Task RaiseAddEntryClicked()
+    {
+        await AddEntryClicked.InvokeAsync();
+    }
+
+    private async Task RaiseClockInClicked()
+    {
+        await ClockInClicked.InvokeAsync();
+    }
+
+    private async Task RaiseArchivedClicked()
+    {
+        await GetArchivedClicked.InvokeAsync();
+    }
+
+    private async Task RaiseCurrentClicked()
+    {
+        await GetCurrentClicked.InvokeAsync();
+    }
+}
+
+<div class="d-flex align-items-center">
+    <button class="btn btn-primary" @onclick="RaiseClockInClicked" style="margin-right:1px;">Clock in</button>
+    <button class="btn btn-primary" @onclick="RaiseAddEntryClicked">Add entry</button>
+    <span>&nbsp;</span>
+    <span>&nbsp;</span>
+    <button class="btn btn-primary" @onclick="RaiseArchivedClicked" style="margin-right:1px;">Archived</button>
+    <button class="btn btn-primary" @onclick="RaiseCurrentClicked">Current</button>
+</div>
+
+    <form action="account/logout" method="post">
+        <button type="submit" class="btn btn-primary">Logout</button>
+    </form>

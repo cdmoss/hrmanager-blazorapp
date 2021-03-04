@@ -1,37 +1,6 @@
 ﻿@using Syncfusion.Blazor.Calendars
 @using Syncfusion.Blazor.Buttons
-@inherits RegisterSectionBase
-
-@code {
-    [Parameter]
-    public EventCallback<QualificationsData> QualificationsDataChanged { get; set; }
-    [Parameter]
-    public QualificationsData QualificationsData { get; set; }
-
-    protected override async Task GoToNextSection()
-    {
-        await QualificationsDataChanged.InvokeAsync(QualificationsData);
-        await base.GoToNextSection();
-    }
-
-    protected override async Task HandlePreviousSectionRequested()
-    {
-        await QualificationsDataChanged.InvokeAsync(QualificationsData);
-        await base.HandlePreviousSectionRequested();
-    }
-
-    protected override async Task HandleDifferentSectionRequested()
-    {
-        await QualificationsDataChanged.InvokeAsync(QualificationsData);
-        await base.HandlePreviousSectionRequested();
-    }
-
-    private void HandleCurrentJobCheckChanged()
-    {
-        StateHasChanged();
-    }
-}
-
+@inherits QualificationsBase
 
 <h5>What kind of similar things have you done before? (Optional)</h5>
 <br />

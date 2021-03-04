@@ -124,61 +124,13 @@ using Syncfusion.Blazor.Popups;
 #line default
 #line hidden
 #nullable disable
-    public partial class Certificates : RegisterSectionBase
+    public partial class Certificates : CertificatesBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 6 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Registration\Certificates.razor"
-       
-    [Parameter]
-    public CertificatesData CertData { get; set; }
-    [Parameter]
-    public EventCallback<CertificatesData> CertDataChanged { get; set; }
-    [Parameter]
-    public EventCallback SubmitRegistration { get; set; }
-    bool popUpVisible = false;
-
-    protected override async Task GoToNextSection()
-    {
-        await CertDataChanged.InvokeAsync(CertData);
-        await base.GoToNextSection();
-    }
-
-    private void OpenPopup()
-    {
-        popUpVisible = true;
-    }
-
-    private void ClosePopup()
-    {
-        popUpVisible = false;
-    }
-
-    protected override async Task HandlePreviousSectionRequested()
-    {
-        await CertDataChanged.InvokeAsync(CertData);
-        await base.HandlePreviousSectionRequested();
-    }
-
-    protected override async Task HandleDifferentSectionRequested()
-    {
-        await CertDataChanged.InvokeAsync(CertData);
-        await base.HandlePreviousSectionRequested();
-    }
-
-    bool showModal = false;
-
-    void ModalShow() => showModal = true;
-    void ModalCancel() => showModal = false;
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager _nav { get; set; }
     }
 }
 #pragma warning restore 1591

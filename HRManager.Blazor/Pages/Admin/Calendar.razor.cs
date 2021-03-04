@@ -14,31 +14,31 @@ using Microsoft.JSInterop;
 
 namespace HRManager.Blazor.Pages.Admin
 {
-    public partial class Calendar : ComponentBase
+    public class CalendarBase : ComponentBase
     {
-        enum SaveAction { NewShift, ExistingShift }
+        protected enum SaveAction { NewShift, ExistingShift }
 
         [Inject]
         public IShiftService ShiftService { get; set; }
         [Inject]
-        private IPositionService _positionService { get; set; }
+        protected IPositionService _positionService { get; set; }
         [Inject]
-        private IMemberService _minimalService { get; set; }
+        protected IMemberService _minimalService { get; set; }
         [Inject]
-        private IJSRuntime _js { get; set; }
-        private List<ShiftReadEditDto> shifts;
-        private ShiftReadEditDto focusedShift = new ShiftReadEditDto();
-        private SfSchedule<ShiftReadEditDto> schedule;
-        private List<Position> positions;
-        private List<MemberMinimalDto> members;
-        private string[] resourceNames = new[] { "Positions" };
-        private string error;
-        private View currentView = View.TimelineWeek;
-        private bool showEditor = false;
-        private SaveAction saveAction;
+        protected IJSRuntime _js { get; set; }
+        protected List<ShiftReadEditDto> shifts;
+        protected ShiftReadEditDto focusedShift = new ShiftReadEditDto();
+        protected SfSchedule<ShiftReadEditDto> schedule;
+        protected List<Position> positions;
+        protected List<MemberMinimalDto> members;
+        protected string[] resourceNames = new[] { "Positions" };
+        protected string error;
+        protected View currentView = View.TimelineWeek;
+        protected bool showEditor = false;
+        protected SaveAction saveAction;
 
         // used to prevent the form from submitting when a recurring day is clicked
-        private bool formComplete = false;
+        protected bool formComplete = false;
 
         protected override void OnInitialized()
         {
@@ -47,18 +47,18 @@ namespace HRManager.Blazor.Pages.Admin
                 var shiftResult = ShiftService.GetShifts();
                 if (shiftResult.Successful)
                 {
-                    shifts = shiftResult.Dto;
+                    shifts = shiftResult.Data;
                     shifts.RemoveAll(s => s == null);
 
                     var positionResult = _positionService.GetPositions();
                     if (positionResult.Successful)
                     {
-                        positions = positionResult.Dto;
+                        positions = positionResult.Data;
 
                         var membersResult = _minimalService.GetMinimalMembers();
                         if (membersResult.Successful)
                         {
-                            members = membersResult.Dto;
+                            members = membersResult.Data;
                         }
                         else
                         {
@@ -81,12 +81,12 @@ namespace HRManager.Blazor.Pages.Admin
             }
         }
 
-        private void SignalCompletedForm()
+        protected void SignalCompletedForm()
         {
             formComplete = true;
         }
 
-        private void OnPopupOpen(PopupOpenEventArgs<ShiftReadEditDto> args)
+        protected void OnPopupOpen(PopupOpenEventArgs<ShiftReadEditDto> args)
         {
             if (args.Type == PopupType.QuickInfo)
             {

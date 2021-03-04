@@ -166,8 +166,15 @@ using Blazorise;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Members.razor"
+using HRManager.Blazor.Pages.Shared.PageMenus;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/admin/members")]
-    public partial class Members : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class Members : MembersBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)

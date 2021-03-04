@@ -30,7 +30,7 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.0" />
     <PackageReference Include="OpenIddict" Version="2.0.1" />
     <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="2.0.1" />
-    <PackageReference Include="Syncfusion.Blazor" Version="18.3.0.53" />
+    <PackageReference Include="Syncfusion.Blazor" Version="18.4.0.33" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
   </ItemGroup>
 

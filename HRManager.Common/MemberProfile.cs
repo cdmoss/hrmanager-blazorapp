@@ -8,7 +8,11 @@ namespace HRManager.Common
     [Serializable]
     public class MemberProfile
     {
+        // doesn't contain email so there's no way to have discontinuity with associated identity account
         public int Id { get; set; }
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email (Required)")]
         public string Email { get; set; }
         [Required]
         [Display(Name = "First name (Required)")]
@@ -100,6 +104,7 @@ namespace HRManager.Common
         public List<Availability> Availabilities { get; set; }
         public List<MemberPosition> Positions { get; set; }
         public List<Alert> Alerts { get; set; }
+        public List<TimeEntry> TimeEntries { get; set; }
         public bool IsStaff { get; set; }
     }
 }

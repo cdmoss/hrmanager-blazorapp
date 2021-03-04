@@ -31,7 +31,6 @@ namespace HRManager.Idp
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // uncomment, if you want to add an MVC-based UI
             services.AddControllersWithViews();
 
             services.AddDbContext<IdentityContext>(options =>
@@ -57,6 +56,8 @@ namespace HRManager.Idp
                 .AddInMemoryClients(Config.GetClients)
                 .AddAspNetIdentity<AppUser>();
 
+            services.AddLocalApiAuthentication();
+
             // TODO: add proper ssl certificate
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
@@ -66,6 +67,9 @@ namespace HRManager.Idp
             });
 
             services.AddScoped<IProfileService, ProfileService>();
+            services.AddScoped<IProfileService, ProfileService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IDbSeeder, DbSeeder>();
         }
 
         public void Configure(IServiceProvider services, IApplicationBuilder app)
