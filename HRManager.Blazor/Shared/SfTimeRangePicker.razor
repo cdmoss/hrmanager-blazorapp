@@ -13,7 +13,11 @@
     [Parameter]
     public DateTime End { get; set; }
     [Parameter]
+    public bool HideEndTime { get; set; }
+    [Parameter]
     public EventCallback<bool> IsModifiedChanged { get; set; }
+    [Parameter]
+    public EventCallback<bool> HideEndTimeChanged { get; set; }
     [Parameter]
     public EventCallback<DateTime> StartChanged { get; set; }
     [Parameter]
@@ -75,8 +79,11 @@
     <SfTimePicker TValue="DateTime" ID="start" Min="StartMin" Max="StartMax" Value="Start">
         <TimePickerEvents TValue="DateTime" ValueChange="StartWasChanged" />
     </SfTimePicker>
-    <span id="divider">to</span>
-    <SfTimePicker TValue="DateTime" ID="end" Min="EndMin" Max="EndMax" Value="End">
-        <TimePickerEvents TValue="DateTime" ValueChange="EndWasChanged" />
-    </SfTimePicker>
+    @if (!HideEndTime)
+    {
+        <span id="divider">to</span>
+        <SfTimePicker TValue="DateTime" ID="end" Min="EndMin" Max="EndMax" Value="End">
+            <TimePickerEvents TValue="DateTime" ValueChange="EndWasChanged" />
+        </SfTimePicker>
+    }
 </div>

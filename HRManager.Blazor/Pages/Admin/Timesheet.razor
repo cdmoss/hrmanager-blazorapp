@@ -50,7 +50,7 @@
                                                 Members="members"
                                                 EntryDate="timeEntry.StartTime.Date"
                                                 StartTime="timeEntry.StartTime"
-                                                EndTime="timeEntry.StartTime.Date + new TimeSpan(16, 0, 0)"/>
+                                                EndTime="timeEntry.StartTime.Date + new TimeSpan(16, 0, 0)" />
                         }
                         else
                         {
@@ -59,29 +59,29 @@
                                                 Positions="positions"
                                                 Members="members"
                                                 EntryDate="timeEntry.StartTime.Date"
-                                                StartTime="timeEntry.StartTime" 
+                                                StartTime="timeEntry.StartTime"
                                                 EndTime="timeEntry.EndTime.Value" />
                         }
                     </Template>
                 </GridEditSettings>
-            <GridColumns>
-                <GridColumn Field="Member.FullName" HeaderText="Worked by" TextAlign="TextAlign.Center" />
-                <GridColumn Field="Position.Name" HeaderText="Position worked" TextAlign="TextAlign.Center" />
-                <GridColumn Field="StartTime" HeaderText="Start time" Type="ColumnType.DateTime" TextAlign="TextAlign.Center" />
-                @if (!current)
-                {
-                    <GridColumn Field="EndTime" HeaderText="End time" Type="ColumnType.DateTime" TextAlign="TextAlign.Center" />
-                }
-            </GridColumns>
+                <GridColumns>
+                    <GridColumn Field="Member.FullName" HeaderText="Worked by" TextAlign="TextAlign.Center" />
+                    <GridColumn Field="Position.Name" HeaderText="Position worked" TextAlign="TextAlign.Center" />
+                    <GridColumn Field="StartTime" HeaderText="Start time" Type="ColumnType.DateTime" TextAlign="TextAlign.Center" />
+                    @if (!current)
+                    {
+                        <GridColumn Field="EndTime" HeaderText="End time" Type="ColumnType.DateTime" TextAlign="TextAlign.Center" />
+                    }
+                </GridColumns>
                 <GridEvents TValue="TimeEntryReadEditDto" OnActionBegin="BeginActionHandler" />
             </SfGrid>
 
-            @if (showAddEntryModal)
+            if (showFullModal)
             {
                 <div class="modal fade show" id="myModal" style="display:block" aria-modal="true" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <EditForm Model="newEntry" OnValidSubmit="SaveFullEntry" Context="newEntryContext" id="add-full-modal">
+                            <EditForm Model="timeEntry" OnValidSubmit="SaveFullEntry" Context="newEntryContext" id="add-full-modal">
                                 <DataAnnotationsValidator />
                                 <CustomValidator @ref="timeEntryValidator" />
                                 <!-- Modal Header -->
@@ -109,8 +109,19 @@
 
                                     <label class="mt-3">Date worked</label>
                                     <SfDatePicker TValue="DateTime" @bind-Value="newDate" />
-                                    <label class="mt-3">Time worked</label>
-                                    <SfTimeRangePicker InitialStart="DateTime.Now.Date.AddHours(8)" InitialEnd="DateTime.Now.Date.AddHours(16)" @bind-Start="newStartTime" @bind-End="newEndTime" />
+
+                                    @if (!hideEndTime)
+                                    {
+                                        <label class="mt-3">Time worked</label>
+                                    }
+                                    else
+                                    {
+                                        <label class="mt-3">Start time</label>
+                                    }
+                                    <SfTimeRangePicker InitialStart="newStartTime" InitialEnd="newEndTime" @bind-Start="newStartTime" @bind-End="newEndTime" @bind-HideEndTime="hideEndTime" />
+                                    
+                                    <label>Stay clocked in</label>
+                                    <InputCheckbox type="check" class="form-check" @bind-Value="hideEndTime" />
                                 </div>
 
                                 <!-- Modal footer -->
@@ -123,7 +134,8 @@
                     </div>
                 </div>
             }
-            @if (showClockInModal)
+
+            if (showClockInModal)
             {
                 <div class="modal fade show" id="myModal" style="display:block" aria-modal="true" role="dialog">
                     <div class="modal-dialog">
@@ -165,7 +177,7 @@
                         </div>
                     </div>
                 </div>
-            }
+            }    
         }
     </Authorized>
     <NotAuthorized>

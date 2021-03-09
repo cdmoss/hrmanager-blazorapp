@@ -25,12 +25,14 @@ namespace HRManager.Blazor.Pages.Admin
         protected CustomValidator timeEntryValidator;
         protected List<TimeEntryReadEditDto> timeEntries;
         protected TimeEntryCreateDto newEntry = new TimeEntryCreateDto();
+        protected TimeEntryReadEditDto timeEntry = new TimeEntryReadEditDto();
         protected List<Position> positions;
         protected List<MemberMinimalDto> members;
         protected List<string> pageErrors = new List<string>();
         protected TSGridEditTemplate editTemplate = new TSGridEditTemplate();
-        protected bool showAddEntryModal = false;
+        protected bool hideEndTime = false;
         protected bool showClockInModal = false;
+        protected bool showFullModal = false;
         protected bool current = true;
         protected DateTime newStartTime = DateTime.Now.Date + new TimeSpan(8, 0, 0, 0, 0);
         protected DateTime newEndTime = DateTime.Now.Date + new TimeSpan(16, 0, 0, 0, 0);
@@ -70,6 +72,24 @@ namespace HRManager.Blazor.Pages.Admin
 
         protected async Task BeginActionHandler(ActionEventArgs<TimeEntryReadEditDto> args)
         {
+            if (args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.BeginEdit))
+            {
+                args.Cancel = true;
+                showFullModal = true;
+
+                timeEntry = args.Data;
+                newStartTime = args.Data.StartTime.Date + args.Data.StartTime.TimeOfDay;
+                if (args.Data.EndTime != null)
+                {
+                    newEndTime = args.Data.EndTime.Value.Date + args.Data.EndTime.Value.TimeOfDay;
+                }
+                else
+                {
+                    hideEndTime = true;
+                }
+                newDate = args.Data.StartTime.Date;
+            }
+
             if (args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.Save))
             {
                 editTemplate.ParseTimes();
@@ -88,7 +108,7 @@ namespace HRManager.Blazor.Pages.Admin
 
         protected void ShowAddEntryModal()
         {
-            showAddEntryModal = true;
+            showFullModal = true;
         }
 
         protected void ShowClockInModal()
@@ -123,7 +143,7 @@ namespace HRManager.Blazor.Pages.Admin
                 var result = await _tsService.AddTimeEntry(newEntry);
                 if (result.Successful)
                 {
-                    showAddEntryModal = false;
+                    showFullModal = false;
 
                     await GetArchived();
                     //TODO: add success indicator
@@ -206,7 +226,7 @@ namespace HRManager.Blazor.Pages.Admin
 
         protected void ModalCancel()
         {
-            showAddEntryModal = false;
+            showFullModal = false;
             showClockInModal = false;
         }
     }
