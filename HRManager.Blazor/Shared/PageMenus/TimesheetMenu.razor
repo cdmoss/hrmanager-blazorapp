@@ -36,8 +36,16 @@
     <button class="btn btn-primary" @onclick="RaiseAddEntryClicked">Add entry</button>
     <span>&nbsp;</span>
     <span>&nbsp;</span>
-    <button class="btn btn-primary" @onclick="RaiseArchivedClicked" style="margin-right:1px;">Archived</button>
-    <button class="btn btn-primary" @onclick="RaiseCurrentClicked">Current</button>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-primary" @onclick="RaiseCurrentClicked" for="Current">
+            Current
+            <input type="radio" class="btn-check" id="current" name="entries-filter" autocomplete="off" checked />
+        </label>
+        <label class="btn btn-primary" @onclick="RaiseArchivedClicked" for="archived">
+            Archived
+            <input type="radio" class="btn-check" id="archived" name="entries-filter" autocomplete="off" />
+        </label>
+    </div>
 </div>
 
     <form action="account/logout" method="post">

@@ -42,32 +42,37 @@
                         @{
                             var timeEntry = (editContext as TimeEntryReadEditDto);
                         }
-                        <TSGridEditTemplate @ref="editTemplate" @bind-SelectedTimeEntry="timeEntry" Positions="positions" />
+                        @if (timeEntry.EndTime == null)
+                        {
+                            <TSGridEditTemplate @ref="editTemplate"
+                                                @bind-SelectedTimeEntry="timeEntry"
+                                                Positions="positions"
+                                                Members="members"
+                                                EntryDate="timeEntry.StartTime.Date"
+                                                StartTime="timeEntry.StartTime"
+                                                EndTime="timeEntry.StartTime.Date + new TimeSpan(16, 0, 0)"/>
+                        }
+                        else
+                        {
+                            <TSGridEditTemplate @ref="editTemplate"
+                                                @bind-SelectedTimeEntry="timeEntry"
+                                                Positions="positions"
+                                                Members="members"
+                                                EntryDate="timeEntry.StartTime.Date"
+                                                StartTime="timeEntry.StartTime" 
+                                                EndTime="timeEntry.EndTime.Value" />
+                        }
                     </Template>
                 </GridEditSettings>
-                @*<GridTemplates>
-                        <DetailTemplate Context="detailContext">
-                            @{
-                                var member = (detailContext as TimeEntryReadEditDto);
-                                var tabNames = new string[]
-                                {
-                                    "personal," + member.Id,
-                                    "avail," + member.Id,
-                                    "positions," + member.Id,
-                                    "qual," + member.Id,
-                                    "cert," + member.Id,
-                                    "check," + member.Id,
-                                };
-                            }
-                            <GridReadTemplate Member="member" />
-                        </DetailTemplate>
-                    </GridTemplates>*@
-                <GridColumns>
-                    <GridColumn Field="Member.FullName" HeaderText="Worked by" TextAlign="TextAlign.Center" />
-                    <GridColumn Field="StartTime" HeaderText="Start time" Type="ColumnType.DateTime" TextAlign="TextAlign.Center" />
+            <GridColumns>
+                <GridColumn Field="Member.FullName" HeaderText="Worked by" TextAlign="TextAlign.Center" />
+                <GridColumn Field="Position.Name" HeaderText="Position worked" TextAlign="TextAlign.Center" />
+                <GridColumn Field="StartTime" HeaderText="Start time" Type="ColumnType.DateTime" TextAlign="TextAlign.Center" />
+                @if (!current)
+                {
                     <GridColumn Field="EndTime" HeaderText="End time" Type="ColumnType.DateTime" TextAlign="TextAlign.Center" />
-                    <GridColumn Field="Position.Name" HeaderText="Position worked" TextAlign="TextAlign.Center" />
-                </GridColumns>
+                }
+            </GridColumns>
                 <GridEvents TValue="TimeEntryReadEditDto" OnActionBegin="BeginActionHandler" />
             </SfGrid>
 

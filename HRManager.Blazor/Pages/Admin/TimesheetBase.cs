@@ -31,6 +31,7 @@ namespace HRManager.Blazor.Pages.Admin
         protected TSGridEditTemplate editTemplate = new TSGridEditTemplate();
         protected bool showAddEntryModal = false;
         protected bool showClockInModal = false;
+        protected bool current = true;
         protected DateTime newStartTime = DateTime.Now.Date + new TimeSpan(8, 0, 0, 0, 0);
         protected DateTime newEndTime = DateTime.Now.Date + new TimeSpan(16, 0, 0, 0, 0);
         protected DateTime newDate = DateTime.Now.Date;
@@ -71,6 +72,8 @@ namespace HRManager.Blazor.Pages.Admin
         {
             if (args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.Save))
             {
+                editTemplate.ParseTimes();
+
                 var result = await _tsService.UpdateTimeEntry(args.Data);
                 if (result.Successful)
                 {
@@ -179,6 +182,8 @@ namespace HRManager.Blazor.Pages.Admin
 
         protected async Task GetCurrent()
         {
+            current = true;
+
             var tsResult = await _tsService.GetCurrentTimeEntries();
             if (!tsResult.Successful)
             {
@@ -189,6 +194,8 @@ namespace HRManager.Blazor.Pages.Admin
 
         protected async Task GetArchived()
         {
+            current = false;
+
             var tsResult = await _tsService.GetArchivedTimeEntries();
             if (!tsResult.Successful)
             {

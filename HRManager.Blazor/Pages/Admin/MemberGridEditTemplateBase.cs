@@ -15,7 +15,7 @@ namespace HRManager.Blazor.Pages.Admin
         [Parameter]
         public List<Position> Positions { get; set; }
         [Parameter]
-        public EventCallback<AdminMemberDto> MemberChanged { get; set; }
+        public EventCallback<AdminMemberDto> SelectedMemberChanged { get; set; }
 
         protected List<string> assignedPositions;
         protected List<string> preferredPositions;
@@ -72,7 +72,7 @@ namespace HRManager.Blazor.Pages.Admin
 
             SelectedMember.Positions = memberPositions;
 
-            await MemberChanged.InvokeAsync(SelectedMember);
+            await SelectedMemberChanged.InvokeAsync(SelectedMember);
         }
 
         protected void OnTabChanged(string name)
