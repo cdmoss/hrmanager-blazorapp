@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 using HRManager.Blazor.Services;
 using Microsoft.AspNetCore.Components.Authorization;
 using HRManager.Common;
-using Microsoft.AspNetCore.Components.Forms;
+using Blazored.Modal;
+using Blazored.Modal.Services;
 
 namespace HRManager.Blazor.Pages.Admin
 {
@@ -22,21 +23,17 @@ namespace HRManager.Blazor.Pages.Admin
         public IPositionService _posService { get; set; }
         [Inject]
         public IMemberService _memberService { get; set; }
+        [Inject]
+        public IModalService _modalService { get; set; }
         protected CustomValidator timeEntryValidator;
         protected List<TimeEntryReadEditDto> timeEntries;
-        protected TimeEntryCreateDto newEntry = new TimeEntryCreateDto();
-        protected TimeEntryReadEditDto timeEntry = new TimeEntryReadEditDto();
         protected List<Position> positions;
         protected List<MemberMinimalDto> members;
         protected List<string> pageErrors = new List<string>();
-        protected TSGridEditTemplate editTemplate = new TSGridEditTemplate();
-        protected bool hideEndTime = false;
+        
         protected bool showClockInModal = false;
         protected bool showFullModal = false;
         protected bool current = true;
-        protected DateTime newStartTime = DateTime.Now.Date + new TimeSpan(8, 0, 0, 0, 0);
-        protected DateTime newEndTime = DateTime.Now.Date + new TimeSpan(16, 0, 0, 0, 0);
-        protected DateTime newDate = DateTime.Now.Date;
 
         protected override async Task OnInitializedAsync()
         {
@@ -75,26 +72,47 @@ namespace HRManager.Blazor.Pages.Admin
             if (args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.BeginEdit))
             {
                 args.Cancel = true;
-                showFullModal = true;
-
-                timeEntry = args.Data;
-                newStartTime = args.Data.StartTime.Date + args.Data.StartTime.TimeOfDay;
-                if (args.Data.EndTime != null)
+                var parameters = new ModalParameters();
+                parameters.Add("TimeEntry", args.Data);
+                parameters.Add("IsNewEntry", false);
+                var modal = _modalService.Show(typeof(FullEntryModal), "Edit entry details", parameters);
+                var modalResult = await modal.Result;
+                var apiResult = modalResult.Cancelled ? null : modalResult.Data as ApiResult<List<TimeEntryReadEditDto>>;
+                if (apiResult == null)
                 {
-                    newEndTime = args.Data.EndTime.Value.Date + args.Data.EndTime.Value.TimeOfDay;
+                    modal.Close();
+                    return;
+                }
+                if (apiResult.Successful)
+                {
+                    modal.Close();
+                    //TODO: notify edit time entry success
                 }
                 else
                 {
-                    hideEndTime = true;
+                    modal.Close();
+                    pageErrors.Add(apiResult.Error);
                 }
-                newDate = args.Data.StartTime.Date;
             }
+        }
 
-            if (args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.Save))
+        protected async Task ShowAddEntryModal()
+        {
+            var parameters = new ModalParameters();
+            parameters.Add("TimeEntry", new TimeEntryReadEditDto());
+            parameters.Add("IsNewEntry", true);
+            var modal = _modalService.Show(typeof(FullEntryModal), "Add new entry", parameters);
+            var modalResult = await modal.Result;
+            var apiResult = modalResult.Cancelled ? null : modalResult.Data as ApiResult<List<TimeEntryReadEditDto>>;
+            if (apiResult == null)
             {
-                editTemplate.ParseTimes();
-
-                var result = await _tsService.UpdateTimeEntry(args.Data);
+                modal.Close();
+                return;
+            }
+            if (apiResult.Successful)
+            {
+                modal.Close();
+                var result = await _tsService.GetArchivedTimeEntries();
                 if (result.Successful)
                 {
                     timeEntries = result.Data;
@@ -103,101 +121,46 @@ namespace HRManager.Blazor.Pages.Admin
                 {
                     pageErrors.Add(result.Error);
                 }
-            }
-        }
-
-        protected void ShowAddEntryModal()
-        {
-            showFullModal = true;
-        }
-
-        protected void ShowClockInModal()
-        {
-            showClockInModal = true;
-        }
-
-        protected async Task SaveFullEntry()
-        {
-            timeEntryValidator.ClearErrors();
-
-            var errors = new Dictionary<string, List<string>>();
-
-            if (newEntry.PositionId == 0)
-            {
-                errors.Add(nameof(newEntry.PositionId), new List<string>() { "A position must be selected." });
-            }
-            if (newEntry.MemberId == 0)
-            {
-                errors.Add(nameof(newEntry.MemberId), new List<string>() { "A member must be selected" });
-            }
-
-            if (errors.Count() > 0)
-            {
-                timeEntryValidator.DisplayErrors(errors);
+                //TODO: notify edit time entry success
             }
             else
             {
-                newEntry.StartTime = newDate + newStartTime.TimeOfDay;
-                newEntry.EndTime = newDate + newEndTime.TimeOfDay;
-
-                var result = await _tsService.AddTimeEntry(newEntry);
-                if (result.Successful)
-                {
-                    showFullModal = false;
-
-                    await GetArchived();
-                    //TODO: add success indicator
-                }
-                else
-                {
-                    //TODO: add add failure indicator
-                }
+                modal.Close();
+                pageErrors.Add(apiResult.Error);
             }
         }
 
-        protected async Task ClockIn()
+        protected async Task ShowClockInModal()
         {
-            var errors = ValidateEntryFormErrors();
-
-            if (errors.Count() > 0)
+            var parameters = new ModalParameters();
+            parameters.Add("ClockInEntry", new TimeEntryCreateDto());
+            var modal = _modalService.Show(typeof(ClockInModal), "New clock in", parameters);
+            var modalResult = await modal.Result;
+            var apiResult = modalResult.Cancelled ? null : modalResult.Data as ApiResult<List<TimeEntryReadEditDto>>;
+            if (apiResult == null)
             {
-                timeEntryValidator.DisplayErrors(errors);
+                modal.Close();
+                return;
+            }
+            if (apiResult.Successful)
+            {
+                modal.Close();
+                var result = await _tsService.GetCurrentTimeEntries();
+                if (result.Successful)
+                {
+                    timeEntries = result.Data;
+                }
+                else
+                {
+                    pageErrors.Add(result.Error);
+                }
+                //TODO: notify edit time entry success
             }
             else
             {
-                newEntry.StartTime = DateTime.Now;
-
-                var result = await _tsService.PunchClock(newEntry);
-                if (result.Successful)
-                {
-                    showClockInModal = false;
-
-                    await GetCurrent();
-                    //TODO: add success indicator
-                }
-                else
-                {
-                    //TODO: add add failure indicator
-                }
+                modal.Close();
+                pageErrors.Add(apiResult.Error);
             }
-        }
-
-        private Dictionary<string, List<string>> ValidateEntryFormErrors()
-        {
-            timeEntryValidator.ClearErrors();
-
-            var errors = new Dictionary<string, List<string>>();
-
-            if (newEntry.PositionId == 0)
-            {
-                errors.Add(nameof(newEntry.PositionId), new List<string>() { "A position must be selected." });
-            }
-            if (newEntry.MemberId == 0)
-            {
-                errors.Add(nameof(newEntry.MemberId), new List<string>() { "A member must be selected" });
-            }
-
-            return errors;
         }
 
         protected async Task GetCurrent()

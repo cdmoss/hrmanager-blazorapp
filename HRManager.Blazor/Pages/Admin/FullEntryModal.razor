@@ -1,0 +1,62 @@
+﻿@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Calendars
+@inherits FullEntryModalBase
+
+@code {
+    
+}
+
+<div>
+    @if (pageErrors.Any())
+    {
+        foreach (string error in pageErrors)
+        {
+            <p>@error</p>
+        }
+    }
+    else
+    {
+        <hr/>
+        <EditForm Model="TimeEntry" OnValidSubmit="SaveEntry" Context="TimeEntryContext" id="add-full-modal">
+            <DataAnnotationsValidator />
+            <CustomValidator @ref="timeEntryValidator" />
+            <ValidationSummary />
+            <label>Position worked</label>
+            <SfDropDownList TValue="int" ID="PositionId" DataSource="positions" @bind-Value="TimeEntry.PositionId" TItem="Position">
+                <DropDownListFieldSettings Text="Name" Value="Id" />
+            </SfDropDownList>
+            <label class="mt-3">Worked by</label>
+            <SfDropDownList TValue="int" DataSource="members" @bind-Value="TimeEntry.MemberId" TItem="MemberMinimalDto">
+                <DropDownListTemplates TItem="MemberMinimalDto">
+                    <ItemTemplate Context="memberContext">
+                        @{var member = (memberContext as MemberMinimalDto);}
+                        <span>@member.FirstName @member.LastName</span>
+                    </ItemTemplate>
+                </DropDownListTemplates>
+                <DropDownListFieldSettings Text="FullName" Value="Id" />
+            </SfDropDownList>
+
+            <label class="mt-3">Date worked</label>
+            <SfDatePicker TValue="DateTime" @bind-Value="newDate" />
+
+            @if (!hideEndTime)
+            {
+                <label class="mt-3">Time worked</label>
+            }
+            else
+            {
+                <label class="mt-3">Start time</label>
+            }
+            <SfTimeRangePicker InitialStart="newStartTime" InitialEnd="newEndTime" @bind-Start="newStartTime" @bind-End="newEndTime" @bind-HideEndTime="hideEndTime" />
+
+            <label class="mt-3">Stay clocked in</label>
+            <InputCheckbox type="check" class="form-check" @bind-Value="hideEndTime" />
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" @onclick="@ModalCancel">Cancel</button>
+                <button type="submit" @onclick="SaveEntry" class="btn btn-primary">Save</button>
+            </div>
+        </EditForm>
+    }
+</div>

@@ -3,8 +3,6 @@
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.Authorization
 @using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.DropDowns
-@using Syncfusion.Blazor.Calendars
 @using HRManager.Blazor.Pages.Shared
 @using HRManager.Blazor.Pages.Shared.PageMenus
 @inherits TimesheetBase
@@ -37,33 +35,7 @@
                     AllowSelection="true"
                     AllowPdfExport="true">
                 <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
-                <GridEditSettings AllowEditing="true" AllowAdding="true" Mode="EditMode.Dialog">
-                    <Template Context="editContext">
-                        @{
-                            var timeEntry = (editContext as TimeEntryReadEditDto);
-                        }
-                        @if (timeEntry.EndTime == null)
-                        {
-                            <TSGridEditTemplate @ref="editTemplate"
-                                                @bind-SelectedTimeEntry="timeEntry"
-                                                Positions="positions"
-                                                Members="members"
-                                                EntryDate="timeEntry.StartTime.Date"
-                                                StartTime="timeEntry.StartTime"
-                                                EndTime="timeEntry.StartTime.Date + new TimeSpan(16, 0, 0)" />
-                        }
-                        else
-                        {
-                            <TSGridEditTemplate @ref="editTemplate"
-                                                @bind-SelectedTimeEntry="timeEntry"
-                                                Positions="positions"
-                                                Members="members"
-                                                EntryDate="timeEntry.StartTime.Date"
-                                                StartTime="timeEntry.StartTime"
-                                                EndTime="timeEntry.EndTime.Value" />
-                        }
-                    </Template>
-                </GridEditSettings>
+                <GridEditSettings AllowEditing="true" AllowAdding="true" Mode="EditMode.Dialog"></GridEditSettings>
                 <GridColumns>
                     <GridColumn Field="Member.FullName" HeaderText="Worked by" TextAlign="TextAlign.Center" />
                     <GridColumn Field="Position.Name" HeaderText="Position worked" TextAlign="TextAlign.Center" />
@@ -75,109 +47,6 @@
                 </GridColumns>
                 <GridEvents TValue="TimeEntryReadEditDto" OnActionBegin="BeginActionHandler" />
             </SfGrid>
-
-            if (showFullModal)
-            {
-                <div class="modal fade show" id="myModal" style="display:block" aria-modal="true" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <EditForm Model="timeEntry" OnValidSubmit="SaveFullEntry" Context="newEntryContext" id="add-full-modal">
-                                <DataAnnotationsValidator />
-                                <CustomValidator @ref="timeEntryValidator" />
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title">New time entry</h5>
-                                    <button type="button" class="close" @onclick="@ModalCancel">&times;</button>
-                                </div>
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    <ValidationSummary />
-                                    <label>Position worked</label>
-                                    <SfDropDownList TValue="int" ID="PositionId" DataSource="positions" @bind-Value="newEntry.PositionId" TItem="Position">
-                                        <DropDownListFieldSettings Text="Name" Value="Id" />
-                                    </SfDropDownList>
-                                    <label class="mt-3">Worked by</label>
-                                    <SfDropDownList TValue="int" DataSource="members" @bind-Value="newEntry.MemberId" TItem="MemberMinimalDto">
-                                        <DropDownListTemplates TItem="MemberMinimalDto">
-                                            <ItemTemplate Context="memberContext">
-                                                @{var member = (memberContext as MemberMinimalDto);}
-                                                <span>@member.FirstName @member.LastName</span>
-                                            </ItemTemplate>
-                                        </DropDownListTemplates>
-                                        <DropDownListFieldSettings Text="FullName" Value="Id" />
-                                    </SfDropDownList>
-
-                                    <label class="mt-3">Date worked</label>
-                                    <SfDatePicker TValue="DateTime" @bind-Value="newDate" />
-
-                                    @if (!hideEndTime)
-                                    {
-                                        <label class="mt-3">Time worked</label>
-                                    }
-                                    else
-                                    {
-                                        <label class="mt-3">Start time</label>
-                                    }
-                                    <SfTimeRangePicker InitialStart="newStartTime" InitialEnd="newEndTime" @bind-Start="newStartTime" @bind-End="newEndTime" @bind-HideEndTime="hideEndTime" />
-                                    
-                                    <label>Stay clocked in</label>
-                                    <InputCheckbox type="check" class="form-check" @bind-Value="hideEndTime" />
-                                </div>
-
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-dark" @onclick="@ModalCancel">Cancel</button>
-                                    <button type="submit" class="btn btn-primary">Save</button>
-                                </div>
-                            </EditForm>
-                        </div>
-                    </div>
-                </div>
-            }
-
-            if (showClockInModal)
-            {
-                <div class="modal fade show" id="myModal" style="display:block" aria-modal="true" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <EditForm Model="newEntry" OnValidSubmit="ClockIn" Context="newEntryContext" id="add-full-modal">
-                                <DataAnnotationsValidator />
-                                <CustomValidator @ref="timeEntryValidator" />
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title">New clock in</h5>
-                                    <button type="button" class="close" @onclick="@ModalCancel">&times;</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    <ValidationSummary />
-                                    <label>Position worked</label>
-                                    <SfDropDownList TValue="int" ID="PositionId" DataSource="positions" @bind-Value="newEntry.PositionId" TItem="Position">
-                                        <DropDownListFieldSettings Text="Name" Value="Id" />
-                                    </SfDropDownList>
-                                    <label class="mt-3">Worked by</label>
-                                    <SfDropDownList TValue="int" DataSource="members" @bind-Value="newEntry.MemberId" TItem="MemberMinimalDto">
-                                        <DropDownListTemplates TItem="MemberMinimalDto">
-                                            <ItemTemplate Context="memberContext">
-                                                @{var member = (memberContext as MemberMinimalDto);}
-                                                <span>@member.FirstName @member.LastName</span>
-                                            </ItemTemplate>
-                                        </DropDownListTemplates>
-                                        <DropDownListFieldSettings Text="FullName" Value="Id" />
-                                    </SfDropDownList>
-                                </div>
-
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-dark" @onclick="@ModalCancel">Cancel</button>
-                                    <button type="submit" class="btn btn-primary">Clock in</button>
-                                </div>
-                            </EditForm>
-                        </div>
-                    </div>
-                </div>
-            }    
         }
     </Authorized>
     <NotAuthorized>

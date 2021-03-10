@@ -40,6 +40,12 @@ namespace HRManager.Api.Controllers
             return new ObjectResult(await _tsService.AddFullEntry(dto));
         }
 
+        [HttpPost("update")]
+        public async Task<IActionResult> UpdateEntry(TimeEntryReadEditDto dto)
+        {
+            return new ObjectResult(await _tsService.UpdateEntry(dto));
+        }
+
         [HttpPost("punch")]
         public async Task<IActionResult> PunchClock(TimeEntryCreateDto dto)
         {

@@ -123,7 +123,7 @@ namespace HRManager.Blazor.Services
                 return new ApiResult<List<TimeEntryReadEditDto>>
                 {
                     Successful = false,
-                    Error = $"Something went wrong when trying to punch the ime clock:\n\n{ex.Message}\n{ex.StackTrace}"
+                    Error = $"Something went wrong when trying to punch the time clock:\n\n{ex.Message}\n{ex.StackTrace}"
                 };
             }
         }
@@ -140,7 +140,7 @@ namespace HRManager.Blazor.Services
                 return new ApiResult<List<TimeEntryReadEditDto>>
                 {
                     Successful = false,
-                    Error = $"Something went wrong when trying to punch the ime clock:\n\n{ex.Message}\n{ex.StackTrace}"
+                    Error = $"Something went wrong when trying to update a time entry:\n\n{ex.Message}\n{ex.StackTrace}"
                 };
             }
         }

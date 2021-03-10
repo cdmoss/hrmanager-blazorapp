@@ -254,10 +254,8 @@ C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debu
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\ref\HRManager.Blazor.dll
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\HRManager.Blazor.pdb
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\HRManager.Blazor.genruntimeconfig.cache
-C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\TSGridEditTemplate.razor.g.cs
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\MemberGridEditTemplate.razor.g.cs
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\MemberGridReadTemplate.razor.g.cs
-C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Admin\TSGridEditTemplate.razor.g.cs
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Admin\MemberGridEditTemplate.razor.g.cs
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Admin\MemberGridReadTemplate.razor.g.cs
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\scopedcss\Pages\Admin\MemberGridEditTemplate.razor.rz.scp.css
@@ -550,3 +548,9 @@ C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\H
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\ref\HRManager.Blazor.dll
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\HRManager.Blazor.pdb
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\HRManager.Blazor.genruntimeconfig.cache
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\ClockInModal.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\FullEntryModal.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\bin\Debug\net5.0\Blazored.Modal.dll
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\bin\Debug\net5.0\Microsoft.JSInterop.WebAssembly.dll
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Admin\ClockInModal.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Admin\FullEntryModal.razor.g.cs

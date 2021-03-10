@@ -1,0 +1,31 @@
+﻿@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Calendars
+@inherits ClockInModalBase
+
+@code {
+
+}
+<EditForm Model="ClockInEntry" OnValidSubmit="ClockIn" Context="ClockInEntryContext" id="add-full-modal">
+    <DataAnnotationsValidator />
+    <CustomValidator @ref="timeEntryValidator" />
+    <ValidationSummary />
+    <label>Position worked</label>
+    <SfDropDownList TValue="int" ID="PositionId" DataSource="positions" @bind-Value="ClockInEntry.PositionId" TItem="Position">
+        <DropDownListFieldSettings Text="Name" Value="Id" />
+    </SfDropDownList>
+    <label class="mt-3">Worked by</label>
+    <SfDropDownList TValue="int" DataSource="members" @bind-Value="ClockInEntry.MemberId" TItem="MemberMinimalDto">
+        <DropDownListTemplates TItem="MemberMinimalDto">
+            <ItemTemplate Context="memberContext">
+                @{var member = (memberContext as MemberMinimalDto);}
+                <span>@member.FirstName @member.LastName</span>
+            </ItemTemplate>
+        </DropDownListTemplates>
+        <DropDownListFieldSettings Text="FullName" Value="Id" />
+    </SfDropDownList>
+    <hr/>
+    <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-dark" @onclick="@ModalCancel">Cancel</button>
+        <button type="submit" class="btn btn-primary">Clock in</button>
+    </div>
+</EditForm>

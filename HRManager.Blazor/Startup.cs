@@ -22,6 +22,7 @@ using IdentityModel;
 using HRManager.Blazor.Services;
 using HRManager.Blazor.Adaptors;
 using Microsoft.Extensions.Options;
+using Blazored.Modal;
 
 namespace HRManager.Blazor
 {
@@ -69,6 +70,8 @@ namespace HRManager.Blazor
             })
                 .AddBootstrapProviders()
                 .AddFontAwesomeIcons();
+
+            services.AddBlazoredModal();
 
             services.AddAuthentication(options =>
             {
