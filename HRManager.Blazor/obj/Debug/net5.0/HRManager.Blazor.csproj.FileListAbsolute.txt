@@ -432,7 +432,6 @@ C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\R
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\Dashboard.razor.g.cs
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\ScheduleEditorTemplate.razor.g.cs
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\Timesheet.razor.g.cs
-C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\TSGridEditTemplate.razor.g.cs
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Member\Calendar.razor.g.cs
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Member\Information.razor.g.cs
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Shared\AuthChecker.razor.g.cs
@@ -478,7 +477,6 @@ C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\R
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Admin\Dashboard.razor.g.cs
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Admin\ScheduleEditorTemplate.razor.g.cs
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Admin\Timesheet.razor.g.cs
-C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Admin\TSGridEditTemplate.razor.g.cs
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Member\Calendar.razor.g.cs
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Member\Information.razor.g.cs
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Shared\AuthChecker.razor.g.cs
@@ -554,3 +552,9 @@ C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\bin\Debu
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\bin\Debug\net5.0\Microsoft.JSInterop.WebAssembly.dll
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Admin\ClockInModal.razor.g.cs
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Admin\FullEntryModal.razor.g.cs
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\bin\Debug\net5.0\Blazored.Modal.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\bin\Debug\net5.0\Microsoft.JSInterop.WebAssembly.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\ClockInModal.razor.g.cs
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\FullEntryModal.razor.g.cs
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Admin\ClockInModal.razor.g.cs
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Admin\FullEntryModal.razor.g.cs

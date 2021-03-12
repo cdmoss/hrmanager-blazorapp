@@ -90,6 +90,8 @@ namespace HRManager.Blazor.Pages.Admin
             }
             else
             {
+                TimeEntry.StartTime = newDate.Date + newStartTime.TimeOfDay;
+                TimeEntry.EndTime = newDate.Date + newEndTime.TimeOfDay;
                 if (IsNewEntry)
                 {
                     var newEntry = new TimeEntryCreateDto()

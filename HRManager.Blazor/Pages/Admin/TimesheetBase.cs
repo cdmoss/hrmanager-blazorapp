@@ -45,12 +45,7 @@ namespace HRManager.Blazor.Pages.Admin
                 return;
             }
 
-            var tsResult = await _tsService.GetCurrentTimeEntries();
-            if (!tsResult.Successful)
-            {
-                pageErrors.Add(tsResult.Error);
-            }
-            timeEntries = tsResult.Data;
+            await GetEntriesAsync(true);
 
             var positionResult = _posService.GetPositions();
             if (!positionResult.Successful)
@@ -65,6 +60,28 @@ namespace HRManager.Blazor.Pages.Admin
                 pageErrors.Add(membersResult.Error);
             }
             members = membersResult.Data;
+        }
+
+        protected async Task GetEntriesAsync(bool isCurrent)
+        {
+            if (isCurrent)
+            {
+                var tsResult = await _tsService.GetCurrentTimeEntries();
+                if (!tsResult.Successful)
+                {
+                    pageErrors.Add(tsResult.Error);
+                }
+                timeEntries = tsResult.Data.OrderBy(s => s.StartTime).ToList();
+            }
+            else
+            {
+                var tsResult = await _tsService.GetArchivedTimeEntries();
+                if (!tsResult.Successful)
+                {
+                    pageErrors.Add(tsResult.Error);
+                }
+                timeEntries = tsResult.Data.OrderBy(s => s.EndTime.Value).ToList();
+            }
         }
 
         protected async Task BeginActionHandler(ActionEventArgs<TimeEntryReadEditDto> args)
@@ -112,15 +129,7 @@ namespace HRManager.Blazor.Pages.Admin
             if (apiResult.Successful)
             {
                 modal.Close();
-                var result = await _tsService.GetArchivedTimeEntries();
-                if (result.Successful)
-                {
-                    timeEntries = result.Data;
-                }
-                else
-                {
-                    pageErrors.Add(result.Error);
-                }
+                await GetEntriesAsync(false);
                 //TODO: notify edit time entry success
             }
             else
@@ -145,15 +154,7 @@ namespace HRManager.Blazor.Pages.Admin
             if (apiResult.Successful)
             {
                 modal.Close();
-                var result = await _tsService.GetCurrentTimeEntries();
-                if (result.Successful)
-                {
-                    timeEntries = result.Data;
-                }
-                else
-                {
-                    pageErrors.Add(result.Error);
-                }
+                await GetEntriesAsync(true);
                 //TODO: notify edit time entry success
             }
             else
@@ -167,24 +168,14 @@ namespace HRManager.Blazor.Pages.Admin
         {
             current = true;
 
-            var tsResult = await _tsService.GetCurrentTimeEntries();
-            if (!tsResult.Successful)
-            {
-                pageErrors.Add(tsResult.Error);
-            }
-            timeEntries = tsResult.Data;
+            await GetEntriesAsync(true);
         }
 
         protected async Task GetArchived()
         {
             current = false;
 
-            var tsResult = await _tsService.GetArchivedTimeEntries();
-            if (!tsResult.Successful)
-            {
-                pageErrors.Add(tsResult.Error);
-            }
-            timeEntries = tsResult.Data;
+            await GetEntriesAsync(false);
         }
 
         protected void ModalCancel()
