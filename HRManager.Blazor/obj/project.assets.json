@@ -157,6 +157,9 @@
           "lib/net5.0/Blazorise.Icons.FontAwesome.dll": {}
         }
       },
+      "Bootstrap.Switch/3.3.2.2": {
+        "type": "package"
+      },
       "CryptoHelper/3.0.2": {
         "type": "package",
         "dependencies": {
@@ -2679,6 +2682,23 @@
         "blazorise.icons.fontawesome.nuspec",
         "lib/net5.0/Blazorise.Icons.FontAwesome.dll",
         "lib/netstandard2.1/Blazorise.Icons.FontAwesome.dll"
+      ]
+    },
+    "Bootstrap.Switch/3.3.2.2": {
+      "sha512": "EStbP4uD7dh49QVAh4RH8b4nc9hmMDws4zjJpS3oLhz8YtrEq4ns4feko/hLQERYaX/eaR7Etqr311LGalVIjA==",
+      "type": "package",
+      "path": "bootstrap.switch/3.3.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Content/bootstrap-switch/bootstrap2/bootstrap-switch.css",
+        "Content/Content/bootstrap-switch/bootstrap2/bootstrap-switch.min.css",
+        "Content/Content/bootstrap-switch/bootstrap3/bootstrap-switch.css",
+        "Content/Content/bootstrap-switch/bootstrap3/bootstrap-switch.min.css",
+        "Content/Scripts/bootstrap-switch.js",
+        "Content/Scripts/bootstrap-switch.min.js",
+        "bootstrap.switch.3.3.2.2.nupkg.sha512",
+        "bootstrap.switch.nuspec"
       ]
     },
     "CryptoHelper/3.0.2": {
@@ -7822,6 +7842,7 @@
       "Blazorise >= 0.9.2.4",
       "Blazorise.Bootstrap >= 0.9.2.4",
       "Blazorise.Icons.FontAwesome >= 0.9.2.4",
+      "Bootstrap.Switch >= 3.3.2.2",
       "HRManager.Common >= 1.0.0",
       "IdentityModel >= 4.6.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.0",
@@ -7908,6 +7929,10 @@
           "Blazorise.Icons.FontAwesome": {
             "target": "Package",
             "version": "[0.9.2.4, )"
+          },
+          "Bootstrap.Switch": {
+            "target": "Package",
+            "version": "[3.3.2.2, )"
           },
           "IdentityModel": {
             "target": "Package",

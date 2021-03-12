@@ -30,6 +30,7 @@
           "Blazorise": "0.9.2.4",
           "Blazorise.Bootstrap": "0.9.2.4",
           "Blazorise.Icons.FontAwesome": "0.9.2.4",
+          "Bootstrap.Switch": "3.3.2.2",
           "HRManager.Common": "1.0.0",
           "IdentityModel": "4.6.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.0",
@@ -495,6 +496,7 @@
           "lib/net5.0/Blazorise.Icons.FontAwesome.dll": {}
         }
       },
+      "Bootstrap.Switch/3.3.2.2": {},
       "CryptoHelper/3.0.2": {
         "dependencies": {
           "Microsoft.AspNetCore.Cryptography.KeyDerivation": "5.0.1"
@@ -3981,6 +3983,13 @@
       "sha512": "sha512-BvROZ5Dk7Ee59rI5Ew5WYwWDbRIkq2hht8HuDyqPNFjgCqS8xDyhHvsjF7Xtq2WuFDrV9e9UY7xf997AyU0Vlw==",
       "path": "blazorise.icons.fontawesome/0.9.2.4",
       "hashPath": "blazorise.icons.fontawesome.0.9.2.4.nupkg.sha512"
+    },
+    "Bootstrap.Switch/3.3.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EStbP4uD7dh49QVAh4RH8b4nc9hmMDws4zjJpS3oLhz8YtrEq4ns4feko/hLQERYaX/eaR7Etqr311LGalVIjA==",
+      "path": "bootstrap.switch/3.3.2.2",
+      "hashPath": "bootstrap.switch.3.3.2.2.nupkg.sha512"
     },
     "CryptoHelper/3.0.2": {
       "type": "package",

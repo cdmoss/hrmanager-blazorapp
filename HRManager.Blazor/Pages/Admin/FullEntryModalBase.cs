@@ -30,8 +30,8 @@ namespace HRManager.Blazor.Pages.Admin
         protected List<Position> positions = new List<Position>();
         protected List<MemberMinimalDto> members = new List<MemberMinimalDto>();
         protected List<string> pageErrors = new List<string>();
-        protected DateTime newStartTime = DateTime.Now.Date + new TimeSpan(8, 0, 0, 0, 0);
-        protected DateTime newEndTime = DateTime.Now.Date + new TimeSpan(16, 0, 0, 0, 0);
+        protected DateTime newStartTime = DateTime.Now.Date + new TimeSpan(0, 8, 0, 0, 0);
+        protected DateTime newEndTime = DateTime.Now.Date + new TimeSpan(0, 16, 0, 0, 0);
         protected DateTime newDate = DateTime.Now.Date;
         protected bool hideEndTime = false;
 
@@ -57,16 +57,25 @@ namespace HRManager.Blazor.Pages.Admin
                 pageErrors.Add(memResult.Error);
             }
 
-            newStartTime = TimeEntry.StartTime.Date + TimeEntry.StartTime.TimeOfDay;
-            if (TimeEntry.EndTime != null)
+            if (TimeEntry.MemberId == 0)
             {
-                newEndTime = TimeEntry.EndTime.Value.Date + TimeEntry.EndTime.Value.TimeOfDay;
+                TimeEntry.StartTime = newStartTime;
+                TimeEntry.EndTime = newEndTime;
             }
             else
             {
-                hideEndTime = true;
-            }
-            newDate = TimeEntry.StartTime.Date;
+                newStartTime = TimeEntry.StartTime.Date + TimeEntry.StartTime.TimeOfDay;
+                if (TimeEntry.EndTime != null)
+                {
+                    newEndTime = TimeEntry.EndTime.Value.Date + TimeEntry.EndTime.Value.TimeOfDay;
+                }
+                else
+                {
+                    hideEndTime = true;
+                }
+
+                newDate = TimeEntry.StartTime.Date;
+            } 
         }
 
         protected async Task SaveEntry()
