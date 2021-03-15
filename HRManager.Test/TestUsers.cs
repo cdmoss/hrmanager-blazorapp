@@ -30,7 +30,7 @@ namespace HRManager.Test
 
                 var shiftService = new UserService(userManager, new NullLogger<UserService>());
 
-                var dto = new IdentityDto() { MemberId = 15, Data = new AccountRegisterData { Email = "newtestuser@email.com", Password = "P@$$W0rd", ConfirmPassword = "P@$$W0rd"} };
+                var dto = new IdentityDto() { MemberId = 15, Data = new AccountCredsData { Email = "newtestuser@email.com", Password = "P@$$W0rd", ConfirmPassword = "P@$$W0rd"} };
 
                 var shiftResult = shiftService.RegisterUser(dto).Result;
 

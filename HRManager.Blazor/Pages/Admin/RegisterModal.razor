@@ -1,0 +1,19 @@
+﻿@using HRManager.Blazor.Pages.Account
+@using Blazored.Modal
+@using Blazored.Modal.Services
+
+<h3>RegisterModal</h3>
+
+@code {
+    [Parameter]
+    public Register.RegistrationType Type { get; set; }
+    [CascadingParameter]
+    public BlazoredModalInstance Modal { get; set; }
+
+    private async Task HandleRegistrationAttempt(bool? isSuccessful)
+    {
+        await Modal.CloseAsync(ModalResult.Ok(isSuccessful));
+    }
+}
+
+<Register Type="Type" AlertRegistrationAttempt="HandleRegistrationAttempt" />

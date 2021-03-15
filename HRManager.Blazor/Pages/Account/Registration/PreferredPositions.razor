@@ -2,8 +2,18 @@
 @using Services
 @inherits PreferredPositionsBase
 
+@switch (Type)
+{
+    case Register.RegistrationType.MemberSelf:
 <h5>What volunteering positions interest you most?</h5>
-<br/>
+        break;
+    case Register.RegistrationType.MemberAdmin:
+        <h5>Select the positions that the member will work</h5>
+        break;
+    default:
+        break;
+}
+<br />
 <EditForm id="3" Model="internalPositionsData" OnValidSubmit="GoToNextSection">
     <DataAnnotationsValidator />
     <div id="positions-container" class="d-flex">

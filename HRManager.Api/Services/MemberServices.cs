@@ -285,7 +285,7 @@ namespace HRManager.Api.Services
 
             var member = new MemberProfile
             {
-                IsStaff = false,
+                IsStaff = dto.Account.IsStaff,
                 Email = dto.Account.Email,
                 FirstName = dto.Personal.FirstName,
                 LastName = dto.Personal.LastName,

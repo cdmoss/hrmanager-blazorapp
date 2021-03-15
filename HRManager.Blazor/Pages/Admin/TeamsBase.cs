@@ -1,4 +1,5 @@
 ﻿using HRManager.Blazor.Pages.Admin;
+using HRManager.Blazor.Pages.Account;
 using HRManager.Blazor.Services;
 using HRManager.Common;
 using HRManager.Common.Dtos;
@@ -10,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blazored.Modal;
+using Blazored.Modal.Services;
 
 namespace HRManager.Blazor.Pages.Admin
 {
@@ -19,12 +22,16 @@ namespace HRManager.Blazor.Pages.Admin
         protected Task<AuthenticationState> authenticationStateTask { get; set; }
         [Inject]
         protected IMemberService _memberService { get; set; }
-        [Inject]
-        protected IJSRuntime _jsRuntime { get; set; }
+        //[Inject]
+        //protected IJSRuntime _jsRuntime { get; set; }
         [Inject]
         protected IPositionService _posService { get; set; }
-        protected List<AdminMemberDto> members;
+        [Inject]
+        public IModalService _modalService { get; set; }
+        protected List<AdminMemberDto> team;
+        protected List<AdminMemberDto> filteredTeam;
         protected List<Position> positions;
+        protected SfGrid<AdminMemberDto> grid;
         protected MemberGridEditTemplate editTemplate = new MemberGridEditTemplate();
         protected List<string> errors = new List<string>();
 
@@ -36,39 +43,36 @@ namespace HRManager.Blazor.Pages.Admin
             var authState = await authenticationStateTask;
             var user = authState.User;
 
-            if (user.Identity.IsAuthenticated)
+            if (!user.Identity.IsAuthenticated)
             {
-                var memberResult = await _memberService.GetFullMembers();
-                if (memberResult.Successful)
-                {
-                    members = memberResult.Data;
+                return;
+            }
 
-                    var positionResult = _posService.GetPositions();
-                    if (positionResult.Successful)
-                    {
-                        positions = positionResult.Data;
+            var memberResult = await _memberService.GetFullMembers();
+            if (!memberResult.Successful)
+            {
+                errors.Add(memberResult.Error);
+            }
+            team = memberResult.Data;
+            filteredTeam = team.Where(m => !m.IsStaff).ToList();
 
-                        foreach (var member in members)
-                        {
-                            selectedTabs.Add(member.Id, "personal," + member.Id);
-                        }
-                    }
-                    else
-                    {
-                        errors.Add(positionResult.Error);
-                    }
-                }
-                else
-                {
-                    errors.Add(memberResult.Error);
-                }
+            var positionResult = _posService.GetPositions();
+            if (!positionResult.Successful)
+            {
+                errors.Add(positionResult.Error);
+            }
+            positions = positionResult.Data;
+
+            foreach (var member in team)
+            {
+                selectedTabs.Add(member.Id, "personal," + member.Id);
             }
         }
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            await _jsRuntime.InvokeVoidAsync("teamSwitch");
-        }
+        //protected override async Task OnAfterRenderAsync(bool firstRender)
+        //{
+        //    //await _jsRuntime.InvokeVoidAsync("teamSwitch");
+        //}
 
         protected async Task BeginActionHandler(ActionEventArgs<AdminMemberDto> args)
         {
@@ -79,12 +83,85 @@ namespace HRManager.Blazor.Pages.Admin
                 var result = await _memberService.UpdateMember(args.Data);
                 if (result.Successful)
                 {
-                    members = result.Data;
+                    team = result.Data;
+                    filteredTeam = team.Where(m => !m.IsStaff).ToList();
                 }
                 else
                 {
                     errors.Add(result.Error);
                 }
+            }
+        }
+
+        protected void OnlyStaff()
+        {
+            filteredTeam = team.Where(m => m.IsStaff).ToList();
+        }
+
+        protected void OnlyMembers()
+        {
+            filteredTeam = team.Where(m => !m.IsStaff).ToList();
+        }
+
+        protected async Task AddMember()
+        {
+            var parameters = new ModalParameters();
+            parameters.Add("Type", Register.RegistrationType.MemberAdmin);
+            var modal = _modalService.Show(typeof(Register), "Add new member", parameters);
+            var modalResult = await modal.Result;
+            var registerSuccessful = modalResult.Cancelled ? null : modalResult.Data as bool?;
+            if (registerSuccessful == null)
+            {
+                modal.Close();
+                return;
+            }
+            if (registerSuccessful.Value)
+            {
+                modal.Close();
+                var memberResult = await _memberService.GetFullMembers();
+                if (!memberResult.Successful)
+                {
+                    errors.Add(memberResult.Error);
+                }
+                team = memberResult.Data;
+                filteredTeam = team.Where(m => !m.IsStaff).ToList();
+                //TODO: notify successful registration
+            }
+            else
+            {
+                modal.Close();
+                errors.Add("Registration was unsuccessful, try again or contact the application support team.");
+            }
+        }
+
+        protected async Task AddStaff()
+        {
+            var parameters = new ModalParameters();
+            parameters.Add("Type", Register.RegistrationType.StaffAdmin);
+            var modal = _modalService.Show(typeof(Register), "Add new staff", parameters);
+            var modalResult = await modal.Result;
+            var registerSuccessful = modalResult.Cancelled ? null : modalResult.Data as bool?;
+            if (registerSuccessful == null)
+            {
+                modal.Close();
+                return;
+            }
+            if (registerSuccessful.Value)
+            {
+                modal.Close();
+                var memberResult = await _memberService.GetFullMembers();
+                if (!memberResult.Successful)
+                {
+                    errors.Add(memberResult.Error);
+                }
+                team = memberResult.Data;
+                filteredTeam = team.Where(m => m.IsStaff).ToList();
+                //TODO: notify successful registration
+            }
+            else
+            {
+                modal.Close();
+                errors.Add("Registration was unsuccessful, try again or contact the application support team.");
             }
         }
 

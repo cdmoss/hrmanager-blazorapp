@@ -16,6 +16,7 @@ namespace HRManager.Blazor.Pages.Account
         public EventCallback<CertificatesData> CertDataChanged { get; set; }
         [Parameter]
         public EventCallback SubmitRegistration { get; set; }
+
         protected bool popUpVisible = false;
         protected bool showModal = false;
 

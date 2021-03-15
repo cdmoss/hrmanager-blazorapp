@@ -143,6 +143,19 @@ using HRManager.Blazor.Pages.Account.Registration;
 #nullable restore
 #line 10 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor"
        
+    public enum RegistrationType
+    {
+        MemberSelf,
+        MemberAdmin,
+        StaffAdmin
+    }
+
+    [Parameter]
+    public EventCallback<bool?> AlertRegistrationAttempt { get; set; }
+
+    [Parameter]
+    public RegistrationType Type { get; set; }
+
     // must create instance of model to be bound*******
     private MemberRegisterDto mainDto = new MemberRegisterDto();
     private bool isSuccessful;
@@ -155,9 +168,22 @@ using HRManager.Blazor.Pages.Account.Registration;
     private async Task SubmitRegistration()
     {
         loadingSubmission = true;
+        if (Type == RegistrationType.StaffAdmin)
+        {
+            mainDto.Account.IsStaff = true;
+        }
+        else
+        {
+            mainDto.Account.IsStaff = false;
+        }
         currentSection++;
         isSuccessful = await _regService.Register(mainDto);
         loadingSubmission = false;
+
+        if (AlertRegistrationAttempt.HasDelegate)
+        {
+            await AlertRegistrationAttempt.InvokeAsync(isSuccessful);
+        }
     }
 
     private async Task TestRegistration()
@@ -184,13 +210,31 @@ using HRManager.Blazor.Pages.Account.Registration;
 
     private void HandleSectionCompleted()
     {
-        currentSection++;
+        // if a staff member is being registered, skip positions section
+        if (Type == RegistrationType.StaffAdmin && currentSection == 2)
+        {
+            currentSection += 2;
+        }
+        else
+        {
+            currentSection++;
+        }
+
         StateHasChanged();
     }
 
     private void HandlePreviousSectionRequested()
     {
-        currentSection--;
+        // if a staff member is being registered, skip positions section
+        if (Type == RegistrationType.StaffAdmin && currentSection == 4)
+        {
+            currentSection -= 2;
+        }
+        else
+        {
+            currentSection--;
+        }
+
         StateHasChanged();
     }
 

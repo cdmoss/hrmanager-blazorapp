@@ -1,9 +1,22 @@
 ﻿@using Blazor.Services
 @inherits HRManager.Blazor.Pages.Account.Registration.AccountCredsBase
 
+@switch (Type)
+{
+    case Register.RegistrationType.MemberSelf:
+        <h5>What email and password would you like to use?</h5>
+        break;
+    case Register.RegistrationType.MemberAdmin:
+        <h5>Enter the member's email and password</h5>
+        break;
+    case Register.RegistrationType.StaffAdmin:
+        <h5>Enter the staff member's email and password</h5>
+        break;
+    default:
+        break;
+}
 
-<h5>What email and password would you like to use?</h5>
-<br/>
+<br />
 <EditForm id="1" Model="AccountData" OnValidSubmit="@GoToNextSection">
     <DataAnnotationsValidator />
     <div class="form-group">

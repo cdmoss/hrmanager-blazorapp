@@ -16,14 +16,7 @@ namespace HRManager.Common.Dtos
         
     }
 
-    public class AccountData : MemberSectionData
-    {
-        [Required(ErrorMessage = "A valid email is required")]
-        [EmailAddress]
-        public string Email { get; set; }
-    }
-
-    public class AccountRegisterData : MemberSectionData
+    public class AccountCredsData : MemberSectionData
     {
         [Required(ErrorMessage = "A valid email is required")]
         [EmailAddress]
@@ -34,6 +27,7 @@ namespace HRManager.Common.Dtos
         [RegularExpression(Constants.Regex.Password, ErrorMessage = "Your password must be at least 8 characters and contain one uppercase letter, one lowercase letter, one number and one special character")]
         [Compare(nameof(Password), ErrorMessage = "The entered passwords don't match")]
         public string ConfirmPassword { get; set; }
+        public bool IsStaff { get; set; }
     }
 
     public class PersonalAndContactData : MemberSectionData

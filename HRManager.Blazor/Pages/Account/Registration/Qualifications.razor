@@ -2,7 +2,20 @@
 @using Syncfusion.Blazor.Buttons
 @inherits QualificationsBase
 
+@switch (Type)
+{
+    case Register.RegistrationType.MemberSelf:
 <h5>What kind of similar things have you done before? (Optional)</h5>
+        break;
+    case Register.RegistrationType.MemberAdmin:
+        <h5>Enter the member's qualifications (Optional)</h5>
+        break;
+    case Register.RegistrationType.StaffAdmin:
+<h5>Enter the staff member's qualifications (Optional)</h5>
+        break;
+    default:
+        break;
+}
 <br />
 <EditForm id="5" Model="QualificationsData" OnValidSubmit="GoToNextSection">
     <DataAnnotationsValidator />
@@ -28,7 +41,7 @@
             <ValidationMessage For="@(() => QualificationsData.OtherBoards)" />
         </div>
     </div>
-    <hr/>
+    <hr />
     <h6>Last or Current Job (If none then leave blank)</h6>
     <br />
     <div id="work-experience">
@@ -57,7 +70,7 @@
                 <SfDateRangePicker @bind-StartDate="QualificationsData.WorkExperiences.FirstOrDefault().StartDate" @bind-EndDate="QualificationsData.WorkExperiences.FirstOrDefault().EndDate" />
             </div>
         }
-        <div id="current" class="form-group" >
+        <div id="current" class="form-group">
             <SfCheckBox @bind-Checked="QualificationsData.WorkExperiences.FirstOrDefault().CurrentJob" @onchange="HandleCurrentJobCheckChanged" />
             <ValidationMessage For="@(() => QualificationsData.WorkExperiences.FirstOrDefault().CurrentJob)" />
             <label>Current Job?</label>

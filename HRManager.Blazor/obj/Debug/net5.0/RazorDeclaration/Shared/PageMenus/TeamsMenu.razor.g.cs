@@ -117,6 +117,41 @@ using Syncfusion.Blazor.Buttons;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 3 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Shared\PageMenus\TeamsMenu.razor"
+       
+    [Parameter]
+    public EventCallback AddMemberClicked { get; set; }
+    [Parameter]
+    public EventCallback AddStaffClicked { get; set; }
+    [Parameter]
+    public EventCallback GetMembersClicked { get; set; }
+    [Parameter]
+    public EventCallback GetStaffClicked { get; set; }
+
+    private async Task RaiseMembersClicked()
+    {
+        await GetMembersClicked.InvokeAsync();
+    }
+
+    private async Task RaiseStaffClicked()
+    {
+        await GetStaffClicked.InvokeAsync();
+    }
+
+    private async Task RaiseAddMemberClicked()
+    {
+        await AddMemberClicked.InvokeAsync();
+    }
+
+    private async Task RaiseAddStaffClicked()
+    {
+        await AddStaffClicked.InvokeAsync();
+    }
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591

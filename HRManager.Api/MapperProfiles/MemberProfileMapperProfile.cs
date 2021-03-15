@@ -32,7 +32,7 @@ namespace HRManager.Api.MapperProfiles
                 .ForMember(p => p.Availabilities, opt => opt.Ignore())
                 .ForMember(p => p.Positions, opt => opt.Ignore());
 
-            CreateMap<MemberProfile, AccountData>().ReverseMap();
+            CreateMap<MemberProfile, AccountCredsData>().ReverseMap();
             CreateMap<MemberProfile, PersonalAndContactData>().ReverseMap();
             CreateMap<MemberProfile, QualificationsData>().ReverseMap();
             CreateMap<MemberProfile, CertificatesData>().ReverseMap();

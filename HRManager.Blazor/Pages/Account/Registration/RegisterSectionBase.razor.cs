@@ -15,6 +15,8 @@ namespace HRManager.Blazor.Pages.Account.Registration
         public EventCallback<MemberSectionData> PreviousSectionRequested { get; set; }
         [Parameter]
         public EventCallback<MemberSectionData> DifferentSectionRequested { get; set; }
+        [Parameter]
+        public Register.RegistrationType Type { get; set; }
 
         protected virtual async Task GoToNextSection()
         {

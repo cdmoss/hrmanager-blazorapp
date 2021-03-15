@@ -14,7 +14,11 @@
 <AuthorizeView>
     <Authorized>
         <div class="menu">
-            <TeamsMenu />
+            <TeamsMenu  
+                GetStaffClicked="OnlyStaff"
+                GetMembersClicked="OnlyMembers"
+                AddMemberClicked="AddMember"
+                AddStaffClicked="AddStaff"/>
         </div>
         @if (errors.Any())
         {
@@ -26,14 +30,15 @@
         else
         {
             <SfGrid TValue="AdminMemberDto"
-                    DataSource="members"
+                    DataSource="filteredTeam"
                     AllowFiltering="true"
                     AllowPaging="true"
                     AllowSorting="true"
                     AllowExcelExport="true"
                     AllowMultiSorting="true"
                     AllowSelection="true"
-                    AllowPdfExport="true">
+                    AllowPdfExport="true"
+                    @ref="grid">
                 <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
                 <GridEditSettings AllowEditing="true" AllowAdding="true" Mode="EditMode.Dialog">
                     <Template Context="editContext">

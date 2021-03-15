@@ -66,7 +66,7 @@ namespace HRManager.Common.Dtos
 
     public class MemberRegisterDto
     {
-        public AccountRegisterData Account { get; set; } = new AccountRegisterData();
+        public AccountCredsData Account { get; set; } = new AccountCredsData();
         public PersonalAndContactData Personal { get; set; } = new PersonalAndContactData{Birthdate = DateTime.Now};
         // string containing ids of selected positions
         public string Positions { get; set; }
@@ -78,7 +78,7 @@ namespace HRManager.Common.Dtos
     public class IdentityDto
     {
         public int MemberId { get; set; }
-        public AccountRegisterData Data { get; set; }
+        public AccountCredsData Data { get; set; }
     }
 
     public class ChangePasswordDto

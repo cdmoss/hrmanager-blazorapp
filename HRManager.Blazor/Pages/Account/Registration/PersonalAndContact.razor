@@ -27,7 +27,20 @@
     }
 }
 
+@switch (Type)
+{
+    case Register.RegistrationType.MemberSelf:
 <h5>Tell us a bit about yourself and how to contact you</h5>
+        break;
+    case Register.RegistrationType.MemberAdmin:
+        <h5>Enter the member's personal and contact information</h5>
+        break;
+    case Register.RegistrationType.StaffAdmin:
+<h5>Enter the staff member's personal and contact information</h5>
+        break;
+    default:
+        break;
+}
 <br />
 <EditForm id="2" Model="PersonalData" OnValidSubmit="@GoToNextSection">
     <DataAnnotationsValidator />

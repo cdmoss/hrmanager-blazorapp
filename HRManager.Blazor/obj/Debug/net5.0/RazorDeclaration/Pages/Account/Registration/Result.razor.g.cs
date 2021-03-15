@@ -129,6 +129,8 @@ using Common.Auth;
       
     [Parameter]
     public bool IsSuccessful { get; set; }
+    [Parameter]
+    public Register.RegistrationType Type { get; set; }
 
     private void GoToLogin()
     {

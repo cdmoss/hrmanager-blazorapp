@@ -1,7 +1,51 @@
 ﻿@namespace HRManager.Blazor.Pages.Shared.PageMenus
 
+@code {
+    [Parameter]
+    public EventCallback AddMemberClicked { get; set; }
+    [Parameter]
+    public EventCallback AddStaffClicked { get; set; }
+    [Parameter]
+    public EventCallback GetMembersClicked { get; set; }
+    [Parameter]
+    public EventCallback GetStaffClicked { get; set; }
+
+    private async Task RaiseMembersClicked()
+    {
+        await GetMembersClicked.InvokeAsync();
+    }
+
+    private async Task RaiseStaffClicked()
+    {
+        await GetStaffClicked.InvokeAsync();
+    }
+
+    private async Task RaiseAddMemberClicked()
+    {
+        await AddMemberClicked.InvokeAsync();
+    }
+
+    private async Task RaiseAddStaffClicked()
+    {
+        await AddStaffClicked.InvokeAsync();
+    }
+}
+
 <div class="d-flex align-items-center">
-    <input type="checkbox" id="team-switch" checked>
+    <button class="btn btn-primary" @onclick="RaiseAddMemberClicked" style="margin-right:1px;">Add Member</button>
+    <button class="btn btn-primary" @onclick="RaiseAddStaffClicked">Add Staff</button>
+    <span>&nbsp;</span>
+    <span>&nbsp;</span>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-primary" @onclick="RaiseMembersClicked" for="current">
+            Members
+            <input type="radio" class="btn-check" id="members" name="entries-filter" autocomplete="off" checked />
+        </label>
+        <label class="btn btn-primary" @onclick="RaiseStaffClicked" for="archived">
+            Staff
+            <input type="radio" class="btn-check" id="staff" name="entries-filter" autocomplete="off" />
+        </label>
+    </div>
 </div>
 
 <form action="account/logout" method="post">

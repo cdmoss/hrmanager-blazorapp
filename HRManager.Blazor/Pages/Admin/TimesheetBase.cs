@@ -45,7 +45,11 @@ namespace HRManager.Blazor.Pages.Admin
                 return;
             }
 
-            await GetEntriesAsync(true);
+            bool getEntriesSuccessful = await GetEntriesAsync(true);
+            if (!getEntriesSuccessful)
+            {
+                return;
+            }
 
             var positionResult = _posService.GetPositions();
             if (!positionResult.Successful)
@@ -62,7 +66,7 @@ namespace HRManager.Blazor.Pages.Admin
             members = membersResult.Data;
         }
 
-        protected async Task GetEntriesAsync(bool isCurrent)
+        protected async Task<bool> GetEntriesAsync(bool isCurrent)
         {
             if (isCurrent)
             {
@@ -70,8 +74,10 @@ namespace HRManager.Blazor.Pages.Admin
                 if (!tsResult.Successful)
                 {
                     pageErrors.Add(tsResult.Error);
+                    return false;
                 }
                 timeEntries = tsResult.Data.OrderBy(s => s.StartTime).ToList();
+                return true;
             }
             else
             {
@@ -79,8 +85,10 @@ namespace HRManager.Blazor.Pages.Admin
                 if (!tsResult.Successful)
                 {
                     pageErrors.Add(tsResult.Error);
+                    return false;
                 }
                 timeEntries = tsResult.Data.OrderBy(s => s.EndTime.Value).ToList();
+                return true;
             }
         }
 

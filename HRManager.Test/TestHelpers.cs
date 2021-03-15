@@ -23,7 +23,7 @@ namespace HRManager.Test
             {
                 var dto = new MemberRegisterDto
                 {
-                    Account = new AccountRegisterData
+                    Account = new AccountCredsData
                     {
                         Email = "test@email.com",
                         Password = "P@$$W0rd",
