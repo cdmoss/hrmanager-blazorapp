@@ -312,7 +312,6 @@ namespace HRManager.Api.Services
                 PostalCode = dto.Personal.PostalCode,
                 SkillsInterestsHobbies = dto.Qualifications.SkillsInterestsHobbies,
                 WorkExperiences = workExperiences,
-                ApprovalStatus = ApprovalStatus.Pending,
                 // TODO: add mandatory checks to registration process
                 // VolunteerConfidentiality = dto.qu.VolunteerConfidentiality;
                 // VolunteerEthics = dto.VolunteerEthics;
@@ -321,6 +320,15 @@ namespace HRManager.Api.Services
                 // ConfirmationOfProfessionalDesignation = dto.ConfirmationOfProfessionalDesignation;
                 // ChildWelfareCheck = dto.ChildWelfareCheck;
              };
+
+            if (member.IsStaff)
+            {
+                member.ApprovalStatus = ApprovalStatus.Approved;
+            }
+            else
+            {
+                member.ApprovalStatus = ApprovalStatus.Pending;
+            }
 
             member.Alerts = new List<Alert>() { new ApplicationAlert() { Member = member, Date = DateTime.Now  } };
 
@@ -343,36 +351,6 @@ namespace HRManager.Api.Services
             member.Positions = positions;
 
             return member;
-        }
-
-        private List<Availability> ConvertAvailabilitiesRegisteredToDomain(Dictionary<DayOfWeek, List<AvailabilityDto>> registeredAvailabilities)
-        {
-            var availabilities = new List<Availability>();
-
-            foreach (var dayAvailabilities in registeredAvailabilities)
-            {
-                var domainAvailabilities = _mapper.Map<List<Availability>>(dayAvailabilities.Value);
-                availabilities.AddRange(domainAvailabilities);
-            }
-
-            return availabilities;
-        }
-
-        private List<MemberPosition> ConvertRegisteredPositionsToMemberPositions(List<int> registeredPositions, MemberProfile member)
-        {
-            var positions = new List<MemberPosition>();
-
-            foreach (var positionId in registeredPositions)
-            {
-                positions.Add(new MemberPosition
-                {
-                    Association = AssociationType.Preferred,
-                    Position = _context.Positions.FirstOrDefault(p => p.Id == positionId),
-                    Member = member
-                });
-            }
-
-            return positions;
         }
 
         public async Task<ApiResult<object>> DeleteMember(int id)
