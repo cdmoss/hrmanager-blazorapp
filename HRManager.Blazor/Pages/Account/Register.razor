@@ -41,13 +41,17 @@
         {
             mainDto.Account.IsStaff = false;
         }
-        currentSection++;
+
         isSuccessful = await _regService.Register(mainDto);
         loadingSubmission = false;
 
         if (AlertRegistrationAttempt.HasDelegate)
         {
             await AlertRegistrationAttempt.InvokeAsync(isSuccessful);
+        }
+        else
+        {
+            currentSection++;
         }
     }
 
@@ -135,19 +139,26 @@
         <Qualifications Type="Type" @bind-QualificationsData="mainDto.Qualifications" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
         break;
     case 6:
-        <Certificates Type="Type" @bind-CertData="mainDto.Certificates" SectionCompleted="SubmitRegistration" PreviousSectionRequested="HandlePreviousSectionRequested" />
+        <Certificates Type="Type" @bind-CertData="mainDto.Certificates" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
         break;
     case 7:
+        <Submit SectionCompleted="SubmitRegistration" PreviousSectionRequested="HandlePreviousSectionRequested" />
+        break;
+    case 8:
         if (loadingSubmission)
         {
             <p>Waiting for your application to be verified...</p>
         }
         else
         {
-            <Result IsSuccessful="isSuccessful" />
+            <Result Type="Type" IsSuccessful="isSuccessful" />
         }
         break;
 }
-<RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested" Progress="@currentSection" />
+
+@if (currentSection != 7)
+{
+    <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested" Progress="@currentSection" />
+}
 
 <button @onclick="TestRegistration">Test Registration</button>

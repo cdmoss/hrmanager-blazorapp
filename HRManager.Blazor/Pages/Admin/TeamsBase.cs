@@ -34,6 +34,7 @@ namespace HRManager.Blazor.Pages.Admin
         protected SfGrid<AdminMemberDto> grid;
         protected MemberGridEditTemplate editTemplate = new MemberGridEditTemplate();
         protected List<string> errors = new List<string>();
+        protected bool showStaff = false;
 
 
         Dictionary<int, string> selectedTabs = new Dictionary<int, string>();
@@ -95,11 +96,13 @@ namespace HRManager.Blazor.Pages.Admin
 
         protected void OnlyStaff()
         {
+            showStaff = true;
             filteredTeam = team.Where(m => m.IsStaff).ToList();
         }
 
         protected void OnlyMembers()
         {
+            showStaff = false;
             filteredTeam = team.Where(m => !m.IsStaff).ToList();
         }
 
@@ -107,7 +110,7 @@ namespace HRManager.Blazor.Pages.Admin
         {
             var parameters = new ModalParameters();
             parameters.Add("Type", Register.RegistrationType.MemberAdmin);
-            var modal = _modalService.Show(typeof(Register), "Add new member", parameters);
+            var modal = _modalService.Show(typeof(RegisterModal), "Add new member", parameters);
             var modalResult = await modal.Result;
             var registerSuccessful = modalResult.Cancelled ? null : modalResult.Data as bool?;
             if (registerSuccessful == null)
@@ -125,6 +128,7 @@ namespace HRManager.Blazor.Pages.Admin
                 }
                 team = memberResult.Data;
                 filteredTeam = team.Where(m => !m.IsStaff).ToList();
+                showStaff = false;
                 //TODO: notify successful registration
             }
             else
@@ -138,7 +142,7 @@ namespace HRManager.Blazor.Pages.Admin
         {
             var parameters = new ModalParameters();
             parameters.Add("Type", Register.RegistrationType.StaffAdmin);
-            var modal = _modalService.Show(typeof(Register), "Add new staff", parameters);
+            var modal = _modalService.Show(typeof(RegisterModal), "Add new staff", parameters);
             var modalResult = await modal.Result;
             var registerSuccessful = modalResult.Cancelled ? null : modalResult.Data as bool?;
             if (registerSuccessful == null)
@@ -156,6 +160,7 @@ namespace HRManager.Blazor.Pages.Admin
                 }
                 team = memberResult.Data;
                 filteredTeam = team.Where(m => m.IsStaff).ToList();
+                showStaff = true;
                 //TODO: notify successful registration
             }
             else

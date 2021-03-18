@@ -5,7 +5,7 @@
 
 <h5>Relevant certificates (optional)</h5>
 <br />
-<EditForm id="6" Model="CertData" OnValidSubmit="ModalShow">
+<EditForm id="6" Model="CertData" OnValidSubmit="GoToNextSection">
     <div id="cert-container" class="d-flex flex-column">
         <div id="firstaid-container">
             <div class="checkbox-container">
@@ -50,32 +50,4 @@
         </div>
     </div>
 </EditForm>
-
-@if (showModal)
-{
-    <div class="modal fade show" id="myModal" style="display:block" aria-modal="true" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h5 class="modal-title">Submit application</h5>
-                    <button type="button" class="close" @onclick="@ModalCancel">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <p>By continuing you confirm that all the information is correct.</p>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" @onclick="@ModalCancel">Back</button>
-                    <button type="button" class="btn btn-primary" @onclick=@GoToNextSection>Continue</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-}
 <hr />

@@ -1,5 +1,5 @@
 ﻿@using Common.Auth
-@inject NavigationManager _nav 
+@inject NavigationManager _nav
 
 @code{
     [Parameter]
@@ -13,24 +13,64 @@
     }
 }
 
-@if (IsSuccessful)
+@switch (Type)
 {
-    <p>You have successfully applied for a volunteering position at the Medicine Hat Food Bank!</p>
-    <p>You can now log in with the email and password you entered. Once we've accepted your application, you will be able sign up for shifts with the calendar. We will email you once we've evaluated your application.</p>
-    <p>Thanks for applying and have a wonderful day!</p>
-}
-else
-{
-    <p>Oops... Something went wrong with your application.</p>
-    <p>Try again, or contact us directly:</p>
-    <ul>
-        <li>Email: email here</li>
-        <li>Phone: phone here</li>
-    </ul>
-    
-}
+    case Register.RegistrationType.MemberSelf:
+        @if (IsSuccessful)
+        {
+            <p>You have successfully applied for a volunteering position at the Medicine Hat Food Bank!</p>
+            <p>You can now log in with the email and password you entered. Once we've accepted your application, you will be able sign up for shifts with the calendar. We will email you once we've evaluated your application.</p>
+            <p>Thanks for applying and have a wonderful day!</p>
+        }
+        else
+        {
+            <p>Oops... Something went wrong with your application.</p>
+            <p>Try again, or contact us directly:</p>
+            <ul>
+                <li>Email: email here</li>
+                <li>Phone: phone here</li>
+            </ul>
 
-<div id="btn-container">
-    <SfButton Content="Back To Login" OnClick="GoToLogin"/>
-</div>
+        }
 
+        <div id="btn-container">
+            <SfButton Content="Back To Login" OnClick="GoToLogin" />
+        </div>
+
+        break;
+    case Register.RegistrationType.MemberAdmin:
+        @if (IsSuccessful)
+        {
+            <p>You have successfully created a new member.</p>
+            <p>They can now log in with the email and password you entered. Once they have been approved, they will be able sign up for shifts on the calendar.</p>
+        }
+        else
+        {
+            <p>Something went wrong when creating a new member.</p>
+            <p>If the issue persists contact the application support team:</p>
+            <ul>
+                <li>Email: email here</li>
+                <li>Phone: phone here</li>
+            </ul>
+
+        }
+        break;
+    case Register.RegistrationType.StaffAdmin:
+        @if (IsSuccessful)
+        {
+            <p>You have successfully created a new staff member.</p>
+            <p>They can now log in with the email and password you entered.</p>
+        }
+        else
+        {
+            <p>Something went wrong when creating a new staff member.</p>
+            <p>If the issue persists contact the application support team:</p>
+            <ul>
+                <li>Email: email here</li>
+                <li>Phone: phone here</li>
+            </ul>
+        }
+        break;
+    default:
+        break;
+}

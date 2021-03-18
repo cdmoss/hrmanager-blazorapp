@@ -50,5 +50,35 @@ namespace HRManager.Blazor.Pages.Account.Registration
                 PositionSelection = null;
             }
         }
+
+        private void HandlePositionData()
+        {
+            foreach (var position in internalPositionsData)
+            {
+                if (position.Value.PositionWasSelected)
+                {
+                    PositionSelection += position.Key.ToString() + ",";
+                }
+            }
+            PositionSelection.Trim(',');
+        }
+
+        protected override Task HandlePreviousSectionRequested()
+        {
+            HandlePositionData();
+            return base.HandlePreviousSectionRequested();
+        }
+
+        protected override Task GoToNextSection()
+        {
+            HandlePositionData();
+            return base.GoToNextSection();
+        }
+
+        protected override Task HandleDifferentSectionRequested()
+        {
+            HandlePositionData();
+            return base.HandleDifferentSectionRequested();
+        }
     }
 }

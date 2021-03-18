@@ -14,26 +14,11 @@ namespace HRManager.Blazor.Pages.Account
         public CertificatesData CertData { get; set; }
         [Parameter]
         public EventCallback<CertificatesData> CertDataChanged { get; set; }
-        [Parameter]
-        public EventCallback SubmitRegistration { get; set; }
-
-        protected bool popUpVisible = false;
-        protected bool showModal = false;
 
         protected override async Task GoToNextSection()
         {
             await CertDataChanged.InvokeAsync(CertData);
             await base.GoToNextSection();
-        }
-
-        protected void OpenPopup()
-        {
-            popUpVisible = true;
-        }
-
-        protected void ClosePopup()
-        {
-            popUpVisible = false;
         }
 
         protected override async Task HandlePreviousSectionRequested()
@@ -47,8 +32,5 @@ namespace HRManager.Blazor.Pages.Account
             await CertDataChanged.InvokeAsync(CertData);
             await base.HandlePreviousSectionRequested();
         }
-
-        protected void ModalShow() => showModal = true;
-        protected void ModalCancel() => showModal = false;
     }
 }

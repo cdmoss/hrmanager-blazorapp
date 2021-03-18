@@ -1,0 +1,31 @@
+﻿@inherits RegisterSectionBase
+
+<div>
+    <!-- Modal Header -->
+    <div>
+        <h5 class="modal-title">Submit application</h5>
+    </div>
+
+    <!-- Modal body -->
+    <div>
+        <p>By continuing you confirm that all the information is correct.</p>
+    </div>
+
+    <!-- Modal footer -->
+    <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-dark" @onclick="GoBack">Back</button>
+        <button type="button" class="btn btn-primary" @onclick="SubmitApplication">Submit</button>
+    </div>
+</div>
+
+@code {
+    private async Task SubmitApplication()
+    {
+        await SectionCompleted.InvokeAsync();
+    }
+
+    private async Task GoBack()
+    {
+        await PreviousSectionRequested.InvokeAsync();
+    }
+}

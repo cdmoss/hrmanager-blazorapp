@@ -70,7 +70,10 @@
                     <GridColumn Field="LastName" HeaderText="Last Name" TextAlign="TextAlign.Center" />
                     <GridColumn Field="Email" HeaderText="Email" TextAlign="TextAlign.Center" />
                     <GridColumn Field="MainPhone" HeaderText="Phone" TextAlign="TextAlign.Center" />
-                    <GridColumn Field="ApprovalStatus" HeaderText="Status" TextAlign="TextAlign.Center" />
+                    @if (!showStaff)
+                    {
+                        <GridColumn Field="ApprovalStatus" HeaderText="Status" TextAlign="TextAlign.Center" />
+                    }
                 </GridColumns>
                 <GridEvents TValue="AdminMemberDto" OnActionBegin="BeginActionHandler" />
             </SfGrid>
