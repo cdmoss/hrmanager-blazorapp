@@ -372,3 +372,9 @@ C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Test\bin\Debug\
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Test\bin\Debug\net5.0\HRManager.Idp.deps.json
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Test\bin\Debug\net5.0\HRManager.Idp.runtimeconfig.json
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Test\bin\Debug\net5.0\HRManager.Idp.runtimeconfig.dev.json
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Test\bin\Debug\net5.0\HRManager.Api.deps.json
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Test\bin\Debug\net5.0\HRManager.Api.runtimeconfig.json
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Test\bin\Debug\net5.0\HRManager.Api.runtimeconfig.dev.json
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Test\bin\Debug\net5.0\HRManager.Idp.deps.json
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Test\bin\Debug\net5.0\HRManager.Idp.runtimeconfig.json
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Test\bin\Debug\net5.0\HRManager.Idp.runtimeconfig.dev.json

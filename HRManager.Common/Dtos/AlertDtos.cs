@@ -12,6 +12,7 @@ namespace HRManager.Common.Dtos
         public bool Read { get; set; }
         public string AlertType { get; set; }
         public string AddressedBy { get; set; }
+        public bool Archived { get; set; }
     }
 
     public class MemberShiftRequestListDto

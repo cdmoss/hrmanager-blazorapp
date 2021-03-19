@@ -17,7 +17,7 @@ namespace HRManager.Test
 {
     public class ApiDbFixture : DbFixture<MainContext>
     {
-        public ApiDbFixture(string dbPath = "e:\\test.db") : base(dbPath)
+        public ApiDbFixture(string dbPath = Constants.dbPathApiFDrive) : base(dbPath)
         {
         }
 

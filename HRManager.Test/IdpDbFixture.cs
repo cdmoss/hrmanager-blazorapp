@@ -16,7 +16,7 @@ namespace HRManager.Test
 {
     public class IdpDbFixture : DbFixture<IdentityContext>
     {
-        public IdpDbFixture(string dbPath = "e:\\testidentity.db") : base(dbPath)
+        public IdpDbFixture(string dbPath = Constants.dbPathIdpFDrive) : base(dbPath)
         {
         }
 

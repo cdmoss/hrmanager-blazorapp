@@ -12,8 +12,9 @@ namespace HRManager.Common
         public MemberProfile Member { get; set; }
         public DateTime Date { get; set; }
         public bool Read { get; set; }
-        public bool Deleted { get; set; }
+        public bool Archived { get; set; }
         public string AlertType { get; set; }
+        public string AddressedBy { get; set; }
 
         protected virtual string GetDescription()
         {

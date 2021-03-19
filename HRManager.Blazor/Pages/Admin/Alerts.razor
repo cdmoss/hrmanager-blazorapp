@@ -1,7 +1,53 @@
 ﻿@page "/admin/alerts"
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Authorization
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Calendars
+@using Syncfusion.Blazor.Navigations
 
-<h3>Alerts</h3>
+<AuthorizeView>
+    <Authorized>
+        @if (errors.Any())
+        {
+            foreach (string error in errors)
+            {
+                <p>@error</p>
+            }
+        }
+        else
+        {
+            <SfGrid TValue="AdminAlertListDto"
+                    DataSource="filteredTeam"
+                    AllowFiltering="true"
+                    AllowPaging="true"
+                    AllowSorting="true"
+                    AllowExcelExport="true"
+                    AllowMultiSorting="true"
+                    AllowSelection="true"
+                    AllowPdfExport="true"
+                    @ref="grid">
+                <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+                <GridEditSettings AllowEditing="true" AllowAdding="true" Mode="EditMode.Dialog">
+                    <Template Context="editContext">
+                        @{
+                            var member = (editContext as AdminMemberDto);
+                        }
+                        <MemberGridEditTemplate @ref="editTemplate" @bind-SelectedMember="member" Positions="positions" />
+                    </Template>
+                </GridEditSettings>
 
-@code {
+                <GridColumns>
+                    <GridColumn Field="Member.FullName" HeaderText="Member" TextAlign="TextAlign.Center" />
+                    <GridColumn Field="Date" HeaderText="Alert Date" TextAlign="TextAlign.Center" />
+                    <GridColumn Field="AlertType" HeaderText="Alert Type" TextAlign="TextAlign.Center" />
+                    <GridColumn Field="AddressedBy" HeaderText="Addressed By" TextAlign="TextAlign.Center" />
+                </GridColumns>
+                <GridEvents TValue="AdminMemberDto" OnActionBegin="BeginActionHandler" />
+            </SfGrid>
+        }
+    </Authorized>
+    <NotAuthorized>
 
-}
+    </NotAuthorized>
+</AuthorizeView>

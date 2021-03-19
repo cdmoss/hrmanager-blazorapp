@@ -50,9 +50,29 @@ namespace HRManager.Api.Services
             }
         }
 
-        public Task<ApiResult<List<AdminAlertListDto>>> UpdateAlert(AdminAlertListDto dto)
+        public async Task<ApiResult<List<AdminAlertListDto>>> UpdateAlert(AdminAlertListDto dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var alert = _context.ApplicationAlerts.FirstOrDefault(a => a.Id == dto.Id);
+
+                alert.Read = dto.Read;
+                alert.AddressedBy = dto.AddressedBy;
+                alert.Archived = dto.Archived;
+                _context.Alerts.Update(alert);
+                await _context.SaveChangesAsync();
+
+                return GetAdminAlerts();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("An error occured when trying to updating alerts to the database:\n" + ex.Message);
+                return new ApiResult<List<AdminAlertListDto>>
+                {
+                    Successful = false,
+                    Error = "An error occured when trying to update alerts to the database."
+                };
+            }
         }
     }
 }
