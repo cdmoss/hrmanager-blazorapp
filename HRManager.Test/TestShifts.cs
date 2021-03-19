@@ -13,7 +13,7 @@ using Xunit;
 namespace HRManager.Test
 {
     [Collection("apiDbCollection")]
-    public class TestShifts : IClassFixture<ApiDbFixture>
+    public class TestShifts
     {
         private readonly ApiDbFixture _dbFixture;
         private readonly IMapper _mapper;

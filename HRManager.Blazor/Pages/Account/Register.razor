@@ -23,12 +23,14 @@
 
     // must create instance of model to be bound*******
     private MemberRegisterDto mainDto = new MemberRegisterDto();
+    protected Dictionary<int, PositionSelection> positionSelection = new Dictionary<int, PositionSelection>();
     private bool isSuccessful;
     private int currentSection = 1;
     private bool loadingSubmission = false;
     private bool ShowErrors;
     private int test;
     private IEnumerable<string> Errors;
+
 
     private async Task SubmitRegistration()
     {
@@ -41,6 +43,23 @@
         {
             mainDto.Account.IsStaff = false;
         }
+
+        // handle position selection
+        string positionSelectionStr = "";
+
+        foreach (var position in positionSelection)
+        {
+            if (position.Value.PositionWasSelected)
+            {
+                positionSelectionStr += position.Key.ToString() + ",";
+            }
+        }
+        if (!string.IsNullOrEmpty(positionSelectionStr))
+        {
+            positionSelectionStr = positionSelectionStr.Trim(',');
+        }
+
+        mainDto.Positions = positionSelectionStr;
 
         isSuccessful = await _regService.Register(mainDto);
         loadingSubmission = false;
@@ -130,7 +149,7 @@
         <PersonalAndContact Type="Type" @bind-PersonalData="mainDto.Personal" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
         break;
     case 3:
-        <PreferredPositions Type="Type" @bind-PositionSelection="mainDto.Positions" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
+        <PreferredPositions Type="Type" @bind-PositionSelection="positionSelection" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
         break;
     case 4:
         <Availability Type="Type" @bind-AvailabilitiesData="mainDto.Availabilities" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
@@ -158,7 +177,7 @@
 
 @if (currentSection != 7)
 {
-    <RegisterSectionButtonContainer PreviousSectionRequested="HandlePreviousSectionRequested" Progress="@currentSection" />
+    <RegisterSectionButtonContainer  PreviousSectionRequested="HandlePreviousSectionRequested" Progress="@currentSection" />
 }
 
-<button @onclick="TestRegistration">Test Registration</button>
+@*<button @onclick="TestRegistration">Test Registration</button>*@

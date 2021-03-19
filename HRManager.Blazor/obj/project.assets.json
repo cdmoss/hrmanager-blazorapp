@@ -7863,23 +7863,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Brendan\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Chase\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Blazor\\HRManager.Blazor.csproj",
+      "projectUniqueName": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Blazor\\HRManager.Blazor.csproj",
       "projectName": "HRManager.Blazor",
-      "projectPath": "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Blazor\\HRManager.Blazor.csproj",
-      "packagesPath": "C:\\Users\\Brendan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Blazor\\obj\\",
+      "projectPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Blazor\\HRManager.Blazor.csproj",
+      "packagesPath": "C:\\Users\\Chase\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Blazor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Brendan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Chase\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -7894,8 +7894,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj": {
-              "projectPath": "C:\\Users\\Brendan\\Desktop\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj"
+            "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj": {
+              "projectPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj"
             }
           }
         }
@@ -8021,7 +8021,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -13,14 +13,12 @@ namespace HRManager.Blazor.Pages.Account.Registration
     {
         [Inject]
         IPositionService _posService { get; set; }
-
         [Parameter]
-        public EventCallback<string> PositionSelectionChanged { get; set; }
+        public Dictionary<int, PositionSelection> PositionSelection { get; set; }
         [Parameter]
-        public string PositionSelection { get; set; } = "";
+        public EventCallback<Dictionary<int, PositionSelection>> PositionSelectionChanged { get; set; }
 
         protected List<Position> positions = new List<Position>();
-        protected Dictionary<int, PositionSelection> internalPositionsData;
 
         protected override void OnInitialized()
         {
@@ -31,54 +29,28 @@ namespace HRManager.Blazor.Pages.Account.Registration
                 positions = positionsResult.Data;
             }
 
-            internalPositionsData = new Dictionary<int, PositionSelection>();
-
-            foreach (var position in positions)
+            if (PositionSelection.Count() == 0)
             {
-                internalPositionsData.Add(position.Id, new PositionSelection { PositionWasSelected = false });
-            }
-
-            if (!string.IsNullOrEmpty(PositionSelection))
-            {
-                var positionIds = PositionSelection.Split(',');
-
-                foreach (var id in positionIds)
+                foreach (var position in positions)
                 {
-                    internalPositionsData[Convert.ToInt32(id)].PositionWasSelected = true;
-                }
-
-                PositionSelection = null;
-            }
-        }
-
-        private void HandlePositionData()
-        {
-            foreach (var position in internalPositionsData)
-            {
-                if (position.Value.PositionWasSelected)
-                {
-                    PositionSelection += position.Key.ToString() + ",";
+                    PositionSelection.Add(position.Id, new PositionSelection { PositionWasSelected = false });
                 }
             }
-            PositionSelection.Trim(',');
         }
 
-        protected override Task HandlePreviousSectionRequested()
+        protected async override Task HandlePreviousSectionRequested()
         {
-            HandlePositionData();
-            return base.HandlePreviousSectionRequested();
+            await base.HandlePreviousSectionRequested();
         }
 
-        protected override Task GoToNextSection()
+        protected async override Task GoToNextSection()
         {
-            HandlePositionData();
-            return base.GoToNextSection();
+            await base.GoToNextSection();
         }
 
-        protected override Task HandleDifferentSectionRequested()
+        protected async override Task HandleDifferentSectionRequested()
         {
-            HandlePositionData();
-            return base.HandleDifferentSectionRequested();
+            await base.HandleDifferentSectionRequested();
         }
     }
 }

@@ -54,10 +54,11 @@ namespace HRManager.Api.Services
                 }
 
                 var testMembers = new List<MemberProfile>();
+                var testAlerts = new List<ApplicationAlert>();
 
                 for (int i = 1; i <= 10; i++)
                 {
-                    testMembers.Add(new MemberProfile()
+                    var member = new MemberProfile()
                     {
                         Email = $"test{i}@email.com",
                         FirstName = $"testfirst{i}",
@@ -98,10 +99,19 @@ namespace HRManager.Api.Services
                             ContactPerson = "testcontact",
                             PositionWorked = "testposition"
                         }}
+                    };
+
+                    testMembers.Add(member);
+
+                    testAlerts.Add(new ApplicationAlert
+                    {
+                        Member = member,
+                        Date = DateTime.Now
                     });
                 }
 
                 _context.AddRange(testMembers);
+                _context.AddRange(testAlerts);
                 _context.SaveChanges();
 
                 return new ApiResult<List<int>>() { Data = testMembers.Select(m => m.Id).ToList(), Successful = true };
