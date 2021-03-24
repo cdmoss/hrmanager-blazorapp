@@ -5,6 +5,7 @@
 @using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.Calendars
 @using Syncfusion.Blazor.Navigations
+@inherits AlertsBase
 
 <AuthorizeView>
     <Authorized>
@@ -18,24 +19,23 @@
         else
         {
             <SfGrid TValue="AdminAlertListDto"
-                    DataSource="filteredTeam"
+                    DataSource="alerts"
                     AllowFiltering="true"
                     AllowPaging="true"
                     AllowSorting="true"
                     AllowExcelExport="true"
                     AllowMultiSorting="true"
                     AllowSelection="true"
-                    AllowPdfExport="true"
-                    @ref="grid">
+                    AllowPdfExport="true">
                 <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
-                <GridEditSettings AllowEditing="true" AllowAdding="true" Mode="EditMode.Dialog">
+                @*<GridEditSettings AllowEditing="true" AllowAdding="true" Mode="EditMode.Dialog">
                     <Template Context="editContext">
                         @{
                             var member = (editContext as AdminMemberDto);
                         }
                         <MemberGridEditTemplate @ref="editTemplate" @bind-SelectedMember="member" Positions="positions" />
                     </Template>
-                </GridEditSettings>
+                </GridEditSettings>*@
 
                 <GridColumns>
                     <GridColumn Field="Member.FullName" HeaderText="Member" TextAlign="TextAlign.Center" />
@@ -43,7 +43,7 @@
                     <GridColumn Field="AlertType" HeaderText="Alert Type" TextAlign="TextAlign.Center" />
                     <GridColumn Field="AddressedBy" HeaderText="Addressed By" TextAlign="TextAlign.Center" />
                 </GridColumns>
-                <GridEvents TValue="AdminMemberDto" OnActionBegin="BeginActionHandler" />
+                @*<GridEvents TValue="AdminMemberDto" OnActionBegin="BeginActionHandler" />*@
             </SfGrid>
         }
     </Authorized>

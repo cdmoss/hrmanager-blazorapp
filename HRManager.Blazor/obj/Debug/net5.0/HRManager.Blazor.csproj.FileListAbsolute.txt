@@ -568,3 +568,4 @@ C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\R
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Account\Registration\Submit.razor.g.cs
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Account\Registration\Submit.razor.g.cs
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Pages\Account\Registration\Submit.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\en-US\HRManager.Blazor.resources.cs

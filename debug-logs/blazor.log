@@ -1,0 +1,173 @@
+watch : Started
+Building...
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: https://localhost:5004
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: http://localhost:5003
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 1426.8744ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 1432.8157ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/positions/all
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/positions/all
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 24.7594ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 24.8523ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/alerts/admin
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/alerts/admin
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 6.6701ms - 401
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 6.735ms - 401
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 36.6927ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 36.7627ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/positions/all
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/positions/all
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 7.1529ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 7.2261ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/alerts/admin
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/alerts/admin
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 0.9236ms - 401
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 1.0026ms - 401
+
+watch : Exited
+watch : File changed: C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Services\AlertServices.cs
+watch : Started
+Building...
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Services\AlertServices.cs(25,13): error CS0103: The name '_apiClient' does not exist in the current context [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Services\AlertServices.cs(25,39): error CS0103: The name 'tokenProvider' does not exist in the current context [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+
+The build failed. Fix the build errors and run again.
+
+watch : Exited with error code 1
+watch : Waiting for a file to change before restarting dotnet...
+watch : Started
+Building...
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Services\AlertServices.cs(25,13): error CS0103: The name '_apiClient' does not exist in the current context [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+
+The build failed. Fix the build errors and run again.
+
+watch : Exited with error code 1
+watch : Waiting for a file to change before restarting dotnet...
+watch : Started
+Building...
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Services\AlertServices.cs(24,55): error CS1061: 'HttpClient' does not contain a definition for 'SetBearerToken' and no accessible extension method 'SetBearerToken' accepting a first argument of type 'HttpClient' could be found (are you missing a using directive or an assembly reference?) [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+
+The build failed. Fix the build errors and run again.
+
+watch : Exited with error code 1
+watch : Waiting for a file to change before restarting dotnet...
+watch : Started
+Building...
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Services\AlertServices.cs(25,21): error CS0029: Cannot implicitly convert type 'void' to 'System.Net.Http.HttpClient' [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+
+The build failed. Fix the build errors and run again.
+
+watch : Exited with error code 1
+watch : Waiting for a file to change before restarting dotnet...
+watch : Started
+Building...
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Teams.razor(3,7): warning CS0105: The using directive for 'HRManager.Blazor.Pages.Shared' appeared previously in this namespace [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Logout.cshtml.cs(15,27): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Services\AlertServices.cs(36,30): warning CS0168: The variable 'ex' is declared but never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor(32,33): warning CS0649: Field 'Register.Errors' is never assigned to, and will always have its default value null [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\PostLoginRedirector.razor(11,20): warning CS0169: The field 'PostLoginRedirector.message' is never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor(30,18): warning CS0649: Field 'Register.ShowErrors' is never assigned to, and will always have its default value false [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor(31,17): warning CS0169: The field 'Register.test' is never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Shared\MainLayout.razor(16,20): warning CS0414: The field 'MainLayout.currentPage' is assigned but its value is never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\ScheduleEditorTemplate.razor(19,13): warning BL0005: Component parameter 'SelectedType' should not be set outside of its component. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: https://localhost:5004
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: http://localhost:5003
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/alerts/admin
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/alerts/admin
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 97.4124ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 104.8803ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/alerts/admin
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/alerts/admin
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 5.906ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 5.9952ms - 200
+
+watch : Exited
+watch : File changed: C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Services\AlertServices.cs
+watch : Started
+Building...
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Teams.razor(3,7): warning CS0105: The using directive for 'HRManager.Blazor.Pages.Shared' appeared previously in this namespace [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Logout.cshtml.cs(15,27): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Services\AlertServices.cs(35,30): warning CS0168: The variable 'ex' is declared but never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor(30,18): warning CS0649: Field 'Register.ShowErrors' is never assigned to, and will always have its default value false [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor(31,17): warning CS0169: The field 'Register.test' is never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\PostLoginRedirector.razor(11,20): warning CS0169: The field 'PostLoginRedirector.message' is never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor(32,33): warning CS0649: Field 'Register.Errors' is never assigned to, and will always have its default value null [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Shared\MainLayout.razor(16,20): warning CS0414: The field 'MainLayout.currentPage' is assigned but its value is never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\ScheduleEditorTemplate.razor(19,13): warning BL0005: Component parameter 'SelectedType' should not be set outside of its component. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: https://localhost:5004
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: http://localhost:5003
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/alerts/admin
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/alerts/admin
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 49.1902ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 56.1027ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/alerts/admin
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/alerts/admin
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 6.4474ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 6.5573ms - 200
