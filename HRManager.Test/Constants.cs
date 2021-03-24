@@ -8,7 +8,7 @@ namespace HRManager.Test
 {
     static class Constants
     {
-        public const string apiTestConn = "e:\\test.db";
-        public const string idpTestConn = "e:\\testidentity.db";
+        public const string apiTestConn = "f:\\test.db";
+        public const string idpTestConn = "f:\\testidentity.db";
     }
 }

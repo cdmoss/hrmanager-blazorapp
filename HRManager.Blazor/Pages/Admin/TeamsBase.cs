@@ -28,9 +28,9 @@ namespace HRManager.Blazor.Pages.Admin
         protected IPositionService _posService { get; set; }
         [Inject]
         public IModalService _modalService { get; set; }
-        protected List<AdminMemberDto> team;
-        protected List<AdminMemberDto> filteredTeam;
-        protected List<Position> positions;
+        protected List<AdminMemberDto> team = new List<AdminMemberDto>();
+        protected List<AdminMemberDto> filteredTeam = new List<AdminMemberDto>();
+        protected List<Position> positions = new List<Position>();
         protected SfGrid<AdminMemberDto> grid;
         protected MemberGridEditTemplate editTemplate = new MemberGridEditTemplate();
         protected List<string> errors = new List<string>();

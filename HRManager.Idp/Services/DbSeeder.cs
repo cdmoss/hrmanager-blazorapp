@@ -11,7 +11,7 @@ namespace HRManager.Idp.Services
 {
     public interface IDbSeeder
     {
-        Task<bool> SeedUsers(List<int> memberIds);
+        Task<bool> SeedUsers(Dictionary<int, string> users);
     }
 
     public class DbSeeder : IDbSeeder
@@ -29,7 +29,7 @@ namespace HRManager.Idp.Services
             context.Database.EnsureCreated();
         }
 
-        public async Task<bool> SeedUsers(List<int> ids)
+        public async Task<bool> SeedUsers(Dictionary<int, string> users)
         {
             // create roles
             if (!_roleManager.Roles.Any())
@@ -44,77 +44,74 @@ namespace HRManager.Idp.Services
             // create user accounts 
             if (!_userManager.Users.Any())
             {
-                foreach (int id in ids)
+                foreach (var user in users)
                 {
-                    if (!await CreateUserAccount(id))
+                    if(!await CreateUserAccount(user.Key, user.Value))
                     {
                         await ClearDatabase();
                         return false;
                     }
                 }
+            }
 
-                // create admin accounts
-                if (!await CreateAdmins())
+            return true;
+        }
+
+        private async Task<bool> CreateUserAccount(int id, string roleName) 
+        {
+            if (roleName == "SuperAdmin" || roleName == "Admin")
+            {
+                var superAdmin = new AppUser
+                {
+                    UserName = $"sadmin@email.com",
+                    NormalizedUserName = $"SADMIN@EMAIL.COM",
+                    EmailConfirmed = true,
+                    MemberId = id
+                };
+
+                var sadminResult = await _userManager.CreateAsync(superAdmin, "P@$$W0rd");
+                if (!sadminResult.Succeeded)
                 {
                     await ClearDatabase();
+                    LogIdentityErrors(sadminResult, $"Something went wrong when seeding the super admin account:\n\n");
+                    return false;
+                }
+
+                sadminResult = await _userManager.AddToRoleAsync(superAdmin, "SuperAdmin");
+
+                if (!sadminResult.Succeeded)
+                {
+                    await ClearDatabase();
+                    LogIdentityErrors(sadminResult, $"Something went wrong when adding the seeded super admin account to its role:\n\n");
+                    return false;
+                }
+
+                var admin = new AppUser
+                {
+                    UserName = $"admin@email.com",
+                    NormalizedUserName = $"ADMIN@EMAIL.COM",
+                    EmailConfirmed = true,
+                    MemberId = id
+                };
+
+                var adminResult = await _userManager.CreateAsync(admin, "P@$$W0rd");
+                if (!adminResult.Succeeded)
+                {
+                    await ClearDatabase();
+                    LogIdentityErrors(sadminResult, $"Something went wrong when seeding admin account:\n\n");
+                    return false;
+                }
+
+                adminResult = await _userManager.AddToRoleAsync(admin, "Admin");
+
+                if (!adminResult.Succeeded)
+                {
+                    await ClearDatabase();
+                    LogIdentityErrors(sadminResult, $"Something went wrong when adding the seeded admin account to its role:\n\n");
                     return false;
                 }
             }
 
-            return true;
-        }
-
-        private async Task<bool> CreateAdmins()
-        {
-            var superAdmin = new AppUser
-            {
-                UserName = $"sadmin@email.com",
-                NormalizedUserName = $"SADMIN@EMAIL.COM",
-                EmailConfirmed = true
-            };
-
-            var sadminResult = await _userManager.CreateAsync(superAdmin, "P@$$W0rd");
-            if (!sadminResult.Succeeded)
-            {
-                LogIdentityErrors(sadminResult, $"Something went wrong when seeding the super admin account:\n\n");
-                return false;
-            }
-
-            sadminResult = await _userManager.AddToRoleAsync(superAdmin, "SuperAdmin");
-
-            if (!sadminResult.Succeeded)
-            {
-                LogIdentityErrors(sadminResult, $"Something went wrong when adding the seeded super admin account to its role:\n\n");
-                return false;
-            }
-
-            var admin = new AppUser
-            {
-                UserName = $"admin@email.com",
-                NormalizedUserName = $"ADMIN@EMAIL.COM",
-                EmailConfirmed = true
-            };
-
-            var adminResult = await _userManager.CreateAsync(admin, "P@$$W0rd");
-            if (!adminResult.Succeeded)
-            {
-                LogIdentityErrors(sadminResult, $"Something went wrong when seeding admin account:\n\n");
-                return false;
-            }
-
-            adminResult = await _userManager.AddToRoleAsync(admin, "SuperAdmin");
-
-            if (!adminResult.Succeeded)
-            {
-                LogIdentityErrors(sadminResult, $"Something went wrong when adding the seeded admin account to its role:\n\n");
-                return false;
-            }
-
-            return true;
-        }
-
-        private async Task<bool> CreateUserAccount(int id) 
-        {
             var user = new AppUser
             {
                 UserName = $"test{id}@email.com",
@@ -127,6 +124,7 @@ namespace HRManager.Idp.Services
             var memberResult = await _userManager.CreateAsync(user, "P@$$W0rd");
             if (!memberResult.Succeeded)
             {
+                await ClearDatabase();
                 LogIdentityErrors(memberResult, $"Something went wrong when creating seeded identity account for id: {id}:\n\n");
                 return false;
             }
@@ -135,6 +133,7 @@ namespace HRManager.Idp.Services
 
             if (!memberResult.Succeeded)
             {
+                await ClearDatabase();
                 LogIdentityErrors(memberResult, $"Something went wrong when adding seeded identity account {id} to role:\n\n");
                 return false;
             }

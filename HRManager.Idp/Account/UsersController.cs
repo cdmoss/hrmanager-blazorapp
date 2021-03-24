@@ -49,7 +49,7 @@ namespace HRManager.Idp.Account
 
         // TODO: remove this for production
         [HttpPost("seed")]
-        public async Task<IActionResult> Seed([FromBody] List<int> ids)
+        public async Task<IActionResult> Seed([FromBody] Dictionary<int, string> ids)
         {
             if (_env.IsDevelopment())
             {

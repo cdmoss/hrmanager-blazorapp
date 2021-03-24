@@ -48,8 +48,8 @@ namespace HRManager.Api.Services
                 {
                     return new ApiResult<List<TDto>>
                     {
-                        Successful = false,
-                        Error = "No member information was found in the database."
+                        Successful = true,
+                        Data = new List<TDto>()
                     };
                 }
 
@@ -144,7 +144,7 @@ namespace HRManager.Api.Services
             {
                 var member = await _context.Members.FirstOrDefaultAsync(m => m.Id == dto.Id);
                 // TODO: update identity account username before updating the rest of member information
-                UpdateMemberPropertiesForAdmin(dto, member);
+                await UpdateMemberPropertiesForAdmin(dto, member);
 
                 // detach all positions to prevent duplicate entity tracking error when saving
                 foreach (var position in dto.Positions)
@@ -200,7 +200,7 @@ namespace HRManager.Api.Services
 
         }
 
-        private void UpdateMemberPropertiesForAdmin(AdminMemberDto dto, MemberProfile member) 
+        private async Task UpdateMemberPropertiesForAdmin(AdminMemberDto dto, MemberProfile member) 
         {
             var tempMember = _mapper.Map<MemberProfile>(dto);
 
@@ -235,7 +235,12 @@ namespace HRManager.Api.Services
             member.ConfirmationOfProfessionalDesignation = tempMember.ConfirmationOfProfessionalDesignation;
             member.ChildWelfareCheck = tempMember.ChildWelfareCheck;
             member.WorkExperiences = tempMember.WorkExperiences;
-            member.ApprovalStatus = tempMember.ApprovalStatus;
+            if (member.ApprovalStatus == ApprovalStatus.Pending)
+            {
+                var appAlert = await _context.ApplicationAlerts.FirstOrDefaultAsync(m => m.Member == member);
+                appAlert.AddressedBy = "";
+                member.ApprovalStatus = tempMember.ApprovalStatus;
+            }
             member.Availabilities = tempMember.Availabilities;
             member.Positions = tempMember.Positions;
         }

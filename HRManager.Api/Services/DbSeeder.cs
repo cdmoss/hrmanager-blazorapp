@@ -13,7 +13,7 @@ namespace HRManager.Api.Services
 {
     public interface IDbSeeder
     {
-        ApiResult<List<int>> SeedMembers();
+        ApiResult<Dictionary<int, string>> SeedMembers();
         ApiResult<object> SeedPositions();
         ApiResult<object> SeedShifts();
         ApiResult<object> SeedTimeEntries();
@@ -44,17 +44,18 @@ namespace HRManager.Api.Services
             return null;
         }
 
-        public ApiResult<List<int>> SeedMembers()
+        public ApiResult<Dictionary<int, string>> SeedMembers()
         {
             try
             {
                 if (_context.Members.Any())
                 {
-                    return new ApiResult<List<int>>() { Successful = true };
+                    return new ApiResult<Dictionary<int, string>>() { Successful = true };
                 }
 
+                var memberIdsWithRoles = new Dictionary<int, string>();
                 var testMembers = new List<MemberProfile>();
-                var testAlerts = new List<ApplicationAlert>();
+                var testAdmins = new List<MemberProfile>();
 
                 for (int i = 1; i <= 10; i++)
                 {
@@ -103,18 +104,43 @@ namespace HRManager.Api.Services
 
                     testMembers.Add(member);
 
-                    testAlerts.Add(new ApplicationAlert
+                    var alert = new ApplicationAlert
                     {
                         Member = member,
                         Date = DateTime.Now
-                    });
+                    };
+
+                    _context.Members.Add(member);
+                    _context.ApplicationAlerts.Add(alert);
                 }
 
-                _context.AddRange(testMembers);
-                _context.AddRange(testAlerts);
+                for (int i = 0; i < 2; i++)
+                {
+                    var admin = new MemberProfile()
+                    {
+                        Email = $"admin{i}@email.com",
+                        FirstName = $"adminfirst{i}",
+                        LastName = $"adminlast{i}",
+                        IsStaff = true
+                    };
+
+                    testAdmins.Add(admin);
+                    _context.Members.Add(admin);
+                }
+
                 _context.SaveChanges();
 
-                return new ApiResult<List<int>>() { Data = testMembers.Select(m => m.Id).ToList(), Successful = true };
+                foreach (var member in testMembers)
+                {
+                    memberIdsWithRoles.Add(member.Id, "Member");
+                }
+
+                foreach (var admin in testAdmins)
+                {
+                    memberIdsWithRoles.Add(admin.Id, "SuperAdmin");
+                }
+
+                return new ApiResult<Dictionary<int, string>>() { Data = memberIdsWithRoles, Successful = true };
             }
             catch (Exception ex)
             {
@@ -126,7 +152,7 @@ namespace HRManager.Api.Services
                 errorString += $"\nInner Exception: {ex.StackTrace}";
 
                 _logger.LogError(errorString);
-                return new ApiResult<List<int>>() { Error = "Something went wrong when trying to seed members in the database.", Successful = false };
+                return new ApiResult<Dictionary<int, string>>() { Error = "Something went wrong when trying to seed members in the database.", Successful = false };
             }
         }
 

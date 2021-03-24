@@ -2,6 +2,7 @@
 using HRManager.Api.Data;
 using HRManager.Common;
 using HRManager.Common.Dtos;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace HRManager.Api.Services
         {
             try
             {
-                var alertDtos = _mapper.Map<List<AdminAlertListDto>>(_context.ApplicationAlerts.ToList());
+                var alertDtos = _mapper.Map<List<AdminAlertListDto>>(_context.ApplicationAlerts.Include(m => m.Member).ToList());
                 return new ApiResult<List<AdminAlertListDto>>
                 {
                     Data = alertDtos,

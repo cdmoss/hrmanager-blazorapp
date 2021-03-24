@@ -55,14 +55,14 @@ namespace HRManager.Test
 
                         var seeder = new DbSeeder(context, userManager, roleManager, new NullLogger<DbSeeder>());
 
-                        var ids = new List<int>();
+                        var membersWithRoles = new Dictionary<int, string>();
 
                         for (int i = 1; i < 11; i++)
                         {
-                            ids.Add(i);
+                            membersWithRoles.Add(i, "Member");
                         }
 
-                        bool seedSuccess = seeder.SeedUsers(ids).Result;
+                        bool seedSuccess = seeder.SeedUsers(membersWithRoles).Result;
                     }
 
                     _databaseInitialized = true;
