@@ -5,6 +5,7 @@
 @using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.Calendars
 @using Syncfusion.Blazor.Navigations
+@using HRManager.Blazor.Pages.Shared.PageMenus
 @inherits AlertsBase
 
 <AuthorizeView>
@@ -18,6 +19,9 @@
         }
         else
         {
+            <div class="menu">
+                <AlertsMenu />
+            </div>
             <SfGrid TValue="AdminAlertListDto"
                     DataSource="alerts"
                     AllowFiltering="true"
@@ -29,13 +33,13 @@
                     AllowPdfExport="true">
                 <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
                 @*<GridEditSettings AllowEditing="true" AllowAdding="true" Mode="EditMode.Dialog">
-                    <Template Context="editContext">
-                        @{
-                            var member = (editContext as AdminMemberDto);
-                        }
-                        <MemberGridEditTemplate @ref="editTemplate" @bind-SelectedMember="member" Positions="positions" />
-                    </Template>
-                </GridEditSettings>*@
+                        <Template Context="editContext">
+                            @{
+                                var member = (editContext as AdminMemberDto);
+                            }
+                            <MemberGridEditTemplate @ref="editTemplate" @bind-SelectedMember="member" Positions="positions" />
+                        </Template>
+                    </GridEditSettings>*@
 
                 <GridColumns>
                     <GridColumn Field="Member.FullName" HeaderText="Member" TextAlign="TextAlign.Center" />
@@ -43,7 +47,7 @@
                     <GridColumn Field="AlertType" HeaderText="Alert Type" TextAlign="TextAlign.Center" />
                     <GridColumn Field="AddressedBy" HeaderText="Addressed By" TextAlign="TextAlign.Center" />
                 </GridColumns>
-                @*<GridEvents TValue="AdminMemberDto" OnActionBegin="BeginActionHandler" />*@
+                <GridEvents TValue="AdminAlertListDto" OnActionBegin="BeginActionHandler" OnRecordDoubleClick="GoToMemberDetails" />
             </SfGrid>
         }
     </Authorized>

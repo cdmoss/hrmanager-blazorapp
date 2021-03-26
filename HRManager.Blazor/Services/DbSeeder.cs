@@ -33,7 +33,7 @@ namespace HRManager.Blazor.Services
                 return "Something went wrong when trying to seed the positions.";
             }
 
-            var membersSeedResponse = await apiClient.GetFromJsonAsync<ApiResult<List<int>>>("members/seed");
+            var membersSeedResponse = await apiClient.GetFromJsonAsync<ApiResult<Dictionary<int, string>>>("members/seed");
             if (!membersSeedResponse.Successful)
             {
                 return "Something went wrong when trying to seed the member profies.";

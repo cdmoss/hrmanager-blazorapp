@@ -6,7 +6,7 @@ namespace HRManager.Common.Dtos
     public class AdminAlertListDto
     {
         public int Id { get; set; }
-        public MemberMinimalDto Member { get; set; }
+        public AdminMemberDto Member { get; set; }
         public string UserFullName { get; set; }
         public DateTime Date { get; set; }
         public bool Read { get; set; }

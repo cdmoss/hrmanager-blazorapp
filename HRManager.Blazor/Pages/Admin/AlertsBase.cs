@@ -1,6 +1,7 @@
 ﻿using HRManager.Blazor.Services;
 using HRManager.Common.Dtos;
 using Microsoft.AspNetCore.Components;
+using Syncfusion.Blazor.Grids;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,31 @@ namespace HRManager.Blazor.Pages.Admin
             if (!result.Successful)
             {
                 errors.Add(result.Error);
+                return;
             }
 
             alerts = result.Data;
+
+            if (alerts.Count > 0)
+            {
+                foreach (var alert in alerts)
+                {
+                    if (string.IsNullOrEmpty(alert.AddressedBy))
+                    {
+                        alert.AddressedBy = "Unaddressed";
+                    }
+                }
+            }
+        }
+
+        protected async Task BeginActionHandler(ActionEventArgs<AdminAlertListDto> args)
+        {
+
+        }
+
+        protected async Task GoToMemberDetails(RecordDoubleClickEventArgs<AdminAlertListDto> args)
+        {
+            
         }
     }
 }

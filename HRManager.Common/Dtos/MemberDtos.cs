@@ -93,6 +93,7 @@ namespace HRManager.Common.Dtos
         public List<ReferenceDto> References { get; set; }
         public List<WorkExperienceDto> WorkExperiences { get; set; }
         public bool IsStaff { get; set; }
+        public string FullName { get { return FirstName + " " + LastName; } }
     }
 
     public class MemberMinimalDto : IMemberDto

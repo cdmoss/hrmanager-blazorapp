@@ -49,17 +49,20 @@ namespace HRManager.Api.MapperProfiles
                 availabilities.Add((DayOfWeek)day, new List<AvailabilityDto>());
             }
 
-            foreach (var availbility in domain.Availabilities)
+            if (domain.Availabilities != null)
             {
-                var availDto = new AvailabilityDto
+                foreach (var availbility in domain.Availabilities)
                 {
-                    AvailableDay = availbility.AvailableDay,
-                    StartTime = availbility.StartTime,
-                    EndTime = availbility.EndTime,
-                    IsModified = true
-                };
+                    var availDto = new AvailabilityDto
+                    {
+                        AvailableDay = availbility.AvailableDay,
+                        StartTime = availbility.StartTime,
+                        EndTime = availbility.EndTime,
+                        IsModified = true
+                    };
 
-                availabilities[availbility.AvailableDay].Add(availDto);
+                    availabilities[availbility.AvailableDay].Add(availDto);
+                }
             }
 
             return availabilities;

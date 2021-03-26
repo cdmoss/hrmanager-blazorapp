@@ -59,82 +59,42 @@ namespace HRManager.Idp.Services
 
         private async Task<bool> CreateUserAccount(int id, string roleName) 
         {
-            if (roleName == "SuperAdmin" || roleName == "Admin")
+            var user = new AppUser();
+
+            if (roleName == "SuperAdmin")
             {
-                var superAdmin = new AppUser
-                {
-                    UserName = $"sadmin@email.com",
-                    NormalizedUserName = $"SADMIN@EMAIL.COM",
-                    EmailConfirmed = true,
-                    MemberId = id
-                };
-
-                var sadminResult = await _userManager.CreateAsync(superAdmin, "P@$$W0rd");
-                if (!sadminResult.Succeeded)
-                {
-                    await ClearDatabase();
-                    LogIdentityErrors(sadminResult, $"Something went wrong when seeding the super admin account:\n\n");
-                    return false;
-                }
-
-                sadminResult = await _userManager.AddToRoleAsync(superAdmin, "SuperAdmin");
-
-                if (!sadminResult.Succeeded)
-                {
-                    await ClearDatabase();
-                    LogIdentityErrors(sadminResult, $"Something went wrong when adding the seeded super admin account to its role:\n\n");
-                    return false;
-                }
-
-                var admin = new AppUser
-                {
-                    UserName = $"admin@email.com",
-                    NormalizedUserName = $"ADMIN@EMAIL.COM",
-                    EmailConfirmed = true,
-                    MemberId = id
-                };
-
-                var adminResult = await _userManager.CreateAsync(admin, "P@$$W0rd");
-                if (!adminResult.Succeeded)
-                {
-                    await ClearDatabase();
-                    LogIdentityErrors(sadminResult, $"Something went wrong when seeding admin account:\n\n");
-                    return false;
-                }
-
-                adminResult = await _userManager.AddToRoleAsync(admin, "Admin");
-
-                if (!adminResult.Succeeded)
-                {
-                    await ClearDatabase();
-                    LogIdentityErrors(sadminResult, $"Something went wrong when adding the seeded admin account to its role:\n\n");
-                    return false;
-                }
+                user.UserName = $"sadmin@email.com";
+                user.NormalizedUserName = $"SADMIN@EMAIL.COM";
+            }
+            else if (roleName == "Admin")
+            {
+                user.UserName = $"admin@email.com";
+                user.NormalizedUserName = $"ADMIN@EMAIL.COM";
+            }
+            else
+            {
+                user.UserName = $"test{id}@email.com";
+                user.NormalizedUserName = $"TEST{id}@EMAIL.COM";
+                user.Email = $"test{id}@email.com";
             }
 
-            var user = new AppUser
-            {
-                UserName = $"test{id}@email.com",
-                Email = $"test{id}@email.com",
-                NormalizedUserName = $"TEST{id}@EMAIL.COM",
-                EmailConfirmed = true,
-                MemberId = id
-            };
+            user.EmailConfirmed = true;
+            user.MemberId = id;
 
-            var memberResult = await _userManager.CreateAsync(user, "P@$$W0rd");
-            if (!memberResult.Succeeded)
+            var userResult = await _userManager.CreateAsync(user, "P@$$W0rd");
+            if (!userResult.Succeeded)
             {
                 await ClearDatabase();
-                LogIdentityErrors(memberResult, $"Something went wrong when creating seeded identity account for id: {id}:\n\n");
+                LogIdentityErrors(userResult, $"Something went wrong when creating seeded identity account for id: {id}:\n\n");
                 return false;
             }
 
-            memberResult = await _userManager.AddToRoleAsync(user, "Member");
+            userResult = await _userManager.AddToRoleAsync(user, roleName);
 
-            if (!memberResult.Succeeded)
+            if (!userResult.Succeeded)
             {
                 await ClearDatabase();
-                LogIdentityErrors(memberResult, $"Something went wrong when adding seeded identity account {id} to role:\n\n");
+                LogIdentityErrors(userResult, $"Something went wrong when adding seeded identity account {id} to role:\n\n");
                 return false;
             }
 

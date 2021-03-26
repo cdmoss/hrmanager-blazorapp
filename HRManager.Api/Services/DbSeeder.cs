@@ -118,15 +118,36 @@ namespace HRManager.Api.Services
                 {
                     var admin = new MemberProfile()
                     {
-                        Email = $"admin{i}@email.com",
                         FirstName = $"adminfirst{i}",
                         LastName = $"adminlast{i}",
-                        IsStaff = true
+                        IsStaff = true,
+                        Address = "testAddress",
+                        City = "testcity",
+                        PostalCode = "T1R1L9",
+                        MainPhone = "5555555555",
+                        AlternatePhone1 = "5555555555",
+                        AlternatePhone2 = "5555555555",
+                        ApprovalStatus = ApprovalStatus.Pending,
+                        Birthdate = DateTime.Now,
+                        EmergencyFullName = "testemergency",
+                        EmergencyPhone1 = "5555555555",
+                        EmergencyPhone2 = "5555555555",
+                        EmergencyRelationship = "testrelationship",
+                        FoodSafe = false,
+                        FirstAidCpr = false,
+                        OtherCertificates = "TestOther",
+                        EducationTraining = "testeducation",
+                        SkillsInterestsHobbies = "testskills",
+                        Experience = "testexperience",
+                        OtherBoards = "otherboards",
                     };
 
                     testAdmins.Add(admin);
                     _context.Members.Add(admin);
                 }
+
+                testAdmins[0].Email = $"admin@email.com";
+                testAdmins[1].Email = $"sadmin@email.com";
 
                 _context.SaveChanges();
 
@@ -135,10 +156,8 @@ namespace HRManager.Api.Services
                     memberIdsWithRoles.Add(member.Id, "Member");
                 }
 
-                foreach (var admin in testAdmins)
-                {
-                    memberIdsWithRoles.Add(admin.Id, "SuperAdmin");
-                }
+                memberIdsWithRoles.Add(testAdmins[0].Id, "Admin");
+                memberIdsWithRoles.Add(testAdmins[1].Id, "SuperAdmin");
 
                 return new ApiResult<Dictionary<int, string>>() { Data = memberIdsWithRoles, Successful = true };
             }
