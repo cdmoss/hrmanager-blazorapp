@@ -1,4 +1,6 @@
 ﻿using HRManager.Api.Services;
+using HRManager.Common;
+using HRManager.Common.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace HRManager.Api.Controllers
 {
-    [Route("[controller]")]
+    [Route(Constants.ControllerNames.Alerts)]
     [ApiController]
     public class AlertsController : ControllerBase
     {
@@ -20,11 +22,18 @@ namespace HRManager.Api.Controllers
             _alertService = alertService;
         }
 
-        [Authorize(Roles = "Admin, SuperAdmin")]
-        [HttpGet("admin")]
+        [Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin)]
+        [HttpGet(Constants.ControllerEndpoints.AlertsAdmin)]
         public IActionResult GetAdminAlerts()
         {
             return new ObjectResult(_alertService.GetAdminAlerts());
+        }
+
+        [Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin)]
+        [HttpGet(Constants.ControllerEndpoints.AlertsAdmin)]
+        public IActionResult UpdateAdminAlerts([FromBody]AdminAlertListDto dto)
+        {
+            return new ObjectResult(_alertService.UpdateAlert(dto));
         }
     }
 }

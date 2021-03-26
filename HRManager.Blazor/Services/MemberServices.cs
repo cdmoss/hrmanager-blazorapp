@@ -24,8 +24,8 @@ namespace HRManager.Blazor.Services
 
         public HttpMemberService(IHttpClientFactory httpFactory, TokenProvider tokenProvider)
         {
-            _apiClient = httpFactory.CreateClient("ApiClient");
-            _idpClient = httpFactory.CreateClient("IdpClient");
+            _apiClient = httpFactory.CreateClient(Constants.HttpClients.ApiClient);
+            _idpClient = httpFactory.CreateClient(Constants.HttpClients.IdpClient);
             _apiClient.SetBearerToken(tokenProvider.AccessToken);
         }
 
@@ -33,7 +33,7 @@ namespace HRManager.Blazor.Services
         {
             try
             {
-                var apiResult = await _apiClient.GetFromJsonAsync<ApiResult<List<AdminMemberDto>>>("members/all/full");
+                var apiResult = await _apiClient.GetFromJsonAsync<ApiResult<List<AdminMemberDto>>>($"{Constants.ControllerNames.Teams}/{Constants.ControllerEndpoints.FullTeam}");
 
                 return apiResult;
             }
@@ -49,14 +49,14 @@ namespace HRManager.Blazor.Services
 
         public ApiResult<List<MemberMinimalDto>> GetMinimalMembers()
         {
-            return _apiClient.GetFromJsonAsync<ApiResult<List<MemberMinimalDto>>>("members/all/minimal").Result;
+            return _apiClient.GetFromJsonAsync<ApiResult<List<MemberMinimalDto>>>($"{Constants.ControllerNames.Teams}/{Constants.ControllerEndpoints.MinimalTeam}").Result;
         }
 
         public async Task<ApiResult<List<AdminMemberDto>>> UpdateMember(AdminMemberDto dto)
         {
-            var response = await _idpClient.PostAsJsonAsync("users/update", dto);
+            var response = await _idpClient.PostAsJsonAsync($"{Constants.ControllerNames.Teams}/{Constants.ControllerEndpoints.Update}", dto);
 
-            response = await _apiClient.PostAsJsonAsync("members/update-member", dto);
+            response = await _apiClient.PostAsJsonAsync($"{Constants.ControllerNames.Teams}/{Constants.ControllerEndpoints.UpdateMember}", dto);
             return await response.Content.ReadFromJsonAsync<ApiResult<List<AdminMemberDto>>>();
         }
     }

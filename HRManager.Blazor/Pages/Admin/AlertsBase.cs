@@ -1,4 +1,5 @@
 ﻿using HRManager.Blazor.Services;
+using HRManager.Common;
 using HRManager.Common.Dtos;
 using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor.Grids;
@@ -13,6 +14,8 @@ namespace HRManager.Blazor.Pages.Admin
     {
         [Inject]
         public IAlertService _alertService { get; set; }
+        [Inject]
+        public IMemberService _memberService { get; set; }
 
         protected List<AdminAlertListDto> alerts =  new List<AdminAlertListDto>();
         protected List<string> errors = new List<string>();
@@ -38,6 +41,20 @@ namespace HRManager.Blazor.Pages.Admin
                     }
                 }
             }
+        }
+
+        protected async Task UpdateStatus(AdminMemberDto member, ApprovalStatus status)
+        {
+            member.ApprovalStatus = status;
+            //alert.AddressedBy = 
+            await _memberService.UpdateMember(member);
+        }
+
+        protected async Task DeleteAlert(AdminAlertListDto alert)
+        {
+            alert.Archived = true;
+            //alert.AddressedBy = 
+            await _alertService.UpdateAlert(alert);
         }
 
         protected async Task BeginActionHandler(ActionEventArgs<AdminAlertListDto> args)

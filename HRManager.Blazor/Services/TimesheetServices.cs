@@ -25,14 +25,14 @@ namespace HRManager.Blazor.Services
 
         public HttpTimesheetService(IHttpClientFactory httpFactory)
         {
-            _http = httpFactory.CreateClient("ApiClient");
+            _http = httpFactory.CreateClient(Constants.HttpClients.ApiClient);
         }
 
         public async Task<ApiResult<List<TimeEntryReadEditDto>>> AddTimeEntry(TimeEntryCreateDto dto)
         {
             try
             {
-                var response = await _http.PostAsJsonAsync("timesheet/add-full-entry", dto);
+                var response = await _http.PostAsJsonAsync($"{Constants.ControllerNames.Timesheet}/{Constants.ControllerEndpoints.AddFullEntry}", dto);
                 return response.Content.ReadFromJsonAsync<ApiResult<List<TimeEntryReadEditDto>>>().Result;
             }
             catch (Exception ex)
@@ -49,7 +49,7 @@ namespace HRManager.Blazor.Services
         {
             try
             {
-                var response = await _http.PostAsJsonAsync("timesheet/delete-multiple", timeEntryIds);
+                var response = await _http.PostAsJsonAsync($"{Constants.ControllerNames.Timesheet}/{Constants.ControllerEndpoints.DeleteMultiple}", timeEntryIds);
                 return response.Content.ReadFromJsonAsync<ApiResult<List<TimeEntryReadEditDto>>>().Result;
             }
             catch (Exception ex)
@@ -66,7 +66,7 @@ namespace HRManager.Blazor.Services
         {
             try
             {
-                var response = await _http.PostAsJsonAsync("timesheet/delete", timeEntryId);
+                var response = await _http.PostAsJsonAsync($"{Constants.ControllerNames.Timesheet}/{Constants.ControllerEndpoints.Delete}", timeEntryId);
                 return response.Content.ReadFromJsonAsync<ApiResult<List<TimeEntryReadEditDto>>>().Result;
             }
             catch (Exception ex)
@@ -83,7 +83,7 @@ namespace HRManager.Blazor.Services
         {
             try
             {
-                return await _http.GetFromJsonAsync<ApiResult<List<TimeEntryReadEditDto>>>("timesheet/get-archived");
+                return await _http.GetFromJsonAsync<ApiResult<List<TimeEntryReadEditDto>>>($"{Constants.ControllerNames.Timesheet}/{Constants.ControllerEndpoints.GetArchived}");
             }
             catch (Exception ex)
             {
@@ -99,7 +99,7 @@ namespace HRManager.Blazor.Services
         {
             try
             {
-                return await _http.GetFromJsonAsync<ApiResult<List<TimeEntryReadEditDto>>>("timesheet/get-current");
+                return await _http.GetFromJsonAsync<ApiResult<List<TimeEntryReadEditDto>>>($"{Constants.ControllerNames.Timesheet}/{Constants.ControllerEndpoints.GetCurrent}");
             }
             catch (Exception ex)
             {
@@ -115,7 +115,7 @@ namespace HRManager.Blazor.Services
         {
             try
             {
-                var response = await _http.PostAsJsonAsync("timesheet/punch", timeEntry);
+                var response = await _http.PostAsJsonAsync($"{Constants.ControllerNames.Timesheet}/{Constants.ControllerEndpoints.Punch}", timeEntry);
                 return response.Content.ReadFromJsonAsync<ApiResult<List<TimeEntryReadEditDto>>>().Result;
             }
             catch (Exception ex)
@@ -132,7 +132,7 @@ namespace HRManager.Blazor.Services
         {
             try
             {
-                var response = await _http.PostAsJsonAsync("timesheet/update", timeEntry);
+                var response = await _http.PostAsJsonAsync($"{Constants.ControllerNames.Timesheet}/{Constants.ControllerEndpoints.Update}", timeEntry);
                 return response.Content.ReadFromJsonAsync<ApiResult<List<TimeEntryReadEditDto>>>().Result;
             }
             catch (Exception ex)

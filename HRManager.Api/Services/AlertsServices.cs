@@ -33,7 +33,11 @@ namespace HRManager.Api.Services
         {
             try
             {
-                var alertDtos = _mapper.Map<List<AdminAlertListDto>>(_context.ApplicationAlerts.Include(m => m.Member).ToList());
+                var alertDtos = _mapper.Map<List<AdminAlertListDto>>(_context.ApplicationAlerts
+                    .Include(m => m.Member).ThenInclude(m => m.Positions)
+                    .Include(m => m.Member).ThenInclude(m => m.WorkExperiences)
+                    .Include(m => m.Member).ThenInclude(m => m.Availabilities)
+                    .Include(m => m.Member).ThenInclude(m => m.References).ToList());
                 return new ApiResult<List<AdminAlertListDto>>
                 {
                     Data = alertDtos,

@@ -48,7 +48,7 @@ namespace HRManager.Api
                 });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddScoped<IMemberService, EFMemberService>();
+            services.AddScoped<ITeamService, EFMemberService>();
             services.AddScoped<IShiftService, EFShiftService>();
             services.AddScoped<IAlertService, EFAlertService>();
             services.AddScoped<IPositionService, EFPositionService>();
