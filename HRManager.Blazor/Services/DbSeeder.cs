@@ -24,16 +24,16 @@ namespace HRManager.Blazor.Services
 
         public async Task<string> Seed()
         {
-            var apiClient = _httpFactory.CreateClient("ApiClient");
-            var idpClient = _httpFactory.CreateClient("IdpClient");
+            var apiClient = _httpFactory.CreateClient(Constants.HttpClients.ApiClient);
+            var idpClient = _httpFactory.CreateClient(Constants.HttpClients.IdpClient);
 
-            var positionsSeedResponse = await apiClient.GetFromJsonAsync<ApiResult<object>>("positions/seed");
+            var positionsSeedResponse = await apiClient.GetFromJsonAsync<ApiResult<object>>($"{Constants.ControllerNames.Positions}/{Constants.ControllerEndpoints.Seed}");
             if (!positionsSeedResponse.Successful)
             {
                 return "Something went wrong when trying to seed the positions.";
             }
 
-            var membersSeedResponse = await apiClient.GetFromJsonAsync<ApiResult<Dictionary<int, string>>>("members/seed");
+            var membersSeedResponse = await apiClient.GetFromJsonAsync<ApiResult<Dictionary<int, string>>>($"{Constants.ControllerNames.Teams}/{Constants.ControllerEndpoints.Seed}");
             if (!membersSeedResponse.Successful)
             {
                 return "Something went wrong when trying to seed the member profies.";
@@ -41,14 +41,14 @@ namespace HRManager.Blazor.Services
 
             if (membersSeedResponse.Data != null)
             {
-                var idpSeedResponse = await idpClient.PostAsJsonAsync("users/seed", membersSeedResponse.Data);
+                var idpSeedResponse = await idpClient.PostAsJsonAsync($"{Constants.ControllerNames.User}/{Constants.ControllerEndpoints.Seed}", membersSeedResponse.Data);
                 if (!idpSeedResponse.IsSuccessStatusCode)
                 {
                     return "Something went wrong when trying to seed the identity accounts.";
                 }
             }
 
-            var tsSeedResponse = await apiClient.GetFromJsonAsync<ApiResult<object>>("timesheet/seed");
+            var tsSeedResponse = await apiClient.GetFromJsonAsync<ApiResult<object>>($"{Constants.ControllerNames.Timesheet}/{Constants.ControllerEndpoints.Seed}");
             if (!tsSeedResponse.Successful)
             {
                 return "Something went wrong when trying to seed the time entries.";

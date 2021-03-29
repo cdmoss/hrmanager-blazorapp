@@ -25,7 +25,7 @@ namespace HRManager.Blazor.Services
 
         public HttpShiftService(IHttpClientFactory httpFactory, TokenProvider tokenProvider)
         {
-            _http = httpFactory.CreateClient("ApiClient");
+            _http = httpFactory.CreateClient(Constants.HttpClients.ApiClient);
             _http.SetBearerToken(tokenProvider.AccessToken);
         }
 
@@ -36,19 +36,19 @@ namespace HRManager.Blazor.Services
 
         public ApiResult<List<ShiftReadEditDto>> AddShifts(List<ShiftReadEditDto> dto)
         {
-            var response = _http.PostAsJsonAsync("shifts/add", dto).Result;
+            var response = _http.PostAsJsonAsync($"{Constants.ControllerNames.Shifts}/{Constants.ControllerEndpoints.Add}", dto).Result;
             return response.Content.ReadFromJsonAsync<ApiResult<List<ShiftReadEditDto>>>().Result;
         }
 
         public ApiResult<List<ShiftReadEditDto>> UpdateShifts(List<ShiftReadEditDto> dto)
         {
-            var response = _http.PostAsJsonAsync("shifts/update", dto).Result;
+            var response = _http.PostAsJsonAsync($"{Constants.ControllerNames.Shifts}/{Constants.ControllerEndpoints.Update}", dto).Result;
             return response.Content.ReadFromJsonAsync<ApiResult<List<ShiftReadEditDto>>>().Result;
         }
 
         public ApiResult<List<ShiftReadEditDto>> DeleteShifts(List<int> ids)
         {
-            var response = _http.PostAsJsonAsync("shifts/delete", ids).Result;
+            var response = _http.PostAsJsonAsync($"{Constants.ControllerNames.Shifts}/{Constants.ControllerEndpoints.Delete}", ids).Result;
             return response.Content.ReadFromJsonAsync<ApiResult<List<ShiftReadEditDto>>>().Result;
         }
     }

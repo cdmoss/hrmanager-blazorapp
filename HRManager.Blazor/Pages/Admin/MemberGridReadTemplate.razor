@@ -138,42 +138,45 @@
                             </div>
                         </div>
                     </div>
-                    @if (!string.IsNullOrEmpty(SelectedMember.WorkExperiences.FirstOrDefault().EmployerName) && !string.IsNullOrEmpty(SelectedMember.WorkExperiences.FirstOrDefault().EmployerAddress))
+                    @if (SelectedMember.WorkExperiences.Count != 0)
                     {
-                        <div class="work-experience">
-                            <span style="font: 14px; width: auto;">Last or Current Job</span>
-                            <div class="work-experience-content">
-                                <div class="work-experience-column">
-                                    <div class="employer-name form-group">
-                                        <label><strong>Place of Work</strong></label>
-                                        <p>@SelectedMember.WorkExperiences.FirstOrDefault().EmployerName</p>
-                                    </div>
-                                    <div class="employer-address form-group">
-                                        <label><strong>Address</strong></label>
-                                        <p>@SelectedMember.WorkExperiences.FirstOrDefault().EmployerAddress</p>
-                                    </div>
-                                </div>
-                                <div class="work-experience-column">
-                                    <div class="date form-group">
-                                        <label><strong>Start Date</strong></label>
-                                        <p>@SelectedMember.WorkExperiences.FirstOrDefault().StartDate.Value.ToString("MMMM dd yyyy")</p>
-                                    </div>
-                                    @if (SelectedMember.WorkExperiences.FirstOrDefault().CurrentJob)
-                                    {
-                                        <div class="form-group date">
-                                            <p><strong>Current Job</strong></p>
+                        @if (!string.IsNullOrEmpty(SelectedMember.WorkExperiences.FirstOrDefault().EmployerName) && !string.IsNullOrEmpty(SelectedMember.WorkExperiences.FirstOrDefault().EmployerAddress))
+                        {
+                            <div class="work-experience">
+                                <span style="font: 14px; width: auto;">Last or Current Job</span>
+                                <div class="work-experience-content">
+                                    <div class="work-experience-column">
+                                        <div class="employer-name form-group">
+                                            <label><strong>Place of Work</strong></label>
+                                            <p>@SelectedMember.WorkExperiences.FirstOrDefault().EmployerName</p>
                                         </div>
-                                    }
-                                    else
-                                    {
+                                        <div class="employer-address form-group">
+                                            <label><strong>Address</strong></label>
+                                            <p>@SelectedMember.WorkExperiences.FirstOrDefault().EmployerAddress</p>
+                                        </div>
+                                    </div>
+                                    <div class="work-experience-column">
                                         <div class="date form-group">
-                                            <label><strong>End Date</strong></label>
-                                            <p>@SelectedMember.WorkExperiences.FirstOrDefault().EndDate.Value.ToString("MMMM dd yyyy")</p>
+                                            <label><strong>Start Date</strong></label>
+                                            <p>@SelectedMember.WorkExperiences.FirstOrDefault().StartDate.Value.ToString("MMMM dd yyyy")</p>
                                         </div>
-                                    }
+                                        @if (SelectedMember.WorkExperiences.FirstOrDefault().CurrentJob)
+                                        {
+                                            <div class="form-group date">
+                                                <p><strong>Current Job</strong></p>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="date form-group">
+                                                <label><strong>End Date</strong></label>
+                                                <p>@SelectedMember.WorkExperiences.FirstOrDefault().EndDate.Value.ToString("MMMM dd yyyy")</p>
+                                            </div>
+                                        }
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     }
                 </div>
             </TabPanel>

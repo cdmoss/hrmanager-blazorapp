@@ -1,5 +1,6 @@
 ﻿using HRManager.Api.Data;
 using HRManager.Api.Services;
+using HRManager.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HRManager.Api.Controllers
 {
-    [Route("[controller]")]
+    [Route(Constants.ControllerNames.Positions)]
     [ApiController]
     public class PositionsController : ControllerBase
     {
@@ -22,14 +23,14 @@ namespace HRManager.Api.Controllers
             _seeder = seeder;
         }
 
-        [HttpGet("all")]
+        [HttpGet(Constants.ControllerEndpoints.All)]
         public async Task<IActionResult> GetAllPositions()
         {
             var positions = await _positionService.GetPositions();
             return new ObjectResult(positions);
         }
 
-        [HttpGet("seed")]
+        [HttpGet(Constants.ControllerEndpoints.Seed)]
         public IActionResult SeedPositions()
         {
             var result = _seeder.SeedPositions();

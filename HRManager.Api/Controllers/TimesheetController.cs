@@ -1,5 +1,7 @@
 ﻿using HRManager.Api.Services;
+using HRManager.Common;
 using HRManager.Common.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace HRManager.Api.Controllers
 {
-    [Route("[controller]")]
+    [Authorize]
+    [Route(Constants.ControllerNames.Timesheet)]
     [ApiController]
     public class TimesheetController : ControllerBase
     {
@@ -22,37 +25,37 @@ namespace HRManager.Api.Controllers
             _dbSeeder = dbSeeder;
         }
 
-        [HttpGet("get-archived")]
+        [HttpGet(Constants.ControllerEndpoints.GetArchived)]
         public async Task<IActionResult> GetArchivedTimeEntries()
         {
             return new ObjectResult(await _tsService.GetArchivedTimeEntries());
         }
 
-        [HttpGet("get-current")]
+        [HttpGet(Constants.ControllerEndpoints.GetCurrent)]
         public async Task<IActionResult> GetCurrentTimeEntries()
         {
             return new ObjectResult(await _tsService.GetCurrentTimeEntries());
         }
 
-        [HttpPost("add-full-entry")]
+        [HttpPost(Constants.ControllerEndpoints.AddFullEntry)]
         public async Task<IActionResult> AddFullEntry(TimeEntryCreateDto dto)
         {
             return new ObjectResult(await _tsService.AddFullEntry(dto));
         }
 
-        [HttpPost("update")]
+        [HttpPost(Constants.ControllerEndpoints.Update)]
         public async Task<IActionResult> UpdateEntry(TimeEntryReadEditDto dto)
         {
             return new ObjectResult(await _tsService.UpdateEntry(dto));
         }
 
-        [HttpPost("punch")]
+        [HttpPost(Constants.ControllerEndpoints.Punch)]
         public async Task<IActionResult> PunchClock(TimeEntryCreateDto dto)
         {
             return new ObjectResult(await _tsService.PunchClock(dto));
         }
 
-        [HttpGet("seed")]
+        [HttpGet(Constants.ControllerEndpoints.Seed)]
         public IActionResult Seed()
         {
             return new ObjectResult(_dbSeeder.SeedTimeEntries());

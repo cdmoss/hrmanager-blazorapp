@@ -21,13 +21,13 @@ namespace HRManager.Blazor.Services
 
         public HttpPositionService(IHttpClientFactory httpFactory, TokenProvider tokenProvider)
         {
-            _http = httpFactory.CreateClient("ApiClient");
+            _http = httpFactory.CreateClient(Constants.HttpClients.ApiClient);
             _http.SetBearerToken(tokenProvider.AccessToken);
         }
 
         public ApiResult<List<Position>> GetPositions()
         {
-            return _http.GetFromJsonAsync<ApiResult<List<Position>>>("positions/all", new JsonSerializerOptions { PropertyNameCaseInsensitive = true }).Result;
+            return _http.GetFromJsonAsync<ApiResult<List<Position>>>($"{Constants.ControllerNames.Positions}/{Constants.ControllerEndpoints.All}", new JsonSerializerOptions { PropertyNameCaseInsensitive = true }).Result;
         }
     }
 }

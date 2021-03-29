@@ -33,19 +33,58 @@
                     AllowPdfExport="true">
                 <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
                 @*<GridEditSettings AllowEditing="true" AllowAdding="true" Mode="EditMode.Dialog">
-                        <Template Context="editContext">
-                            @{
-                                var member = (editContext as AdminMemberDto);
-                            }
-                            <MemberGridEditTemplate @ref="editTemplate" @bind-SelectedMember="member" Positions="positions" />
-                        </Template>
-                    </GridEditSettings>*@
-
+            <Template Context="editContext">
+                @{
+                    var member = (editContext as AdminMemberDto);
+                }
+                <MemberGridEditTemplate @ref="editTemplate" @bind-SelectedMember="member" Positions="positions" />
+            </Template>
+        </GridEditSettings>*@
+                <GridTemplates>
+                    <DetailTemplate Context="detailContext">
+                        @{
+                            var member = (detailContext as AdminAlertListDto).Member;
+                            var tabNames = new string[]
+                            {
+                            "personal," + member.Id,
+                            "avail," + member.Id,
+                            "positions," + member.Id,
+                            "qual," + member.Id,
+                            "cert," + member.Id,
+                            "check," + member.Id,
+                            };
+                        }
+                        <MemberGridReadTemplate SelectedMember="member" />
+                    </DetailTemplate>
+                </GridTemplates>
                 <GridColumns>
                     <GridColumn Field="Member.FullName" HeaderText="Member" TextAlign="TextAlign.Center" />
                     <GridColumn Field="Date" HeaderText="Alert Date" TextAlign="TextAlign.Center" />
                     <GridColumn Field="AlertType" HeaderText="Alert Type" TextAlign="TextAlign.Center" />
                     <GridColumn Field="AddressedBy" HeaderText="Addressed By" TextAlign="TextAlign.Center" />
+                    <GridColumn Field="Member.ApprovalStatus" HeaderText="Actions" TextAlign="TextAlign.Center">
+                        <Template Context="ColumnContext">
+                            @{
+                                var alert = (ColumnContext as AdminAlertListDto);
+                                var member = (ColumnContext as AdminAlertListDto).Member;
+                            }
+                            @if (!(member.ApprovalStatus == ApprovalStatus.Approved))
+                            {
+                                <button @onclick="(()=>UpdateStatus(member, ApprovalStatus.Approved))">Approve</button>
+                            }
+
+                            @if (!(member.ApprovalStatus == ApprovalStatus.Declined))
+                            {
+                                <button @onclick="(()=>UpdateStatus(member, ApprovalStatus.Declined))">Decline</button>
+                            }
+
+                            @if (!(member.ApprovalStatus == ApprovalStatus.Pending))
+                            {
+                                <button @onclick="(()=>UpdateStatus(member, ApprovalStatus.Pending))">Reset</button>
+                            }
+                            <button @onclick="(()=>DeleteAlert(alert))">Delete</button>
+                        </Template>
+                    </GridColumn>
                 </GridColumns>
                 <GridEvents TValue="AdminAlertListDto" OnActionBegin="BeginActionHandler" OnRecordDoubleClick="GoToMemberDetails" />
             </SfGrid>

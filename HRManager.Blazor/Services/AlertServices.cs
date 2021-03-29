@@ -22,7 +22,7 @@ namespace HRManager.Blazor.Services
 
         public HttpAlertService(IHttpClientFactory factory, TokenProvider tokenProvider)
         {
-            _http = factory.CreateClient("ApiClient");
+            _http = factory.CreateClient(Constants.HttpClients.ApiClient);
             _http.SetBearerToken(tokenProvider.AccessToken);
         }
 
@@ -30,7 +30,7 @@ namespace HRManager.Blazor.Services
         {
             try
             {
-                return await _http.GetFromJsonAsync<ApiResult<List<AdminAlertListDto>>>("alerts/admin");
+                return await _http.GetFromJsonAsync<ApiResult<List<AdminAlertListDto>>>($"{Constants.ControllerNames.Alerts}/{Constants.ControllerEndpoints.AlertsAdmin}");
             }
             catch (Exception ex)
             {
@@ -44,7 +44,7 @@ namespace HRManager.Blazor.Services
 
         public async Task<ApiResult<List<AdminAlertListDto>>> UpdateAlert(AdminAlertListDto dto)
         {
-            var response = await _http.PostAsJsonAsync("alerts/admin-update", dto);
+            var response = await _http.PostAsJsonAsync($"{Constants.ControllerNames.Alerts}/{Constants.ControllerEndpoints.AlertsAdminUpdate}", dto);
             if (!response.IsSuccessStatusCode)
             {
                 return new ApiResult<List<AdminAlertListDto>>

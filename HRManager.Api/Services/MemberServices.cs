@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace HRManager.Api.Services
 {
-    public interface IMemberService
+    public interface ITeamService
     {
         Task<ApiResult<List<TDto>>> GetMembers<TDto>() where TDto : IMemberDto;
         Task<ApiResult<TDto>> GetMember<TDto>(int id) where TDto : IMemberDto;
@@ -22,7 +22,7 @@ namespace HRManager.Api.Services
         Task<ApiResult<object>> DeleteMember(int id);
     }
 
-    public class EFMemberService : IMemberService
+    public class EFMemberService : ITeamService
     {
         private readonly MainContext _context;
         private readonly IMapper _mapper;
