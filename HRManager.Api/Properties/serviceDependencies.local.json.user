@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2021-03-28T18:00:11.8100996Z"
+    },
+    "appInsights1": {
+      "restored": true,
+      "restoreTime": "2021-03-28T18:00:12.9426664Z"
+    }
+  },
+  "parameters": {
+    "appInsights1.subscriptionId": {
+      "Name": "appInsights1.subscriptionId",
+      "Type": "subscription",
+      "Value": "e2e3d940-b6c4-4cca-af47-a313e2200f21"
+    },
+    "appInsights1.resourceGroupName": {
+      "Name": "appInsights1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "chases-stuff"
+    }
+  }
+}

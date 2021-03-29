@@ -56,6 +56,10 @@
               "target": "Package",
               "version": "[3.0.1, )"
             },
+            "Microsoft.ApplicationInsights.AspNetCore": {
+              "target": "Package",
+              "version": "[2.17.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[5.0.0, )",

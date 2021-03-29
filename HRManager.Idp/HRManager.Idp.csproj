@@ -1,12 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <UserSecretsId>3e5d5dd6-912c-4f34-9752-11c5c3e2264c</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/e2e3d940-b6c4-4cca-af47-a313e2200f21/resourceGroups/chases-stuff/providers/microsoft.insights/components/hrmanager-insights</ApplicationInsightsResourceId>
   </PropertyGroup>
   
   <ItemGroup>
     <PackageReference Include="IdentityServer4" Version="4.1.1" />
     <PackageReference Include="IdentityServer4.AspNetIdentity" Version="4.1.1" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.15.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.1">
       <PrivateAssets>all</PrivateAssets>

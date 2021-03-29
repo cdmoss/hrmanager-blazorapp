@@ -1,21 +1,5 @@
 watch : Started
 Building...
-Resources\SfResources.resx : warning MSB3568: Duplicate resource name "Maps_Pan" is not allowed, ignored. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
-Resources\SfResources.resx : warning MSB3568: Duplicate resource name "Maps_Reset" is not allowed, ignored. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
-Resources\SfResources.resx : warning MSB3568: Duplicate resource name "Maps_Zoom" is not allowed, ignored. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
-Resources\SfResources.resx : warning MSB3568: Duplicate resource name "Maps_ZoomIn" is not allowed, ignored. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
-Resources\SfResources.resx : warning MSB3568: Duplicate resource name "Maps_ZoomOut" is not allowed, ignored. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
-C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Teams.razor(3,7): warning CS0105: The using directive for 'HRManager.Blazor.Pages.Shared' appeared previously in this namespace [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
-C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Logout.cshtml.cs(15,27): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
-C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\AlertsBase.cs(43,30): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
-C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\AlertsBase.cs(48,30): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
-C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Services\AlertServices.cs(35,30): warning CS0168: The variable 'ex' is declared but never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
-C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor(31,17): warning CS0169: The field 'Register.test' is never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
-C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\PostLoginRedirector.razor(11,20): warning CS0169: The field 'PostLoginRedirector.message' is never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
-C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor(30,18): warning CS0649: Field 'Register.ShowErrors' is never assigned to, and will always have its default value false [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
-C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor(32,33): warning CS0649: Field 'Register.Errors' is never assigned to, and will always have its default value null [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
-C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Shared\MainLayout.razor(16,20): warning CS0414: The field 'MainLayout.currentPage' is assigned but its value is never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
-C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\ScheduleEditorTemplate.razor(19,13): warning BL0005: Component parameter 'SelectedType' should not be set outside of its component. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
 info: Microsoft.Hosting.Lifetime[0]
       Now listening on: https://localhost:5004
 info: Microsoft.Hosting.Lifetime[0]
@@ -31,163 +15,313 @@ info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
 info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
       Sending HTTP request GET https://localhost:5001/members/all/full
 info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 1409.5042ms - 200
+      Received HTTP response headers after 322.0575ms - 401
 info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 1415.6852ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/positions/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/positions/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 31.6652ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 31.7529ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/alerts/admin
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/alerts/admin
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 66.1109ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 66.1871ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/alerts/admin
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/alerts/admin
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 6.7619ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 6.8458ms - 200
+      End processing HTTP request after 328.6404ms - 401
+warn: Microsoft.AspNetCore.Components.Server.Circuits.RemoteRenderer[100]
+      Unhandled exception rendering component: Value cannot be null. (Parameter 'source')
+      System.ArgumentNullException: Value cannot be null. (Parameter 'source')
+         at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+         at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+         at HRManager.Blazor.Pages.Admin.TeamsBase.OnInitializedAsync() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\TeamsBase.cs:line 58
+         at Microsoft.AspNetCore.Components.ComponentBase.RunInitAndSetParametersAsync()
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle)
+fail: Microsoft.AspNetCore.Components.Server.Circuits.CircuitHost[111]
+      Unhandled exception in circuit 'D34iVropROuyZWP2jw64oa0iZ4wEODv0PzEdJQM3FlI'.
+      System.ArgumentNullException: Value cannot be null. (Parameter 'source')
+         at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+         at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+         at HRManager.Blazor.Pages.Admin.TeamsBase.OnInitializedAsync() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\TeamsBase.cs:line 58
+         at Microsoft.AspNetCore.Components.ComponentBase.RunInitAndSetParametersAsync()
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle)
 info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
       Start processing HTTP request GET https://localhost:5001/members/all/full
 info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
       Sending HTTP request GET https://localhost:5001/members/all/full
 info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 13.5897ms - 200
+      Received HTTP response headers after 4.5913ms - 401
 info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 13.6745ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/positions/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/positions/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 6.2756ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 6.3426ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/shifts/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/shifts/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 23.0312ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 23.1856ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/positions/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/positions/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 5.6656ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 5.7417ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/members/all/minimal
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/members/all/minimal
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 12.4717ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 12.5293ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/shifts/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/shifts/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 4.3787ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 4.452ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/timesheet/get-current
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/timesheet/get-current
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 30.0654ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 30.1332ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/positions/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/positions/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 5.9138ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 5.9624ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/members/all/minimal
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/members/all/minimal
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 6.1896ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 6.2372ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/shifts/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/shifts/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 4.6003ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 4.6809ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/positions/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/positions/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 7.1241ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 7.1732ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/members/all/minimal
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/members/all/minimal
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 7.9711ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 8.0344ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/shifts/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/shifts/all
-info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 4.2116ms - 200
-info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 4.2862ms - 200
+      End processing HTTP request after 4.6661ms - 401
+fail: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
+      An unhandled exception has occurred while executing the request.
+      System.ArgumentNullException: Value cannot be null. (Parameter 'source')
+         at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+         at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+         at HRManager.Blazor.Pages.Admin.TeamsBase.OnInitializedAsync() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\TeamsBase.cs:line 58
+         at Microsoft.AspNetCore.Components.ComponentBase.RunInitAndSetParametersAsync()
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle)
+         at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.HandleException(Exception exception)
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle)
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.ProcessAsynchronousWork()
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.RenderRootComponentAsync(Int32 componentId, ParameterView initialParameters)
+         at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.CreateInitialRenderAsync(Type componentType, ParameterView initialParameters)
+         at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.RenderComponentAsync(Type componentType, ParameterView initialParameters)
+         at Microsoft.AspNetCore.Components.Rendering.RendererSynchronizationContext.<>c__11`1.<<InvokeAsync>b__11_0>d.MoveNext()
+      --- End of stack trace from previous location ---
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.StaticComponentRenderer.PrerenderComponentAsync(ParameterView parameters, HttpContext httpContext, Type componentType)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer.PrerenderedServerComponentAsync(HttpContext context, ServerComponentInvocationSequence invocationId, Type type, ParameterView parametersCollection)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer.RenderComponentAsync(ViewContext viewContext, Type componentType, RenderMode renderMode, Object parameters)
+         at Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.ProcessAsync(TagHelperContext context, TagHelperOutput output)
+         at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperRunner.<RunAsync>g__Awaited|0_0(Task task, TagHelperExecutionContext executionContext, Int32 i, Int32 count)
+         at HRManager.Blazor.Pages.Pages__Host.<ExecuteAsync>b__14_1() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\_Host.cshtml:line 45
+         at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext.SetOutputContentAsync()
+         at HRManager.Blazor.Pages.Pages__Host.ExecuteAsync() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\_Host.cshtml:line 8
+         at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+         at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+         at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeResultFilters>g__Awaited|27_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+         at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
 info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
       Start processing HTTP request GET https://localhost:5001/members/all/full
 info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
       Sending HTTP request GET https://localhost:5001/members/all/full
 info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 8.4444ms - 200
+      Received HTTP response headers after 1.9085ms - 401
 info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 8.5157ms - 200
+      End processing HTTP request after 1.9625ms - 401
+fail: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
+      An unhandled exception has occurred while executing the request.
+      System.ArgumentNullException: Value cannot be null. (Parameter 'source')
+         at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+         at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+         at HRManager.Blazor.Pages.Admin.TeamsBase.OnInitializedAsync() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\TeamsBase.cs:line 58
+         at Microsoft.AspNetCore.Components.ComponentBase.RunInitAndSetParametersAsync()
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle)
+         at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.HandleException(Exception exception)
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle)
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.ProcessAsynchronousWork()
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.RenderRootComponentAsync(Int32 componentId, ParameterView initialParameters)
+         at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.CreateInitialRenderAsync(Type componentType, ParameterView initialParameters)
+         at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.RenderComponentAsync(Type componentType, ParameterView initialParameters)
+         at Microsoft.AspNetCore.Components.Rendering.RendererSynchronizationContext.<>c__11`1.<<InvokeAsync>b__11_0>d.MoveNext()
+      --- End of stack trace from previous location ---
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.StaticComponentRenderer.PrerenderComponentAsync(ParameterView parameters, HttpContext httpContext, Type componentType)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer.PrerenderedServerComponentAsync(HttpContext context, ServerComponentInvocationSequence invocationId, Type type, ParameterView parametersCollection)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer.RenderComponentAsync(ViewContext viewContext, Type componentType, RenderMode renderMode, Object parameters)
+         at Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.ProcessAsync(TagHelperContext context, TagHelperOutput output)
+         at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperRunner.<RunAsync>g__Awaited|0_0(Task task, TagHelperExecutionContext executionContext, Int32 i, Int32 count)
+         at HRManager.Blazor.Pages.Pages__Host.<ExecuteAsync>b__14_1() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\_Host.cshtml:line 45
+         at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext.SetOutputContentAsync()
+         at HRManager.Blazor.Pages.Pages__Host.ExecuteAsync() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\_Host.cshtml:line 8
+         at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+         at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+         at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeResultFilters>g__Awaited|27_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+         at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 1.7585ms - 401
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 1.8145ms - 401
+fail: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
+      An unhandled exception has occurred while executing the request.
+      System.ArgumentNullException: Value cannot be null. (Parameter 'source')
+         at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+         at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+         at HRManager.Blazor.Pages.Admin.TeamsBase.OnInitializedAsync() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\TeamsBase.cs:line 58
+         at Microsoft.AspNetCore.Components.ComponentBase.RunInitAndSetParametersAsync()
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle)
+         at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.HandleException(Exception exception)
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle)
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.ProcessAsynchronousWork()
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.RenderRootComponentAsync(Int32 componentId, ParameterView initialParameters)
+         at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.CreateInitialRenderAsync(Type componentType, ParameterView initialParameters)
+         at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.RenderComponentAsync(Type componentType, ParameterView initialParameters)
+         at Microsoft.AspNetCore.Components.Rendering.RendererSynchronizationContext.<>c__11`1.<<InvokeAsync>b__11_0>d.MoveNext()
+      --- End of stack trace from previous location ---
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.StaticComponentRenderer.PrerenderComponentAsync(ParameterView parameters, HttpContext httpContext, Type componentType)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer.PrerenderedServerComponentAsync(HttpContext context, ServerComponentInvocationSequence invocationId, Type type, ParameterView parametersCollection)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer.RenderComponentAsync(ViewContext viewContext, Type componentType, RenderMode renderMode, Object parameters)
+         at Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.ProcessAsync(TagHelperContext context, TagHelperOutput output)
+         at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperRunner.<RunAsync>g__Awaited|0_0(Task task, TagHelperExecutionContext executionContext, Int32 i, Int32 count)
+         at HRManager.Blazor.Pages.Pages__Host.<ExecuteAsync>b__14_1() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\_Host.cshtml:line 45
+         at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext.SetOutputContentAsync()
+         at HRManager.Blazor.Pages.Pages__Host.ExecuteAsync() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\_Host.cshtml:line 8
+         at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+         at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+         at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeResultFilters>g__Awaited|27_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+         at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 1.3956ms - 401
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 1.4494ms - 401
+fail: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
+      An unhandled exception has occurred while executing the request.
+      System.ArgumentNullException: Value cannot be null. (Parameter 'source')
+         at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+         at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+         at HRManager.Blazor.Pages.Admin.TeamsBase.OnInitializedAsync() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\TeamsBase.cs:line 58
+         at Microsoft.AspNetCore.Components.ComponentBase.RunInitAndSetParametersAsync()
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle)
+         at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.HandleException(Exception exception)
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle)
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.ProcessAsynchronousWork()
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.RenderRootComponentAsync(Int32 componentId, ParameterView initialParameters)
+         at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.CreateInitialRenderAsync(Type componentType, ParameterView initialParameters)
+         at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.RenderComponentAsync(Type componentType, ParameterView initialParameters)
+         at Microsoft.AspNetCore.Components.Rendering.RendererSynchronizationContext.<>c__11`1.<<InvokeAsync>b__11_0>d.MoveNext()
+      --- End of stack trace from previous location ---
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.StaticComponentRenderer.PrerenderComponentAsync(ParameterView parameters, HttpContext httpContext, Type componentType)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer.PrerenderedServerComponentAsync(HttpContext context, ServerComponentInvocationSequence invocationId, Type type, ParameterView parametersCollection)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer.RenderComponentAsync(ViewContext viewContext, Type componentType, RenderMode renderMode, Object parameters)
+         at Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.ProcessAsync(TagHelperContext context, TagHelperOutput output)
+         at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperRunner.<RunAsync>g__Awaited|0_0(Task task, TagHelperExecutionContext executionContext, Int32 i, Int32 count)
+         at HRManager.Blazor.Pages.Pages__Host.<ExecuteAsync>b__14_1() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\_Host.cshtml:line 45
+         at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext.SetOutputContentAsync()
+         at HRManager.Blazor.Pages.Pages__Host.ExecuteAsync() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\_Host.cshtml:line 8
+         at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+         at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+         at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+         at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeResultFilters>g__Awaited|27_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+         at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+         at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+         at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 1.7318ms - 401
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 1.8033ms - 401
+warn: Microsoft.AspNetCore.Components.Server.Circuits.RemoteRenderer[100]
+      Unhandled exception rendering component: Value cannot be null. (Parameter 'source')
+      System.ArgumentNullException: Value cannot be null. (Parameter 'source')
+         at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+         at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+         at HRManager.Blazor.Pages.Admin.TeamsBase.OnInitializedAsync() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\TeamsBase.cs:line 58
+         at Microsoft.AspNetCore.Components.ComponentBase.RunInitAndSetParametersAsync()
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle)
+fail: Microsoft.AspNetCore.Components.Server.Circuits.CircuitHost[111]
+      Unhandled exception in circuit 'xqTlg9zJ7bZZzFxtN16J__yinp4kmay8lZGjH7DG_Hc'.
+      System.ArgumentNullException: Value cannot be null. (Parameter 'source')
+         at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+         at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+         at HRManager.Blazor.Pages.Admin.TeamsBase.OnInitializedAsync() in C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\TeamsBase.cs:line 58
+         at Microsoft.AspNetCore.Components.ComponentBase.RunInitAndSetParametersAsync()
+         at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle)
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 1585.1177ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 1585.218ms - 200
 info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
       Start processing HTTP request GET https://localhost:5001/positions/all
 info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
       Sending HTTP request GET https://localhost:5001/positions/all
 info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 7.329ms - 200
+      Received HTTP response headers after 32.1605ms - 200
 info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 7.3833ms - 200
+      End processing HTTP request after 32.2218ms - 200
 info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5001/alerts/admin
+      Start processing HTTP request GET https://localhost:5001/members/all/full
 info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5001/alerts/admin
+      Sending HTTP request GET https://localhost:5001/members/all/full
 info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
-      Received HTTP response headers after 6.5093ms - 200
+      Received HTTP response headers after 38.8362ms - 200
 info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
-      End processing HTTP request after 6.5706ms - 200
-info: Microsoft.Hosting.Lifetime[0]
-      Application is shutting down...
-watch : Shutdown requested. Press Ctrl+C again to force exit.
+      End processing HTTP request after 38.8975ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/positions/all
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/positions/all
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 8.0043ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 8.0553ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 8.0617ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 8.1248ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/positions/all
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/positions/all
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 6.1961ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 6.2511ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/members/all/full
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 7.668ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 7.717ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[100]
+      Start processing HTTP request GET https://localhost:5001/positions/all
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[100]
+      Sending HTTP request GET https://localhost:5001/positions/all
+info: System.Net.Http.HttpClient.ApiClient.ClientHandler[101]
+      Received HTTP response headers after 6.8755ms - 200
+info: System.Net.Http.HttpClient.ApiClient.LogicalHandler[101]
+      End processing HTTP request after 6.9277ms - 200
 
-watch : Exited
+watch : Exited with error code 1
+watch : Waiting for a file to change before restarting dotnet...

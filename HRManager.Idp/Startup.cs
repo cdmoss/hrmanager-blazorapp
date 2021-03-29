@@ -15,6 +15,7 @@ using HRManager.Idp.Entities;
 using IdentityServer4.Services;
 using HRManager.Idp.Services;
 using Microsoft.Extensions.Configuration;
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
 
 namespace HRManager.Idp
 {
@@ -32,7 +33,7 @@ namespace HRManager.Idp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
+            services.ConfigureTelemetryModule<QuickPulseTelemetryModule>((module, o) => module.AuthenticationApiKey = "5le1g0hz7bneefqhrkofu14nantkwakqutuetnpx");
             services.AddDbContext<IdentityContext>(options =>
             options.UseSqlite(Configuration.GetConnectionString("MainDevConnection")));
 
@@ -70,6 +71,7 @@ namespace HRManager.Idp
             services.AddScoped<IProfileService, ProfileService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IDbSeeder, DbSeeder>();
+            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
         }
 
         public void Configure(IServiceProvider services, IApplicationBuilder app)

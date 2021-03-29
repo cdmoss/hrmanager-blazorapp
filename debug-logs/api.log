@@ -10,12 +10,80 @@ info: Microsoft.Hosting.Lifetime[0]
       Hosting environment: Development
 info: Microsoft.Hosting.Lifetime[0]
       Content root path: C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api
+info: IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler[7]
+      Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+info: IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler[12]
+      AuthenticationScheme: Bearer was challenged.
+info: IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler[7]
+      Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+info: IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler[12]
+      AuthenticationScheme: Bearer was challenged.
+info: IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler[7]
+      Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+info: IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler[12]
+      AuthenticationScheme: Bearer was challenged.
+info: IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler[7]
+      Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+info: IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler[12]
+      AuthenticationScheme: Bearer was challenged.
+info: IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler[7]
+      Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+info: IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler[12]
+      AuthenticationScheme: Bearer was challenged.
+info: IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler[7]
+      Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+info: IdentityServer4.AccessTokenValidation.IdentityServerAuthenticationHandler[12]
+      AuthenticationScheme: Bearer was challenged.
 warn: Microsoft.EntityFrameworkCore.Model.Validation[10400]
       Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
 warn: Microsoft.EntityFrameworkCore.Query[20504]
       Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
-info: Microsoft.Hosting.Lifetime[0]
-      Application is shutting down...
-watch : Shutdown requested. Press Ctrl+C again to force exit.
 
 watch : Exited
+watch : File changed: C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\HRManager.Api.csproj
+watch : Started
+Building...
+crit: Microsoft.AspNetCore.Server.Kestrel[0]
+      Unable to start Kestrel.
+      System.IO.IOException: Failed to bind to address https://127.0.0.1:5001: address already in use.
+       ---> Microsoft.AspNetCore.Connections.AddressInUseException: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+       ---> System.Net.Sockets.SocketException (10048): Only one usage of each socket address (protocol/network address/port) is normally permitted.
+         at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, String callerName)
+         at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+         at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+         at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.<Bind>g__BindSocket|13_0(<>c__DisplayClass13_0& )
+         --- End of inner exception stack trace ---
+         at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.<Bind>g__BindSocket|13_0(<>c__DisplayClass13_0& )
+         at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+         at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+         at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig)
+         at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass29_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+      --- End of stack trace from previous location ---
+         at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context)
+         --- End of inner exception stack trace ---
+         at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context)
+         at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context)
+         at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context)
+         at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(IEnumerable`1 listenOptions, AddressBindContext context)
+         at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+         at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+Unhandled exception. System.IO.IOException: Failed to bind to address https://127.0.0.1:5001: address already in use.
+ ---> MicrC:\Program Files\dotnet\sdk\5.0.201\Microsoft.Common.CurrentVersion.targets(4919,5): warning MSB3026: Could not copy "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\obj\Debug\net5.0\apphost.exe" to "bin\Debug\net5.0\HRManager.Api.exe". Beginning retry 2 in 1000ms. The process cannot access the file 'C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\bin\Debug\net5.0\HRManager.Api.exe' because it is being used by another process.  [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\HRManager.Api.csproj]
+C:\Program Files\dotnet\sdk\5.0.201\Microsoft.Common.CurrentVersion.targets(4919,5): warning MSB3026: Could not copy "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\obj\Debug\net5.0\apphost.exe" to "bin\Debug\net5.0\HRManager.Api.exe". Beginning retry 3 in 1000ms. The process cannot access the file 'C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\bin\Debug\net5.0\HRManager.Api.exe' because it is being used by another process.  [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\HRManager.Api.csproj]
+C:\Program Files\dotnet\sdk\5.0.201\Microsoft.Common.CurrentVersion.targets(4919,5): warning MSB3026: Could not copy "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\obj\Debug\net5.0\apphost.exe" to "bin\Debug\net5.0\HRManager.Api.exe". Beginning retry 4 in 1000ms. The process cannot access the file 'C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\bin\Debug\net5.0\HRManager.Api.exe' because it is being used by another process.  [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\HRManager.Api.csproj]
+C:\Program Files\dotnet\sdk\5.0.201\Microsoft.Common.CurrentVersion.targets(4919,5): warning MSB3026: Could not copy "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\obj\Debug\net5.0\apphost.exe" to "bin\Debug\net5.0\HRManager.Api.exe". Beginning retry 5 in 1000ms. The process cannot access the file 'C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\bin\Debug\net5.0\HRManager.Api.exe' because it is being used by another process.  [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\HRManager.Api.csproj]
+C:\Program Files\dotnet\sdk\5.0.201\Microsoft.Common.CurrentVersion.targets(4919,5): warning MSB3026: Could not copy "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\obj\Debug\net5.0\apphost.exe" to "bin\Debug\net5.0\HRManager.Api.exe". Beginning retry 6 in 1000ms. The process cannot access the file 'C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\bin\Debug\net5.0\HRManager.Api.exe' because it is being used by another process.  [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\HRManager.Api.csproj]
+C:\Program Files\dotnet\sdk\5.0.201\Microsoft.Common.CurrentVersion.targets(4919,5): warning MSB3026: Could not copy "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\obj\Debug\net5.0\apphost.exe" to "bin\Debug\net5.0\HRManager.Api.exe". Beginning retry 7 in 1000ms.
+watch : Exited with error code -532462766
+watch : Waiting for a file to change before restarting dotnet...
+ebug\net5.0\HRManager.Api.exe' because it is being used by another process.  [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\HRManager.Api.csproj]
+C:\Program Files\dotnet\sdk\5.0.201\Microsoft.Common.CurrentVersion.targets(4919,5): warning MSB3026: Could not copy "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\obj\Debug\net5.0\apphost.exe" to "bin\Debug\net5.0\HRManager.Api.exe". Beginning retry 8 in 1000ms. The process cannot access the file 'C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\bin\Debug\net5.0\HRManager.Api.exe' because it is being used by another process.  [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\HRManager.Api.csproj]
+C:\Program Files\dotnet\sdk\5.0.201\Microsoft.Common.CurrentVersion.targets(4919,5): warning MSB3026: Could not copy "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\obj\Debug\net5.0\apphost.exe" to "bin\Debug\net5.0\HRManager.Api.exe". Beginning retry 9 in 1000ms. The process cannot access the file 'C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\bin\Debug\net5.0\HRManager.Api.exe' because it is being used by another process.  [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\HRManager.Api.csproj]
+C:\Program Files\dotnet\sdk\5.0.201\Microsoft.Common.CurrentVersion.targets(4919,5): warning MSB3026: Could not copy "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\obj\Debug\net5.0\apphost.exe" to "bin\Debug\net5.0\HRManager.Api.exe". Beginning retry 10 in 1000ms. The process cannot access the file 'C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\bin\Debug\net5.0\HRManager.Api.exe' because it is being used by another process.  [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\HRManager.Api.csproj]
+C:\Program Files\dotnet\sdk\5.0.201\Microsoft.Common.CurrentVersion.targets(4919,5): error MSB3027: Could not copy "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\obj\Debug\net5.0\apphost.exe" to "bin\Debug\net5.0\HRManager.Api.exe". Exceeded retry count of 10. Failed.  [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\HRManager.Api.csproj]
+C:\Program Files\dotnet\sdk\5.0.201\Microsoft.Common.CurrentVersion.targets(4919,5): error MSB3021: Unable to copy file "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\obj\Debug\net5.0\apphost.exe" to "bin\Debug\net5.0\HRManager.Api.exe". The process cannot access the file 'C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\bin\Debug\net5.0\HRManager.Api.exe' because it is being used by another process. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Api\HRManager.Api.csproj]
+
+The build failed. Fix the build errors and run again.
+
+watch : Exited with error code 1
+watch : Waiting for a file to change before restarting dotnet...

@@ -56,6 +56,10 @@
               "target": "Package",
               "version": "[3.0.1, )"
             },
+            "Microsoft.ApplicationInsights.AspNetCore": {
+              "target": "Package",
+              "version": "[2.17.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[5.0.0, )",
@@ -209,15 +213,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net5.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {
               "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj": {
                 "projectPath": "C:\\Users\\Chase\\Desktop\\Programming\\hrmanager-blazorapp\\HRManager.Common\\HRManager.Common.csproj"
@@ -232,8 +236,8 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
             "IdentityServer4": {
               "target": "Package",
@@ -242,6 +246,10 @@
             "IdentityServer4.AspNetIdentity": {
               "target": "Package",
               "version": "[4.1.1, )"
+            },
+            "Microsoft.ApplicationInsights.AspNetCore": {
+              "target": "Package",
+              "version": "[2.15.0, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",

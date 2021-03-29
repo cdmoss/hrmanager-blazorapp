@@ -23,6 +23,7 @@ using HRManager.Blazor.Services;
 using HRManager.Blazor.Adaptors;
 using Microsoft.Extensions.Options;
 using Blazored.Modal;
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
 
 namespace HRManager.Blazor
 {
@@ -39,6 +40,8 @@ namespace HRManager.Blazor
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureTelemetryModule<QuickPulseTelemetryModule>((module, o) => module.AuthenticationApiKey = "54hoe6zdjlcpixiwlopcitytuttx7vhkn3lqvxle");
+
             services.AddServerSideBlazor().AddCircuitOptions(o =>
             {
                 o.DetailedErrors = true;
@@ -129,6 +132,7 @@ namespace HRManager.Blazor
             services.AddScoped<IRegistrationService, RegistrationService>();
             services.AddScoped<IAlertService, HttpAlertService>();
             services.AddScoped<IDbSeeder, DbSeeder>();
+            services.AddApplicationInsightsTelemetry();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

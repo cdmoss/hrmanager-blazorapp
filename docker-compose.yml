@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+    # letsencrypt: 
+        # container_name: letsencrypt
+        # image: linuxserver/letsencrypt        
+      
+    r_proxy:
+        container_name: r_proxy
+        image: nginx:alpine
+        ports: 
+            - 80:80
+            - 443:443
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf
+      
+    # db: 
+        # container_name: db
+        # image: mariadb
+        # restart: always
+        # environment:
+            # MYSQL_ROOT_PASSWORD
+        
+    # adminer:
+        # container_name: adminer
+        # image: adminer
+        # restart: always
+        # ports:
+          # - 8080:8080
+        
+    hr-api:
+        container_name: hr-api
+        image: api
+        # depends_on:
+            # - db
+        ports: 
+            - 5001:5001
+        volumes:
+            - ./db-files/api.db:/app/api.db
+        
+    hr-idp:
+        container_name: hr-idp
+        image: idp
+        ports: 
+            - 5002:5002
+        volumes:
+            - ./db-files/idp.db:/app/idp.db
+            
+    hr-blazor:
+        container_name: hr-blazor
+        image: blazor
+        ports: 
+            - 5003:5003

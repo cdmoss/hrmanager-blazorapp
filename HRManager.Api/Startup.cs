@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using IdentityServer4.AccessTokenValidation;
 using System.Security.Claims;
 using IdentityModel;
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
 
 namespace HRManager.Api
 {
@@ -30,6 +31,9 @@ namespace HRManager.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddApplicationInsightsTelemetry();
+            services.ConfigureTelemetryModule<QuickPulseTelemetryModule>((module, o) => module.AuthenticationApiKey = "2bdciekr2ks1sugn4qgj153k01kocvcvvibbevn1");
+
             services.AddDbContext<MainContext>(opt =>
                 opt.UseSqlite(Configuration.GetConnectionString("MainDevConnection")));
 
