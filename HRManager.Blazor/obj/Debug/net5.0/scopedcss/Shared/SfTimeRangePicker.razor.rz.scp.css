@@ -1,0 +1,25 @@
+#range-container[b-1vxdimv5x7] {
+    /*    display: grid;
+    grid-template-areas: "start divider end remove";
+    grid-template-columns: 3fr .5fr 3fr .5fr;
+    width: 100%;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+/*#start {
+    grid-area: start;
+}
+
+#end {
+    grid-area: end;
+}*/
+
+#divider[b-1vxdimv5x7] {
+    /*grid-area: divider;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

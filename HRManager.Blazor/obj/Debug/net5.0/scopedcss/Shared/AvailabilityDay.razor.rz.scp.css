@@ -1,0 +1,24 @@
+#day-container[b-kob16tfzdg] {
+    display: flex;
+    flex-direction: column;
+    row-gap: .5rem;
+}
+
+#btn-container[b-kob16tfzdg] {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    gap: 1rem;
+}
+
+#btn-add[b-kob16tfzdg] {
+    width: 100%;
+}
+
+#remove[b-kob16tfzdg] {
+    cursor: pointer;
+    grid-area: remove;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

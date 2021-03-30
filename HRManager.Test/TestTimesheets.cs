@@ -55,7 +55,9 @@ namespace HRManager.Test
                 };
 
                 var existingMemberTimeEntryId = context.TimeEntries.FirstOrDefault(t => t.MemberId == createDto.MemberId && t.EndTime == null).Id;
-                var deleteMemberEntry = tsService.DeleteEntry(existingMemberTimeEntryId).Result;
+                List<int> existingMemberTimeEntryIds = new List<int>();
+                existingMemberTimeEntryIds.Add(existingMemberTimeEntryId);
+                var deleteMemberEntry = tsService.DeleteEntries(existingMemberTimeEntryIds).Result;
 
                 var result = tsService.PunchClock(createDto).Result;
 
@@ -80,7 +82,9 @@ namespace HRManager.Test
                 };
 
                 var existingMemberTimeEntryId = context.TimeEntries.FirstOrDefault(t => t.MemberId == clockInDto.MemberId && t.EndTime == null).Id;
-                var deleteMemberEntry = tsService.DeleteEntry(existingMemberTimeEntryId).Result;
+                List<int> existingMemberTimeEntryIds = new List<int>();
+                existingMemberTimeEntryIds.Add(existingMemberTimeEntryId);
+                var deleteMemberEntry = tsService.DeleteEntries(existingMemberTimeEntryIds).Result;
 
                 var clockInResult = tsService.PunchClock(clockInDto).Result;
 
@@ -143,7 +147,9 @@ namespace HRManager.Test
                 };
 
                 var existingMemberTimeEntryId = context.TimeEntries.FirstOrDefault(t => t.MemberId == createDto.MemberId && t.EndTime == null).Id;
-                var deleteMemberEntry = tsService.DeleteEntry(existingMemberTimeEntryId).Result;
+                List<int> existingMemberTimeEntryIds = new List<int>();
+                existingMemberTimeEntryIds.Add(existingMemberTimeEntryId);
+                var deleteMemberEntry = tsService.DeleteEntries(existingMemberTimeEntryIds).Result;
 
                 var result = tsService.AddFullEntry(createDto).Result;
 
@@ -190,7 +196,9 @@ namespace HRManager.Test
                 };
 
                 var existingMemberTimeEntryId = context.TimeEntries.FirstOrDefault(t => t.MemberId == createDto1.MemberId && t.EndTime == null).Id;
-                var deleteMemberEntry = tsService.DeleteEntry(existingMemberTimeEntryId).Result;
+                List<int> existingMemberTimeEntryIds = new List<int>();
+                existingMemberTimeEntryIds.Add(existingMemberTimeEntryId);
+                var deleteMemberEntry = tsService.DeleteEntries(existingMemberTimeEntryIds).Result;
 
                 var result = tsService.AddFullEntry(createDto1).Result;
                 Assert.True(result.Successful);
@@ -225,7 +233,9 @@ namespace HRManager.Test
                 };
 
                 var existingMemberTimeEntryId = context.TimeEntries.FirstOrDefault(t => t.MemberId == createDto2.MemberId && t.EndTime == null).Id;
-                var deleteMemberEntry = tsService.DeleteEntry(existingMemberTimeEntryId).Result;
+                List<int> existingMemberTimeEntryIds = new List<int>();
+                existingMemberTimeEntryIds.Add(existingMemberTimeEntryId);
+                var deleteMemberEntry = tsService.DeleteEntries(existingMemberTimeEntryIds).Result;
 
                 var result = tsService.AddFullEntry(createDto1).Result;
                 Assert.True(result.Successful);
@@ -260,7 +270,9 @@ namespace HRManager.Test
                 };
 
                 var existingMemberTimeEntryId = context.TimeEntries.FirstOrDefault(t => t.MemberId == createDto2.MemberId && t.EndTime == null).Id;
-                var deleteMemberEntry = tsService.DeleteEntry(existingMemberTimeEntryId).Result;
+                List<int> existingMemberTimeEntryIds = new List<int>();
+                existingMemberTimeEntryIds.Add(existingMemberTimeEntryId);
+                var deleteMemberEntry = tsService.DeleteEntries(existingMemberTimeEntryIds).Result;
 
                 var result = tsService.AddFullEntry(createDto1).Result;
                 Assert.True(result.Successful);
@@ -295,7 +307,9 @@ namespace HRManager.Test
                 };
 
                 var existingMemberTimeEntryId = context.TimeEntries.FirstOrDefault(t => t.MemberId == createDto2.MemberId && t.EndTime == null).Id;
-                var deleteMemberEntry = tsService.DeleteEntry(existingMemberTimeEntryId).Result;
+                List<int> existingMemberTimeEntryIds = new List<int>();
+                existingMemberTimeEntryIds.Add(existingMemberTimeEntryId);
+                var deleteMemberEntry = tsService.DeleteEntries(existingMemberTimeEntryIds).Result;
 
                 var result = tsService.AddFullEntry(createDto1).Result;
                 Assert.True(result.Successful);
@@ -330,7 +344,9 @@ namespace HRManager.Test
                 };
 
                 var existingMemberTimeEntryId = context.TimeEntries.FirstOrDefault(t => t.MemberId == createDto2.MemberId && t.EndTime == null).Id;
-                var deleteMemberEntry = tsService.DeleteEntry(existingMemberTimeEntryId).Result;
+                List<int> existingMemberTimeEntryIds = new List<int>();
+                existingMemberTimeEntryIds.Add(existingMemberTimeEntryId);
+                var deleteMemberEntry = tsService.DeleteEntries(existingMemberTimeEntryIds).Result;
 
                 var result = tsService.AddFullEntry(createDto1).Result;
                 Assert.True(result.Successful);
@@ -385,7 +401,10 @@ namespace HRManager.Test
 
                 int idOfDeletedEntry = context.TimeEntries.FirstOrDefault().Id;
 
-                var result = tsService.DeleteEntry(idOfDeletedEntry).Result;
+                List<int> deletedEntryIds = new List<int>();
+                deletedEntryIds.Add(idOfDeletedEntry);
+
+                var result = tsService.DeleteEntries(deletedEntryIds).Result;
                 Assert.True(result.Successful);
                 Assert.Equal(initNumEntries - 1, context.TimeEntries.Count());
             }

@@ -1,8 +1,8 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="/" Path="C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\scopedcss\bundle\" />
-  <ContentRoot BasePath="/Identity" Path="C:\Users\Chase\.nuget\packages\microsoft.aspnetcore.identity.ui\5.0.1\staticwebassets\V4\" />
-  <ContentRoot BasePath="_content/Blazored.Modal" Path="C:\Users\Chase\.nuget\packages\blazored.modal\6.0.1\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Blazorise" Path="C:\Users\Chase\.nuget\packages\blazorise\0.9.2.4\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Blazorise.Bootstrap" Path="C:\Users\Chase\.nuget\packages\blazorise.bootstrap\0.9.2.4\build\..\staticwebassets\" />
-  <ContentRoot BasePath="_content/Syncfusion.Blazor" Path="C:\Users\Chase\.nuget\packages\syncfusion.blazor\18.4.0.33\build\..\staticwebassets\" />
+  <ContentRoot BasePath="/" Path="C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="/Identity" Path="C:\Users\Brendan\.nuget\packages\microsoft.aspnetcore.identity.ui\5.0.4\staticwebassets\V4\" />
+  <ContentRoot BasePath="_content/Blazored.Modal" Path="C:\Users\Brendan\.nuget\packages\blazored.modal\6.0.1\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Blazorise" Path="C:\Users\Brendan\.nuget\packages\blazorise\0.9.3.3\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Blazorise.Bootstrap" Path="C:\Users\Brendan\.nuget\packages\blazorise.bootstrap\0.9.3.3\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Syncfusion.Blazor" Path="C:\Users\Brendan\.nuget\packages\syncfusion.blazor\19.1.0.54\build\..\staticwebassets\" />
 </StaticWebAssets>

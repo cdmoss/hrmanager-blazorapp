@@ -1,0 +1,54 @@
+#cert-container[b-kbisjezppt] {
+    gap: 1rem;
+}
+
+#firstaid-container[b-kbisjezppt] {
+    display: grid;
+    grid-template-columns: 7rem 10rem 10rem;
+    grid-column-gap: 1rem;
+    grid-template-areas: "checkbox expiry level";
+}
+
+.checkbox-container[b-kbisjezppt] {
+    align-items: center;
+    grid-area: checkbox;
+}
+
+.main-label[b-kbisjezppt] {
+    grid-area: main-label;
+}
+
+.expiry-container[b-kbisjezppt] {
+    grid-area: expiry;
+}
+
+.level-container[b-kbisjezppt] {
+    grid-area: level;
+}
+
+
+#foodsafe-container[b-kbisjezppt] {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 7rem 10rem 10rem;
+    grid-column-gap: 1rem;
+    grid-template-areas: "checkbox expiry expiry";
+}
+
+.checkbox-container[b-kbisjezppt] {
+    align-items: center;
+    grid-area: checkbox;
+}
+
+.main-label[b-kbisjezppt] {
+    grid-area: main-label;
+}
+
+.expiry-container[b-kbisjezppt] {
+    width: 100%;
+    grid-area: expiry;
+}
+
+.level-container[b-kbisjezppt] {
+    grid-area: level;
+}
