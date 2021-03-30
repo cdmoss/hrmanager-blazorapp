@@ -148,7 +148,26 @@ namespace HRManager.Common.Dtos
         [Required]
         [Display(Name = "Emergency Contact Relationship")]
         public string EmergencyRelationship { get; set; }
+        [Display(Name = "Food Safe")]
+        public bool FoodSafe { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? FoodSafeExpiry { get; set; }
+        [Display(Name = "Level")]
+        public string FirstAidCprLevel { get; set; }
+        [Display(Name = "First Aid/Cpr")]
+        public bool FirstAidCpr { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? FirstAidCprExpiry { get; set; }
+        [Display(Name = "Other Certificates")]
+        public string OtherCertificates { get; set; }
+        public bool VolunteerConfidentiality { get; set; }
+        public bool VolunteerEthics { get; set; }
+        public bool CriminalRecordCheck { get; set; }
+        public bool DrivingAbstract { get; set; }
+        public bool ConfirmationOfProfessionalDesignation { get; set; }
+        public bool ChildWelfareCheck { get; set; }
         public List<MemberPositionDto> Positions { get; set; } = new List<MemberPositionDto>();
         public Dictionary<DayOfWeek, List<AvailabilityDto>> Availabilities { get; set; } = new Dictionary<DayOfWeek, List<AvailabilityDto>>();
+        public ApprovalStatus ApprovalStatus { get; }
     }
 }

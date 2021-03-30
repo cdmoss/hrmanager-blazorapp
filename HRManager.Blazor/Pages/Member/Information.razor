@@ -1,7 +1,212 @@
 ﻿@page "/member/information"
+@using Blazorise
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Calendars
+@using Microsoft.AspNetCore.Components.Authorization
+@inherits InformationBase
 
 <h3>Information</h3>
 
-@code {
+<AuthorizeView>
+    <Authorized>
+        <div class="p-2">
 
-}
+            @if (errors.Any())
+            {
+                foreach (string error in errors)
+                {
+                    <p>@error</p>
+                }
+            }
+            else
+            {
+                <Tabs SelectedTab="@selectedTab" SelectedTabChanged="@OnTabChanged">
+                    <Items>
+                        @if (SelectedMember.ApprovalStatus == ApprovalStatus.Pending)
+                        {
+                            <Tab Class="main-tab" Name="check">Checks</Tab>
+                        }
+                        <Tab Class="main-tab" Name="personal">Personal information</Tab>
+                        <Tab Class="main-tab" Name="positions">Positions</Tab>
+                        <Tab Class="main-tab" Name="avail">Availabilities</Tab>
+                        <Tab Class="main-tab" Name="cert">Certifications</Tab>
+                    </Items>
+                    <Content>
+                        <TabPanel Name="check">
+                        </TabPanel>
+                        <TabPanel Name="personal">
+                            <div id="form-container" class="p-3">
+                                <div id="first-name" class="form-group">
+                                    <label class="form-label">First Name:</label>
+                                    <div>
+                                        <SfTextBox Type="InputType.Text" @bind-Value="SelectedMember.FirstName" />
+                                        <ValidationMessage For="@(() => SelectedMember.FirstName)" />
+                                    </div>
+                                </div>
+                                <div id="last-name" class="form-group">
+                                    <label class="form-label">Last Name:</label>
+                                    <div>
+                                        <SfTextBox Type="InputType.Text" @bind-Value="SelectedMember.LastName" />
+                                        <ValidationMessage For="@(() => SelectedMember.LastName)" />
+                                    </div>
+                                </div>
+                                @*<div id="birthdate" class="form-group">
+                                    <label class="form-label">Date of Birth:</label>
+                                    <div>
+                                        <SfDatePicker StrictMode="true" @bind-Value="SelectedMember.Birthdate" />
+                                        <ValidationMessage For="@(() => SelectedMember.Birthdate)" />
+                                    </div>
+                                </div>*@
+                                <div id="address" class="form-group">
+                                    <label class="form-label">Address:</label>
+                                    <div>
+                                        <SfTextBox Type="InputType.Text" @bind-Value="SelectedMember.Address" />
+                                        <ValidationMessage For="@(() => SelectedMember.Address)" />
+                                    </div>
+                                </div>
+                                <div id="city" class="form-group">
+                                    <label class="form-label">City:</label>
+                                    <div>
+                                        <SfTextBox Type="InputType.Text" @bind-Value="SelectedMember.City" />
+                                        <ValidationMessage For="@(() => SelectedMember.City)" />
+                                    </div>
+                                </div>
+                                <div id="postal-code" class="form-group">
+                                    <label class="form-label">Postal Code:</label>
+                                    <div>
+                                        <SfTextBox Type="InputType.Text" @bind-Value="SelectedMember.PostalCode" />
+                                        <ValidationMessage For="@(() => SelectedMember.PostalCode)" />
+                                    </div>
+                                </div>
+                                <div id="email" class="form-group">
+                                    <label class="form-label">Email:</label>
+                                    <div>
+                                        <SfTextBox Type="InputType.Text" @bind-Value="SelectedMember.Email" />
+                                        <ValidationMessage For="@(() => SelectedMember.Email)" />
+                                    </div>
+                                </div>
+                                <div id="main-phone" class="form-group">
+                                    <label class="form-label">Main Phone:</label>
+                                    <div>
+                                        <SfTextBox Type="InputType.Tel" @bind-Value="SelectedMember.MainPhone" />
+                                        <ValidationMessage For="@(() => SelectedMember.FirstName)" />
+                                    </div>
+                                </div>
+                                <div id="alt-phone-1" class="form-group">
+                                    <label class="form-label">Alternate Phone 1 (Optional):</label>
+                                    <div>
+                                        <SfTextBox Type="InputType.Tel" @bind-Value="SelectedMember.AlternatePhone1" />
+                                        <ValidationMessage For="@(() => SelectedMember.AlternatePhone1)" />
+                                    </div>
+                                </div>
+                                <div id="alt-phone-2" class="form-group">
+                                    <label class="form-label">Alternate Phone 2 (Optional):</label>
+                                    <div>
+                                        <SfTextBox Type="InputType.Tel" @bind-Value="SelectedMember.AlternatePhone2" />
+                                    </div>
+                                </div>
+                                <div id="emergency-contact" class="form-group">
+                                    <label class="form-label">Full Name of Emergency Contact:</label>
+                                    <div>
+                                        <SfTextBox Type="InputType.Text" @bind-Value="SelectedMember.EmergencyFullName" />
+                                        <ValidationMessage For="@(() => SelectedMember.EmergencyFullName)" />
+                                    </div>
+                                </div>
+                                <div id="emergency-relationship" class="form-group">
+                                    <label class="form-label">Relationship to Emergency Contact:</label>
+                                    <div>
+                                        <SfTextBox Type="InputType.Text" @bind-Value="SelectedMember.EmergencyRelationship" />
+                                        <ValidationMessage For="@(() => SelectedMember.EmergencyRelationship)" />
+                                    </div>
+                                </div>
+                                <div id="emergency-phone-1" class="form-group">
+                                    <label class="form-label">Emergency Phone 1:</label>
+                                    <div>
+                                        <SfTextBox Type="InputType.Tel" @bind-Value="SelectedMember.EmergencyPhone1" />
+                                        <ValidationMessage For="@(() => SelectedMember.EmergencyPhone1)" />
+                                    </div>
+                                </div>
+                                <div id="emergency-phone-2" class="form-group">
+                                    <label class="form-label">Emergency Phone 2 (Optional):</label>
+                                    <div>
+                                        <SfTextBox Type="InputType.Tel" @bind-Value="SelectedMember.EmergencyPhone2" />
+                                        <ValidationMessage For="@(() => SelectedMember.EmergencyPhone2)" />
+                                    </div>
+                                </div>
+                            </div>
+                        </TabPanel>
+                        <TabPanel Name="positions">
+                            <div class="d-flex p-3">
+                                <div class="d-flex flex-column mr-2">
+                                    <label><strong>Preferred Positions</strong></label>
+                                    <SfMultiSelect Mode="VisualMode.Box" @bind-Value="preferredPositions" DataSource="Positions">
+                                        <MultiSelectFieldSettings Text="Name" Value="Name" />
+                                    </SfMultiSelect>
+                                </div>
+                                @*<div class="d-flex flex-column">
+                                    <label><strong>Assigned Positions</strong></label>
+                                    <SfMultiSelect Mode="VisualMode.Box" @bind-Value="assignedPositions" DataSource="Positions">
+                                        <MultiSelectFieldSettings Text="Name" Value="Name" />
+                                    </SfMultiSelect>
+                                </div>*@
+                            </div>
+                        </TabPanel>
+                        <TabPanel Name="avail">
+                            <div class="availability-container p-3">
+                                <AvailabilityEditor @bind-AvailabilitiesData="@SelectedMember.Availabilities" IsReadOnly="false" />
+                            </div>
+                        </TabPanel>
+                        <TabPanel Name="cert">
+                            <div id="cert-container" class="d-flex flex-column p-3">
+                                <div id="firstaid-container">
+                                    <div class="checkbox-container">
+                                        <SfCheckBox @bind-Checked="SelectedMember.FirstAidCpr" />
+                                        <label>First Aid</label>
+                                    </div>
+                                    <div class="expiry-container mr-1">
+                                        @if (SelectedMember.FirstAidCpr)
+                                        {
+                                            <label class="expiry-label">Expiry:</label>
+                                            <SfDatePicker CssClass="expiry" @bind-Value="SelectedMember.FirstAidCprExpiry" />
+                                        }
+
+                                    </div>
+                                    <div class="level-container">
+                                        @if (SelectedMember.FirstAidCpr)
+                                        {
+                                            <label>Level:</label>
+                                            <SfTextBox @bind-Value="SelectedMember.FirstAidCprLevel" />
+                                        }
+                                    </div>
+                                </div>
+                                <div id="foodsafe-container">
+                                    <div class="checkbox-container">
+                                        <SfCheckBox @bind-Checked="SelectedMember.FoodSafe" />
+                                        <label>Food Safe</label>
+                                    </div>
+                                    <div class="expiry-container ">
+                                        @if (SelectedMember.FoodSafe)
+                                        {
+                                            <label>Expiry:</label>
+                                            <SfDatePicker @bind-Value="SelectedMember.FoodSafeExpiry" />
+                                        }
+
+                                    </div>
+                                </div>
+                                <div id="othercerts-container">
+                                    <div class="expiry-container ">
+                                        <label>Other Certificates:</label>
+                                        <SfTextBox @bind-Value="SelectedMember.OtherCertificates" Multiline="true" />
+                                    </div>
+                                </div>
+                            </div>
+                        </TabPanel>
+                    </Content>
+                </Tabs>
+            }
+        </div>
+    </Authorized>
+    <NotAuthorized>
+
+    </NotAuthorized>
+</AuthorizeView>

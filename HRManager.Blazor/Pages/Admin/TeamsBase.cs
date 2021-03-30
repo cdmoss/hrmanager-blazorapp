@@ -41,14 +41,6 @@ namespace HRManager.Blazor.Pages.Admin
 
         protected override async Task OnInitializedAsync()
         {
-            var authState = await authenticationStateTask;
-            var user = authState.User;
-
-            if (!user.Identity.IsAuthenticated)
-            {
-                return;
-            }
-
             var memberResult = await _memberService.GetFullMembers();
             if (!memberResult.Successful)
             {

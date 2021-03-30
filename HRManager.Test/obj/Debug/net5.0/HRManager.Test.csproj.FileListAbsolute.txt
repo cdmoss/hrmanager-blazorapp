@@ -3,3 +3,9 @@ C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Test\obj\Debug\
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Test\obj\Debug\net5.0\HRManager.Test.AssemblyInfoInputs.cache
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Test\obj\Debug\net5.0\HRManager.Test.AssemblyInfo.cs
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Test\obj\Debug\net5.0\HRManager.Test.csproj.CoreCompileInputs.cache
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Test\bin\Debug\net5.0\CoverletSourceRootsMapping
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Test\obj\Debug\net5.0\HRManager.Test.csprojAssemblyReference.cache
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Test\obj\Debug\net5.0\HRManager.Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Test\obj\Debug\net5.0\HRManager.Test.AssemblyInfoInputs.cache
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Test\obj\Debug\net5.0\HRManager.Test.AssemblyInfo.cs
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Test\obj\Debug\net5.0\HRManager.Test.csproj.CoreCompileInputs.cache
