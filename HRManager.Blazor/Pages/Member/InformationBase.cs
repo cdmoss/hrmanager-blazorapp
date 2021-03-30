@@ -23,7 +23,7 @@ namespace HRManager.Blazor.Pages.Member
         public NonAdminMemberDto SelectedMember { get; set; }
         public List<Position> Positions { get; set; }
 
-        protected List<string> errors;
+        protected List<string> errors = new List<string>();
         protected List<string> preferredPositions;
         protected string selectedTab;
 
@@ -33,10 +33,10 @@ namespace HRManager.Blazor.Pages.Member
             int memberIdInt = 0;
             if (int.TryParse(memberIdString, out memberIdInt))
             {
-                SelectedMember = (await _teamService.GetMember<NonAdminMemberDto>(memberIdInt)).Validate(errors);
+                SelectedMember = (await _teamService.GetMember(memberIdInt)).Validate(errors);
             }
 
-            Positions = (await _posService.GetPositions()).Validate(errors);
+            Positions = (_posService.GetPositions()).Validate(errors);
 
             preferredPositions = SelectedMember.Positions.Where(p => p.Association == AssociationType.Preferred).Select(p => p.Position.Name).ToList();
 

@@ -15,7 +15,7 @@ namespace HRManager.Blazor.Services
         Task<ApiResult<List<AdminMemberDto>>> GetFullMembers();
         ApiResult<List<MemberMinimalDto>> GetMinimalMembers();
         Task<ApiResult<List<AdminMemberDto>>> UpdateMember(AdminMemberDto dto);
-        //TODO: Add GetMember() function
+        Task<ApiResult<NonAdminMemberDto>> GetMember(int id);
     }
 
     public class HttpTeamService : ITeamService
