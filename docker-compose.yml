@@ -33,21 +33,21 @@ services:
         image: api
         # depends_on:
             # - db
-        ports: 
-            - 5001:5001
         volumes:
             - ./db-files/api.db:/app/api.db
+        ports:
+        - 5001:5001
         
     hr-idp:
         container_name: hr-idp
         image: idp
-        ports: 
-            - 5002:5002
         volumes:
             - ./db-files/idp.db:/app/idp.db
+        ports:
+        - 5002:5002
             
     hr-blazor:
         container_name: hr-blazor
         image: blazor
-        ports: 
-            - 5003:5003
+        ports:
+        - 5003:5003

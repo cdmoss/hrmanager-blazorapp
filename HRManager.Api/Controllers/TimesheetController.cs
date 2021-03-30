@@ -25,37 +25,43 @@ namespace HRManager.Api.Controllers
             _dbSeeder = dbSeeder;
         }
 
-        [HttpGet(Constants.ControllerEndpoints.GetArchived)]
+        [HttpGet(Constants.Routes.GetArchived)]
         public async Task<IActionResult> GetArchivedTimeEntries()
         {
             return new ObjectResult(await _tsService.GetArchivedTimeEntries());
         }
 
-        [HttpGet(Constants.ControllerEndpoints.GetCurrent)]
+        [HttpGet(Constants.Routes.GetCurrent)]
         public async Task<IActionResult> GetCurrentTimeEntries()
         {
             return new ObjectResult(await _tsService.GetCurrentTimeEntries());
         }
 
-        [HttpPost(Constants.ControllerEndpoints.AddFullEntry)]
+        [HttpPost(Constants.Routes.Add)]
         public async Task<IActionResult> AddFullEntry(TimeEntryCreateDto dto)
         {
             return new ObjectResult(await _tsService.AddFullEntry(dto));
         }
 
-        [HttpPost(Constants.ControllerEndpoints.Update)]
+        [HttpPost(Constants.Routes.Update)]
         public async Task<IActionResult> UpdateEntry(TimeEntryReadEditDto dto)
         {
             return new ObjectResult(await _tsService.UpdateEntry(dto));
         }
 
-        [HttpPost(Constants.ControllerEndpoints.Punch)]
+        [HttpPost(Constants.Routes.Delete)]
+        public async Task<IActionResult> DeleteEntry(IEnumerable<int> ids)
+        {
+            return new ObjectResult(await _tsService.DeleteEntries(ids));
+        }
+
+        [HttpPost(Constants.Routes.PunchClock)]
         public async Task<IActionResult> PunchClock(TimeEntryCreateDto dto)
         {
             return new ObjectResult(await _tsService.PunchClock(dto));
         }
 
-        [HttpGet(Constants.ControllerEndpoints.Seed)]
+        [HttpGet(Constants.Routes.Seed)]
         public IActionResult Seed()
         {
             return new ObjectResult(_dbSeeder.SeedTimeEntries());

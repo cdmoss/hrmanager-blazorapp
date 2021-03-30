@@ -27,13 +27,13 @@ namespace HRManager.Blazor.Services
             var apiClient = _httpFactory.CreateClient(Constants.HttpClients.ApiClient);
             var idpClient = _httpFactory.CreateClient(Constants.HttpClients.IdpClient);
 
-            var positionsSeedResponse = await apiClient.GetFromJsonAsync<ApiResult<object>>($"{Constants.ControllerNames.Positions}/{Constants.ControllerEndpoints.Seed}");
+            var positionsSeedResponse = await apiClient.GetFromJsonAsync<ApiResult<object>>($"{Constants.ControllerNames.Positions}/{Constants.Routes.Seed}");
             if (!positionsSeedResponse.Successful)
             {
                 return "Something went wrong when trying to seed the positions.";
             }
 
-            var membersSeedResponse = await apiClient.GetFromJsonAsync<ApiResult<Dictionary<int, string>>>($"{Constants.ControllerNames.Teams}/{Constants.ControllerEndpoints.Seed}");
+            var membersSeedResponse = await apiClient.GetFromJsonAsync<ApiResult<Dictionary<int, string>>>($"{Constants.ControllerNames.Teams}/{Constants.Routes.Seed}");
             if (!membersSeedResponse.Successful)
             {
                 return "Something went wrong when trying to seed the member profies.";
@@ -41,14 +41,14 @@ namespace HRManager.Blazor.Services
 
             if (membersSeedResponse.Data != null)
             {
-                var idpSeedResponse = await idpClient.PostAsJsonAsync($"{Constants.ControllerNames.User}/{Constants.ControllerEndpoints.Seed}", membersSeedResponse.Data);
+                var idpSeedResponse = await idpClient.PostAsJsonAsync($"{Constants.ControllerNames.User}/{Constants.Routes.Seed}", membersSeedResponse.Data);
                 if (!idpSeedResponse.IsSuccessStatusCode)
                 {
                     return "Something went wrong when trying to seed the identity accounts.";
                 }
             }
 
-            var tsSeedResponse = await apiClient.GetFromJsonAsync<ApiResult<object>>($"{Constants.ControllerNames.Timesheet}/{Constants.ControllerEndpoints.Seed}");
+            var tsSeedResponse = await apiClient.GetFromJsonAsync<ApiResult<object>>($"{Constants.ControllerNames.Timesheet}/{Constants.Routes.Seed}");
             if (!tsSeedResponse.Successful)
             {
                 return "Something went wrong when trying to seed the time entries.";

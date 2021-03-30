@@ -36,19 +36,19 @@ namespace HRManager.Blazor.Services
 
         public ApiResult<List<ShiftReadEditDto>> AddShifts(List<ShiftReadEditDto> dto)
         {
-            var response = _http.PostAsJsonAsync($"{Constants.ControllerNames.Shifts}/{Constants.ControllerEndpoints.Add}", dto).Result;
+            var response = _http.PostAsJsonAsync($"{Constants.ControllerNames.Shifts}/{Constants.Routes.Add}", dto).Result;
             return response.Content.ReadFromJsonAsync<ApiResult<List<ShiftReadEditDto>>>().Result;
         }
 
         public ApiResult<List<ShiftReadEditDto>> UpdateShifts(List<ShiftReadEditDto> dto)
         {
-            var response = _http.PostAsJsonAsync($"{Constants.ControllerNames.Shifts}/{Constants.ControllerEndpoints.Update}", dto).Result;
+            var response = _http.PostAsJsonAsync($"{Constants.ControllerNames.Shifts}/{Constants.Routes.Update}", dto).Result;
             return response.Content.ReadFromJsonAsync<ApiResult<List<ShiftReadEditDto>>>().Result;
         }
 
         public ApiResult<List<ShiftReadEditDto>> DeleteShifts(List<int> ids)
         {
-            var response = _http.PostAsJsonAsync($"{Constants.ControllerNames.Shifts}/{Constants.ControllerEndpoints.Delete}", ids).Result;
+            var response = _http.PostAsJsonAsync($"{Constants.ControllerNames.Shifts}/{Constants.Routes.Delete}", ids).Result;
             return response.Content.ReadFromJsonAsync<ApiResult<List<ShiftReadEditDto>>>().Result;
         }
     }

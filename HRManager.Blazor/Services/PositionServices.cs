@@ -27,7 +27,7 @@ namespace HRManager.Blazor.Services
 
         public ApiResult<List<Position>> GetPositions()
         {
-            return _http.GetFromJsonAsync<ApiResult<List<Position>>>($"{Constants.ControllerNames.Positions}/{Constants.ControllerEndpoints.All}", new JsonSerializerOptions { PropertyNameCaseInsensitive = true }).Result;
+            return _http.GetFromJsonAsync<ApiResult<List<Position>>>($"{Constants.ControllerNames.Positions}/{Constants.Routes.All}", new JsonSerializerOptions { PropertyNameCaseInsensitive = true }).Result;
         }
     }
 }

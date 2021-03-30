@@ -32,7 +32,7 @@ namespace HRManager.Api.Controllers
         }
 
         [Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin)]
-        [HttpGet(Constants.ControllerEndpoints.FullTeam)]
+        [HttpGet(Constants.Routes.FullTeam)]
         public async Task<IActionResult> GetMembersFull()
         {
             var result = await _teamService.GetMembers<AdminMemberDto>();
@@ -40,13 +40,21 @@ namespace HRManager.Api.Controllers
         }
 
         [Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin)]
-        [HttpGet(Constants.ControllerEndpoints.MinimalTeam)]
+        [HttpGet(Constants.Routes.MinimalTeam)]
         public async Task<IActionResult> GetMembersMinimal()
         {
             return new ObjectResult(await _teamService.GetMembers<MemberMinimalDto>());
         }
 
-        [HttpPost(Constants.ControllerEndpoints.Register)]
+        [Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin + ", " + Constants.RoleNames.Member)]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetMember(int id)
+        {
+            var result = await _teamService.GetMember<NonAdminMemberDto>(id);
+            return new ObjectResult(result);
+        }
+
+        [HttpPost(Constants.Routes.Register)]
         public async Task<IActionResult> Register([FromBody]MemberRegisterDto dto)
         {
 
@@ -55,27 +63,27 @@ namespace HRManager.Api.Controllers
         }
 
         [Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin)]
-        [HttpPost(Constants.ControllerEndpoints.UpdateAdmin)]
+        [HttpPost(Constants.Routes.Update + "/" + Constants.RoleNames.Admin)]
         public async Task<IActionResult> UpdateMemberForAdmin([FromBody]AdminMemberDto dto)
         {
             return new ObjectResult(await _teamService.UpdateMemberForAdmin(dto));
         }
         
-        [Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin)]
-        [HttpPost(Constants.ControllerEndpoints.UpdateMember)]
+        [Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin + ", " + Constants.RoleNames.Member)]
+        [HttpPost(Constants.Routes.Update + "/" + Constants.RoleNames.Member)]
         public async Task<IActionResult> UpdateMemberForMember([FromBody]NonAdminMemberDto dto)
         {
             return new ObjectResult(await _teamService.UpdateMemberForMember(dto));
         }
 
         [Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin)]
-        [HttpPost(Constants.ControllerEndpoints.Delete)]
+        [HttpPost(Constants.Routes.Delete)]
         public async Task<IActionResult> DeleteMember(int id)
         {
             return new ObjectResult(await _teamService.DeleteMember(id));
         }
 
-        [HttpGet(Constants.ControllerEndpoints.Seed)]
+        [HttpGet(Constants.Routes.Seed)]
         public IActionResult Seed()
         {
             if (_env.IsDevelopment())

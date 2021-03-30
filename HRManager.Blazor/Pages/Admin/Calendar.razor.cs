@@ -23,7 +23,7 @@ namespace HRManager.Blazor.Pages.Admin
         [Inject]
         protected IPositionService _positionService { get; set; }
         [Inject]
-        protected IMemberService _minimalService { get; set; }
+        protected ITeamService _minimalService { get; set; }
         [Inject]
         protected IJSRuntime _js { get; set; }
         protected List<ShiftReadEditDto> shifts;
@@ -92,30 +92,6 @@ namespace HRManager.Blazor.Pages.Admin
             {
                 args.Cancel = true;
             }
-            //if (args.Type == PopupType.Editor)
-            //{
-            //    args.Cancel = true;
-
-            //    saveAction = args.Data.Id == 0 ? SaveAction.NewShift : SaveAction.ExistingShift;
-
-            //    focusedShift.Id = args.Data.Id;
-            //    focusedShift.StartTime = args.Data.StartTime;
-            //    focusedShift.EndTime = args.Data.EndTime;
-            //    focusedShift.Description = args.Data.Description;
-            //    focusedShift.PositionId = args.Data.PositionId;
-            //    focusedShift.MemberProfileId = args.Data.MemberProfileId;
-            //    focusedShift.IsAllDay = args.Data.IsAllDay;
-            //    focusedShift.IsBlock = args.Data.IsBlock;
-            //    focusedShift.IsRecurrence = args.Data.IsRecurrence;
-            //    focusedShift.RecurrenceException = args.Data.RecurrenceException;
-            //    focusedShift.RecurrenceRule = args.Data.RecurrenceRule;
-            //    focusedShift.RecurrenceID = args.Data.RecurrenceID;
-            //    focusedShift.IsRecurrence = args.Data.IsRecurrence;
-
-            //    focusedShift.Description = args.Data.Description == null ? "" : args.Data.Description;
-            //    focusedShift.Subject = args.Data.Subject == null ? "Add title" : args.Data.Subject;
-            //    showEditor = true;
-            //}
         }
     }
 }

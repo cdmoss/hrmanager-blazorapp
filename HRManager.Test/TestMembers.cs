@@ -31,7 +31,7 @@ namespace HRManager.Test
             using (var transaction = _dbFixture.Connection.BeginTransaction())
             {
                 
-                var memberService = new EFMemberService(_dbFixture.CreateContext(transaction), new NullLogger<EFMemberService>(), _mapper);
+                var memberService = new EFTeamService(_dbFixture.CreateContext(transaction), new NullLogger<EFTeamService>(), _mapper);
                 var testMembers = memberService.GetMembers<AdminMemberDto>().Result;
 
                 Assert.True(testMembers.Successful);
@@ -47,7 +47,7 @@ namespace HRManager.Test
                 var context = _dbFixture.CreateContext(transaction);
                 _dbFixture.ClearDb(context);
 
-                var memberService = new EFMemberService(context, new NullLogger<EFMemberService>(), _mapper);
+                var memberService = new EFTeamService(context, new NullLogger<EFTeamService>(), _mapper);
                 var membersResult = memberService.GetMembers<AdminMemberDto>().Result;
                 Assert.False(membersResult.Successful);
             }
@@ -58,7 +58,7 @@ namespace HRManager.Test
         {
             using (var transaction = _dbFixture.Connection.BeginTransaction())
             {
-                var memberService = new EFMemberService(_dbFixture.CreateContext(transaction), new NullLogger<EFMemberService>(), _mapper);
+                var memberService = new EFTeamService(_dbFixture.CreateContext(transaction), new NullLogger<EFTeamService>(), _mapper);
 
                 var registerDto = TestHelpers.Data.GenerateRegisterDto();
                 var registerResult = memberService.AddMember(registerDto).Result;
@@ -78,7 +78,7 @@ namespace HRManager.Test
         {
             using (var transaction = _dbFixture.Connection.BeginTransaction())
             {
-                var memberService = new EFMemberService(_dbFixture.CreateContext(transaction), new NullLogger<EFMemberService>(), _mapper);
+                var memberService = new EFTeamService(_dbFixture.CreateContext(transaction), new NullLogger<EFTeamService>(), _mapper);
 
                 MemberRegisterDto registerDto = null;
                 var registerResult = memberService.AddMember(registerDto).Result;
@@ -93,7 +93,7 @@ namespace HRManager.Test
             {
                 var context = _dbFixture.CreateContext(transaction);
 
-                var memberService = new EFMemberService(context, new NullLogger<EFMemberService>(), _mapper);
+                var memberService = new EFTeamService(context, new NullLogger<EFTeamService>(), _mapper);
                 int id = context.Members.FirstOrDefault().Id;
                 var dto = TestHelpers.Data.GenerateAdminMemberDto(id);
 
@@ -114,7 +114,7 @@ namespace HRManager.Test
             {
                 var context = _dbFixture.CreateContext(transaction);
 
-                var memberService = new EFMemberService(context, new NullLogger<EFMemberService>(), _mapper);
+                var memberService = new EFTeamService(context, new NullLogger<EFTeamService>(), _mapper);
 
                 int id = context.Members.FirstOrDefault().Id;
                 var dto = TestHelpers.Data.GenerateNonAdminMemberDto(id);
@@ -134,7 +134,7 @@ namespace HRManager.Test
             {
                 var context = _dbFixture.CreateContext(transaction);
 
-                var memberService = new EFMemberService(context, new NullLogger<EFMemberService>(), _mapper);
+                var memberService = new EFTeamService(context, new NullLogger<EFTeamService>(), _mapper);
                 int id = context.Members.FirstOrDefault().Id;
 
                 var deleteResult = memberService.DeleteMember(id).Result;

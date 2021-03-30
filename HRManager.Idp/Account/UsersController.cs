@@ -28,13 +28,13 @@ namespace HRManager.Idp.Account
             _seederService = seeder;
         }
 
-        [HttpPost(Constants.ControllerEndpoints.Register)]
+        [HttpPost(Constants.Routes.Register)]
         public async Task<IActionResult> Register([FromBody]IdentityDto dto)
         {
             return new ObjectResult(await _userService.RegisterUser(dto));
         }
 
-        [HttpPost(Constants.ControllerEndpoints.UpdateUsername)]
+        [HttpPost(Constants.Routes.UpdateUsername)]
         [Authorize(Roles = Constants.RoleNames.Member + ", " + Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin)]
         public async Task<IActionResult> Update(string newUsername, string id)
         {
@@ -42,7 +42,7 @@ namespace HRManager.Idp.Account
         }
 
         [Authorize(Roles = Constants.RoleNames.SuperAdmin)]
-        [HttpPost(Constants.ControllerEndpoints.Delete)]
+        [HttpPost(Constants.Routes.Delete)]
         public async Task<IActionResult> Remove(string id)
         {
             var guid = new Guid(id);
@@ -50,7 +50,7 @@ namespace HRManager.Idp.Account
         }
 
         // TODO: remove this for production
-        [HttpPost(Constants.ControllerEndpoints.Seed)]
+        [HttpPost(Constants.Routes.Seed)]
         public async Task<IActionResult> Seed([FromBody] Dictionary<int, string> ids)
         {
             if (_env.IsDevelopment())

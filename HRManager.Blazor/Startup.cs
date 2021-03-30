@@ -126,7 +126,7 @@ namespace HRManager.Blazor
             services.AddScoped<TokenProvider>();
             services.AddScoped<ScheduleAdaptor>();
             services.AddScoped<IShiftService, HttpShiftService>();
-            services.AddScoped<IMemberService, HttpMemberService>();
+            services.AddScoped<ITeamService, HttpTeamService>();
             services.AddScoped<IPositionService, HttpPositionService>();
             services.AddScoped<ITimesheetService, HttpTimesheetService>();
             services.AddScoped<IRegistrationService, RegistrationService>();

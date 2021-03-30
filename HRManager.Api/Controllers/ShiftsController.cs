@@ -24,28 +24,28 @@ namespace HRManager.Api.Controllers
         }
 
         //[Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin)]
-        [HttpGet(Constants.ControllerEndpoints.All)]
+        [HttpGet(Constants.Routes.All)]
         public async Task<IActionResult> GetShifts()
         {
             return new ObjectResult(await _shiftService.GetShifts());
         }
 
         //[Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin)]
-        [HttpPost(Constants.ControllerEndpoints.Add)]
+        [HttpPost(Constants.Routes.Add)]
         public async Task<IActionResult> AddShift([FromBody] List<ShiftReadEditDto> dtos)
         {
             return new ObjectResult(await _shiftService.AddShifts(dtos));
         }
 
         [Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin)]
-        [HttpPost(Constants.ControllerEndpoints.Update)]
+        [HttpPost(Constants.Routes.Update)]
         public async Task<IActionResult> UpdateShift([FromBody] List<ShiftReadEditDto> dtos)
         {
             return new ObjectResult(await _shiftService.UpdateShifts(dtos));
         }
 
         [Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin)]
-        [HttpPost(Constants.ControllerEndpoints.Delete)]
+        [HttpPost(Constants.Routes.Delete)]
         public async Task<IActionResult> DeleteShift([FromBody]List<int> ids)
         {
             return new ObjectResult(await _shiftService.DeleteShifts(ids));

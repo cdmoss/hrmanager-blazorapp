@@ -30,7 +30,7 @@ namespace HRManager.Blazor.Services
         {
             try
             {
-                return await _http.GetFromJsonAsync<ApiResult<List<AdminAlertListDto>>>($"{Constants.ControllerNames.Alerts}/{Constants.ControllerEndpoints.AlertsAdmin}");
+                return await _http.GetFromJsonAsync<ApiResult<List<AdminAlertListDto>>>($"{Constants.ControllerNames.Alerts}/{Constants.RoleNames.Admin}");
             }
             catch (Exception ex)
             {
@@ -44,7 +44,7 @@ namespace HRManager.Blazor.Services
 
         public async Task<ApiResult<List<AdminAlertListDto>>> UpdateAlert(AdminAlertListDto dto)
         {
-            var response = await _http.PostAsJsonAsync($"{Constants.ControllerNames.Alerts}/{Constants.ControllerEndpoints.AlertsAdminUpdate}", dto);
+            var response = await _http.PostAsJsonAsync($"{Constants.ControllerNames.Alerts}/{Constants.Routes.Update}/{Constants.RoleNames.Admin}", dto);
             if (!response.IsSuccessStatusCode)
             {
                 return new ApiResult<List<AdminAlertListDto>>

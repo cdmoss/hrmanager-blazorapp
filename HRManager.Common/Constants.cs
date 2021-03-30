@@ -25,25 +25,21 @@ namespace HRManager.Common
             public const string Member = "test@gmail.com";
         }
 
-        public class ControllerEndpoints
+        public class Routes
         {
-            public const string Delete = "delete";
-            public const string UpdateMember = "update/admin";
-            public const string UpdateAdmin = "update/team";
+            public const string Add = "add";
             public const string Update = "update";
+            public const string Delete = "delete";
+            public const string Team = "team";
             public const string Register = "register";
             public const string FullTeam = "all/full";
             public const string MinimalTeam = "all/minimal";
             public const string Seed = "seed";
-            public const string AlertsAdmin = "admin";
             public const string All = "all";
-            public const string Add = "add";
-            public const string Punch = "punch";
-            public const string AddFullEntry = "add-full-entry";
+            public const string PunchClock = "punch-clock";
             public const string GetCurrent = "get-current";
             public const string GetArchived = "get-archived";
             public const string UpdateUsername = "update-username";
-            public const string AlertsAdminUpdate = "admin-update";
             public const string DeleteMultiple = "delete-multiple";
         }
 

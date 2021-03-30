@@ -23,14 +23,14 @@ namespace HRManager.Api.Controllers
             _seeder = seeder;
         }
 
-        [HttpGet(Constants.ControllerEndpoints.All)]
+        [HttpGet(Constants.Routes.All)]
         public async Task<IActionResult> GetAllPositions()
         {
             var positions = await _positionService.GetPositions();
             return new ObjectResult(positions);
         }
 
-        [HttpGet(Constants.ControllerEndpoints.Seed)]
+        [HttpGet(Constants.Routes.Seed)]
         public IActionResult SeedPositions()
         {
             var result = _seeder.SeedPositions();

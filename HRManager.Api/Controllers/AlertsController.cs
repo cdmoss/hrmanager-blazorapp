@@ -23,14 +23,14 @@ namespace HRManager.Api.Controllers
         }
 
         [Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin)]
-        [HttpGet(Constants.ControllerEndpoints.AlertsAdmin)]
+        [HttpGet(Constants.RoleNames.Admin)]
         public IActionResult GetAdminAlerts()
         {
             return new ObjectResult(_alertService.GetAdminAlerts());
         }
 
         [Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin)]
-        [HttpGet(Constants.ControllerEndpoints.AlertsAdmin)]
+        [HttpGet(Constants.Routes.Update + "/" + Constants.RoleNames.Admin)]
         public IActionResult UpdateAdminAlerts([FromBody]AdminAlertListDto dto)
         {
             return new ObjectResult(_alertService.UpdateAlert(dto));

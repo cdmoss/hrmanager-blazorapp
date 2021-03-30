@@ -1,0 +1,51 @@
+#work-experience[b-5z5b513j2u] {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 1rem;
+    grid-template-areas: "employer-name employer-address date" "current current current";
+}
+
+#employer-name[b-5z5b513j2u] {
+    grid-area: employer-name;
+}
+
+#employer-address[b-5z5b513j2u] {
+    grid-area: employer-address;
+}
+
+#date[b-5z5b513j2u] {
+    grid-area: date;
+}
+
+#general-experience[b-5z5b513j2u] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 1rem;
+    grid-template-areas: "education skills" "experience boards";
+}
+
+#education[b-5z5b513j2u] {
+    grid-area: education;
+}
+
+#skills[b-5z5b513j2u] {
+    grid-area: skills;
+}
+
+#experience[b-5z5b513j2u] {
+    grid-area: experience;
+}
+
+#boards[b-5z5b513j2u] {
+    grid-area: boards;
+}
+
+#current[b-5z5b513j2u] {
+    grid-area: current;
+    height: auto;
+    width: 100%;
+    text-align: right;
+}
+
+

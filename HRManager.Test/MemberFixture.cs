@@ -14,13 +14,13 @@ namespace HRManager.Test
 {
     public class MemberFixture : IDisposable
     {
-        public EFMemberService Service { get; set; }
+        public EFTeamService Service { get; set; }
         private DbTransaction _transaction;
 
         public MemberFixture(ApiDbFixture dbFixture, IMapper mapper)
         {
             _transaction = dbFixture.Connection.BeginTransaction();
-            Service = new EFMemberService(dbFixture.CreateContext(), new NullLogger<EFMemberService>(), mapper);
+            Service = new EFTeamService(dbFixture.CreateContext(), new NullLogger<EFTeamService>(), mapper);
         }
 
         public void Dispose()

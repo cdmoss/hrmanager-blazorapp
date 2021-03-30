@@ -21,12 +21,14 @@ namespace HRManager.Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            Enviornment = env;
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Enviornment { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -34,8 +36,7 @@ namespace HRManager.Api
             services.AddApplicationInsightsTelemetry();
             services.ConfigureTelemetryModule<QuickPulseTelemetryModule>((module, o) => module.AuthenticationApiKey = "2bdciekr2ks1sugn4qgj153k01kocvcvvibbevn1");
 
-            services.AddDbContext<MainContext>(opt =>
-                opt.UseSqlite(Configuration.GetConnectionString("MainDevConnection")));
+            SetupDbContext(services);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -52,7 +53,7 @@ namespace HRManager.Api
                 });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddScoped<ITeamService, EFMemberService>();
+            services.AddScoped<ITeamService, EFTeamService>();
             services.AddScoped<IShiftService, EFShiftService>();
             services.AddScoped<IAlertService, EFAlertService>();
             services.AddScoped<IPositionService, EFPositionService>();
@@ -61,9 +62,9 @@ namespace HRManager.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
+            if (Enviornment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
@@ -81,6 +82,20 @@ namespace HRManager.Api
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void SetupDbContext(IServiceCollection services)
+        {
+            if (Enviornment.IsDevelopment())
+            {
+                services.AddDbContext<MainContext>(opt => 
+                    opt.UseSqlite(Configuration.GetConnectionString("MainDevConnection")));
+            }
+            else if (Enviornment.IsProduction() || Enviornment.IsStaging())
+            {
+                services.AddDbContext<MainContext>(opt =>
+                    opt.UseNpgsql(Configuration.GetConnectionString("MainProdConnection")));
+            }
         }
     }
 }

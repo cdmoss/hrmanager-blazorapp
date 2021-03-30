@@ -1,0 +1,11 @@
+opencare sync
+- help connect patients to dentists
+- 
+
+software that runs on dentists comp
+- calendars
+- patient info
+
+2 eng
+product manager
+tech support specialist

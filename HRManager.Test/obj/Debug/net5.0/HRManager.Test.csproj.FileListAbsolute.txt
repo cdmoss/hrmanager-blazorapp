@@ -1,0 +1,5 @@
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Test\obj\Debug\net5.0\HRManager.Test.csprojAssemblyReference.cache
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Test\obj\Debug\net5.0\HRManager.Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Test\obj\Debug\net5.0\HRManager.Test.AssemblyInfoInputs.cache
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Test\obj\Debug\net5.0\HRManager.Test.AssemblyInfo.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Test\obj\Debug\net5.0\HRManager.Test.csproj.CoreCompileInputs.cache

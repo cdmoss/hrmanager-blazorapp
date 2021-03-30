@@ -13,6 +13,7 @@ using Blazored.Modal.Services;
 
 namespace HRManager.Blazor.Pages.Admin
 {
+    //TODO: add delete function
     public class TimesheetBase : ComponentBase
     {
         [CascadingParameter]
@@ -22,7 +23,7 @@ namespace HRManager.Blazor.Pages.Admin
         [Inject]
         public IPositionService _posService { get; set; }
         [Inject]
-        public IMemberService _memberService { get; set; }
+        public ITeamService _memberService { get; set; }
         [Inject]
         public IModalService _modalService { get; set; }
         protected CustomValidator timeEntryValidator;

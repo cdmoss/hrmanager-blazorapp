@@ -16,7 +16,7 @@ namespace HRManager.Blazor.Pages.Admin
         [Inject]
         public IPositionService PositionService { get; set; }
         [Inject]
-        public IMemberService MemberService { get; set; }
+        public ITeamService MemberService { get; set; }
         [Inject]
         public ITimesheetService TSService { get; set; }
         [CascadingParameter]

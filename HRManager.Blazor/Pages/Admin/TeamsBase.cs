@@ -21,7 +21,7 @@ namespace HRManager.Blazor.Pages.Admin
         [CascadingParameter]
         protected Task<AuthenticationState> authenticationStateTask { get; set; }
         [Inject]
-        protected IMemberService _memberService { get; set; }
+        protected ITeamService _memberService { get; set; }
         //[Inject]
         //protected IJSRuntime _jsRuntime { get; set; }
         [Inject]

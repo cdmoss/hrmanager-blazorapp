@@ -1,0 +1,9 @@
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Common\bin\Debug\netstandard2.1\HRManager.Common.deps.json
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Common\bin\Debug\netstandard2.1\HRManager.Common.dll
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Common\bin\Debug\netstandard2.1\HRManager.Common.pdb
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Common\obj\Debug\netstandard2.1\HRManager.Common.csprojAssemblyReference.cache
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Common\obj\Debug\netstandard2.1\HRManager.Common.AssemblyInfoInputs.cache
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Common\obj\Debug\netstandard2.1\HRManager.Common.AssemblyInfo.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Common\obj\Debug\netstandard2.1\HRManager.Common.csproj.CoreCompileInputs.cache
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Common\obj\Debug\netstandard2.1\HRManager.Common.dll
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Common\obj\Debug\netstandard2.1\HRManager.Common.pdb

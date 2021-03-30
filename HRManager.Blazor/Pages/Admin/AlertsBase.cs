@@ -15,7 +15,7 @@ namespace HRManager.Blazor.Pages.Admin
         [Inject]
         public IAlertService _alertService { get; set; }
         [Inject]
-        public IMemberService _memberService { get; set; }
+        public ITeamService _memberService { get; set; }
 
         protected List<AdminAlertListDto> alerts =  new List<AdminAlertListDto>();
         protected List<string> errors = new List<string>();

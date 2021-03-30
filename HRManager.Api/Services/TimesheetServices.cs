@@ -18,7 +18,6 @@ namespace HRManager.Api.Services
         Task<ApiResult<List<TimeEntryReadEditDto>>> PunchClock(TimeEntryCreateDto dto);
         Task<ApiResult<List<TimeEntryReadEditDto>>> AddFullEntry(TimeEntryCreateDto dto);
         Task<ApiResult<List<TimeEntryReadEditDto>>> UpdateEntry(TimeEntryReadEditDto dto);
-        Task<ApiResult<List<TimeEntryReadEditDto>>> DeleteEntry(int id);
         Task<ApiResult<List<TimeEntryReadEditDto>>> DeleteEntries(IEnumerable<int> ids);
     }
     public class EFTimeSheetService : ITimesheetService
@@ -291,36 +290,6 @@ namespace HRManager.Api.Services
             return false;
         }
 
-        public async Task<ApiResult<List<TimeEntryReadEditDto>>> DeleteEntry(int id)
-        {
-            TimeEntry entryToDelete;
-            try
-            {
-                entryToDelete = await _context.TimeEntries.FirstOrDefaultAsync(t => t.Id == id);
-                _context.Remove(entryToDelete);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("An error occured when trying to delete a time entry:\n\n" + ex.Message);
-
-                return new ApiResult<List<TimeEntryReadEditDto>>
-                {
-                    Successful = false,
-                    Error = "Something went wrong when trying to delete the time entry. Please try again."
-                };
-            }
-
-            if (entryToDelete != null)
-            {
-                if (entryToDelete.EndTime != null)
-                {
-                    return await GetArchivedTimeEntries();
-                }
-            }
-            return await GetCurrentTimeEntries();
-        }
-
         public async Task<ApiResult<List<TimeEntryReadEditDto>>> DeleteEntries(IEnumerable<int> ids)
         {
             var entriesToDelete = new List<TimeEntry>();
@@ -345,6 +314,8 @@ namespace HRManager.Api.Services
                     Error = "Something went wrong when trying to delete the time entries. Please try again."
                 };
             }
+
+            // if entries had endtimes, return archived
             if (entriesToDelete.Any())
             {
                 if (entriesToDelete.FirstOrDefault().EndTime != null)
@@ -353,7 +324,8 @@ namespace HRManager.Api.Services
                 }
             }
 
-            return await GetArchivedTimeEntries();
+            // otherwise return current
+            return await GetCurrentTimeEntries();
         }
     }
 }
