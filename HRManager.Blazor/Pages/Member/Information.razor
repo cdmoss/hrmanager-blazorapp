@@ -4,6 +4,7 @@
 @using Syncfusion.Blazor.Calendars
 @using Microsoft.AspNetCore.Components.Authorization
 @using HRManager.Blazor.Pages.Shared.PageMenus
+@using HRManager.Blazor.Shared
 @using Syncfusion.Blazor.Inputs 
 @inherits InformationBase
 <AuthorizeView>
@@ -185,7 +186,7 @@
                                                 </div>
                                             </div>
                                             <div id="othercerts-container">
-                                                <div class="expiry-container ">
+                                                <div class="expiry-container">
                                                     <label>Other Certificates:</label>
                                                     <SfTextBox @bind-Value="Member.OtherCertificates" Multiline="true" />
                                                 </div>
@@ -193,8 +194,7 @@
                                         </div>
                                     </TabPanel>
                                     <TabPanel Name="check">
-                                        <label>Test Check</label>
-                                        <SfUploader></SfUploader>
+                                        <MemberCheckUploads Member="Member"></MemberCheckUploads>
                                     </TabPanel>
                                 </Content>
                             </Tabs>

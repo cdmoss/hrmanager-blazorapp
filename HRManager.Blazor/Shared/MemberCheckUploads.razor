@@ -1,0 +1,159 @@
+﻿@using Syncfusion.Blazor.Inputs
+@using System.IO
+
+<label class="h3 pt-2">Volunteer Confidentiality</label>
+<SfUploader AllowedExtensions=".png, .jpg, .svg, .bmp, .jpeg, .gif, .wepg" MinFileSize=5000 MaxFileSize=1000000>
+    <UploaderEvents OnRemove="OnRemoveConfidentiality" ValueChange="OnChangeConfidentiality"></UploaderEvents>
+</SfUploader>
+@if (Member.VolunteerConfidentialityData != null)
+{
+    <img src="data:image/bmp;base64, @(Convert.ToBase64String(Member.VolunteerConfidentialityData))">
+}
+else
+{
+    <p>No image currently uploaded</p>
+}
+<label class="h3 pt-2">Volunteer Ethics</label>
+<SfUploader AllowedExtensions=".png, .jpg, .svg, .bmp, .jpeg, .gif, .wepg" MinFileSize=5000 MaxFileSize=1000000>
+    <UploaderEvents OnRemove="OnRemoveEthics" ValueChange="OnChangeEthics"></UploaderEvents>
+</SfUploader>
+@if (Member.VolunteerEthicsData != null)
+{
+    <img src="data:image/bmp;base64, @(Convert.ToBase64String(Member.VolunteerEthicsData))">
+}
+else
+{
+    <p>No image currently uploaded</p>
+}
+<label class="h3 pt-2">Criminal Record</label>
+<SfUploader AllowedExtensions=".png, .jpg, .svg, .bmp, .jpeg, .gif, .wepg" MinFileSize=5000 MaxFileSize=1000000>
+    <UploaderEvents OnRemove="OnRemoveCriminal" ValueChange="OnChangeCriminal"></UploaderEvents>
+</SfUploader>
+@if (Member.CriminalRecordCheckData != null)
+{
+    <img src="data:image/bmp;base64, @(Convert.ToBase64String(Member.CriminalRecordCheckData))">
+}
+else
+{
+    <p>No image currently uploaded</p>
+}
+<label class="h3 pt-2">Driving Abstract</label>
+<SfUploader AllowedExtensions=".png, .jpg, .svg, .bmp, .jpeg, .gif, .wepg" MinFileSize=5000 MaxFileSize=1000000>
+    <UploaderEvents OnRemove="OnRemoveDriving" ValueChange="OnChangeDriving"></UploaderEvents>
+</SfUploader>
+@if (Member.DrivingAbstractData != null)
+{
+    <img src="data:image/bmp;base64, @(Convert.ToBase64String(Member.DrivingAbstractData))">
+}
+else
+{
+    <p>No image currently uploaded</p>
+}
+<label class="h3 pt-2">Confirmation Of Professional Designation</label>
+<SfUploader AllowedExtensions=".png, .jpg, .svg, .bmp, .jpeg, .gif, .wepg" MinFileSize=5000 MaxFileSize=1000000>
+    <UploaderEvents OnRemove="OnRemoveDesignation" ValueChange="OnChangeDesignation"></UploaderEvents>
+</SfUploader>
+@if (Member.ConfirmationOfProfessionalDesignationData != null)
+{
+    <img src="data:image/bmp;base64, @(Convert.ToBase64String(Member.ConfirmationOfProfessionalDesignationData))">
+}
+else
+{
+    <p>No image currently uploaded</p>
+}
+<label class="h3 pt-2">Child Welfare</label>
+<SfUploader AllowedExtensions=".png, .jpg, .svg, .bmp, .jpeg, .gif, .wepg" MinFileSize=5000 MaxFileSize=1000000>
+    <UploaderEvents OnRemove="OnRemoveWelfare" ValueChange="OnChangeWelfare"></UploaderEvents>
+</SfUploader>
+@if (Member.ChildWelfareCheckData != null)
+{
+    <img src="data:image/bmp;base64, @(Convert.ToBase64String(Member.ChildWelfareCheckData))">
+}
+else
+{
+    <p>No image currently uploaded</p>
+}
+
+@code {
+    [Parameter]
+    public NonAdminMemberDto Member { get; set; }
+
+    public void OnChangeConfidentiality(UploadChangeEventArgs args)
+    {
+        using (args.Files[0].Stream)
+        {
+            Member.VolunteerConfidentialityData = args.Files[0].Stream.ToArray();
+        }
+    }
+
+    public void OnChangeEthics(UploadChangeEventArgs args)
+    {
+        using (args.Files[0].Stream)
+        {
+            Member.VolunteerEthicsData = args.Files[0].Stream.ToArray();
+        }
+    }
+
+    public void OnChangeCriminal(UploadChangeEventArgs args)
+    {
+        using (args.Files[0].Stream)
+        {
+            Member.CriminalRecordCheckData = args.Files[0].Stream.ToArray();
+        }
+    }
+
+    public void OnChangeDriving(UploadChangeEventArgs args)
+    {
+        using (args.Files[0].Stream)
+        {
+            Member.DrivingAbstractData = args.Files[0].Stream.ToArray();
+        }
+    }
+
+    public void OnChangeDesignation(UploadChangeEventArgs args)
+    {
+        using (args.Files[0].Stream)
+        {
+            Member.ConfirmationOfProfessionalDesignationData = args.Files[0].Stream.ToArray();
+        }
+    }
+
+    public void OnChangeWelfare(UploadChangeEventArgs args)
+    {
+        using (args.Files[0].Stream)
+        {
+            Member.ChildWelfareCheckData = args.Files[0].Stream.ToArray();
+        }
+    }
+
+    public void OnRemoveConfidentiality()
+    {
+        Member.VolunteerConfidentialityData = null;
+    }
+
+    public void OnRemoveEthics()
+    {
+        Member.VolunteerEthicsData = null;
+    }
+
+    public void OnRemoveCriminal()
+    {
+        Member.CriminalRecordCheckData = null;
+    }
+
+    public void OnRemoveDriving()
+    {
+        Member.DrivingAbstractData = null;
+    }
+
+    public void OnRemoveDesignation()
+    {
+        Member.ConfirmationOfProfessionalDesignationData = null;
+    }
+
+    public void OnRemoveWelfare()
+    {
+        Member.ChildWelfareCheckData = null;
+    }
+
+}

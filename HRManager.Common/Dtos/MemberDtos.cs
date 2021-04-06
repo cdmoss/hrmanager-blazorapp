@@ -89,6 +89,12 @@ namespace HRManager.Common.Dtos
         public bool DrivingAbstract { get; set; }
         public bool ConfirmationOfProfessionalDesignation { get; set; }
         public bool ChildWelfareCheck { get; set; }
+        public byte[] VolunteerConfidentialityData { get; set; }
+        public byte[] VolunteerEthicsData { get; set; }
+        public byte[] CriminalRecordCheckData { get; set; }
+        public byte[] DrivingAbstractData { get; set; }
+        public byte[] ConfirmationOfProfessionalDesignationData { get; set; }
+        public byte[] ChildWelfareCheckData { get; set; }
         public ApprovalStatus ApprovalStatus { get; set; }
         public List<ReferenceDto> References { get; set; }
         public List<WorkExperienceDto> WorkExperiences { get; set; }
@@ -166,6 +172,12 @@ namespace HRManager.Common.Dtos
         public bool DrivingAbstract { get; set; }
         public bool ConfirmationOfProfessionalDesignation { get; set; }
         public bool ChildWelfareCheck { get; set; }
+        public byte[] VolunteerConfidentialityData { get; set; }
+        public byte[] VolunteerEthicsData { get; set; }
+        public byte[] CriminalRecordCheckData { get; set; }
+        public byte[] DrivingAbstractData { get; set; }
+        public byte[] ConfirmationOfProfessionalDesignationData { get; set; }
+        public byte[] ChildWelfareCheckData { get; set; }
         public List<MemberPositionDto> Positions { get; set; } = new List<MemberPositionDto>();
         public Dictionary<DayOfWeek, List<AvailabilityDto>> Availabilities { get; set; } = new Dictionary<DayOfWeek, List<AvailabilityDto>>();
         public ApprovalStatus ApprovalStatus { get; }

@@ -26,7 +26,6 @@ C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Micr
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Microsoft.Data.Sqlite.dll
-C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
@@ -263,3 +262,17 @@ C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Idp\obj\Debug\n
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Idp\obj\Debug\net5.0\ref\HRManager.Idp.dll
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Idp\obj\Debug\net5.0\HRManager.Idp.pdb
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Idp\obj\Debug\net5.0\HRManager.Idp.genruntimeconfig.cache
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Microsoft.Extensions.Logging.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\System.Collections.Immutable.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\System.ComponentModel.Annotations.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\System.Net.Http.Json.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\System.Text.Encodings.Web.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Idp\bin\Debug\net5.0\System.Text.Json.dll

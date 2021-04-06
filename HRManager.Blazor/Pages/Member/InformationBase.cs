@@ -4,8 +4,10 @@ using HRManager.Common;
 using HRManager.Common.Dtos;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
+using Syncfusion.Blazor.Inputs;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 

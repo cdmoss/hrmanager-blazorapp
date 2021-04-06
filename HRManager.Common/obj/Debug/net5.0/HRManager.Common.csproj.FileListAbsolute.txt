@@ -10,3 +10,15 @@ C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Common\obj\Debu
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Common\obj\Debug\net5.0\HRManager.Common.dll
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Common\obj\Debug\net5.0\ref\HRManager.Common.dll
 C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Common\obj\Debug\net5.0\HRManager.Common.pdb
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Common\bin\Debug\net5.0\HRManager.Common.deps.json
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Common\bin\Debug\net5.0\HRManager.Common.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Common\bin\Debug\net5.0\ref\HRManager.Common.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Common\bin\Debug\net5.0\HRManager.Common.pdb
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Common\obj\Debug\net5.0\HRManager.Common.csprojAssemblyReference.cache
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Common\obj\Debug\net5.0\HRManager.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Common\obj\Debug\net5.0\HRManager.Common.AssemblyInfoInputs.cache
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Common\obj\Debug\net5.0\HRManager.Common.AssemblyInfo.cs
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Common\obj\Debug\net5.0\HRManager.Common.csproj.CoreCompileInputs.cache
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Common\obj\Debug\net5.0\HRManager.Common.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Common\obj\Debug\net5.0\ref\HRManager.Common.dll
+C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Common\obj\Debug\net5.0\HRManager.Common.pdb
