@@ -1,0 +1,323 @@
+watch : Started
+[14:17:53 Information] 
+Starting host...
+
+[14:17:54 Information] IdentityServer4.Startup
+Starting IdentityServer4 version 4.1.2+997a6cdd643e46cd5762b710c4ddc43574cbec2e
+
+[14:17:54 Information] IdentityServer4.Startup
+You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+
+[14:17:54 Information] IdentityServer4.Startup
+Using the default authentication scheme Identity.Application for IdentityServer
+
+[14:17:54 Debug] IdentityServer4.Startup
+Using Identity.Application as default ASP.NET Core scheme for authentication
+
+[14:17:54 Debug] IdentityServer4.Startup
+Using Identity.External as default ASP.NET Core scheme for sign-in
+
+[14:17:54 Debug] IdentityServer4.Startup
+Using Identity.External as default ASP.NET Core scheme for sign-out
+
+[14:17:54 Debug] IdentityServer4.Startup
+Using Identity.Application as default ASP.NET Core scheme for challenge
+
+[14:17:54 Debug] IdentityServer4.Startup
+Using Identity.Application as default ASP.NET Core scheme for forbid
+
+[14:17:54 Information] Microsoft.Hosting.Lifetime
+Now listening on: https://localhost:5002
+
+[14:17:54 Information] Microsoft.Hosting.Lifetime
+Application started. Press Ctrl+C to shut down.
+
+[14:17:54 Information] Microsoft.Hosting.Lifetime
+Hosting environment: Development
+
+[14:17:54 Information] Microsoft.Hosting.Lifetime
+Content root path: C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Idp
+
+[14:17:54 Debug] IdentityServer4.Startup
+Login Url: /Account/Login
+
+[14:17:54 Debug] IdentityServer4.Startup
+Login Return Url Parameter: ReturnUrl
+
+[14:17:54 Debug] IdentityServer4.Startup
+Logout Url: /Account/Logout
+
+[14:17:54 Debug] IdentityServer4.Startup
+ConsentUrl Url: /consent
+
+[14:17:54 Debug] IdentityServer4.Startup
+Consent Return Url Parameter: returnUrl
+
+[14:17:54 Debug] IdentityServer4.Startup
+Error Url: /home/error
+
+[14:17:54 Debug] IdentityServer4.Startup
+Error Id Parameter: errorId
+
+[14:17:57 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /.well-known/openid-configuration matched to endpoint type Discovery
+
+[14:17:57 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+
+[14:17:57 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+
+[14:17:57 Debug] IdentityServer4.Endpoints.DiscoveryEndpoint
+Start discovery request
+
+[14:17:58 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+
+[14:17:58 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+
+[14:17:58 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+
+[14:17:58 Debug] IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+Start key discovery request
+
+[14:17:58 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /connect/authorize matched to endpoint type Authorize
+
+[14:17:58 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+
+[14:17:58 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+
+[14:17:58 Debug] IdentityServer4.Endpoints.AuthorizeEndpoint
+Start authorize request
+
+[14:17:58 Debug] IdentityServer4.Endpoints.AuthorizeEndpoint
+No user present in authorize request
+
+[14:17:58 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Start authorize request protocol validation
+
+[14:17:58 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client blazorclient succeeded.
+
+[14:17:58 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Checking for PKCE parameters
+
+[14:17:58 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+
+[14:17:58 Debug] IdentityServer4.Endpoints.AuthorizeEndpoint
+ValidatedAuthorizeRequest
+{"ClientId": "blazorclient", "ClientName": "Blazor", "RedirectUri": "https://localhost:5004/signin-oidc", "AllowedRedirectUris": ["https://localhost:5004/signin-oidc"], "SubjectId": "anonymous", "ResponseType": "code", "ResponseMode": "form_post", "GrantType": "authorization_code", "RequestedScopes": "openid profile role main.super_admin main.admin main.member", "State": "CfDJ8JRME9Nv4HREiQlqI5eMD--ZlGUqBtahVHDlI69CBq_FZGwIlFCte4UfjceI_0latZoeilQxqhUjH111yfMcnikKnlulywPLpUxNacSrlBEd9Ajx4ax91QDJ7k9G9f27lDfTdS2cZZs_jJ-LwJLyJsuJrmdkT8PrZq2mFbFqndjLANNfHW48e50gyqWunbdXxQ-SJMhpCAfugLzloigiLOVkflCMOXk057HODvnFxTEmz_VL8QZK_-HCSvRvGQtlMZViAPyDeI76XIGwJxocZkKXboJwenqP6r-UJPETkA7Gtt-SGZRvax-88gSpXFms1uhIMDPsLYjO_iUyHrUzQwJwQ8M58lrC91deKOJtuPdEZZgJUGYV-werLiTfOxgZ7c9pJDlh86cPZhtiIGzQg_i5xYT9jQT3VZXhBQkmQu9jZcT-clIfQGosEb0DHFgYBo2E5zRlzI4W2N2V_w2tL70", "UiLocales": null, "Nonce": "637532506781097049.YjhiM2UwOTctYWFjYy00ODRkLWEyNGItNDgyY2VlOGIyN2Y3NzM5YzhiNWItYmEyYy00ZDI3LTkwNmEtYmMxNDkwOTUzM2Zj", "AuthenticationContextReferenceClasses": null, "DisplayMode": null, "PromptMode": "", "MaxAge": null, "LoginHint": null, "SessionId": "", "Raw": {"client_id": "blazorclient", "redirect_uri": "https://localhost:5004/signin-oidc", "response_type": "code", "scope": "openid profile role main.super_admin main.admin main.member", "code_challenge": "krW34efLkxj1XQmGg_mVeW-vk8dxClRM2fc6wh3I5_Q", "code_challenge_method": "S256", "response_mode": "form_post", "nonce": "637532506781097049.YjhiM2UwOTctYWFjYy00ODRkLWEyNGItNDgyY2VlOGIyN2Y3NzM5YzhiNWItYmEyYy00ZDI3LTkwNmEtYmMxNDkwOTUzM2Zj", "state": "CfDJ8JRME9Nv4HREiQlqI5eMD--ZlGUqBtahVHDlI69CBq_FZGwIlFCte4UfjceI_0latZoeilQxqhUjH111yfMcnikKnlulywPLpUxNacSrlBEd9Ajx4ax91QDJ7k9G9f27lDfTdS2cZZs_jJ-LwJLyJsuJrmdkT8PrZq2mFbFqndjLANNfHW48e50gyqWunbdXxQ-SJMhpCAfugLzloigiLOVkflCMOXk057HODvnFxTEmz_VL8QZK_-HCSvRvGQtlMZViAPyDeI76XIGwJxocZkKXboJwenqP6r-UJPETkA7Gtt-SGZRvax-88gSpXFms1uhIMDPsLYjO_iUyHrUzQwJwQ8M58lrC91deKOJtuPdEZZgJUGYV-werLiTfOxgZ7c9pJDlh86cPZhtiIGzQg_i5xYT9jQT3VZXhBQkmQu9jZcT-clIfQGosEb0DHFgYBo2E5zRlzI4W2N2V_w2tL70", "x-client-SKU": "ID_NETSTANDARD2_0", "x-client-ver": "6.8.0.0"}, "$type": "AuthorizeRequestValidationLog"}
+
+[14:17:58 Information] IdentityServer4.ResponseHandling.AuthorizeInteractionResponseGenerator
+Showing login: User is not authenticated
+
+[14:17:58 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Start authorize request protocol validation
+
+[14:17:58 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client blazorclient succeeded.
+
+[14:17:58 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Checking for PKCE parameters
+
+[14:17:58 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+
+[14:17:58 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client blazorclient succeeded.
+
+[14:18:13 Debug] IdentityServer4.Hosting.CorsPolicyProvider
+CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+
+[14:18:13 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Start authorize request protocol validation
+
+[14:18:13 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client blazorclient succeeded.
+
+[14:18:13 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Checking for PKCE parameters
+
+[14:18:13 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+
+[14:18:13 Debug] IdentityServer4.Hosting.IdentityServerAuthenticationService
+Augmenting SignInContext
+
+[14:18:13 Debug] IdentityServer4.Hosting.IdentityServerAuthenticationService
+Adding idp claim with value: local
+
+[14:18:13 Debug] IdentityServer4.Hosting.IdentityServerAuthenticationService
+Adding auth_time claim with value: 1617653893
+
+[14:18:13 Information] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application signed in.
+
+[14:18:13 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /connect/authorize/callback matched to endpoint type Authorize
+
+[14:18:13 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+
+[14:18:13 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+
+[14:18:13 Debug] IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+Start authorize callback request
+
+[14:18:13 Debug] IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+User in authorize request: 0ee6333e-0c1a-4b78-9320-50099efa2e22
+
+[14:18:13 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Start authorize request protocol validation
+
+[14:18:13 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client blazorclient succeeded.
+
+[14:18:13 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Checking for PKCE parameters
+
+[14:18:13 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
+Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+
+[14:18:13 Debug] IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+ValidatedAuthorizeRequest
+{"ClientId": "blazorclient", "ClientName": "Blazor", "RedirectUri": "https://localhost:5004/signin-oidc", "AllowedRedirectUris": ["https://localhost:5004/signin-oidc"], "SubjectId": "0ee6333e-0c1a-4b78-9320-50099efa2e22", "ResponseType": "code", "ResponseMode": "form_post", "GrantType": "authorization_code", "RequestedScopes": "openid profile role main.super_admin main.admin main.member", "State": "CfDJ8JRME9Nv4HREiQlqI5eMD--ZlGUqBtahVHDlI69CBq_FZGwIlFCte4UfjceI_0latZoeilQxqhUjH111yfMcnikKnlulywPLpUxNacSrlBEd9Ajx4ax91QDJ7k9G9f27lDfTdS2cZZs_jJ-LwJLyJsuJrmdkT8PrZq2mFbFqndjLANNfHW48e50gyqWunbdXxQ-SJMhpCAfugLzloigiLOVkflCMOXk057HODvnFxTEmz_VL8QZK_-HCSvRvGQtlMZViAPyDeI76XIGwJxocZkKXboJwenqP6r-UJPETkA7Gtt-SGZRvax-88gSpXFms1uhIMDPsLYjO_iUyHrUzQwJwQ8M58lrC91deKOJtuPdEZZgJUGYV-werLiTfOxgZ7c9pJDlh86cPZhtiIGzQg_i5xYT9jQT3VZXhBQkmQu9jZcT-clIfQGosEb0DHFgYBo2E5zRlzI4W2N2V_w2tL70", "UiLocales": null, "Nonce": "637532506781097049.YjhiM2UwOTctYWFjYy00ODRkLWEyNGItNDgyY2VlOGIyN2Y3NzM5YzhiNWItYmEyYy00ZDI3LTkwNmEtYmMxNDkwOTUzM2Zj", "AuthenticationContextReferenceClasses": null, "DisplayMode": null, "PromptMode": "", "MaxAge": null, "LoginHint": null, "SessionId": "96E392ECE85FEF4BAE9C504244D0FF18", "Raw": {"client_id": "blazorclient", "redirect_uri": "https://localhost:5004/signin-oidc", "response_type": "code", "scope": "openid profile role main.super_admin main.admin main.member", "code_challenge": "krW34efLkxj1XQmGg_mVeW-vk8dxClRM2fc6wh3I5_Q", "code_challenge_method": "S256", "response_mode": "form_post", "nonce": "637532506781097049.YjhiM2UwOTctYWFjYy00ODRkLWEyNGItNDgyY2VlOGIyN2Y3NzM5YzhiNWItYmEyYy00ZDI3LTkwNmEtYmMxNDkwOTUzM2Zj", "state": "CfDJ8JRME9Nv4HREiQlqI5eMD--ZlGUqBtahVHDlI69CBq_FZGwIlFCte4UfjceI_0latZoeilQxqhUjH111yfMcnikKnlulywPLpUxNacSrlBEd9Ajx4ax91QDJ7k9G9f27lDfTdS2cZZs_jJ-LwJLyJsuJrmdkT8PrZq2mFbFqndjLANNfHW48e50gyqWunbdXxQ-SJMhpCAfugLzloigiLOVkflCMOXk057HODvnFxTEmz_VL8QZK_-HCSvRvGQtlMZViAPyDeI76XIGwJxocZkKXboJwenqP6r-UJPETkA7Gtt-SGZRvax-88gSpXFms1uhIMDPsLYjO_iUyHrUzQwJwQ8M58lrC91deKOJtuPdEZZgJUGYV-werLiTfOxgZ7c9pJDlh86cPZhtiIGzQg_i5xYT9jQT3VZXhBQkmQu9jZcT-clIfQGosEb0DHFgYBo2E5zRlzI4W2N2V_w2tL70", "x-client-SKU": "ID_NETSTANDARD2_0", "x-client-ver": "6.8.0.0"}, "$type": "AuthorizeRequestValidationLog"}
+
+[14:18:13 Debug] IdentityServer4.Services.DefaultConsentService
+Client is configured to not require consent, no consent is required
+
+[14:18:13 Debug] IdentityServer4.ResponseHandling.AuthorizeResponseGenerator
+Creating Authorization Code Flow response.
+
+[14:18:14 Debug] IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+Authorize endpoint response
+{"SubjectId": "0ee6333e-0c1a-4b78-9320-50099efa2e22", "ClientId": "blazorclient", "RedirectUri": "https://localhost:5004/signin-oidc", "State": "CfDJ8JRME9Nv4HREiQlqI5eMD--ZlGUqBtahVHDlI69CBq_FZGwIlFCte4UfjceI_0latZoeilQxqhUjH111yfMcnikKnlulywPLpUxNacSrlBEd9Ajx4ax91QDJ7k9G9f27lDfTdS2cZZs_jJ-LwJLyJsuJrmdkT8PrZq2mFbFqndjLANNfHW48e50gyqWunbdXxQ-SJMhpCAfugLzloigiLOVkflCMOXk057HODvnFxTEmz_VL8QZK_-HCSvRvGQtlMZViAPyDeI76XIGwJxocZkKXboJwenqP6r-UJPETkA7Gtt-SGZRvax-88gSpXFms1uhIMDPsLYjO_iUyHrUzQwJwQ8M58lrC91deKOJtuPdEZZgJUGYV-werLiTfOxgZ7c9pJDlh86cPZhtiIGzQg_i5xYT9jQT3VZXhBQkmQu9jZcT-clIfQGosEb0DHFgYBo2E5zRlzI4W2N2V_w2tL70", "Scope": "openid profile role main.super_admin main.admin main.member", "Error": null, "ErrorDescription": null, "$type": "AuthorizeResponseLog"}
+
+[14:18:14 Debug] IdentityServer4.Hosting.IdentityServerAuthenticationService
+Augmenting SignInContext
+
+[14:18:14 Information] Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler
+AuthenticationScheme: Identity.Application signed in.
+
+[14:18:14 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /connect/token matched to endpoint type Token
+
+[14:18:14 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+
+[14:18:14 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+
+[14:18:14 Debug] IdentityServer4.Endpoints.TokenEndpoint
+Start token request.
+
+[14:18:14 Debug] IdentityServer4.Validation.ClientSecretValidator
+Start client validation
+
+[14:18:14 Debug] IdentityServer4.Validation.BasicAuthenticationSecretParser
+Start parsing Basic Authentication secret
+
+[14:18:14 Debug] IdentityServer4.Validation.PostBodySecretParser
+Start parsing for secret in post body
+
+[14:18:14 Debug] IdentityServer4.Validation.ISecretsListParser
+Parser found secret: PostBodySecretParser
+
+[14:18:14 Debug] IdentityServer4.Validation.ISecretsListParser
+Secret id found: blazorclient
+
+[14:18:14 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client blazorclient succeeded.
+
+[14:18:14 Debug] IdentityServer4.Validation.ISecretsListValidator
+Secret validator success: HashedSharedSecretValidator
+
+[14:18:14 Debug] IdentityServer4.Validation.ClientSecretValidator
+Client validation success
+
+[14:18:14 Debug] IdentityServer4.Validation.TokenRequestValidator
+Start token request validation
+
+[14:18:14 Debug] IdentityServer4.Validation.TokenRequestValidator
+Start validation of authorization code token request
+
+[14:18:14 Debug] IdentityServer4.Validation.TokenRequestValidator
+Client required a proof key for code exchange. Starting PKCE validation
+
+[14:18:14 Debug] IdentityServer4.Validation.TokenRequestValidator
+Validation of authorization code token request success
+
+[14:18:14 Information] IdentityServer4.Validation.TokenRequestValidator
+Token request validation success, {"ClientId": "blazorclient", "ClientName": "Blazor", "GrantType": "authorization_code", "Scopes": null, "AuthorizationCode": "****DB27", "RefreshToken": "********", "UserName": null, "AuthenticationContextReferenceClasses": null, "Tenant": null, "IdP": null, "Raw": {"client_id": "blazorclient", "client_secret": "***REDACTED***", "code": "0A5C380C741D324C2B366FF363705249BABCCD148CB3E7BF720C04C5AEABDB27", "grant_type": "authorization_code", "redirect_uri": "https://localhost:5004/signin-oidc", "code_verifier": "kIJ9LJvapeN0vROUDSOs0f1E3pUwpZty4S6K-4cEXyo"}, "$type": "TokenRequestValidationLog"}
+
+[14:18:14 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client blazorclient succeeded.
+
+[14:18:14 Debug] IdentityServer4.Services.DefaultClaimsService
+Getting claims for access token for client: blazorclient
+
+[14:18:14 Debug] IdentityServer4.Services.DefaultClaimsService
+Getting claims for access token for subject: 0ee6333e-0c1a-4b78-9320-50099efa2e22
+
+[14:18:14 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client blazorclient succeeded.
+
+[14:18:14 Debug] IdentityServer4.Services.DefaultClaimsService
+Getting claims for identity token for subject: 0ee6333e-0c1a-4b78-9320-50099efa2e22 and client: blazorclient
+
+[14:18:14 Debug] IdentityServer4.Services.DefaultClaimsService
+In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+
+[14:18:14 Debug] IdentityServer4.Endpoints.TokenEndpoint
+Token request success.
+
+[14:18:14 Debug] IdentityServer4.Hosting.EndpointRouter
+Request path /connect/userinfo matched to endpoint type Userinfo
+
+[14:18:14 Debug] IdentityServer4.Hosting.EndpointRouter
+Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+
+[14:18:14 Information] IdentityServer4.Hosting.IdentityServerMiddleware
+Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+
+[14:18:14 Debug] IdentityServer4.Endpoints.UserInfoEndpoint
+Start userinfo request
+
+[14:18:14 Debug] IdentityServer4.Validation.BearerTokenUsageValidator
+Bearer token found in header
+
+[14:18:14 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client blazorclient succeeded.
+
+[14:18:14 Debug] IdentityServer4.Stores.ValidatingClientStore
+client configuration validation for client blazorclient succeeded.
+
+[14:18:14 Debug] IdentityServer4.Validation.TokenValidator
+Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+
+[14:18:14 Debug] IdentityServer4.Validation.TokenValidator
+Token validation success
+{"ClientId": null, "ClientName": null, "ValidateLifetime": true, "AccessTokenType": "Jwt", "ExpectedScope": "openid", "TokenHandle": null, "JwtId": "D58EF3769F6EA0DB5B13D4B2901833ED", "Claims": {"nbf": 1617653894, "exp": 1617655094, "iss": "https://localhost:5002", "aud": "https://localhost:5002/resources", "client_id": "blazorclient", "sub": "0ee6333e-0c1a-4b78-9320-50099efa2e22", "auth_time": 1617653893, "idp": "local", "role": "Member", "member_id": "1", "jti": "D58EF3769F6EA0DB5B13D4B2901833ED", "sid": "96E392ECE85FEF4BAE9C504244D0FF18", "iat": 1617653894, "scope": ["openid", "profile", "role", "main.super_admin", "main.admin", "main.member"], "amr": "pwd"}, "$type": "TokenValidationLog"}
+
+[14:18:14 Debug] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Creating userinfo response
+
+[14:18:14 Debug] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Scopes in access token: openid profile role main.super_admin main.admin main.member
+
+[14:18:14 Debug] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Requested claim types: sub role member_id
+
+[14:18:14 Information] IdentityServer4.ResponseHandling.UserInfoResponseGenerator
+Profile service returned the following claim types: role member_id
+
+[14:18:14 Debug] IdentityServer4.Endpoints.UserInfoEndpoint
+End userinfo request
+

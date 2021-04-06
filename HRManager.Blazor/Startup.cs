@@ -138,7 +138,7 @@ namespace HRManager.Blazor
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider services)
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("@31392e312e30Iq6ATYCwWbeLKFZ5vaJeF3JxjE4NRvxR3n+xoyJARsI=");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NDIxOTczQDMxMzkyZTMxMmUzMFB5L0Jjc1hreG0rSTd6OS9IOVlwZFJCWmw3UEpxYlJMTFFzK1RpRjZ3V1E9");
             #region Localization
             app.UseRequestLocalization(app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>().Value);
             #endregion

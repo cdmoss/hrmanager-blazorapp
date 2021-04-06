@@ -36,12 +36,12 @@
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
-        <li class="nav-item px-3">
+        <li class="nav-item">
             <NavLink class="nav-link" href="member/information" @onclick="(cp => ChangePage(typeof(InformationMenu)))">
                 <i class="fas fa-info" aria-hidden="true"></i> &nbsp; My Information
             </NavLink>
         </li>
-        <li class="nav-item px-3">
+        <li class="nav-item">
             <NavLink class="nav-link" href="member/calendar" @onclick="(cp => ChangePage(typeof(MemberCalendarMenu)))">
                 <i class="fas fa-calendar" aria-hidden="true"></i> &nbsp; Calendar
             </NavLink>

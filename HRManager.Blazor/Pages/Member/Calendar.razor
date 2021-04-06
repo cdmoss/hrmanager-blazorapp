@@ -1,7 +1,49 @@
 ﻿@page "/member/calendar"
 
-<h3>UserCalendar</h3>
+@using HRManager.Blazor.Adaptors
+@using Syncfusion.Blazor.Schedule
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Data
+@using Microsoft.AspNetCore.Components.Authorization
+@using HRManager.Blazor.Pages.Shared.PageMenus
+@inherits MemberCalendarBase
 
-@code {
-
+@if (errors.Count > 0)
+{
+    foreach (var error in errors)
+    {
+        <p>@error</p>
+    }
+}
+else
+{
+    <AuthorizeView>
+        <div class="menu">
+            <MemberCalendarMenu />
+        </div>
+        <div id="schedule-container">
+            <SfSchedule Width="100%" Height="100%" TValue="ShiftReadEditDto" CurrentView="currentView">
+                <ScheduleGroup Resources="resourceNames" />
+                <ScheduleEventSettings TValue="ShiftReadEditDto" AllowEditing="true" AllowEditFollowingEvents="true" AllowAdding="true">
+                    <SfDataManager AdaptorInstance="@typeof(ScheduleAdaptor)" Adaptor="Adaptors.CustomAdaptor"></SfDataManager>
+                </ScheduleEventSettings>
+                <ScheduleEvents OnPopupOpen="OnPopupOpen" TValue="ShiftReadEditDto" />
+                <ScheduleViews>
+                    <ScheduleView Option="View.TimelineDay" />
+                    <ScheduleView Option="View.TimelineWeek" />
+                    <ScheduleView Option="View.TimelineMonth" />
+                    <ScheduleView Option="View.TimelineYear" />
+                </ScheduleViews>
+                <ScheduleResources>
+                    <ScheduleResource TItem="Position" TValue="int" DataSource="@positions" Field="PositionId" Title="Position" Name="Positions" TextField="Name" IdField="Id" ColorField="Color" AllowMultiple="false" />
+                </ScheduleResources>
+                <ScheduleTemplates>
+                    <EditorTemplate Context="editorContext">
+                        @{var shift = (ShiftReadEditDto)editorContext;}
+                        @*<ScheduleEditorTemplate @bind-Shift="shift" Positions="positions" Members="members" />*@
+                    </EditorTemplate>
+                </ScheduleTemplates>
+            </SfSchedule>
+        </div>
+    </AuthorizeView>
 }

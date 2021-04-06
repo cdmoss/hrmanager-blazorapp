@@ -1,0 +1,233 @@
+watch : Started
+Building...
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: https://localhost:5004
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: http://localhost:5003
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor
+Stack overflow.
+Repeat 13678 times:
+--------------------------------
+   at HRManager.Blazor.Pages.Member.InformationBase..ctor()
+   at HRManager.Blazor.Pages.Member.Information..ctor()
+--------------------------------
+   at System.RuntimeTypeHandle.CreateInstance(System.RuntimeType, Boolean, Boolean, Boolean ByRef, System.RuntimeMethodHandleInternal ByRef, Boolean ByRef)
+   at System.RuntimeType.CreateInstanceDefaultCtorSlow(Boolean, Boolean, Boolean)
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean, Boolean, Boolean, Boolean)
+   at System.Activator.CreateInstance(System.Type, Boolean, Boolean)
+   at Blazorise.ComponentActivator.CreateInstance(System.Type)
+   at Microsoft.AspNetCore.Components.ComponentFactory.InstantiateComponent(System.IServiceProvider, System.Type)
+   at Microsoft.AspNetCore.Components.RenderTree.Renderer.InstantiateChildComponentOnFrame(Microsoft.AspNetCore.Components.RenderTree.RenderTreeFrame ByRef, Int32)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.InitializeNewComponentFrame(DiffContext ByRef, Int32)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.InitializeNewSubtree(DiffContext ByRef, Int32)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.InsertNewFrame(DiffContext ByRef, Int32)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForRange(DiffContext ByRef, Int32, Int32, Int32, Int32)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.ComputeDiff(Microsoft.AspNetCore.Components.RenderTree.Renderer, Microsoft.AspNetCore.Components.Rendering.RenderBatchBuilder, Int32, Microsoft.AspNetCore.Components.RenderTree.ArrayRange`1<Microsoft.AspNetCore.Components.RenderTree.RenderTreeFrame>, Microsoft.AspNetCore.Components.RenderTree.ArrayRange`1<Microsoft.AspNetCore.Components.RenderTree.RenderTreeFrame>)
+   at Microsoft.AspNetCore.Components.Rendering.ComponentState.RenderIntoBatch(Microsoft.AspNetCore.Components.Rendering.RenderBatchBuilder, Microsoft.AspNetCore.Components.RenderFragment)
+   at Microsoft.AspNetCore.Components.RenderTree.Renderer.RenderInExistingBatch(Microsoft.AspNetCore.Components.Rendering.RenderQueueEntry)
+   at Microsoft.AspNetCore.Components.RenderTree.Renderer.ProcessRenderQueue()
+   at Microsoft.AspNetCore.Components.RenderTree.Renderer.ProcessPendingRender()
+   at Microsoft.AspNetCore.Components.RenderTree.Renderer.AddToRenderQueue(Int32, Microsoft.AspNetCore.Components.RenderFragment)
+   at Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged()
+   at Microsoft.AspNetCore.Components.ComponentBase.CallOnParametersSetAsync()
+   at Microsoft.AspNetCore.Components.ComponentBase+<RunInitAndSetParametersAsync>d__20.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Components.ComponentBase+<RunInitAndSetParametersAsync>d__20, Microsoft.AspNetCore.Components, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<RunInitAndSetParametersAsync>d__20 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Components.ComponentBase+<RunInitAndSetParametersAsync>d__20, Microsoft.AspNetCore.Components, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<RunInitAndSetParametersAsync>d__20 ByRef)
+   at Microsoft.AspNetCore.Components.ComponentBase.RunInitAndSetParametersAsync()
+   at Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync(Microsoft.AspNetCore.Components.ParameterView)
+   at Microsoft.AspNetCore.Components.Rendering.ComponentState.SetDirectParameters(Microsoft.AspNetCore.Components.ParameterView)
+   at Microsoft.AspNetCore.Components.RenderTree.Renderer+<RenderRootComponentAsync>d__29.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Components.RenderTree.Renderer+<RenderRootComponentAsync>d__29, Microsoft.AspNetCore.Components, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<RenderRootComponentAsync>d__29 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Components.RenderTree.Renderer+<RenderRootComponentAsync>d__29, Microsoft.AspNetCore.Components, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<RenderRootComponentAsync>d__29 ByRef)
+   at Microsoft.AspNetCore.Components.RenderTree.Renderer.RenderRootComponentAsync(Int32, Microsoft.AspNetCore.Components.ParameterView)
+   at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer+<CreateInitialRenderAsync>d__17.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Components.Rendering.HtmlRenderer+<CreateInitialRenderAsync>d__17, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<CreateInitialRenderAsync>d__17 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1[[System.ValueTuple`2[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.AspNetCore.Components.RenderTree.ArrayRange`1[[Microsoft.AspNetCore.Components.RenderTree.RenderTreeFrame, Microsoft.AspNetCore.Components, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]], Microsoft.AspNetCore.Components, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].Start[[Microsoft.AspNetCore.Components.Rendering.HtmlRenderer+<CreateInitialRenderAsync>d__17, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<CreateInitialRenderAsync>d__17 ByRef)
+   at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.CreateInitialRenderAsync(System.Type, Microsoft.AspNetCore.Components.ParameterView)
+   at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer+<RenderComponentAsync>d__8.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Components.Rendering.HtmlRenderer+<RenderComponentAsync>d__8, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<RenderComponentAsync>d__8 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1[[Microsoft.AspNetCore.Components.Rendering.ComponentRenderedText, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]].Start[[Microsoft.AspNetCore.Components.Rendering.HtmlRenderer+<RenderComponentAsync>d__8, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<RenderComponentAsync>d__8 ByRef)
+   at Microsoft.AspNetCore.Components.Rendering.HtmlRenderer.RenderComponentAsync(System.Type, Microsoft.AspNetCore.Components.ParameterView)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.StaticComponentRenderer+<>c__DisplayClass3_0.<PrerenderComponentAsync>b__0()
+   at Microsoft.AspNetCore.Components.Rendering.RendererSynchronizationContext+<>c__11`1+<<InvokeAsync>b__11_0>d[[Microsoft.AspNetCore.Components.Rendering.ComponentRenderedText, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]].MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Components.Rendering.RendererSynchronizationContext+<>c__11`1+<<InvokeAsync>b__11_0>d[[Microsoft.AspNetCore.Components.Rendering.ComponentRenderedText, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]], Microsoft.AspNetCore.Components, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<<InvokeAsync>b__11_0>d<Microsoft.AspNetCore.Components.Rendering.ComponentRenderedText> ByRef)
+   at System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start[[Microsoft.AspNetCore.Components.Rendering.RendererSynchronizationContext+<>c__11`1+<<InvokeAsync>b__11_0>d[[Microsoft.AspNetCore.Components.Rendering.ComponentRenderedText, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]], Microsoft.AspNetCore.Components, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<<InvokeAsync>b__11_0>d<Microsoft.AspNetCore.Components.Rendering.ComponentRenderedText> ByRef)
+   at Microsoft.AspNetCore.Components.Rendering.RendererSynchronizationContext+<>c__11`1[[Microsoft.AspNetCore.Components.Rendering.ComponentRenderedText, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]].<InvokeAsync>b__11_0(System.Object)
+   at Microsoft.AspNetCore.Components.Rendering.RendererSynchronizationContext.ExecuteSynchronously(System.Threading.Tasks.TaskCompletionSource`1<System.Object>, System.Threading.SendOrPostCallback, System.Object)
+   at Microsoft.AspNetCore.Components.Rendering.RendererSynchronizationContext.ExecuteSynchronouslyIfPossible(System.Threading.SendOrPostCallback, System.Object)
+   at Microsoft.AspNetCore.Components.Rendering.RendererSynchronizationContext.InvokeAsync[[Microsoft.AspNetCore.Components.Rendering.ComponentRenderedText, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](System.Func`1<System.Threading.Tasks.Task`1<Microsoft.AspNetCore.Components.Rendering.ComponentRenderedText>>)
+   at Microsoft.AspNetCore.Components.Rendering.RendererSynchronizationContextDispatcher.InvokeAsync[[Microsoft.AspNetCore.Components.Rendering.ComponentRenderedText, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](System.Func`1<System.Threading.Tasks.Task`1<Microsoft.AspNetCore.Components.Rendering.ComponentRenderedText>>)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.StaticComponentRenderer+<PrerenderComponentAsync>d__3.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Mvc.ViewFeatures.StaticComponentRenderer+<PrerenderComponentAsync>d__3, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<PrerenderComponentAsync>d__3 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].Start[[Microsoft.AspNetCore.Mvc.ViewFeatures.StaticComponentRenderer+<PrerenderComponentAsync>d__3, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<PrerenderComponentAsync>d__3 ByRef)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.StaticComponentRenderer.PrerenderComponentAsync(Microsoft.AspNetCore.Components.ParameterView, Microsoft.AspNetCore.Http.HttpContext, System.Type)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer+<PrerenderedServerComponentAsync>d__8.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer+<PrerenderedServerComponentAsync>d__8, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<PrerenderedServerComponentAsync>d__8 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].Start[[Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer+<PrerenderedServerComponentAsync>d__8, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<PrerenderedServerComponentAsync>d__8 ByRef)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer.PrerenderedServerComponentAsync(Microsoft.AspNetCore.Http.HttpContext, Microsoft.AspNetCore.Mvc.ViewFeatures.ServerComponentInvocationSequence, System.Type, Microsoft.AspNetCore.Components.ParameterView)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer+<RenderComponentAsync>d__5.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer+<RenderComponentAsync>d__5, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<RenderComponentAsync>d__5 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].Start[[Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer+<RenderComponentAsync>d__5, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<RenderComponentAsync>d__5 ByRef)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ComponentRenderer.RenderComponentAsync(Microsoft.AspNetCore.Mvc.Rendering.ViewContext, System.Type, Microsoft.AspNetCore.Mvc.Rendering.RenderMode, System.Object)
+   at Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper+<ProcessAsync>d__21.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper+<ProcessAsync>d__21, Microsoft.AspNetCore.Mvc.TagHelpers, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<ProcessAsync>d__21 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper+<ProcessAsync>d__21, Microsoft.AspNetCore.Mvc.TagHelpers, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<ProcessAsync>d__21 ByRef)
+   at Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.ProcessAsync(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext, Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput)
+   at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperRunner.RunAsync(Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext)
+   at HRManager.Blazor.Pages.Pages__Host+<<ExecuteAsync>b__14_1>d.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]](System.__Canon ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]](System.__Canon ByRef)
+   at HRManager.Blazor.Pages.Pages__Host.<ExecuteAsync>b__14_1()
+   at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext+<SetOutputContentAsync>d__30.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext+<SetOutputContentAsync>d__30, Microsoft.AspNetCore.Razor.Runtime, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<SetOutputContentAsync>d__30 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext+<SetOutputContentAsync>d__30, Microsoft.AspNetCore.Razor.Runtime, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<SetOutputContentAsync>d__30 ByRef)
+   at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext.SetOutputContentAsync()
+   at HRManager.Blazor.Pages.Pages__Host+<ExecuteAsync>d__14.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]](System.__Canon ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]](System.__Canon ByRef)
+   at HRManager.Blazor.Pages.Pages__Host.ExecuteAsync()
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.RazorPageAdapter.ExecuteAsync()
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView+<RenderPageCoreAsync>d__20.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Mvc.Razor.RazorView+<RenderPageCoreAsync>d__20, Microsoft.AspNetCore.Mvc.Razor, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<RenderPageCoreAsync>d__20 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Mvc.Razor.RazorView+<RenderPageCoreAsync>d__20, Microsoft.AspNetCore.Mvc.Razor, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<RenderPageCoreAsync>d__20 ByRef)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(Microsoft.AspNetCore.Mvc.Razor.IRazorPage, Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView+<RenderPageAsync>d__19.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Mvc.Razor.RazorView+<RenderPageAsync>d__19, Microsoft.AspNetCore.Mvc.Razor, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<RenderPageAsync>d__19 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].Start[[Microsoft.AspNetCore.Mvc.Razor.RazorView+<RenderPageAsync>d__19, Microsoft.AspNetCore.Mvc.Razor, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<RenderPageAsync>d__19 ByRef)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(Microsoft.AspNetCore.Mvc.Razor.IRazorPage, Microsoft.AspNetCore.Mvc.Rendering.ViewContext, Boolean)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView+<RenderAsync>d__18.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Mvc.Razor.RazorView+<RenderAsync>d__18, Microsoft.AspNetCore.Mvc.Razor, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<RenderAsync>d__18 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Mvc.Razor.RazorView+<RenderAsync>d__18, Microsoft.AspNetCore.Mvc.Razor, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<RenderAsync>d__18 ByRef)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(Microsoft.AspNetCore.Mvc.Rendering.ViewContext)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor+<ExecuteAsync>d__22.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor+<ExecuteAsync>d__22, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<ExecuteAsync>d__22 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor+<ExecuteAsync>d__22, Microsoft.AspNetCore.Mvc.ViewFeatures, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<ExecuteAsync>d__22 ByRef)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(Microsoft.AspNetCore.Mvc.Rendering.ViewContext, System.String, System.Nullable`1<Int32>)
+   at Microsoft.AspNetCore.Mvc.RazorPages.PageResult.ExecuteResultAsync(Microsoft.AspNetCore.Mvc.ActionContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker+<<InvokeResultAsync>g__Logged|21_0>d.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker+<<InvokeResultAsync>g__Logged|21_0>d, Microsoft.AspNetCore.Mvc.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<<InvokeResultAsync>g__Logged|21_0>d ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker+<<InvokeResultAsync>g__Logged|21_0>d, Microsoft.AspNetCore.Mvc.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<<InvokeResultAsync>g__Logged|21_0>d ByRef)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeResultAsync>g__Logged|21_0(Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker, Microsoft.AspNetCore.Mvc.IActionResult)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultAsync(Microsoft.AspNetCore.Mvc.IActionResult)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeResultAsync(Microsoft.AspNetCore.Mvc.IActionResult)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]](State ByRef, Scope ByRef, System.Object ByRef, Boolean ByRef)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]](State ByRef, Scope ByRef, System.Object ByRef, Boolean ByRef)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State ByRef, Scope ByRef, System.Object ByRef, Boolean ByRef)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State ByRef, Scope ByRef, System.Object ByRef, Boolean ByRef)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker+<<InvokeAsync>g__Logged|17_1>d.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker+<<InvokeAsync>g__Logged|17_1>d, Microsoft.AspNetCore.Mvc.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<<InvokeAsync>g__Logged|17_1>d ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker+<<InvokeAsync>g__Logged|17_1>d, Microsoft.AspNetCore.Mvc.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<<InvokeAsync>g__Logged|17_1>d ByRef)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointFactory+<>c__DisplayClass7_0.<CreateRequestDelegate>b__0(Microsoft.AspNetCore.Http.HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware+<Invoke>d__6.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Authorization.AuthorizationMiddleware+<Invoke>d__6, Microsoft.AspNetCore.Authorization.Policy, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<Invoke>d__6 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Authorization.AuthorizationMiddleware+<Invoke>d__6, Microsoft.AspNetCore.Authorization.Policy, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<Invoke>d__6 ByRef)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware+<Invoke>d__6.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Authentication.AuthenticationMiddleware+<Invoke>d__6, Microsoft.AspNetCore.Authentication, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<Invoke>d__6 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Authentication.AuthenticationMiddleware+<Invoke>d__6, Microsoft.AspNetCore.Authentication, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<Invoke>d__6 ByRef)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)
+   at Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware+<Invoke>d__9.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware+<Invoke>d__9, Microsoft.AspNetCore.Diagnostics, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<Invoke>d__9 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware+<Invoke>d__9, Microsoft.AspNetCore.Diagnostics, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<Invoke>d__9 ByRef)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware+<Invoke>d__5.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware+<Invoke>d__5, Microsoft.AspNetCore.Localization, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<Invoke>d__5 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware+<Invoke>d__5, Microsoft.AspNetCore.Localization, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<Invoke>d__5 ByRef)
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)
+   at Microsoft.AspNetCore.HostFiltering.HostFilteringMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware+<InvokeAsync>d__4.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware+<InvokeAsync>d__4, Microsoft.AspNetCore.Watch.BrowserRefresh, Version=5.0.201.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<InvokeAsync>d__4 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware+<InvokeAsync>d__4, Microsoft.AspNetCore.Watch.BrowserRefresh, Version=5.0.201.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<InvokeAsync>d__4 ByRef)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)
+   at Microsoft.AspNetCore.Builder.Extensions.MapMiddleware+<Invoke>d__3.MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Builder.Extensions.MapMiddleware+<Invoke>d__3, Microsoft.AspNetCore.Http.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<Invoke>d__3 ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Builder.Extensions.MapMiddleware+<Invoke>d__3, Microsoft.AspNetCore.Http.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<Invoke>d__3 ByRef)
+   at Microsoft.AspNetCore.Builder.Extensions.MapMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)
+   at Microsoft.AspNetCore.Hosting.HostingApplication.ProcessRequestAsync(Context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol+<ProcessRequests>d__223`1[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol+<ProcessRequests>d__223`1[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Microsoft.AspNetCore.Server.Kestrel.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<ProcessRequests>d__223`1<System.__Canon> ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol+<ProcessRequests>d__223`1[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Microsoft.AspNetCore.Server.Kestrel.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<ProcessRequests>d__223`1<System.__Canon> ByRef)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]](Microsoft.AspNetCore.Hosting.Server.IHttpApplication`1<System.__Canon>)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol+<ProcessRequestsAsync>d__222`1[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].MoveNext()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[[Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol+<ProcessRequestsAsync>d__222`1[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Microsoft.AspNetCore.Server.Kestrel.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<ProcessRequestsAsync>d__222`1<System.__Canon> ByRef)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[[Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol+<ProcessRequestsAsync>d__222`1[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Microsoft.AspNetCore.Server.Kestrel.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]](<ProcessRequestsAsync>d__222`1<System.__Canon> ByRef)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequestsAsync[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]](Microsoft.AspNetCore.Hosting.Server.IHttpApplication`1<System.__Canon>)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http2.Http2Stream`1[[System.__Canon, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].Execute()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+
+watch : Exited with error code -1073741571
+watch : Waiting for a file to change before restarting dotnet...
+watch : Started
+Building...
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Member\InformationBase.cs(77,19): error CS0103: The name 'editForm' does not exist in the current context [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+
+The build failed. Fix the build errors and run again.
+
+watch : Exited with error code 1
+watch : Waiting for a file to change before restarting dotnet...
+watch : Started
+Building...
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Member\InformationBase.cs(66,19): error CS0103: The name 'editForm' does not exist in the current context [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+
+The build failed. Fix the build errors and run again.
+
+watch : Exited with error code 1
+watch : Waiting for a file to change before restarting dotnet...
+watch : Started
+Building...
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Teams.razor(3,7): warning CS0105: The using directive for 'HRManager.Blazor.Pages.Shared' appeared previously in this namespace [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Logout.cshtml.cs(15,27): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Services\AlertServices.cs(35,30): warning CS0168: The variable 'ex' is declared but never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Shared\MemberEditBase.cs(20,35): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Member\InformationBase.cs(66,13): warning CS4014: Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Member\InformationBase.cs(64,30): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\AlertsBase.cs(60,30): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\AlertsBase.cs(65,30): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor(30,18): warning CS0649: Field 'Register.ShowErrors' is never assigned to, and will always have its default value false [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\PostLoginRedirector.razor(11,20): warning CS0169: The field 'PostLoginRedirector.message' is never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor(32,33): warning CS0649: Field 'Register.Errors' is never assigned to, and will always have its default value null [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor(31,17): warning CS0169: The field 'Register.test' is never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Shared\MainLayout.razor(16,20): warning CS0414: The field 'MainLayout.currentPage' is assigned but its value is never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\ScheduleEditorTemplate.razor(19,13): warning BL0005: Component parameter 'SelectedType' should not be set outside of its component. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+
+watch : Exited
+watch : File changed: C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Member\InformationBase.cs
+watch : Started
+Building...
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\Teams.razor(3,7): warning CS0105: The using directive for 'HRManager.Blazor.Pages.Shared' appeared previously in this namespace [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Logout.cshtml.cs(15,27): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\AlertsBase.cs(60,30): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\AlertsBase.cs(65,30): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Shared\MemberEditBase.cs(20,35): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Services\AlertServices.cs(35,30): warning CS0168: The variable 'ex' is declared but never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\PostLoginRedirector.razor(11,20): warning CS0169: The field 'PostLoginRedirector.message' is never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor(32,33): warning CS0649: Field 'Register.Errors' is never assigned to, and will always have its default value null [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor(31,17): warning CS0169: The field 'Register.test' is never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Account\Register.razor(30,18): warning CS0649: Field 'Register.ShowErrors' is never assigned to, and will always have its default value false [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Shared\MainLayout.razor(16,20): warning CS0414: The field 'MainLayout.currentPage' is assigned but its value is never used [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Pages\Admin\ScheduleEditorTemplate.razor(19,13): warning BL0005: Component parameter 'SelectedType' should not be set outside of its component. [C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\HRManager.Blazor.csproj]
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: https://localhost:5004
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: http://localhost:5003
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor

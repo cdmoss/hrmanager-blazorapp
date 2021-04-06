@@ -36,9 +36,6 @@ namespace HRManager.Blazor.Pages.Admin
         protected List<string> errors = new List<string>();
         protected bool showStaff = false;
 
-
-        Dictionary<int, string> selectedTabs = new Dictionary<int, string>();
-
         protected override async Task OnInitializedAsync()
         {
             var memberResult = await _memberService.GetFullMembers();
@@ -55,11 +52,6 @@ namespace HRManager.Blazor.Pages.Admin
                 errors.Add(positionResult.Error);
             }
             positions = positionResult.Data;
-
-            foreach (var member in team)
-            {
-                selectedTabs.Add(member.Id, "personal," + member.Id);
-            }
         }
 
         //protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -160,12 +152,6 @@ namespace HRManager.Blazor.Pages.Admin
                 modal.Close();
                 errors.Add("Registration was unsuccessful, try again or contact the application support team.");
             }
-        }
-
-        protected void OnTabChanged(string name)
-        {
-            int id = Convert.ToInt32(name.Split(',')[1]);
-            selectedTabs[id] = name;
         }
     }
 }
