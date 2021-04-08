@@ -13,223 +13,117 @@ namespace HRManager.Blazor.Shared
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
+#line 1 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
+#line 2 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
+#line 3 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
+#line 4 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
+#line 5 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
+#line 6 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
+#line 7 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
+#line 8 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
 using HRManager.Common.Dtos;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
+#line 9 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
 using HRManager.Common;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
+#line 10 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
 using HRManager.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
+#line 11 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
 using HRManager.Blazor.Pages.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
+#line 12 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
 using Syncfusion.Blazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
+#line 14 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\_Imports.razor"
 using Syncfusion.Blazor.Buttons;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 1 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\Shared\MemberCheckUploads.razor"
+#line 3 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Shared\MemberCheckUploads.razor"
 using Syncfusion.Blazor.Inputs;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\Shared\MemberCheckUploads.razor"
+#line 4 "C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\Shared\MemberCheckUploads.razor"
 using System.IO;
 
 #line default
 #line hidden
 #nullable disable
-    public partial class MemberCheckUploads : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class MemberCheckUploads<TMemberDto> : MemberCheckUploadsBase<TMemberDto>
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 77 "C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\Shared\MemberCheckUploads.razor"
-       
-    [Parameter]
-    public NonAdminMemberDto Member { get; set; }
-
-    public void OnChangeConfidentiality(UploadChangeEventArgs args)
-    {
-        foreach (var file in args.Files)
-        {
-            using (file.Stream)
-            {
-                Member.VolunteerConfidentialityData = file.Stream.ToArray();
-            }
-        }
-    }
-
-    public void OnChangeEthics(UploadChangeEventArgs args)
-    {
-        foreach (var file in args.Files)
-        {
-            using (file.Stream)
-            {
-                Member.VolunteerEthicsData = file.Stream.ToArray();
-            }
-        }
-    }
-
-    public void OnChangeCriminal(UploadChangeEventArgs args)
-    {
-        foreach (var file in args.Files)
-        {
-            using (file.Stream)
-            {
-                Member.CriminalRecordCheckData = file.Stream.ToArray();
-            }
-        }
-    }
-
-    public void OnChangeDriving(UploadChangeEventArgs args)
-    {
-        foreach (var file in args.Files)
-        {
-            using (file.Stream)
-            {
-                Member.DrivingAbstractData = file.Stream.ToArray();
-            }
-        }
-    }
-
-    public void OnChangeDesignation(UploadChangeEventArgs args)
-    {
-        foreach (var file in args.Files)
-        {
-            using (file.Stream)
-            {
-                Member.ConfirmationOfProfessionalDesignationData = file.Stream.ToArray();
-            }
-        }
-    }
-
-    public void OnChangeWelfare(UploadChangeEventArgs args)
-    {
-        foreach (var file in args.Files)
-        {
-            using (file.Stream)
-            {
-                Member.ChildWelfareCheckData = file.Stream.ToArray();
-            }
-        }
-    }
-
-    public void OnRemoveConfidentiality()
-    {
-        Member.VolunteerConfidentialityData = null;
-    }
-
-    public void OnRemoveEthics()
-    {
-        Member.VolunteerEthicsData = null;
-    }
-
-    public void OnRemoveCriminal()
-    {
-        Member.CriminalRecordCheckData = null;
-    }
-
-    public void OnRemoveDriving()
-    {
-        Member.DrivingAbstractData = null;
-    }
-
-    public void OnRemoveDesignation()
-    {
-        Member.ConfirmationOfProfessionalDesignationData = null;
-    }
-
-    public void OnRemoveWelfare()
-    {
-        Member.ChildWelfareCheckData = null;
-    }
-
-
-#line default
-#line hidden
-#nullable disable
     }
 }
 #pragma warning restore 1591

@@ -15,7 +15,7 @@ namespace HRManager.Blazor.Services
         Task<ApiResult<List<AdminMemberDto>>> GetFullMembers();
         ApiResult<List<MemberMinimalDto>> GetMinimalMembers();
         Task<ApiResult<List<AdminMemberDto>>> UpdateMember(AdminMemberDto dto);
-        Task<ApiResult<NonAdminMemberDto>> GetMember(int id);
+        Task<ApiResult<MemberEditDto>> GetMember(int id);
     }
 
     public class HttpTeamService : ITeamService
@@ -66,16 +66,16 @@ namespace HRManager.Blazor.Services
 
         }
 
-        public async Task<ApiResult<NonAdminMemberDto>> GetMember(int id)
+        public async Task<ApiResult<MemberEditDto>> GetMember(int id)
         {
             try
             {
-                var apiResult = await _apiClient.GetFromJsonAsync<ApiResult<NonAdminMemberDto>>($"{Constants.ControllerNames.Teams}/{id}");
+                var apiResult = await _apiClient.GetFromJsonAsync<ApiResult<MemberEditDto>>($"{Constants.ControllerNames.Teams}/{id}");
                 return apiResult;
             }
             catch (Exception ex)
             {
-                return new ApiResult<NonAdminMemberDto>
+                return new ApiResult<MemberEditDto>
                 {
                     Successful = false,
                     Error = $"Something went wrong when trying to retrieve member information:\n\n{ex.Message}\n{ex.StackTrace}"

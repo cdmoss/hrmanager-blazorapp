@@ -1,0 +1,18 @@
+﻿@using Syncfusion.Blazor.DropDowns
+@using HRManager.Blazor.Shared
+@inherits AdminPositionPickerBase
+
+<div class="d-flex p-3">
+    <div class="d-flex flex-column mr-2">
+        <label><strong>Preferred Positions</strong></label>
+        <SfMultiSelect Mode="VisualMode.Box" @bind-Value="preferredPositions" DataSource="Positions">
+            <MultiSelectFieldSettings Text="Name" Value="Name" />
+        </SfMultiSelect>
+    </div>
+    <div class="d-flex flex-column">
+        <label><strong>Assigned Positions</strong></label>
+        <SfMultiSelect Mode="VisualMode.Box" @bind-Value="assignedPositions" DataSource="Positions">
+            <MultiSelectFieldSettings Text="Name" Value="Name" />
+        </SfMultiSelect>
+    </div>
+</div>

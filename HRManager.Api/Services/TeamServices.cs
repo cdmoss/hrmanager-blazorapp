@@ -14,11 +14,11 @@ namespace HRManager.Api.Services
 {
     public interface ITeamService
     {
-        Task<ApiResult<List<TDto>>> GetMembers<TDto>() where TDto : IMemberDto;
-        Task<ApiResult<TDto>> GetMember<TDto>(int id) where TDto : IMemberDto;
+        Task<ApiResult<List<TDto>>> GetMembers<TDto>() where TDto : MemberMinimalDto;
+        Task<ApiResult<TDto>> GetMember<TDto>(int id) where TDto : MemberEditDto;
         Task<ApiResult<int>> AddMember(MemberRegisterDto dto);
         Task<ApiResult<List<AdminMemberDto>>> UpdateMemberForAdmin(AdminMemberDto dto);
-        Task<ApiResult<NonAdminMemberDto>> UpdateMemberForMember(NonAdminMemberDto dto);
+        Task<ApiResult<MemberEditDto>> UpdateMemberForMember(MemberEditDto dto);
         Task<ApiResult<object>> DeleteMember(int id);
     }
 
@@ -35,7 +35,7 @@ namespace HRManager.Api.Services
             _logger = logger;
         }
 
-        public async Task<ApiResult<List<TDto>>> GetMembers<TDto>() where TDto : IMemberDto
+        public async Task<ApiResult<List<TDto>>> GetMembers<TDto>() where TDto : MemberMinimalDto
         {
             try
             {
@@ -73,7 +73,7 @@ namespace HRManager.Api.Services
             }
         }
 
-        public async Task<ApiResult<TDto>> GetMember<TDto>(int id) where TDto : IMemberDto
+        public async Task<ApiResult<TDto>> GetMember<TDto>(int id) where TDto : MemberEditDto
         {
             try
             {
@@ -169,7 +169,7 @@ namespace HRManager.Api.Services
             
         }
 
-        public async Task<ApiResult<NonAdminMemberDto>> UpdateMemberForMember(NonAdminMemberDto dto)
+        public async Task<ApiResult<MemberEditDto>> UpdateMemberForMember(MemberEditDto dto)
         {
             try
             {
@@ -185,13 +185,13 @@ namespace HRManager.Api.Services
 
                 await _context.SaveChangesAsync();
 
-                var result = await GetMember<NonAdminMemberDto>(member.Id);
+                var result = await GetMember<MemberEditDto>(member.Id);
                 return result;
             }
             catch (Exception ex)
             {
                 _logger.LogError("An issue occured when trying to update a member: \n" + ex.Message + "\n\nStack Trace: \n" + ex.StackTrace);
-                return new ApiResult<NonAdminMemberDto>
+                return new ApiResult<MemberEditDto>
                 {
                     Successful = false,
                     Error = "An issue occured when trying to update a member."
@@ -245,7 +245,7 @@ namespace HRManager.Api.Services
             member.Positions = tempMember.Positions;
         }
 
-        private void UpdateMemberPropertiesForMember(NonAdminMemberDto dto, MemberProfile member)
+        private void UpdateMemberPropertiesForMember(MemberEditDto dto, MemberProfile member)
         {
             var tempMember = _mapper.Map<MemberProfile>(dto);
 

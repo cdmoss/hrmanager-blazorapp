@@ -50,7 +50,7 @@ namespace HRManager.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMember(int id)
         {
-            var result = await _teamService.GetMember<NonAdminMemberDto>(id);
+            var result = await _teamService.GetMember<MemberEditDto>(id);
             return new ObjectResult(result);
         }
 
@@ -71,7 +71,7 @@ namespace HRManager.Api.Controllers
         
         [Authorize(Roles = Constants.RoleNames.Admin + ", " + Constants.RoleNames.SuperAdmin + ", " + Constants.RoleNames.Member)]
         [HttpPost(Constants.Routes.Update + "/" + Constants.RoleNames.Member)]
-        public async Task<IActionResult> UpdateMemberForMember([FromBody]NonAdminMemberDto dto)
+        public async Task<IActionResult> UpdateMemberForMember([FromBody]MemberEditDto dto)
         {
             return new ObjectResult(await _teamService.UpdateMemberForMember(dto));
         }

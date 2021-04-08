@@ -49,7 +49,7 @@ namespace HRManager.Test
 
                 var memberService = new EFTeamService(context, new NullLogger<EFTeamService>(), _mapper);
                 var membersResult = memberService.GetMembers<AdminMemberDto>().Result;
-                Assert.False(membersResult.Successful);
+                Assert.False(membersResult.Data.Any());
             }
         }
 

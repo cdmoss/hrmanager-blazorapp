@@ -676,3 +676,6 @@ C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\H
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\HRManager.Blazor.genruntimeconfig.cache
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Shared\MemberCheckUploads.razor.g.cs
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Shared\MemberCheckUploads.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Shared\MemberCheckUploads.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\Razor\Shared\MemberCheckUploads.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Shared\PositionPicker.razor.g.cs

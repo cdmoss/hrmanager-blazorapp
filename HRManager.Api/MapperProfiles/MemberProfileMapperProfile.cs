@@ -18,10 +18,10 @@ namespace HRManager.Api.MapperProfiles
                 .ReverseMap()
                 .ForMember(dest => dest.Availabilities, opt => opt.MapFrom<MemberDtoToDomainAvailResolver<AdminMemberDto>>());
             // source --> target
-            CreateMap<MemberProfile, NonAdminMemberDto>()
-                .ForMember(dest => dest.Availabilities, opt => opt.MapFrom<MemberDomainToDtoAvailResolver<NonAdminMemberDto>>())
+            CreateMap<MemberProfile, MemberEditDto>()
+                .ForMember(dest => dest.Availabilities, opt => opt.MapFrom<MemberDomainToDtoAvailResolver<MemberEditDto>>())
                 .ReverseMap()
-                .ForMember(dest => dest.Availabilities, opt => opt.MapFrom<MemberDtoToDomainAvailResolver<NonAdminMemberDto>>());
+                .ForMember(dest => dest.Availabilities, opt => opt.MapFrom<MemberDtoToDomainAvailResolver<MemberEditDto>>());
 
             CreateMap<MemberProfile, MemberMinimalDto>().ReverseMap();
 
@@ -39,7 +39,7 @@ namespace HRManager.Api.MapperProfiles
         }
     }
 
-    public class MemberDomainToDtoAvailResolver<TDto> : IValueResolver<MemberProfile, TDto, Dictionary<DayOfWeek, List<AvailabilityDto>>> where TDto : IDetailedMemberDto
+    public class MemberDomainToDtoAvailResolver<TDto> : IValueResolver<MemberProfile, TDto, Dictionary<DayOfWeek, List<AvailabilityDto>>> where TDto : MemberEditDto
     {
         public Dictionary<DayOfWeek, List<AvailabilityDto>> Resolve(MemberProfile domain, TDto dto, Dictionary<DayOfWeek, List<AvailabilityDto>> destMember, ResolutionContext context)
         {
@@ -69,7 +69,7 @@ namespace HRManager.Api.MapperProfiles
         }
     }
 
-    public class MemberDtoToDomainAvailResolver<TDto> : IValueResolver<TDto, MemberProfile, List<Availability>> where TDto : IDetailedMemberDto
+    public class MemberDtoToDomainAvailResolver<TDto> : IValueResolver<TDto, MemberProfile, List<Availability>> where TDto : MemberEditDto
     {
         private readonly IMapper _mapper;
 

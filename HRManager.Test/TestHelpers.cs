@@ -112,9 +112,9 @@ namespace HRManager.Test
                 return dto;
             }
 
-            public static NonAdminMemberDto GenerateNonAdminMemberDto(int id)
+            public static MemberEditDto GenerateNonAdminMemberDto(int id)
             {
-                var dto = new NonAdminMemberDto
+                var dto = new MemberEditDto
                 {
                     Id = id,
                     Email = $"testupdated@email.com",

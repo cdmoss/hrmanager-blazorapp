@@ -4,8 +4,9 @@
 @using Syncfusion.Blazor.Calendars
 @using Microsoft.AspNetCore.Components.Authorization
 @using HRManager.Blazor.Pages.Shared.PageMenus
+@using HRManager.Blazor.Pages.Shared
 @using HRManager.Blazor.Shared
-@using Syncfusion.Blazor.Inputs 
+@using Syncfusion.Blazor.Inputs
 @inherits InformationBase
 <AuthorizeView>
     <Authorized>
@@ -28,181 +29,174 @@
                 <div class="menu">
                     <InformationMenu />
                 </div>
-                    <EditForm Model="Member" OnValidSubmit="SaveChanges" Context="editContext" class="p-2">
-                        <div class="p-2">
-                            <Tabs SelectedTab="@selectedTab" SelectedTabChanged="OnTabChanged">
-                                <Items>
-                                    <Tab Class="main-tab" Name="personal">Personal and Contact</Tab>
-                                    <Tab Class="main-tab" Name="positions">Positions</Tab>
-                                    <Tab Class="main-tab" Name="avail">Availabilities</Tab>
-                                    <Tab Class="main-tab" Name="cert">Certifications</Tab>
-                                    <Tab Class="main-tab" Name="check">Checks</Tab>
-                                </Items>
-                                <Content>
-                                    <TabPanel Name="personal">
-                                        <div id="form-container" class="p-3">
-                                            <div id="first-name" class="form-group">
-                                                <label class="form-label">First Name:</label>
-                                                <div>
-                                                    <SfTextBox Type="InputType.Text" @bind-Value="Member.FirstName" />
-                                                    <ValidationMessage For="@(() => Member.FirstName)" />
-                                                </div>
-                                            </div>
-                                            <div id="last-name" class="form-group">
-                                                <label class="form-label">Last Name:</label>
-                                                <div>
-                                                    <SfTextBox Type="InputType.Text" @bind-Value="Member.LastName" />
-                                                    <ValidationMessage For="@(() => Member.LastName)" />
-                                                </div>
-                                            </div>
-                                            <div id="address" class="form-group">
-                                                <label class="form-label">Address:</label>
-                                                <div>
-                                                    <SfTextBox Type="InputType.Text" @bind-Value="Member.Address" />
-                                                    <ValidationMessage For="@(() => Member.Address)" />
-                                                </div>
-                                            </div>
-                                            <div id="city" class="form-group">
-                                                <label class="form-label">City:</label>
-                                                <div>
-                                                    <SfTextBox Type="InputType.Text" @bind-Value="Member.City" />
-                                                    <ValidationMessage For="@(() => Member.City)" />
-                                                </div>
-                                            </div>
-                                            <div id="postal-code" class="form-group">
-                                                <label class="form-label">Postal Code:</label>
-                                                <div>
-                                                    <SfTextBox Type="InputType.Text" @bind-Value="Member.PostalCode" />
-                                                    <ValidationMessage For="@(() => Member.PostalCode)" />
-                                                </div>
-                                            </div>
-                                            <div id="email" class="form-group">
-                                                <label class="form-label">Email:</label>
-                                                <div>
-                                                    <SfTextBox Type="InputType.Text" @bind-Value="Member.Email" />
-                                                    <ValidationMessage For="@(() => Member.Email)" />
-                                                </div>
-                                            </div>
-                                            <div id="main-phone" class="form-group">
-                                                <label class="form-label">Main Phone:</label>
-                                                <div>
-                                                    <SfTextBox Type="InputType.Tel" @bind-Value="Member.MainPhone" />
-                                                    <ValidationMessage For="@(() => Member.FirstName)" />
-                                                </div>
-                                            </div>
-                                            <div id="alt-phone-1" class="form-group">
-                                                <label class="form-label">Alternate Phone 1 (Optional):</label>
-                                                <div>
-                                                    <SfTextBox Type="InputType.Tel" @bind-Value="Member.AlternatePhone1" />
-                                                    <ValidationMessage For="@(() => Member.AlternatePhone1)" />
-                                                </div>
-                                            </div>
-                                            <div id="alt-phone-2" class="form-group">
-                                                <label class="form-label">Alternate Phone 2 (Optional):</label>
-                                                <div>
-                                                    <SfTextBox Type="InputType.Tel" @bind-Value="Member.AlternatePhone2" />
-                                                </div>
-                                            </div>
-                                            <div id="emergency-contact" class="form-group">
-                                                <label class="form-label">Full Name of Emergency Contact:</label>
-                                                <div>
-                                                    <SfTextBox Type="InputType.Text" @bind-Value="Member.EmergencyFullName" />
-                                                    <ValidationMessage For="@(() => Member.EmergencyFullName)" />
-                                                </div>
-                                            </div>
-                                            <div id="emergency-relationship" class="form-group">
-                                                <label class="form-label">Relationship to Emergency Contact:</label>
-                                                <div>
-                                                    <SfTextBox Type="InputType.Text" @bind-Value="Member.EmergencyRelationship" />
-                                                    <ValidationMessage For="@(() => Member.EmergencyRelationship)" />
-                                                </div>
-                                            </div>
-                                            <div id="emergency-phone-1" class="form-group">
-                                                <label class="form-label">Emergency Phone 1:</label>
-                                                <div>
-                                                    <SfTextBox Type="InputType.Tel" @bind-Value="Member.EmergencyPhone1" />
-                                                    <ValidationMessage For="@(() => Member.EmergencyPhone1)" />
-                                                </div>
-                                            </div>
-                                            <div id="emergency-phone-2" class="form-group">
-                                                <label class="form-label">Emergency Phone 2 (Optional):</label>
-                                                <div>
-                                                    <SfTextBox Type="InputType.Tel" @bind-Value="Member.EmergencyPhone2" />
-                                                    <ValidationMessage For="@(() => Member.EmergencyPhone2)" />
-                                                </div>
-                                            </div>
+                <EditForm Model="Member" OnValidSubmit="SaveChanges" Context="editContext" class="p-2">
+                    <Tabs SelectedTab="@selectedTab" SelectedTabChanged="OnTabChanged">
+                        <Items>
+                            <Tab Class="main-tab" Name="personal">Personal and Contact</Tab>
+                            <Tab Class="main-tab" Name="positions">Positions</Tab>
+                            <Tab Class="main-tab" Name="avail">Availabilities</Tab>
+                            <Tab Class="main-tab" Name="cert">Certifications</Tab>
+                            <Tab Class="main-tab" Name="check">Checks</Tab>
+                        </Items>
+                        <Content>
+                            <TabPanel Name="personal">
+                                <div id="form-container" class="p-3">
+                                    <div id="first-name" class="form-group">
+                                        <label class="form-label">First Name:</label>
+                                        <div>
+                                            <SfTextBox Type="InputType.Text" @bind-Value="Member.FirstName" />
+                                            <ValidationMessage For="@(() => Member.FirstName)" />
                                         </div>
-                                    </TabPanel>
-                                    <TabPanel Name="positions">
-                                        <div class="d-flex p-3">
-                                            <div class="d-flex flex-column mr-2">
-                                                <label><strong>Preferred Positions</strong></label>
-                                                <SfMultiSelect Mode="VisualMode.Box" @bind-Value="preferredPositions" DataSource="Positions">
-                                                    <MultiSelectFieldSettings Text="Name" Value="Name" />
-                                                </SfMultiSelect>
-                                            </div>
+                                    </div>
+                                    <div id="last-name" class="form-group">
+                                        <label class="form-label">Last Name:</label>
+                                        <div>
+                                            <SfTextBox Type="InputType.Text" @bind-Value="Member.LastName" />
+                                            <ValidationMessage For="@(() => Member.LastName)" />
                                         </div>
-                                    </TabPanel>
-                                    <TabPanel Name="avail">
-                                        <div class="availability-container p-3">
-                                            <AvailabilityEditor @bind-AvailabilitiesData="@Member.Availabilities" IsReadOnly="false" />
+                                    </div>
+                                    <div id="address" class="form-group">
+                                        <label class="form-label">Address:</label>
+                                        <div>
+                                            <SfTextBox Type="InputType.Text" @bind-Value="Member.Address" />
+                                            <ValidationMessage For="@(() => Member.Address)" />
                                         </div>
-                                    </TabPanel>
-                                    <TabPanel Name="cert">
-                                        <div id="cert-container" class="d-flex flex-column p-3">
-                                            <div id="firstaid-container">
-                                                <div class="checkbox-container">
-                                                    <SfCheckBox @bind-Checked="Member.FirstAidCpr" />
-                                                    <label>First Aid</label>
-                                                </div>
-                                                <div class="expiry-container mr-1">
-                                                    @if (Member.FirstAidCpr)
-                                                    {
-                                                        <label class="expiry-label">Expiry:</label>
-                                                        <SfDatePicker CssClass="expiry" @bind-Value="Member.FirstAidCprExpiry" />
-                                                    }
+                                    </div>
+                                    <div id="city" class="form-group">
+                                        <label class="form-label">City:</label>
+                                        <div>
+                                            <SfTextBox Type="InputType.Text" @bind-Value="Member.City" />
+                                            <ValidationMessage For="@(() => Member.City)" />
+                                        </div>
+                                    </div>
+                                    <div id="postal-code" class="form-group">
+                                        <label class="form-label">Postal Code:</label>
+                                        <div>
+                                            <SfTextBox Type="InputType.Text" @bind-Value="Member.PostalCode" />
+                                            <ValidationMessage For="@(() => Member.PostalCode)" />
+                                        </div>
+                                    </div>
+                                    <div id="email" class="form-group">
+                                        <label class="form-label">Email:</label>
+                                        <div>
+                                            <SfTextBox Type="InputType.Text" @bind-Value="Member.Email" />
+                                            <ValidationMessage For="@(() => Member.Email)" />
+                                        </div>
+                                    </div>
+                                    <div id="main-phone" class="form-group">
+                                        <label class="form-label">Main Phone:</label>
+                                        <div>
+                                            <SfTextBox Type="InputType.Tel" @bind-Value="Member.MainPhone" />
+                                            <ValidationMessage For="@(() => Member.FirstName)" />
+                                        </div>
+                                    </div>
+                                    <div id="alt-phone-1" class="form-group">
+                                        <label class="form-label">Alternate Phone 1 (Optional):</label>
+                                        <div>
+                                            <SfTextBox Type="InputType.Tel" @bind-Value="Member.AlternatePhone1" />
+                                            <ValidationMessage For="@(() => Member.AlternatePhone1)" />
+                                        </div>
+                                    </div>
+                                    <div id="alt-phone-2" class="form-group">
+                                        <label class="form-label">Alternate Phone 2 (Optional):</label>
+                                        <div>
+                                            <SfTextBox Type="InputType.Tel" @bind-Value="Member.AlternatePhone2" />
+                                        </div>
+                                    </div>
+                                    <div id="emergency-contact" class="form-group">
+                                        <label class="form-label">Full Name of Emergency Contact:</label>
+                                        <div>
+                                            <SfTextBox Type="InputType.Text" @bind-Value="Member.EmergencyFullName" />
+                                            <ValidationMessage For="@(() => Member.EmergencyFullName)" />
+                                        </div>
+                                    </div>
+                                    <div id="emergency-relationship" class="form-group">
+                                        <label class="form-label">Relationship to Emergency Contact:</label>
+                                        <div>
+                                            <SfTextBox Type="InputType.Text" @bind-Value="Member.EmergencyRelationship" />
+                                            <ValidationMessage For="@(() => Member.EmergencyRelationship)" />
+                                        </div>
+                                    </div>
+                                    <div id="emergency-phone-1" class="form-group">
+                                        <label class="form-label">Emergency Phone 1:</label>
+                                        <div>
+                                            <SfTextBox Type="InputType.Tel" @bind-Value="Member.EmergencyPhone1" />
+                                            <ValidationMessage For="@(() => Member.EmergencyPhone1)" />
+                                        </div>
+                                    </div>
+                                    <div id="emergency-phone-2" class="form-group">
+                                        <label class="form-label">Emergency Phone 2 (Optional):</label>
+                                        <div>
+                                            <SfTextBox Type="InputType.Tel" @bind-Value="Member.EmergencyPhone2" />
+                                            <ValidationMessage For="@(() => Member.EmergencyPhone2)" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </TabPanel>
+                            <TabPanel Name="positions">
+                                
+                            </TabPanel>
+                            <TabPanel Name="avail">
+                                <div class="availability-container p-3">
+                                    <AvailabilityEditor @bind-AvailabilitiesData="@Member.Availabilities" IsReadOnly="false" />
+                                </div>
+                            </TabPanel>
+                            <TabPanel Name="cert">
+                                <div id="cert-container" class="d-flex flex-column p-3">
+                                    <div id="firstaid-container">
+                                        <div class="checkbox-container">
+                                            <SfCheckBox @bind-Checked="Member.FirstAidCpr" />
+                                            <label>First Aid</label>
+                                        </div>
+                                        <div class="expiry-container mr-1">
+                                            @if (Member.FirstAidCpr)
+                                            {
+                                                <label class="expiry-label">Expiry:</label>
+                                                <SfDatePicker CssClass="expiry" @bind-Value="Member.FirstAidCprExpiry" />
+                                            }
 
-                                                </div>
-                                                <div class="level-container">
-                                                    @if (Member.FirstAidCpr)
-                                                    {
-                                                        <label>Level:</label>
-                                                        <SfTextBox @bind-Value="Member.FirstAidCprLevel" />
-                                                    }
-                                                </div>
-                                            </div>
-                                            <div id="foodsafe-container">
-                                                <div class="checkbox-container">
-                                                    <SfCheckBox @bind-Checked="Member.FoodSafe" />
-                                                    <label>Food Safe</label>
-                                                </div>
-                                                <div class="expiry-container ">
-                                                    @if (Member.FoodSafe)
-                                                    {
-                                                        <label>Expiry:</label>
-                                                        <SfDatePicker @bind-Value="Member.FoodSafeExpiry" />
-                                                    }
-
-                                                </div>
-                                            </div>
-                                            <div id="othercerts-container">
-                                                <div class="expiry-container">
-                                                    <label>Other Certificates:</label>
-                                                    <SfTextBox @bind-Value="Member.OtherCertificates" Multiline="true" />
-                                                </div>
-                                            </div>
                                         </div>
-                                    </TabPanel>
-                                    <TabPanel Name="check">
-                                        <MemberCheckUploads Member="Member"></MemberCheckUploads>
-                                    </TabPanel>
-                                </Content>
-                            </Tabs>
-                        </div>
-                    </EditForm>
-                    }
+                                        <div class="level-container">
+                                            @if (Member.FirstAidCpr)
+                                            {
+                                                <label>Level:</label>
+                                                <SfTextBox @bind-Value="Member.FirstAidCprLevel" />
+                                            }
+                                        </div>
+                                    </div>
+                                    <div id="foodsafe-container">
+                                        <div class="checkbox-container">
+                                            <SfCheckBox @bind-Checked="Member.FoodSafe" />
+                                            <label>Food Safe</label>
+                                        </div>
+                                        <div class="expiry-container ">
+                                            @if (Member.FoodSafe)
+                                            {
+                                                <label>Expiry:</label>
+                                                <SfDatePicker @bind-Value="Member.FoodSafeExpiry" />
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <div id="othercerts-container">
+                                        <div class="expiry-container">
+                                            <label>Other Certificates:</label>
+                                            <SfTextBox @bind-Value="Member.OtherCertificates" Multiline="true" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </TabPanel>
+                            <TabPanel Name="check">
+                                <MemberCheckUploads Member="Member" TMemberDto="MemberEditDto"></MemberCheckUploads>
+                            </TabPanel>
+                        </Content>
+                    </Tabs>
+                    <button type="submit" class="btn-dark btn">Reset Changes</button>
+                    <button type="submit" class="btn-primary btn">Save Changes</button>
+                </EditForm>
             }
-        </Authorized>
+        }
+    </Authorized>
     <NotAuthorized>
 
     </NotAuthorized>
