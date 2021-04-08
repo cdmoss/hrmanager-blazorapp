@@ -1,0 +1,56 @@
+﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Authorization
+@layout MainLayout
+
+<h3>MemberLayout</h3>
+
+@code {
+    [CascadingParameter]
+    private RenderFragment PageMenu { get; set; }
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authState { get; set; }
+
+    private MemberEditDto Member { get; set; }
+
+    private List<string> Errors { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var memberIdString = (await authState).User.Claims.FirstOrDefault(m => m.Type == "member_id").Value;
+        int memberIdInt = 0;
+        if (int.TryParse(memberIdString, out memberIdInt))
+        {
+            Member = (await _teamService.GetMember(memberIdInt)).Validate(Errors);
+            if (Errors.Count() == 0)
+            {
+                if (Member.ApprovalStatus == ApprovalStatus.Approved)
+                {
+                    selectedTab = "personal";
+                }
+                if (Member.ApprovalStatus == ApprovalStatus.Pending)
+                {
+                    selectedTab = "checks";
+                }
+            }
+        }
+    }
+
+    private void OnPageChanged(RenderFragment pageMenu)
+    {
+        PageMenu = pageMenu;
+    }
+}
+
+<CascadingValue Value="Member">
+    <CascadingValue Value="Errors">
+        <div class="page">
+            <div class="sidebar">
+                <MemberNavMenu PageChanged="OnPageChanged" />
+            </div>
+            <div class="main">
+                @Body
+            </div>
+        </div>
+    </CascadingValue>
+</CascadingValue>

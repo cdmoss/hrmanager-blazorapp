@@ -1,6 +1,5 @@
 ﻿@inherits LayoutComponentBase
 @using Microsoft.AspNetCore.Components.Authorization
-@using Blazored.Modal
 @namespace HRManager.Blazor.Pages.Shared
 @inject NavigationManager _nav
 @inject HRManager.Blazor.Services.TokenProvider _tokenProvider
@@ -8,9 +7,6 @@
 @code {
     [CascadingParameter]
     private Task<AuthenticationState> authState { get; set; }
-
-    [CascadingParameter]
-    private RenderFragment PageMenu { get; set; }
 
 
     private string currentPage;
@@ -30,36 +26,13 @@
         // if they are, determine what role they're in and redirect them accordingly
         if (user.IsInRole("Admin") || user.IsInRole("SuperAdmin"))
         {
-            navMenuType = "admin";
-            currentPage = "Members";
+            _nav.NavigateTo($"/Admin/Teams", true);
         }
         else if (user.IsInRole("Member"))
         {
-            navMenuType = "member";
-            currentPage = "Information";
+            _nav.NavigateTo($"/Member/Information", true);
         }
-    }
-
-    private void OnPageChanged(RenderFragment pageMenu)
-    {
-        PageMenu = pageMenu;
     }
 }
 
-<AuthChecker />
-
-<div class="page">
-    <div class="sidebar">
-        @if (navMenuType == "admin")
-        {
-            <AdminNavMenu PageChanged="OnPageChanged" />
-        }
-        else if (navMenuType == "member")
-        {
-            <MemberNavMenu PageChanged="OnPageChanged" />
-        }
-    </div>
-    <div class="main">
-        @Body
-    </div>
-</div>
+@Body

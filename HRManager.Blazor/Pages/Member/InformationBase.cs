@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace HRManager.Blazor.Pages.Member
 {
-    public class InformationBase : MemberEditorBase<MemberEditDto>
+    public class InformationBase : ComponentBase
     {
         [CascadingParameter]
         protected Task<AuthenticationState> authenticationStateTask { get; set; }

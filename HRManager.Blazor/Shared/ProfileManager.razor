@@ -1,16 +1,15 @@
-﻿@using Microsoft.AspNetCore.Components.Authorization 
-@inject NavigationManager _nav
-@namespace HRManager.Blazor.Pages.Shared
+﻿@using Microsoft.AspNetCore.Components.Authorization
 
 @code {
     [CascadingParameter]
     private Task<AuthenticationState> authState { get; set; }
+    [Cas]
 
     protected override async Task OnInitializedAsync()
     {
         if (!(await authState).User.Identity.IsAuthenticated)
         {
-            _nav.NavigateTo($"/account/login?redirectUri={_nav.Uri}", true);
+
         }
     }
 }
