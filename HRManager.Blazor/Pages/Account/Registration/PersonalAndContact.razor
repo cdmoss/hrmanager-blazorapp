@@ -4,9 +4,9 @@
 @code {
     // TODO: fix validation of optional inputs
     [Parameter]
-    public EventCallback<PersonalAndContactData> PersonalDataChanged { get; set; }
+    public EventCallback<AdminMemberDto> PersonalDataChanged { get; set; }
     [Parameter]
-    public PersonalAndContactData PersonalData { get; set; }
+    public AdminMemberDto PersonalData { get; set; }
 
     protected override async Task GoToNextSection()
     {

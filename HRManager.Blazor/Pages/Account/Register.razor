@@ -22,7 +22,7 @@
     public RegistrationType Type { get; set; }
 
     // must create instance of model to be bound*******
-    private MemberRegisterDto mainDto = new MemberRegisterDto();
+    private AdminMemberDto mainDto = new AdminMemberDto();
     protected Dictionary<int, PositionSelection> positionSelection = new Dictionary<int, PositionSelection>();
     private bool isSuccessful;
     private int currentSection = 1;
@@ -37,11 +37,11 @@
         loadingSubmission = true;
         if (Type == RegistrationType.StaffAdmin)
         {
-            mainDto.Account.IsStaff = true;
+            mainDto.IsStaff = true;
         }
         else
         {
-            mainDto.Account.IsStaff = false;
+            mainDto.IsStaff = false;
         }
 
         // handle position selection
@@ -143,10 +143,10 @@
         _nav.NavigateTo("/");
         break;
     case 1:
-        <AccountCreds Type="Type" @bind-AccountData="mainDto.Account" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
+        <AccountCreds Type="Type" @bind-AccountData="mainDto" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
         break;
     case 2:
-        <PersonalAndContact Type="Type" @bind-PersonalData="mainDto.Personal" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
+        <PersonalAndContact Type="Type" @bind-PersonalData="mainDto" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
         break;
     case 3:
         <PreferredPositions Type="Type" @bind-PositionSelection="positionSelection" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
@@ -158,7 +158,7 @@
         <Qualifications Type="Type" @bind-QualificationsData="mainDto.Qualifications" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
         break;
     case 6:
-        <Certificates Type="Type" @bind-CertData="mainDto.Certificates" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
+        <Certificates Type="Type" @bind-CertData="mainDto" SectionCompleted="HandleSectionCompleted" PreviousSectionRequested="HandlePreviousSectionRequested" />
         break;
     case 7:
         <Submit SectionCompleted="SubmitRegistration" PreviousSectionRequested="HandlePreviousSectionRequested" />

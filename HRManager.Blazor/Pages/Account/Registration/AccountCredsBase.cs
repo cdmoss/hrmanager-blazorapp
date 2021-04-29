@@ -11,9 +11,9 @@ namespace HRManager.Blazor.Pages.Account.Registration
     {
         // TODO: validate email input
         [Parameter]
-        public EventCallback<AccountCredsData> AccountDataChanged { get; set; }
+        public EventCallback<AdminMemberDto> AccountDataChanged { get; set; }
         [Parameter]
-        public AccountCredsData AccountData { get; set; }
+        public AdminMemberDto AccountData { get; set; }
 
         protected override async Task GoToNextSection()
         {

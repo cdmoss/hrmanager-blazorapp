@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Blazored.Modal;
 using Blazored.Modal.Services;
+using HRManager.Blazor.Shared;
 
 namespace HRManager.Blazor.Pages.Admin
 {
@@ -32,7 +33,7 @@ namespace HRManager.Blazor.Pages.Admin
         protected List<AdminMemberDto> filteredTeam = new List<AdminMemberDto>();
         protected List<Position> positions = new List<Position>();
         protected SfGrid<AdminMemberDto> grid;
-        protected MemberGridEditTemplate editTemplate = new MemberGridEditTemplate();
+        protected MemberEditor<MemberEditDto> editTemplate = new MemberEditor<MemberEditDto>();
         protected List<string> errors = new List<string>();
         protected bool showStaff = false;
 
@@ -63,7 +64,7 @@ namespace HRManager.Blazor.Pages.Admin
         {
             if (args.RequestType.Equals(Syncfusion.Blazor.Grids.Action.Save))
             {
-                await editTemplate.UpdatePositions();
+                await editTemplate.PositionPicker..UpdatePositions();
 
                 var result = await _memberService.UpdateMember(args.Data);
                 if (result.Successful)

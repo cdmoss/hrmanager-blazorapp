@@ -16,17 +16,5 @@
 <br />
 <EditForm id="3" Model="PositionSelection" OnSubmit="@GoToNextSection">
     <DataAnnotationsValidator />
-    <div id="positions-container" class="d-flex">
-        @if (positions.Any(p => p != null))
-        {
-            foreach (var position in positions)
-            {
-                <div class="position-container form-group col-4">
-                    <SfCheckBox @bind-Checked="PositionSelection[position.Id].PositionWasSelected" />
-                    <label class="form-check-label">@position.Name</label>
-                </div>
-            }
-        }
-    </div>
 </EditForm>
 

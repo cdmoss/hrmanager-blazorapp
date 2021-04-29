@@ -9,16 +9,16 @@
 @using Syncfusion.Blazor.Navigations
 @using Blazorise
 @using HRManager.Blazor.Pages.Shared.PageMenus
+@using HRManager.Blazor.Shared
 @inherits TeamsBase
 
 <AuthorizeView>
     <Authorized>
         <div class="menu">
-            <TeamsMenu  
-                GetStaffClicked="OnlyStaff"
-                GetMembersClicked="OnlyMembers"
-                AddMemberClicked="AddMember"
-                AddStaffClicked="AddStaff"/>
+            <TeamsMenu GetStaffClicked="OnlyStaff"
+                       GetMembersClicked="OnlyMembers"
+                       AddMemberClicked="AddMember"
+                       AddStaffClicked="AddStaff" />
         </div>
         @if (errors.Any())
         {
@@ -45,7 +45,9 @@
                         @{
                             var member = (editContext as AdminMemberDto);
                         }
-                        <MemberGridEditTemplate @ref="editTemplate" @bind-SelectedMember="member" Positions="positions" />
+                        <MemberEditor TMemberDto="AdminMemberDto" >
+                            <AdminPositionPicker />
+                        </MemberEditor>
                     </Template>
                 </GridEditSettings>
                 <GridTemplates>

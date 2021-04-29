@@ -24,6 +24,18 @@ namespace HRManager.Blazor.Shared
         protected List<string> errors = new List<string>();
         protected string selectedTab;
 
+        protected override void OnInitialized()
+        {
+            PositionPicker = builder =>
+            {
+                Type moduleType = PositionPicker.GetType();
+                if (moduleType != null)
+                {
+                    bui
+                }
+            };
+        }
+
         protected void OnTabChanged(string name)
         {
             selectedTab = name;

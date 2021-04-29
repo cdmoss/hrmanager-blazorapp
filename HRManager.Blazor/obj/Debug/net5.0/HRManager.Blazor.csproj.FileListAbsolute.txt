@@ -683,3 +683,10 @@ C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\R
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Member\MemberPositionPicker.razor.g.cs
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Shared\PositionPicker.razor.g.cs
 C:\Users\Brendan\Desktop\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\MemberEditor.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\AdminPositionPicker.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Member\MemberPositionPicker.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Shared\AdminLayout.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Shared\MemberLayout.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Shared\ProfileManager.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Pages\Admin\MemberEditor.razor.g.cs
+C:\Users\Chase\Desktop\Programming\hrmanager-blazorapp\HRManager.Blazor\obj\Debug\net5.0\RazorDeclaration\Shared\MemberEditor.razor.g.cs
